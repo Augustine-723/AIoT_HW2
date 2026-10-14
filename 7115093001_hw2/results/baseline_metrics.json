@@ -10,11 +10,13 @@
     "R2": 0.686141488434193
   },
   "dummy_mean_training_rmse": 152.58378308142238,
-  "time_series_cv_5fold": {
-    "validation_rmse_mean": 109.56275999999998,
-    "validation_rmse_std": 14.916278797944209,
-    "validation_mae_mean": 81.31210000000002,
-    "validation_r2_mean": 0.45496,
-    "dummy_rmse_mean": 165.00096000000002
+  "date_bounded_expanding_window_cv_5fold": {
+    "splits": 5,
+    "validation_rmse_mean": 108.68596,
+    "validation_rmse_std": 15.36040844616445,
+    "validation_mae_mean": 81.20652,
+    "validation_r2_mean": 0.46236,
+    "dummy_rmse_mean": 164.7931,
+    "split_methodology": "Expanding window cross-validation grouped by unique calendar dates (Zero date leakage across folds)"
   }
 }

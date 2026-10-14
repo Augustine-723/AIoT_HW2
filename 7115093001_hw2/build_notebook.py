@@ -1,5 +1,5 @@
 """
-Script to build and execute 7115093001_hw2.ipynb
+Script to build and execute 7115093001_hw2.ipynb with complete code review fixes
 """
 
 import os
@@ -8,6 +8,28 @@ from nbformat.v4 import new_notebook, new_markdown_cell, new_code_cell
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 nb = new_notebook()
+
+# Set official Jupyter Python kernelspec metadata
+nb.metadata = {
+    "kernelspec": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+    },
+    "language_info": {
+        "codemirror_mode": {
+            "name": "ipython",
+            "version": 3
+        },
+        "file_extension": ".py",
+        "mimetype": "text/x-python",
+        "name": "python",
+        "nbconvert_exporter": "python",
+        "pygments_lexer": "ipython3",
+        "version": "3.11.10"
+    }
+}
+
 cells = []
 
 # Cell 1: Title & Research Objective
@@ -16,7 +38,7 @@ cells.append(new_markdown_cell("""# AIoT HW2 — Phase 1 研究實作報告
 **學生學號 (Student ID):** 7115093001  
 **研究題目 (Research Title):** Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection  
 **研究角色 (Role):** Machine Learning Engineer & Research Assistant  
-**作業階段 (Phase):** Phase 1 (資料驗證、探索性數據分析、時間序列切分、特徵預處理管線與 OLS 基準模型構建)  
+**作業階段 (Phase):** Phase 1 (資料驗證、探索性數據分析、完整日期邊界時序切分、特徵預處理管線與 OLS 基準模型構建)  
 
 ---
 
@@ -27,11 +49,11 @@ cells.append(new_markdown_cell("""# AIoT HW2 — Phase 1 研究實作報告
 1. **防止資料外洩 (Zero Data Leakage):** 採用嚴格的時間序列時間順序切分（Chronological Split），並以完整日曆天（Calendar Day）為邊界劃分訓練集（Training ~70%）、校準集（Calibration ~15%）與測試集（Test ~15%）。
 2. **避免目標外洩 (Target Leakage):** 嚴禁將註冊用戶數（`registered`）與臨時用戶數（`casual`）作為模型輸入特徵，因為 `casual + registered == cnt`。
 3. **無偏特徵預處理管線 (Preprocessing Pipeline):** 使用 scikit-learn 之 `ColumnTransformer` 與 `OneHotEncoder(drop='first')` 避免多元共線性（Dummy Variable Trap），且預處理轉換器之參數僅能由訓練集學習。
-4. **時序交叉驗證 (TimeSeriesSplit Cross-Validation):** 在訓練集中執行 5-Fold `TimeSeriesSplit`，並在每一折疊內獨立擬合預處理管線，客觀評估模型之泛化表現。
+4. **完整日期邊界擴展視窗交叉驗證 (Date-Bounded Expanding Window Cross-Validation):** 在訓練集中執行 5-Fold 擴展視窗時序交叉驗證，以完整日曆天為分割單位，杜絕同日資料跨越 Fold 之洩漏，且在每一折疊內獨立擬合預處理管線。
 5. **單一事實來源 (Single Source of Truth):** 本 Jupyter Notebook 作為所有分析圖表、統計檢定與評估指標的唯一起源，供後續報告撰寫與平台展示讀取。"""))
 
 # Cell 2: Imports & Environment Configuration
-cells.append(new_code_cell("""# 環境依賴套件導入與設定
+cells.append(new_code_cell("""# 環境依賴套件導入與路徑設定
 import os
 import sys
 import json
@@ -53,16 +75,22 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# 設定中文字型與視覺化風格
+# 設定視覺化風格與中文字型
 plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.available else 'default')
 plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
 plt.rcParams['axes.unicode_minus'] = False
 
-# 工作路徑設定（使用相對路徑確保獨立可執行性）
-BASE_DIR = os.getcwd()
-DATA_PATH = os.path.join("data", "hour.csv")
-FIGURES_DIR = "figures"
-RESULTS_DIR = "results"
+# 穩健路徑解析：支援從 7115093001_hw2/ 目錄或儲存庫根目錄直接執行
+if os.path.exists(os.path.join("data", "hour.csv")):
+    BASE_DIR = os.path.abspath(os.getcwd())
+elif os.path.exists(os.path.join("7115093001_hw2", "data", "hour.csv")):
+    BASE_DIR = os.path.abspath(os.path.join(os.getcwd(), "7115093001_hw2"))
+else:
+    BASE_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd())
+
+DATA_PATH = os.path.join(BASE_DIR, "data", "hour.csv")
+FIGURES_DIR = os.path.join(BASE_DIR, "figures")
+RESULTS_DIR = os.path.join(BASE_DIR, "results")
 
 os.makedirs(FIGURES_DIR, exist_ok=True)
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -70,16 +98,19 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 print(f"Python Version: {sys.version.split()[0]}")
 print(f"Pandas Version: {pd.__version__}")
 print(f"Scikit-Learn Version: {sklearn.__version__}")
-print(f"Data Path: {DATA_PATH}")"""))
+print(f"工作根目錄 (BASE_DIR): {BASE_DIR}")
+print(f"資料來源路徑 (DATA_PATH): {DATA_PATH}")"""))
 
 # Cell 3: Dataset Source & Verification
 cells.append(new_markdown_cell("""### 2. 資料集來源與雜湊驗證 (Dataset Source & Acquisition)
-本研究使用之資料集為 **Bike Sharing Dataset (Hourly Version)**，其官方來源為：
+本研究使用之資料集為 **Bike Sharing Dataset (Hourly Version)**，其來源紀錄如下：
+- **UCI Machine Learning Repository 原始官方發布來源:** [https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)
 - **Kaggle 來源:** [https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset](https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset)
-- **UCI Machine Learning Repository 原始來源:** [https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)
 - **必要檔案:** `hour.csv`
 
-為確保資料完整性與防偽驗證，我們計算本機 `hour.csv` 之 SHA-256 數位簽章，並核對列數（預期約 17,379 筆）與欄位數（17 欄）。"""))
+**資料來源差異與驗證狀態說明:**
+- 目前使用之 `hour.csv` 直接取自 UCI Machine Learning Repository 官方發布壓縮檔（17,379 列，17 欄），並通過 SHA-256 數位簽章檢驗。
+- Kaggle `marklvl/bike-sharing-dataset` 為其公開轉載鏡像。因 Kaggle API 下載需要個人帳號驗證憑證（`kaggle.json`），在目前環境中標記為**待確認 (Pending direct verification)**。若研究人員由 Kaggle 手動下載 `hour.csv` 置入 `data/` 目錄，可直接與記錄之 SHA-256 雜湊值進行校驗比對。"""))
 
 # Cell 4: Load Data & Hash Check Code
 cells.append(new_code_cell("""# 載入原始資料並進行 SHA-256 驗證
@@ -97,9 +128,13 @@ print(f"資料集維度: {n_rows} 列 (rows), {n_cols} 欄 (columns)")
 metadata = {
     "student_id": "7115093001",
     "research_title": "Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection",
-    "source_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "official_kaggle_url": "https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset",
+    "original_source_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "active_data_source": "UCI Machine Learning Repository (Official primary source)",
     "filename": "hour.csv",
     "sha256_checksum": sha256_checksum,
+    "kaggle_verification_status": "待確認 (Pending direct download verification due to Kaggle API authentication requirement)",
+    "source_differences_notes": "本專案使用之 hour.csv 取自 UCI 官方壓縮檔（17,379 列，17 欄）。Kaggle marklvl/bike-sharing-dataset 為其轉載鏡像。因 Kaggle API 需憑證，標註為待比對；手動置入 Kaggle 檔案可直接驗證雜湊值。",
     "number_of_rows": int(n_rows),
     "number_of_columns": int(n_cols),
     "column_names": list(df_raw.columns),
@@ -117,7 +152,10 @@ cells.append(new_markdown_cell("""### 3. 資料驗證與品質審計 (Step 1 —
 依循 CRISP-DM 資料理解程序，我們對 `hour.csv` 進行全方位數據完整性檢查：
 1. **缺失值與重複項檢驗:** 檢查各欄位有無 Null/NaN，以及有無完全重複紀錄。
 2. **完整時間戳記建立:** 結合 `dteday`（日期）與 `hr`（小時），建構精確的 `datetime` 序列。
-3. **時間連續性與缺漏時段檢驗 (Temporal Gap Analysis):** 計算時間區間內的理論小時數與實際記錄數之差異。
+3. **時間連續性與完整缺漏清單統計 (Empirical Temporal Gap Analysis):**
+   - 產出全量 165 個缺漏小時的時間戳記清單。
+   - 統計各時段（小時 0 ~ 23）、年份、月份之缺漏頻率與連續缺漏區塊分佈。
+   - 嚴格維持客觀數據證據，移除未經證實之推測。
 4. **目標變數檢驗:** 驗證租借數 `cnt` 是否皆為非負整數，並驗證 `casual + registered == cnt` 恆等式。
 5. **特徵定義與有效範圍檢驗:** 核對 12 個候選特徵的數值定義範圍。"""))
 
@@ -139,25 +177,64 @@ is_chronological = bool(df['datetime'].is_monotonic_increasing)
 # 3. 理論時間長度與缺漏時段檢驗
 expected_timeline = pd.date_range(start=df['datetime'].min(), end=df['datetime'].max(), freq='h')
 expected_hours = len(expected_timeline)
-gap_hours = expected_hours - len(df)
-gap_sample = [str(ts) for ts in expected_timeline.difference(df['datetime'])[:10]]
+missing_timestamps_idx = expected_timeline.difference(df['datetime'])
+gap_hours = len(missing_timestamps_idx)
+
+# 4. 產出完整缺漏時段統計與清單（純數據客觀統計，無主觀臆測）
+missing_series = pd.Series(missing_timestamps_idx)
+missing_df = pd.DataFrame({
+    'datetime': missing_series,
+    'date': missing_series.dt.date.astype(str),
+    'year': missing_series.dt.year,
+    'month': missing_series.dt.month,
+    'day': missing_series.dt.day,
+    'hour': missing_series.dt.hour,
+    'weekday': missing_series.dt.weekday
+})
+
+# 計算連續缺漏區塊長度
+missing_df['gap_diff'] = missing_df['datetime'].diff()
+gap_groups = (missing_df['gap_diff'] != pd.Timedelta(hours=1)).cumsum()
+gap_lengths = missing_df.groupby(gap_groups).size()
+
+multi_hour_gaps = []
+for _, group in missing_df.groupby(gap_groups):
+    if len(group) > 1:
+        multi_hour_gaps.append({
+            "start_timestamp": str(group['datetime'].min()),
+            "end_timestamp": str(group['datetime'].max()),
+            "consecutive_hours": int(len(group))
+        })
+
+missing_analysis = {
+    "total_missing_hours": gap_hours,
+    "missing_hours_distribution": {int(k): int(v) for k, v in missing_df['hour'].value_counts().sort_index().items()},
+    "missing_by_year": {int(k): int(v) for k, v in missing_df['year'].value_counts().sort_index().items()},
+    "missing_by_month": {int(k): int(v) for k, v in missing_df['month'].value_counts().sort_index().items()},
+    "gap_length_frequency": {int(k): int(v) for k, v in gap_lengths.value_counts().sort_index().items()},
+    "multi_hour_gaps": multi_hour_gaps,
+    "complete_missing_timestamps": [str(ts) for ts in missing_timestamps_idx]
+}
+
+with open(os.path.join(RESULTS_DIR, "missing_timestamps.json"), "w", encoding="utf-8") as f:
+    json.dump(missing_analysis, f, indent=2, ensure_ascii=False)
 
 print(f"起始時間戳記: {df['datetime'].min()}")
 print(f"結束時間戳記: {df['datetime'].max()}")
 print(f"時序單調遞增 (Monotonic Increasing): {is_chronological}")
 print(f"理論區間小時總數: {expected_hours} 小時 (731 天 * 24 小時)")
 print(f"實際觀測小時數: {len(df)} 小時")
-print(f"未記錄/缺失時段總數 (Gap Hours): {gap_hours} 小時")
-print(f"未記錄時段範例: {gap_sample}")
+print(f"未記錄時段總數 (Gap Hours): {gap_hours} 小時 (完整清單已儲存至 results/missing_timestamps.json)")
+print(f"各小時缺漏分佈 (前 6 名時段): {dict(missing_df['hour'].value_counts().head(6))}")
 
-# 4. 業務恆等式與非負性驗證
+# 5. 業務恆等式與非負性驗證
 identity_check = bool((df['casual'] + df['registered'] == df['cnt']).all())
 non_negative_cnt = bool((df['cnt'] >= 0).all())
 
 print(f"恆等式 casual + registered == cnt 完全吻合: {identity_check}")
 print(f"目標變數 cnt 全部 >= 0: {non_negative_cnt}")
 
-# 5. 特徵有效範圍與類別定義檢驗
+# 6. 特徵有效範圍與類別定義檢驗
 range_checks = {
     "season_in_[1,2,3,4]": bool(df['season'].isin([1, 2, 3, 4]).all()),
     "yr_in_[0,1]": bool(df['yr'].isin([0, 1]).all()),
@@ -186,7 +263,7 @@ validation_summary = {
     "expected_hours": expected_hours,
     "actual_hours": len(df),
     "gap_hours": gap_hours,
-    "gap_sample": gap_sample,
+    "gap_details_file": "results/missing_timestamps.json",
     "identity_casual_plus_registered_equals_cnt": identity_check,
     "cnt_non_negative": non_negative_cnt,
     "range_checks": range_checks
@@ -198,9 +275,13 @@ with open(os.path.join(RESULTS_DIR, "data_validation.json"), "w", encoding="utf-
 df.describe().to_csv(os.path.join(RESULTS_DIR, "descriptive_statistics.csv"))"""))
 
 # Cell 7: Data Validation Chinese Markdown Notes
-cells.append(new_markdown_cell("""#### 🔍 資料驗證結果與學術審計備忘錄 (Data Audit Notes)
+cells.append(new_markdown_cell("""#### 🔍 資料驗證結果與審計備忘錄 (Data Audit Notes)
 1. **資料完整性良好:** 全資料集無任何缺失值（Missing Values = 0），亦無任何重複列（Duplicate Rows = 0）。
-2. **時序缺漏時段說明 (Gap Hours Explanation):** 731 天的日曆區間理論上應有 $731 \\times 24 = 17,544$ 小時，實際記錄為 17,379 筆，共存在 165 個小時的資料空缺。檢視發現，這些缺漏主要出現在**凌晨離峰時段（如 02:00 ~ 05:00）或極端天氣事件（如 2012 年 10 月末之颶風珊迪 Hurricane Sandy）**期間，系統因無人借車或停止營運而未產生日誌。依據作業指導原則，**本研究不隨意虛構補值（No Artificial Imputation）**，忠實呈現原始觀測時段。
+2. **缺漏時段客觀統計 (Empirical Gap Analysis):**  
+   731 天的日曆區間理論上應有 $731 \\times 24 = 17,544$ 小時，實際記錄為 17,379 筆，共存在 165 個小時的資料空缺。  
+   - **時段分佈特徵:** 165 個缺漏中，有 **105 個小時（63.6%）集中在凌晨離峰時段（00:00 至 05:00）**，其中以 03:00 與 04:00 各 34 次最高；白天時段（06:00 至 23:00）各小時缺漏次數僅介於 1 至 6 次之間。
+   - **缺漏型態分佈:** 全區間包含 64 次單小時缺漏，以及少數多小時連續缺漏區塊（例如 2012 年 10 月 29 日至 30 日出現 36 小時連續未記錄）。
+   - **無補值原則:** 依據研究指導規範，**本研究不對缺漏小時進行任何主觀假設或人工插補（No Artificial Imputation）**，完整時序清單已輸出儲存於 `results/missing_timestamps.json`。
 3. **防止目標外洩 (Strict Anti-Leakage Rule):** 恆等式 `casual + registered == cnt` 100% 成立。因此，**`casual` 與 `registered` 嚴禁納入任何預測模型特徵**，否則將造成嚴重的目標外洩（Target Leakage）。
 4. **排除非預測性特徵:** 序列流水號 `instant` 與字串日期 `dteday` 僅用於排序與分割，不得納入迴歸特徵。
 5. **最終 12 原生特徵 (12 Original Predictors):**
@@ -231,7 +312,6 @@ fig1.savefig(os.path.join(FIGURES_DIR, "hourly_demand.png"), dpi=300)
 plt.show()
 
 # Figure 2: Correlation Heatmap (相關係數矩陣熱力圖)
-# 排除非預測性欄位與外洩欄位 instant, casual, registered
 candidate_numeric = ['season', 'yr', 'mnth', 'hr', 'holiday', 'weekday', 'workingday',
                      'weathersit', 'temp', 'atemp', 'hum', 'windspeed', 'cnt']
 corr_matrix = df[candidate_numeric].corr()
@@ -287,15 +367,15 @@ plt.show()"""))
 # Cell 11: EDA Notes
 cells.append(new_markdown_cell("""#### 📊 探索性數據分析觀察與統計解釋 (EDA Findings)
 1. **雙峰通勤需求曲線 (Figure 1):**  
-   小時租借量呈現顯著的雙峰形態（Bimodal Distribution），峰值分別落在上午 08:00（約 359 輛）與傍晚 17:00 ~ 18:00（約 461 ~ 425 輛），清楚反映首都圈上班族與學生的尖峰通勤行為；而凌晨 03:00 ~ 04:00 為全日谷底（平均僅約 10 ~ 16 輛）。
+   小時租借量呈現顯著的雙峰形態（Bimodal Distribution），峰值分別落在上午 08:00（約 359 輛）與傍晚 17:00 ~ 18:00（約 461 ~ 425 輛），清楚反映首都圈通勤尖峰特徵；而凌晨 03:00 ~ 04:00 為全日谷底（平均僅約 10 ~ 16 輛）。
 2. **極高共線性警訊: `temp` 與 `atemp` (Figure 2):**  
-   標準化氣溫 `temp` 與體感氣溫 `atemp` 之 Pearson 相關係數高達 **$r = 0.99$**，存在近乎完全的共線性（Multicollinearity）。在多元線性迴歸中，同時納入兩者可能導致係數估計方差膨脹與符號反轉，為後續 Phase 2 特徵選取（Feature Selection）提供了明確的降維依據。
+   標準化氣溫 `temp` 與體感氣溫 `atemp` 之 Pearson 相關係數高達 **$r = 0.99$**，存在近乎完全的共線性（Multicollinearity）。在多元線性迴歸中，同時納入兩者可能導致係數估計方差膨脹與符號反轉，為後續 Phase 2 特徵選取（Feature Selection）提供了明確依據。
 3. **類別整數編碼之統計陷阱說明:**  
-   請注意，雖然數值相關矩陣可對 `season`、`weekday`、`weathersit` 計算 Pearson 相關係數，但這些欄位本質為**名義（Nominal）或順序（Ordinal）之整數編碼**。例如 `season=4`（冬季）並不代表數值量級是 `season=1`（春季）的四倍。因此，在建模時必須透過 **One-Hot Encoding** 將其轉化為虛擬變數（Dummy Variables），不可直接作為連續數值回歸。
+   請注意，雖然數值相關矩陣可對 `season`、`weekday`、`weathersit` 計算 Pearson 相關係數，但這些欄位本質為**名義（Nominal）或順序（Ordinal）之整數編碼**。在建模時必須透過 **One-Hot Encoding** 將其轉化為虛擬變數（Dummy Variables），不可直接作為連續數值回歸。
 4. **目標變數右偏態特徵 (Figure 3):**  
-   `cnt` 的平均值為 189.46，中位數為 142.0，標準差為 181.39，偏態係數（Skewness）為 **+1.28**，呈現顯著的右偏（Right-skewed）分佈。絕大多數時段的租借量集中於 0 ~ 300 輛之間，少數極端熱門時段最高達 977 輛。
+   `cnt` 的平均值為 189.46，中位數為 142.0，標準差為 181.39，偏態係數（Skewness）為 **+1.28**，呈現顯著的右偏分佈。
 5. **氣溫正向激勵效應 (Figure 4):**  
-   氣溫與租借量呈現明確的正向線性相關（$r = 0.40$），趨勢線斜率為正（$cnt \\approx 381.3 \\times temp - 2.5$）。當氣溫上升至舒適區間（標準化值 0.6 ~ 0.8，約 25°C ~ 33°C）時，租借活躍度大幅提升。"""))
+   氣溫與租借量呈現明確的正向線性相關（$r = 0.40$），趨勢線斜率為正（$cnt \\approx 381.3 \\times temp - 2.5$）。"""))
 
 # Cell 12: Chronological Data Split Markdown
 cells.append(new_markdown_cell("""### 5. 時間序列嚴格時序切分 (Step 3 — Chronological Data Split)
@@ -303,8 +383,8 @@ cells.append(new_markdown_cell("""### 5. 時間序列嚴格時序切分 (Step 3 
 「給定特定小時之時間、日曆與氣象環境資訊，預測該小時之自行車租借總需求量。」
 
 #### 切分設計原則
-1. **絕不隨機打亂 (No Random Shuffle):** 在時序預測問題中，隨機切分會導致未來的資訊洩漏給過去（Temporal Data Leakage）。
-2. **完整日曆天邊界 (Full Calendar-Day Boundaries):** 自行車使用需求具有強烈的日週期性（Diurnal Cycle），同一日曆天內的各小時具備高度自相關性。因此切分點必須精準落在日曆天的交界（00:00:00），確保同一天的觀測值絕不會被拆分到不同子集中。
+1. **絕不隨機打亂 (No Random Shuffle):** 防止未來資訊外洩（Temporal Data Leakage）。
+2. **完整日曆天邊界 (Full Calendar-Day Boundaries):** 自行車租借具備強烈的日週期性（Diurnal Cycle），同一日內的各小時高度自相關。因此切分點精準鎖定在日曆天交界（00:00:00），確保同一天的觀測值絕不會被拆分到不同子集中。
 3. **切分比例設定:**
    - **訓練集 (Training Set, ~70%):** 512 天，用於模型訓練、交叉驗證與特徵選取。
    - **校準集 (Calibration Set, ~15%):** 110 天，完全保留予未來 Phase 2 構建 Split Conformal Prediction 預測區間。
@@ -316,7 +396,6 @@ cells.append(new_code_cell("""# 依據完整日曆天進行程式化時序切分
 unique_days = df['dteday'].drop_duplicates().sort_values().reset_index(drop=True)
 total_calendar_days = len(unique_days)
 
-# 依比例計算切分天數 (~70%, ~15%, ~15%)
 n_train_days = int(round(total_calendar_days * 0.70))
 n_calib_days = int(round(total_calendar_days * 0.15))
 n_test_days = total_calendar_days - n_train_days - n_calib_days
@@ -380,7 +459,7 @@ for subset_name, sub in split_report['subsets'].items():
 
 # Cell 14: Preprocessing Pipeline Markdown
 cells.append(new_markdown_cell("""### 6. 特徵預處理管線 (Step 4 — Preprocessing Pipeline)
-依據迴歸計量經濟學規範，在多元線性迴歸中納入定性類別變數時，若未刪除基準類別，將引發**虛擬變數陷阱（Dummy Variable Trap / 完美多元共線性）**，導致設計矩陣 $X^T X$ 不可逆。
+依據計量經濟學規範，在多元線性迴歸中納入定性類別變數時，若未刪除基準類別，將引發**虛擬變數陷阱（Dummy Variable Trap / 完美多元共線性）**，導致設計矩陣 $X^T X$ 不可逆。
 
 #### 預處理架構設計
 我們採用 `scikit-learn` 之 `ColumnTransformer` 構建模組化管線：
@@ -440,8 +519,8 @@ print(f"原生特徵數量 (Original Predictors): {len(all_predictors)}")
 print(f"編碼後模型特徵數量 (Transformed Model Columns): {len(total_encoded_features)}")
 print(f"已匯出特徵映射表至: {os.path.join(RESULTS_DIR, 'encoded_feature_names.csv')}")"""))
 
-# Cell 16: Baseline OLS & TimeSeriesSplit CV Markdown
-cells.append(new_markdown_cell("""### 7. 基準模型構建與評估 (Step 5 — Baseline OLS Model & TimeSeriesSplit CV)
+# Cell 16: Baseline OLS & Date-Bounded Expanding Window CV Markdown
+cells.append(new_markdown_cell("""### 7. 基準模型構建與評估 (Step 5 — Baseline OLS Model & Date-Bounded Expanding Window CV)
 #### 模型設定
 1. **模型選擇:** `sklearn.linear_model.LinearRegression` (Ordinary Least Squares, OLS)。
 2. **參考基準:** `sklearn.dummy.DummyRegressor(strategy="mean")`（以訓練集平均值作為常數預測，檢驗 OLS 是否具有實質預測價值）。
@@ -450,12 +529,12 @@ cells.append(new_markdown_cell("""### 7. 基準模型構建與評估 (Step 5 —
    - 均方誤差 (MSE)
    - 均方根誤差 (RMSE)
    - 判定係數 ($R^2$)
-4. **時序交叉驗證 (TimeSeriesSplit 5-Fold):**
-   - 傳統 K-Fold 隨機交叉驗證會打破時間先後順序，產生未來預測過去的假象。
-   - 本研究在訓練集內部嚴格採用 `TimeSeriesSplit(n_splits=5)`，依時間滾動推進評估。
-   - **零外洩實作細節:** 在每一個折疊內，預處理轉換器均僅在該折疊的訓練分割（Fold Train）上重新擬合，再對驗證分割（Fold Validation）進行轉換與預測，杜絕任何預處理外洩。"""))
+4. **完整日期邊界擴展視窗時序交叉驗證 (Date-Bounded Expanding Window CV):**
+   - 依據程式碼審查改進建議，若單純依據資料列數（Rows）切分，由於不同日期觀測小時數存在差異，可能導致同一日期的資料跨越 Training 與 Validation Fold。
+   - 為解決此潛在洩漏問題，本研究將 512 天訓練集之**唯一日曆天（Unique Calendar Days）**作為切分單元，保留 5-Fold 擴展視窗架構。
+   - **零外洩實作細節:** 確保每一個 Fold 的 Training 與 Validation 均以完整日曆天（00:00:00 至 23:00:00）為界，且在每個折疊內部獨立擬合預處理轉換器，杜絕任何預處理外洩。"""))
 
-# Cell 17: Baseline OLS & TimeSeriesSplit CV Code
+# Cell 17: Baseline OLS & Date-Bounded Expanding Window CV Code
 cells.append(new_code_cell("""# 1. 訓練全訓練集 OLS 基準模型
 ols_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
@@ -477,18 +556,28 @@ dummy_pred = dummy_reg.predict(X_train)
 dummy_train_rmse = float(np.sqrt(mean_squared_error(y_train, dummy_pred)))
 
 print("=== 訓練集擬合評估 (Training Set Metrics) ===")
-print(f"OLS Baseline  -> MAE: {train_mae:.4f} | MSE: {train_mse:.4f} | RMSE: {train_rmse:.4f} | R²: {train_r2:.4f}")
+print(f"OLS Baseline   -> MAE: {train_mae:.4f} | MSE: {train_mse:.4f} | RMSE: {train_rmse:.4f} | R²: {train_r2:.4f}")
 print(f"Dummy Reg Mean -> RMSE: {dummy_train_rmse:.4f} | R²: {r2_score(y_train, dummy_pred):.4f}")
 
-# 2. TimeSeriesSplit 5-Fold 交叉驗證（每一折疊獨立擬合預處理，確保零外洩）
-tscv = TimeSeriesSplit(n_splits=5)
+# 2. 以完整日曆天為邊界之擴展視窗時序交叉驗證 (Date-Bounded Expanding Window 5-Fold CV)
+train_unique_dates = unique_days.iloc[:n_train_days].reset_index(drop=True)
+tscv_dates = TimeSeriesSplit(n_splits=5)
 cv_records = []
 
-for fold, (train_idx, val_idx) in enumerate(tscv.split(X_train), 1):
-    X_fold_tr, y_fold_tr = X_train.iloc[train_idx], y_train.iloc[train_idx]
-    X_fold_va, y_fold_va = X_train.iloc[val_idx], y_train.iloc[val_idx]
+for fold, (tr_date_idx, val_date_idx) in enumerate(tscv_dates.split(train_unique_dates), 1):
+    fold_tr_dates = set(train_unique_dates.iloc[tr_date_idx])
+    fold_val_dates = set(train_unique_dates.iloc[val_date_idx])
     
-    # 折疊內獨立管線
+    # 確保兩子集無跨日重疊
+    assert len(fold_tr_dates.intersection(fold_val_dates)) == 0, f"Fold {fold} 日期重疊！"
+    
+    tr_mask = train_data['dteday'].isin(fold_tr_dates)
+    val_mask = train_data['dteday'].isin(fold_val_dates)
+    
+    X_fold_tr, y_fold_tr = train_data.loc[tr_mask, all_predictors], train_data.loc[tr_mask, target_col]
+    X_fold_va, y_fold_va = train_data.loc[val_mask, all_predictors], train_data.loc[val_mask, target_col]
+    
+    # 折疊內獨立管線擬合
     fold_preprocessor = ColumnTransformer(
         transformers=[
             ('cat', OneHotEncoder(handle_unknown='ignore', drop='first', sparse_output=False), categorical_features),
@@ -516,8 +605,14 @@ for fold, (train_idx, val_idx) in enumerate(tscv.split(X_train), 1):
     
     cv_records.append({
         "fold": fold,
-        "train_samples": len(X_fold_tr),
-        "val_samples": len(X_fold_va),
+        "train_start_date": str(train_unique_dates.iloc[tr_date_idx].min()),
+        "train_end_date": str(train_unique_dates.iloc[tr_date_idx].max()),
+        "val_start_date": str(train_unique_dates.iloc[val_date_idx].min()),
+        "val_end_date": str(train_unique_dates.iloc[val_date_idx].max()),
+        "n_train_days": int(len(fold_tr_dates)),
+        "n_val_days": int(len(fold_val_dates)),
+        "n_train_samples": int(len(X_fold_tr)),
+        "n_val_samples": int(len(X_fold_va)),
         "val_mae": round(fold_mae, 4),
         "val_mse": round(fold_mse, 4),
         "val_rmse": round(fold_rmse, 4),
@@ -534,8 +629,8 @@ cv_mae_mean = float(cv_df['val_mae'].mean())
 cv_r2_mean = float(cv_df['val_r2'].mean())
 dummy_cv_mean = float(cv_df['dummy_val_rmse'].mean())
 
-print("\\n=== TimeSeriesSplit 5-Fold 交叉驗證結果 ===")
-display(cv_df)
+print("\\n=== Date-Bounded Expanding Window 5-Fold 交叉驗證結果 ===")
+display(cv_df[['fold', 'train_start_date', 'train_end_date', 'val_start_date', 'val_end_date', 'n_train_days', 'n_val_days', 'val_mae', 'val_rmse', 'val_r2', 'dummy_val_rmse']])
 print(f"5-Fold CV Validation RMSE Mean: {cv_rmse_mean:.4f} (std: {cv_rmse_std:.4f})")
 print(f"5-Fold CV Validation MAE Mean:  {cv_mae_mean:.4f}")
 print(f"5-Fold CV Validation R² Mean:   {cv_r2_mean:.4f}")
@@ -554,12 +649,14 @@ baseline_summary = {
         "R2": train_r2
     },
     "dummy_mean_training_rmse": dummy_train_rmse,
-    "time_series_cv_5fold": {
+    "date_bounded_expanding_window_cv_5fold": {
+        "splits": 5,
         "validation_rmse_mean": cv_rmse_mean,
         "validation_rmse_std": cv_rmse_std,
         "validation_mae_mean": cv_mae_mean,
         "validation_r2_mean": cv_r2_mean,
-        "dummy_rmse_mean": dummy_cv_mean
+        "dummy_rmse_mean": dummy_cv_mean,
+        "split_methodology": "Expanding window cross-validation grouped by unique calendar dates (Zero date leakage across folds)"
     }
 }
 
@@ -569,12 +666,12 @@ with open(os.path.join(RESULTS_DIR, "baseline_metrics.json"), "w", encoding="utf
 # Cell 18: Phase 1 Summary Markdown
 cells.append(new_markdown_cell("""### 8. Phase 1 成果總結與後續規劃 (Phase 1 Summary & Next Steps)
 #### 核心成果審計摘要
-1. **資料集規範性:** 成功完成 17,379 筆時序資料之品質驗證，確認無重複或缺失值，釐清 165 小時之系統未營運空缺，並驗證 `casual + registered == cnt`，嚴格排除目標外洩欄位。
+1. **資料集規範性:** 成功完成 17,379 筆時序資料之品質驗證，確認無重複或缺失值；完成 165 個缺漏小時之完整時段統計（63.6% 集中於凌晨 00:00 至 05:00），且不進行主觀推測或補值；驗證 `casual + registered == cnt`，嚴格排除目標外洩欄位。
 2. **時序資料劃分:** 完成以日曆天為單位的無重疊時間切分（訓練集 512 天 / 12,163 筆；校準集 110 天 / 2,640 筆；測試集 109 天 / 2,576 筆）。校準集與測試集在 Phase 1 期間維持完全未觀測狀態。
 3. **特徵預處理管線:** 成功將 12 個原生特徵映射為 53 個無共線性輸入維度（`drop='first'`），並封裝於 scikit-learn `Pipeline`。
 4. **OLS 基準效能表現:**
-   - 訓練集擬合表現: $\\text{RMSE} = 85.48$, $R^2 = 0.6861$（相較常數預測基準 $\\text{RMSE} = 152.58$，預測誤差降低超過 44%）。
-   - 5-Fold TimeSeriesSplit 交叉驗證表現: $\\text{Mean RMSE} = 109.56$ ($\\text{std} = 14.92$), $\\text{Mean } R^2 = 0.4549$（相較 Dummy 基準 $\\text{Mean RMSE} = 165.00$ 顯著提升）。
+   - 訓練集擬合表現: $\\text{RMSE} = 85.48$, $R^2 = 0.6861$（相較常數預測基準 $\\text{RMSE} = 152.58$，預測誤差降低超過 43.98%）。
+   - Date-Bounded 5-Fold 擴展視窗交叉驗證表現: $\\text{Mean RMSE} = 108.69$ ($\\text{std} = 15.36$), $\\text{Mean } R^2 = 0.4624$（相較 Dummy 基準 $\\text{Mean RMSE} = 164.79$ 顯著提升）。
 5. **Phase 2 研發重點:**
    - 特徵選取演算法實作（RFE、Ridge / Lasso 懲罰迴歸與係數收縮）。
    - 解決 `temp` 與 `atemp` 等特徵之高共線性問題。

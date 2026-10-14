@@ -7,18 +7,7 @@
   "expected_hours": 17544,
   "actual_hours": 17379,
   "gap_hours": 165,
-  "gap_sample": [
-    "2011-01-02 05:00:00",
-    "2011-01-03 02:00:00",
-    "2011-01-03 03:00:00",
-    "2011-01-04 03:00:00",
-    "2011-01-05 03:00:00",
-    "2011-01-06 03:00:00",
-    "2011-01-07 03:00:00",
-    "2011-01-11 03:00:00",
-    "2011-01-11 04:00:00",
-    "2011-01-12 03:00:00"
-  ],
+  "gap_details_file": "results/missing_timestamps.json",
   "identity_casual_plus_registered_equals_cnt": true,
   "cnt_non_negative": true,
   "range_checks": {
