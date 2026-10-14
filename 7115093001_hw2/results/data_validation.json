@@ -1,0 +1,38 @@
+{
+  "total_rows": 17379,
+  "total_columns": 17,
+  "missing_values_count": 0,
+  "duplicate_records": 0,
+  "duplicate_timestamps": 0,
+  "expected_hours": 17544,
+  "actual_hours": 17379,
+  "gap_hours": 165,
+  "gap_sample": [
+    "2011-01-02 05:00:00",
+    "2011-01-03 02:00:00",
+    "2011-01-03 03:00:00",
+    "2011-01-04 03:00:00",
+    "2011-01-05 03:00:00",
+    "2011-01-06 03:00:00",
+    "2011-01-07 03:00:00",
+    "2011-01-11 03:00:00",
+    "2011-01-11 04:00:00",
+    "2011-01-12 03:00:00"
+  ],
+  "identity_casual_plus_registered_equals_cnt": true,
+  "cnt_non_negative": true,
+  "range_checks": {
+    "season_in_[1,2,3,4]": true,
+    "yr_in_[0,1]": true,
+    "mnth_in_[1..12]": true,
+    "hr_in_[0..23]": true,
+    "holiday_in_[0,1]": true,
+    "weekday_in_[0..6]": true,
+    "workingday_in_[0,1]": true,
+    "weathersit_in_[1..4]": true,
+    "temp_normalized_[0..1]": true,
+    "atemp_normalized_[0..1]": true,
+    "hum_normalized_[0..1]": true,
+    "windspeed_normalized_[0..1]": true
+  }
+}
