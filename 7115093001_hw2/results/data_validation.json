@@ -11,7 +11,7 @@
   "identity_casual_plus_registered_equals_cnt": true,
   "cnt_non_negative": true,
   "range_checks": {
-    "season_in_[1,2,3,4]": true,
+    "season_in_[1..4]": true,
     "yr_in_[0,1]": true,
     "mnth_in_[1..12]": true,
     "hr_in_[0..23]": true,

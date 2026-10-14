@@ -1,0 +1,61 @@
+{
+  "experiment_id": "AIoT_HW2_PHASE2_EXP01",
+  "dataset_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "chronological_split_specification": {
+    "train_calendar_days": 512,
+    "train_date_range": [
+      "2011-01-01",
+      "2012-05-26"
+    ],
+    "train_observations": 12163,
+    "calibration_calendar_days": 110,
+    "calibration_date_range": [
+      "2012-05-27",
+      "2012-09-13"
+    ],
+    "calibration_observations": 2640,
+    "test_calendar_days": 109,
+    "test_date_range": [
+      "2012-09-14",
+      "2012-12-31"
+    ],
+    "test_observations": 2576
+  },
+  "cross_validation_definition": {
+    "type": "Date-Bounded Expanding Window Cross-Validation",
+    "n_splits": 5,
+    "validation_calendar_days_per_fold": 85,
+    "date_leakage_across_folds": false
+  },
+  "chosen_model": {
+    "model_id": "M2",
+    "model_name": "RFE + OLS (k=30)",
+    "estimator": "RFE(estimator=LinearRegression(), n_features_to_select=30)",
+    "hyperparameters": {
+      "k": 30
+    },
+    "preprocessing_specification": "OneHotEncoder(drop='first') for 5 categoricals + passthrough for 7 numerics/binaries",
+    "original_feature_count": 12,
+    "candidate_encoded_feature_count": 53,
+    "selected_encoded_feature_count": 30,
+    "eliminated_encoded_feature_count": 23,
+    "cv_performance": {
+      "cv_rmse_mean": 107.43944483510427,
+      "cv_rmse_std": 14.781231080918772,
+      "cv_mae_mean": 79.9858947224005,
+      "cv_r2_mean": 0.4767235027260357
+    },
+    "training_performance": {
+      "training_rmse": 86.18710078730183,
+      "training_mae": 63.810323270332525,
+      "training_r2": 0.6809433601635377
+    },
+    "model_selection_criterion": "Primary: lowest mean CV RMSE (107.4394). Secondary: lowest CV RMSE std (14.7812), parsimony (30 vs 53 features), zero temporal leakage. Calibration and Test sets remain strictly unobserved."
+  },
+  "environment_versions": {
+    "python": "3.11.10",
+    "scikit_learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6"
+  }
+}

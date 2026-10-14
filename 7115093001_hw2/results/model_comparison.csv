@@ -1,0 +1,5 @@
+model_id,model_name,best_hyperparameters,selected_features_count,training_mae,training_mse,training_rmse,training_r2,cv_mae_mean,cv_mse_mean,cv_rmse_mean,cv_rmse_std,cv_r2_mean
+M1,OLS Baseline,None (all 53 features),53,63.1971,7307.1945,85.4821,0.6861,81.2065,12001.3969,108.686,13.7388,0.4624
+M2,RFE + OLS,k=30,30,63.8103,7428.2163,86.1871,0.6809,79.9859,11761.7191,107.4394,14.7812,0.4767
+M3,Ridge Regression,alpha=1.0,53,63.2064,7308.3422,85.4888,0.6861,81.07,11974.2215,108.5437,13.8737,0.4645
+M4,Lasso Regression,alpha=0.1,47,63.3895,7355.1299,85.7621,0.6841,79.7394,11852.1509,107.7984,15.22,0.4757
