@@ -2,6 +2,14 @@
 AIoT HW2 Phase 2: Feature Selection, Regularization, and Model Comparison
 Author: Student 7115093001
 Title: Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection
+Phase 2.1 Code Review Fixes Applied:
+1. Correct RFE Coefficient Export & Alignment (Eliminated features marked NA, no zero-pretending)
+2. Strict, reliable get_original_name mapping (Distinguishes atemp and temp reliably)
+3. Automated best model selection based on metrics and documented tie-breaking rule
+4. Standardized sample standard deviation (ddof=1) across all CV evaluations
+5. Explicit fold available dimension tracking and comparable RFE candidate grid [5, 10, 15, 20, 25, 30, 35, 40]
+6. Active Lasso ConvergenceWarning capture and documentation (no global warning suppression)
+7. Balanced, nuanced research interpretations (Reporting MAE, RMSE, and Std without exaggeration)
 """
 
 import os
@@ -9,8 +17,6 @@ import sys
 import json
 import hashlib
 import warnings
-warnings.filterwarnings('ignore')
-
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -27,6 +33,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import RFE
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.exceptions import ConvergenceWarning
 
 # Robust Path Resolution
 if os.path.exists(os.path.join("data", "hour.csv")):
@@ -48,7 +55,9 @@ os.makedirs(MODELS_DIR, exist_ok=True)
 print(f"[Phase 2] Execution Directory: {BASE_DIR}")
 print(f"[Phase 2] Data Path: {DATA_PATH}")
 
+# ==========================================
 # 1. Load Data and Chronological Split
+# ==========================================
 df_raw = pd.read_csv(DATA_PATH)
 with open(DATA_PATH, "rb") as f:
     sha256_hash = hashlib.sha256(f.read()).hexdigest()
@@ -75,7 +84,7 @@ print(f"[Phase 2] Train samples: {len(train_df)} ({len(train_dates)} days, {trai
 print(f"[Phase 2] Calib samples: {len(calib_df)} ({len(calib_dates)} days, {calib_df['dteday'].min()} to {calib_df['dteday'].max()})")
 print(f"[Phase 2] Test samples:  {len(test_df)} ({len(test_dates)} days, {test_df['dteday'].min()} to {test_df['dteday'].max()})")
 
-# Feature groups
+# Feature groups definition
 categorical_features = ['season', 'mnth', 'hr', 'weekday', 'weathersit']
 continuous_numeric = ['temp', 'atemp', 'hum', 'windspeed']
 binary_features = ['yr', 'holiday', 'workingday']
@@ -113,7 +122,7 @@ for fold_idx, (tr_idx, val_idx) in enumerate(tscv_dates.split(train_dates), 1):
 print("[Phase 2] Date-Bounded 5-Fold Cross-Validation splits initialized.")
 
 # ==========================================
-# M1: OLS Baseline
+# 2. M1: OLS Baseline
 # ==========================================
 print("\n--- Training M1: OLS Baseline ---")
 preprocessor_ols = ColumnTransformer(
@@ -163,17 +172,19 @@ for split in cv_splits:
     m1_cv_rmses.append(rmse)
     m1_cv_r2s.append(r2)
 
-print(f"M1 OLS -> Training RMSE: {m1_tr_rmse:.4f}, R2: {m1_tr_r2:.4f} | CV RMSE Mean: {np.mean(m1_cv_rmses):.4f} (std: {np.std(m1_cv_rmses):.4f})")
+m1_cv_rmse_mean = float(np.mean(m1_cv_rmses))
+m1_cv_rmse_std = float(np.std(m1_cv_rmses, ddof=1))  # Sample standard deviation (ddof=1)
+print(f"M1 OLS -> Training RMSE: {m1_tr_rmse:.4f}, R2: {m1_tr_r2:.4f} | CV RMSE Mean: {m1_cv_rmse_mean:.4f} (sample std, ddof=1: {m1_cv_rmse_std:.4f})")
 
 # ==========================================
-# M2: RFE + OLS
+# 3. M2: RFE + OLS (Grid Search & Validation)
 # ==========================================
 print("\n--- Tuning M2: RFE + OLS ---")
-k_candidate_grid = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 53]
-rfe_records = []
 
-# Pre-transform each fold's data for RFE grid tuning
+# Pre-transform each fold's data for RFE grid tuning and record fold available dimensions
 fold_rfe_data = []
+fold_available_dims = {}
+
 for split in cv_splits:
     X_tr_fold = train_df.loc[split['tr_mask'], all_predictors]
     y_tr_fold = train_df.loc[split['tr_mask'], target_col]
@@ -186,8 +197,20 @@ for split in cv_splits:
     ], remainder='drop')
     X_tr_t = pre.fit_transform(X_tr_fold)
     X_val_t = pre.transform(X_val_fold)
-    fold_rfe_data.append((X_tr_t, y_tr_fold.values, X_val_t, y_val_fold.values, split['fold']))
+    
+    fold_dim = X_tr_t.shape[1]
+    fold_available_dims[split['fold']] = fold_dim
+    fold_rfe_data.append((X_tr_t, y_tr_fold.values, X_val_t, y_val_fold.values, split['fold'], fold_dim))
 
+print(f"[Phase 2] Available encoded dimensions by fold: {fold_available_dims}")
+min_supported_dim = min(fold_available_dims.values())
+print(f"[Phase 2] Minimum common dimension across all folds: {min_supported_dim} (Fold 1 has 42 columns because later seasons/months have not occurred yet)")
+
+# Standardized Candidate Grid supported by EVERY fold without silent dimension clipping
+k_candidate_grid = [5, 10, 15, 20, 25, 30, 35, 40]
+print(f"[Phase 2] Standardized RFE candidate grid: {k_candidate_grid} (all k <= {min_supported_dim})")
+
+rfe_records = []
 rfe_summary_by_k = {}
 
 for k in k_candidate_grid:
@@ -196,8 +219,9 @@ for k in k_candidate_grid:
     fold_k_mses = []
     fold_k_r2s = []
     
-    for X_tr_t, y_tr_v, X_val_t, y_val_v, fold_id in fold_rfe_data:
-        actual_k = min(k, X_tr_t.shape[1])
+    for X_tr_t, y_tr_v, X_val_t, y_val_v, fold_id, fold_dim in fold_rfe_data:
+        assert k <= fold_dim, f"Requested k={k} exceeds fold {fold_id} available columns {fold_dim}"
+        actual_k = k
         rfe = RFE(estimator=LinearRegression(), n_features_to_select=actual_k)
         rfe.fit(X_tr_t, y_tr_v)
         val_pred = rfe.predict(X_val_t)
@@ -215,6 +239,7 @@ for k in k_candidate_grid:
         rfe_records.append({
             'k': k,
             'fold': fold_id,
+            'available_feature_count': fold_dim,
             'selected_feature_count': actual_k,
             'val_mae': round(mae, 4),
             'val_mse': round(mse, 4),
@@ -223,7 +248,7 @@ for k in k_candidate_grid:
         })
     
     mean_rmse = float(np.mean(fold_k_rmses))
-    std_rmse = float(np.std(fold_k_rmses))
+    std_rmse = float(np.std(fold_k_rmses, ddof=1))  # Sample standard deviation (ddof=1)
     rfe_summary_by_k[k] = {
         'mean_rmse': mean_rmse,
         'std_rmse': std_rmse,
@@ -232,13 +257,13 @@ for k in k_candidate_grid:
         'mean_r2': float(np.mean(fold_k_r2s)),
         'fold_rmses': fold_k_rmses
     }
-    print(f"RFE k={k:2d} -> CV RMSE Mean: {mean_rmse:.4f} (std: {std_rmse:.4f})")
+    print(f"RFE k={k:2d} -> CV RMSE Mean: {mean_rmse:.4f} (sample std, ddof=1: {std_rmse:.4f})")
 
 rfe_df = pd.DataFrame(rfe_records)
 rfe_df.to_csv(os.path.join(RESULTS_DIR, "rfe_search_results.csv"), index=False)
 print("[Phase 2] Saved rfe_search_results.csv")
 
-# Select best k
+# Select best k based on minimum mean CV RMSE
 best_k = min(rfe_summary_by_k.keys(), key=lambda x: rfe_summary_by_k[x]['mean_rmse'])
 print(f"[Phase 2] Best RFE k selected: {best_k} (CV RMSE: {rfe_summary_by_k[best_k]['mean_rmse']:.4f})")
 
@@ -260,7 +285,7 @@ m2_tr_rmse = float(np.sqrt(m2_tr_mse))
 m2_tr_r2 = float(r2_score(y_train, m2_tr_pred))
 
 # ==========================================
-# M3: Ridge Regression
+# 4. M3: Ridge Regression
 # ==========================================
 print("\n--- Tuning M3: Ridge Regression ---")
 ridge_alpha_grid = [0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]
@@ -309,7 +334,7 @@ for alpha in ridge_alpha_grid:
         })
         
     mean_rmse = float(np.mean(fold_rmses))
-    std_rmse = float(np.std(fold_rmses))
+    std_rmse = float(np.std(fold_rmses, ddof=1))  # Sample standard deviation (ddof=1)
     ridge_summary[alpha] = {
         'mean_rmse': mean_rmse,
         'std_rmse': std_rmse,
@@ -318,7 +343,7 @@ for alpha in ridge_alpha_grid:
         'mean_r2': float(np.mean(fold_r2s)),
         'fold_rmses': fold_rmses
     }
-    print(f"Ridge alpha={alpha:7.2f} -> CV RMSE Mean: {mean_rmse:.4f} (std: {std_rmse:.4f})")
+    print(f"Ridge alpha={alpha:7.2f} -> CV RMSE Mean: {mean_rmse:.4f} (sample std, ddof=1: {std_rmse:.4f})")
 
 ridge_df = pd.DataFrame(ridge_records)
 ridge_df.to_csv(os.path.join(RESULTS_DIR, "ridge_search_results.csv"), index=False)
@@ -343,12 +368,13 @@ m3_tr_rmse = float(np.sqrt(m3_tr_mse))
 m3_tr_r2 = float(r2_score(y_train, m3_tr_pred))
 
 # ==========================================
-# M4: Lasso Regression
+# 5. M4: Lasso Regression & Convergence Monitoring
 # ==========================================
 print("\n--- Tuning M4: Lasso Regression ---")
 lasso_alpha_grid = [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]
 lasso_records = []
 lasso_summary = {}
+lasso_convergence_warnings = []
 
 for alpha in lasso_alpha_grid:
     fold_rmses = []
@@ -370,7 +396,18 @@ for alpha in lasso_alpha_grid:
         ], remainder='drop')
         
         pipe = Pipeline([('pre', pre), ('reg', Lasso(alpha=alpha, max_iter=10000, tol=1e-4, random_state=42))])
-        pipe.fit(X_tr_fold, y_tr_fold)
+        
+        with warnings.catch_warnings(record=True) as caught_w:
+            warnings.simplefilter("always")
+            pipe.fit(X_tr_fold, y_tr_fold)
+            conv_w = [item for item in caught_w if issubclass(item.category, ConvergenceWarning)]
+            if conv_w:
+                lasso_convergence_warnings.append({
+                    'alpha': alpha,
+                    'fold': split['fold'],
+                    'message': str(conv_w[0].message)
+                })
+        
         pred = pipe.predict(X_val_fold)
         
         mae = float(mean_absolute_error(y_val_fold, pred))
@@ -396,7 +433,7 @@ for alpha in lasso_alpha_grid:
         })
         
     mean_rmse = float(np.mean(fold_rmses))
-    std_rmse = float(np.std(fold_rmses))
+    std_rmse = float(np.std(fold_rmses, ddof=1))  # Sample standard deviation (ddof=1)
     lasso_summary[alpha] = {
         'mean_rmse': mean_rmse,
         'std_rmse': std_rmse,
@@ -406,7 +443,9 @@ for alpha in lasso_alpha_grid:
         'mean_nonzeros': float(np.mean(nonzero_counts)),
         'fold_rmses': fold_rmses
     }
-    print(f"Lasso alpha={alpha:7.3f} -> CV RMSE Mean: {mean_rmse:.4f} (std: {std_rmse:.4f}, Nonzero features: {np.mean(nonzero_counts):.1f})")
+    print(f"Lasso alpha={alpha:7.3f} -> CV RMSE Mean: {mean_rmse:.4f} (sample std, ddof=1: {std_rmse:.4f}, Nonzeros: {np.mean(nonzero_counts):.1f})")
+
+print(f"[Phase 2] Lasso Convergence Monitor: {len(lasso_convergence_warnings)} ConvergenceWarnings across all folds.")
 
 lasso_df = pd.DataFrame(lasso_records)
 lasso_df.to_csv(os.path.join(RESULTS_DIR, "lasso_search_results.csv"), index=False)
@@ -422,7 +461,19 @@ m4_preprocessor = ColumnTransformer([
     ('binary', 'passthrough', binary_features)
 ], remainder='drop')
 m4_pipeline = Pipeline([('pre', m4_preprocessor), ('reg', Lasso(alpha=best_lasso_alpha, max_iter=10000, tol=1e-4, random_state=42))])
-m4_pipeline.fit(X_train, y_train)
+
+with warnings.catch_warnings(record=True) as caught_w:
+    warnings.simplefilter("always")
+    m4_pipeline.fit(X_train, y_train)
+    full_conv_w = [item for item in caught_w if issubclass(item.category, ConvergenceWarning)]
+    if full_conv_w:
+        lasso_convergence_warnings.append({
+            'alpha': best_lasso_alpha,
+            'fold': 'Full_Train',
+            'message': str(full_conv_w[0].message)
+        })
+
+print(f"[Phase 2] Final Lasso full-train fit: {len(full_conv_w)} ConvergenceWarnings.")
 
 m4_tr_pred = m4_pipeline.predict(X_train)
 m4_tr_mae = float(mean_absolute_error(y_train, m4_tr_pred))
@@ -431,7 +482,7 @@ m4_tr_rmse = float(np.sqrt(m4_tr_mse))
 m4_tr_r2 = float(r2_score(y_train, m4_tr_pred))
 
 # ==========================================
-# 5. Model Comparison Table
+# 6. Model Comparison Table
 # ==========================================
 print("\n--- Model Comparison Summary ---")
 model_comparison = [
@@ -446,8 +497,8 @@ model_comparison = [
         'training_r2': round(m1_tr_r2, 4),
         'cv_mae_mean': round(float(np.mean(m1_cv_maes)), 4),
         'cv_mse_mean': round(float(np.mean(m1_cv_mses)), 4),
-        'cv_rmse_mean': round(float(np.mean(m1_cv_rmses)), 4),
-        'cv_rmse_std': round(float(np.std(m1_cv_rmses)), 4),
+        'cv_rmse_mean': round(m1_cv_rmse_mean, 4),
+        'cv_rmse_std': round(m1_cv_rmse_std, 4),
         'cv_r2_mean': round(float(np.mean(m1_cv_r2s)), 4)
     },
     {
@@ -503,23 +554,75 @@ print("[Phase 2] Saved model_comparison.csv")
 print(comparison_df[['model_id', 'model_name', 'best_hyperparameters', 'selected_features_count', 'cv_rmse_mean', 'cv_rmse_std', 'cv_mae_mean', 'cv_r2_mean']].to_string())
 
 # ==========================================
-# 6. Selected Features Export
+# 7. Automated Model Selection Policy
 # ==========================================
-feature_export_records = []
-full_features = list(m1_pipeline.named_steps['preprocessor'].get_feature_names_out())
-m1_coefs = m1_pipeline.named_steps['regressor'].coef_
-m3_coefs = m3_pipeline.named_steps['reg'].coef_
-m4_coefs = m4_pipeline.named_steps['reg'].coef_
+# Predefined Rule:
+# 1. Primary Criterion: Lowest mean CV RMSE.
+# 2. Tie-Breaking Rule: Candidates within tolerance (Delta RMSE <= 0.5) are considered practical ties.
+#    Ties are broken by:
+#    a) Parsimony: lowest selected_features_count (fewer parameters)
+#    b) Stability: lowest cv_rmse_std
+#    c) Robustness: lowest cv_mae_mean
+TIE_TOLERANCE_RMSE = 0.5
 
-# Map encoded column to original feature name
-def get_original_name(feat):
-    for orig in ['season', 'mnth', 'hr', 'weekday', 'weathersit', 'temp', 'atemp', 'hum', 'windspeed', 'yr', 'holiday', 'workingday']:
-        if orig in feat:
+min_cv_rmse = min(m['cv_rmse_mean'] for m in model_comparison)
+tied_candidates = [m for m in model_comparison if (m['cv_rmse_mean'] - min_cv_rmse) <= TIE_TOLERANCE_RMSE]
+
+best_candidate = min(
+    tied_candidates,
+    key=lambda m: (m['selected_features_count'], m['cv_rmse_std'], m['cv_mae_mean'])
+)
+
+best_model_id = best_candidate['model_id']
+best_model_name = f"{best_candidate['model_name']} ({best_candidate['best_hyperparameters']})"
+
+print(f"\n[Phase 2] Automated Model Selection Result:")
+print(f"  Minimum CV RMSE: {min_cv_rmse:.4f}")
+print(f"  Candidates within {TIE_TOLERANCE_RMSE} tolerance: {[m['model_id'] for m in tied_candidates]}")
+print(f"  Selected Best Model: {best_model_id} ({best_model_name})")
+print(f"  CV RMSE: {best_candidate['cv_rmse_mean']:.4f}, Features: {best_candidate['selected_features_count']}")
+
+# ==========================================
+# 8. Selected Features Export & Verified Mapping
+# ==========================================
+ORIGINAL_FEATURES = ['season', 'mnth', 'hr', 'weekday', 'weathersit', 'temp', 'atemp', 'hum', 'windspeed', 'yr', 'holiday', 'workingday']
+
+def get_original_name(feat_name):
+    # Remove transformer prefix if present (e.g. 'cat__', 'num__', 'num_scale__', 'binary__')
+    col_part = feat_name.split('__', 1)[1] if '__' in feat_name else feat_name
+    for orig in ORIGINAL_FEATURES:
+        if col_part == orig or col_part.startswith(f"{orig}_"):
             return orig
-    return feat
+    raise ValueError(f"Unable to map feature '{feat_name}' to any of the 12 original features")
+
+full_features = list(m1_pipeline.named_steps['preprocessor'].get_feature_names_out())
+assert len(full_features) == 53, f"Expected 53 features, got {len(full_features)}"
+
+# Verify every single feature maps to exactly one original feature
+for feat in full_features:
+    orig = get_original_name(feat)
+    if 'atemp' in feat:
+        assert orig == 'atemp', f"Feature {feat} incorrectly mapped to {orig}!"
+    elif 'temp' in feat and 'atemp' not in feat:
+        assert orig == 'temp', f"Feature {feat} incorrectly mapped to {orig}!"
+
+# Assertions for RFE Support and Coefficients
+assert np.sum(m2_rfe.support_) == best_k, f"Expected {best_k} selected features, got {np.sum(m2_rfe.support_)}"
+assert len(m2_rfe.estimator_.coef_) == best_k, f"Expected {best_k} coefficients, got {len(m2_rfe.estimator_.coef_)}"
+
+# Align RFE coefficients to selected features
+selected_indices = np.where(m2_rfe.support_)[0]
+rfe_coef_dict = {}
+for i, feat_idx in enumerate(selected_indices):
+    feat_name = full_features[feat_idx]
+    rfe_coef_dict[feat_name] = float(m2_rfe.estimator_.coef_[i])
+
+assert len(rfe_coef_dict) == best_k, "Mismatch in RFE mapped coefficients count!"
+
+feature_export_records = []
 
 # M1
-for feat, coef in zip(full_features, m1_coefs):
+for feat, coef in zip(full_features, m1_pipeline.named_steps['regressor'].coef_):
     feature_export_records.append({
         'model_id': 'M1',
         'encoded_feature_name': feat,
@@ -528,19 +631,20 @@ for feat, coef in zip(full_features, m1_coefs):
         'coefficient': round(float(coef), 6)
     })
 
-# M2 RFE
-rfe_support = m2_rfe.support_
-for feat, sup in zip(full_features, rfe_support):
+# M2 RFE: Eliminated features receive np.nan
+for feat, is_sup in zip(full_features, m2_rfe.support_):
+    status = 'selected' if is_sup else 'eliminated'
+    coef_val = round(rfe_coef_dict[feat], 6) if is_sup else np.nan
     feature_export_records.append({
         'model_id': 'M2',
         'encoded_feature_name': feat,
         'original_feature_name': get_original_name(feat),
-        'selection_status': 'selected' if sup else 'eliminated',
-        'coefficient': round(float(m2_rfe.estimator_.coef_[list(m2_rfe.support_).index(True)]), 6) if sup else 0.0
+        'selection_status': status,
+        'coefficient': coef_val
     })
 
 # M3 Ridge
-for feat, coef in zip(full_features, m3_coefs):
+for feat, coef in zip(full_features, m3_pipeline.named_steps['reg'].coef_):
     feature_export_records.append({
         'model_id': 'M3',
         'encoded_feature_name': feat,
@@ -550,12 +654,13 @@ for feat, coef in zip(full_features, m3_coefs):
     })
 
 # M4 Lasso
-for feat, coef in zip(full_features, m4_coefs):
+for feat, coef in zip(full_features, m4_pipeline.named_steps['reg'].coef_):
+    status = 'selected' if coef != 0 else 'zeroed_out'
     feature_export_records.append({
         'model_id': 'M4',
         'encoded_feature_name': feat,
         'original_feature_name': get_original_name(feat),
-        'selection_status': 'selected' if coef != 0 else 'zeroed_out',
+        'selection_status': status,
         'coefficient': round(float(coef), 6)
     })
 
@@ -563,8 +668,15 @@ selected_feat_df = pd.DataFrame(feature_export_records)
 selected_feat_df.to_csv(os.path.join(RESULTS_DIR, "selected_features.csv"), index=False)
 print("[Phase 2] Saved selected_features.csv")
 
+# Verify exported DataFrame
+m2_exported = selected_feat_df[selected_feat_df['model_id'] == 'M2']
+assert len(m2_exported[m2_exported['selection_status'] == 'selected']) == best_k
+assert len(m2_exported[m2_exported['selection_status'] == 'eliminated']) == len(full_features) - best_k
+assert m2_exported[m2_exported['selection_status'] == 'selected']['coefficient'].notna().all()
+assert m2_exported[m2_exported['selection_status'] == 'eliminated']['coefficient'].isna().all()
+
 # ==========================================
-# 7. Grouped Feature Ablation Analysis
+# 9. Grouped Feature Ablation Analysis
 # ==========================================
 print("\n--- Grouped Feature Ablation Analysis ---")
 all_groups = ['season', 'mnth', 'hr', 'weekday', 'weathersit', 'yr', 'holiday', 'workingday', 'temp', 'atemp', 'hum', 'windspeed']
@@ -606,13 +718,21 @@ print("[Phase 2] Saved grouped_feature_ablation.csv")
 print(ablation_df.to_string(index=False))
 
 # ==========================================
-# 8. Model Selection & Metadata Serialization
+# 10. Metadata Serialization & Model Pipeline Artifact
 # ==========================================
-# Selection Rule:
-# Lowest mean CV RMSE. Tie-breaking tolerance: Delta <= 0.5 preferred simpler model.
-# M2 (RFE k=30) achieves 107.4394, lowest CV RMSE, lowest MAE, lowest std, and parsimonious (30 features vs 53).
-best_model_id = "M2"
-best_model_name = "RFE + OLS (k=30)"
+m2_full_pipeline = Pipeline([
+    ('preprocessor', m2_preprocessor),
+    ('rfe', m2_rfe)
+])
+
+trained_pipelines = {
+    'M1': m1_pipeline,
+    'M2': m2_full_pipeline,
+    'M3': m3_pipeline,
+    'M4': m4_pipeline
+}
+
+final_selected_pipeline = trained_pipelines[best_model_id]
 
 best_model_metadata = {
     "experiment_id": "AIoT_HW2_PHASE2_EXP01",
@@ -632,30 +752,44 @@ best_model_metadata = {
         "type": "Date-Bounded Expanding Window Cross-Validation",
         "n_splits": 5,
         "validation_calendar_days_per_fold": 85,
-        "date_leakage_across_folds": False
+        "date_leakage_across_folds": False,
+        "fold_available_dimensions": fold_available_dims,
+        "common_supported_dimension": min_supported_dim,
+        "variance_estimator": "Sample standard deviation (ddof=1)"
     },
     "chosen_model": {
         "model_id": best_model_id,
         "model_name": best_model_name,
-        "estimator": "RFE(estimator=LinearRegression(), n_features_to_select=30)",
-        "hyperparameters": {"k": best_k},
+        "estimator": str(final_selected_pipeline.named_steps.get('rfe', final_selected_pipeline.named_steps.get('reg'))),
+        "hyperparameters": {"k": best_k} if best_model_id == 'M2' else best_candidate['best_hyperparameters'],
         "preprocessing_specification": "OneHotEncoder(handle_unknown='ignore', drop='first') for 5 categoricals + passthrough for 7 numerics/binaries",
         "original_feature_count": 12,
         "candidate_encoded_feature_count": 53,
-        "selected_encoded_feature_count": best_k,
-        "eliminated_encoded_feature_count": 53 - best_k,
+        "selected_encoded_feature_count": best_candidate['selected_features_count'],
+        "eliminated_encoded_feature_count": 53 - best_candidate['selected_features_count'],
         "cv_performance": {
-            "cv_rmse_mean": rfe_summary_by_k[best_k]['mean_rmse'],
-            "cv_rmse_std": rfe_summary_by_k[best_k]['std_rmse'],
-            "cv_mae_mean": rfe_summary_by_k[best_k]['mean_mae'],
-            "cv_r2_mean": rfe_summary_by_k[best_k]['mean_r2']
+            "cv_rmse_mean": best_candidate['cv_rmse_mean'],
+            "cv_rmse_std": best_candidate['cv_rmse_std'],
+            "cv_mae_mean": best_candidate['cv_mae_mean'],
+            "cv_r2_mean": best_candidate['cv_r2_mean']
         },
         "training_performance": {
-            "training_rmse": m2_tr_rmse,
-            "training_mae": m2_tr_mae,
-            "training_r2": m2_tr_r2
+            "training_rmse": best_candidate['training_rmse'],
+            "training_mae": best_candidate['training_mae'],
+            "training_r2": best_candidate['training_r2']
         },
-        "model_selection_criterion": "Primary: lowest mean CV RMSE (107.4394). Secondary: lowest CV RMSE std (14.7812), parsimony (30 vs 53 features), zero temporal leakage. Calibration and Test sets remain strictly unobserved."
+        "model_selection_criterion": (
+            f"Primary: lowest mean CV RMSE ({best_candidate['cv_rmse_mean']:.4f}). "
+            f"Predefined tie-breaking tolerance Delta RMSE <= {TIE_TOLERANCE_RMSE}: selected simpler model with parsimonious feature count ({best_candidate['selected_features_count']} vs 53/47). "
+            f"Nuanced note: M4 Lasso achieves lowest CV MAE ({lasso_summary[best_lasso_alpha]['mean_mae']:.4f}); M1 OLS achieves lowest CV RMSE sample std ({m1_cv_rmse_std:.4f}). "
+            "Calibration and Test sets remain strictly unobserved."
+        )
+    },
+    "lasso_convergence_check": {
+        "warnings_count": len(lasso_convergence_warnings),
+        "max_iter": 10000,
+        "tol": 1e-4,
+        "status": "Fully converged without warnings" if len(lasso_convergence_warnings) == 0 else "Warnings encountered"
     },
     "environment_versions": {
         "python": sys.version.split()[0],
@@ -670,16 +804,12 @@ with open(os.path.join(RESULTS_DIR, "best_model_metadata.json"), "w", encoding="
 print("[Phase 2] Saved best_model_metadata.json")
 
 # Export serialized pipeline artifact
-final_best_pipeline = Pipeline([
-    ('preprocessor', m2_preprocessor),
-    ('rfe', m2_rfe)
-])
 model_artifact_path = os.path.join(MODELS_DIR, "best_model_pipeline.joblib")
-joblib.dump(final_best_pipeline, model_artifact_path)
+joblib.dump(final_selected_pipeline, model_artifact_path)
 print(f"[Phase 2] Exported best model artifact to: {model_artifact_path}")
 
 # ==========================================
-# 9. Figures Generation (300 DPI)
+# 11. Figures Generation (300 DPI)
 # ==========================================
 print("\n--- Generating Figures ---")
 plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.available else 'default')
@@ -690,11 +820,11 @@ k_vals = list(rfe_summary_by_k.keys())
 mean_rmses = [rfe_summary_by_k[k]['mean_rmse'] for k in k_vals]
 std_rmses = [rfe_summary_by_k[k]['std_rmse'] for k in k_vals]
 
-ax_rfe.errorbar(k_vals, mean_rmses, yerr=std_rmses, fmt='-o', color='#1f77b4', ecolor='#aec7e8', elinewidth=2, capsize=4, capthick=1.5, linewidth=2, markersize=6, label='CV RMSE (Mean ± 1 Std)')
+ax_rfe.errorbar(k_vals, mean_rmses, yerr=std_rmses, fmt='-o', color='#1f77b4', ecolor='#aec7e8', elinewidth=2, capsize=4, capthick=1.5, linewidth=2, markersize=6, label='CV RMSE (Mean ± 1 Sample Std, ddof=1)')
 ax_rfe.axvline(best_k, color='#d62728', linestyle='--', linewidth=2, label=f'Best k = {best_k} (RMSE = {rfe_summary_by_k[best_k]["mean_rmse"]:.2f})')
 ax_rfe.scatter([best_k], [rfe_summary_by_k[best_k]['mean_rmse']], color='#d62728', s=100, zorder=5)
 
-ax_rfe.set_title("RFE Feature Selection: Encoded Features vs. Cross-Validation RMSE", fontsize=13, fontweight='bold', pad=12)
+ax_rfe.set_title("RFE Feature Selection: Encoded Features vs. Cross-Validation RMSE (Standardized Grid)", fontsize=13, fontweight='bold', pad=12)
 ax_rfe.set_xlabel("Number of Selected Encoded Features (k)", fontsize=11, labelpad=8)
 ax_rfe.set_ylabel("Mean Cross-Validation RMSE", fontsize=11, labelpad=8)
 ax_rfe.set_xticks(k_vals)
@@ -707,21 +837,21 @@ plt.close(fig_rfe)
 print(f"[Phase 2] Saved {fig_rfe_path}")
 
 # Figure B: Model Comparison Bar Chart
-fig_comp, ax_comp = plt.subplots(figsize=(9, 5.5), dpi=300)
+fig_comp, ax_comp = plt.subplots(figsize=(9.5, 6), dpi=300)
 model_names = [m['model_name'] for m in model_comparison]
 cv_means = [m['cv_rmse_mean'] for m in model_comparison]
 cv_stds = [m['cv_rmse_std'] for m in model_comparison]
 colors = ['#4c72b0', '#2ca02c', '#dd8452', '#937860']
 
 bars = ax_comp.bar(model_names, cv_means, yerr=cv_stds, capsize=5, color=colors, alpha=0.85, edgecolor='black', width=0.55)
-ax_comp.set_title("Model Comparison: 5-Fold Date-Bounded Cross-Validation RMSE", fontsize=13, fontweight='bold', pad=12)
-ax_comp.set_ylabel("Validation RMSE (Mean ± 1 Std)", fontsize=11, labelpad=8)
-ax_comp.set_ylim(80, 135)
+ax_comp.set_title("Model Comparison: 5-Fold Date-Bounded Cross-Validation RMSE\n(Sample Std ddof=1; M2 achieves lowest RMSE, M4 lowest MAE, M1 lowest Std)", fontsize=12, fontweight='bold', pad=12)
+ax_comp.set_ylabel("Validation RMSE (Mean ± 1 Sample Std)", fontsize=11, labelpad=8)
+ax_comp.set_ylim(80, 138)
 ax_comp.grid(True, axis='y', linestyle='--', alpha=0.6)
 
 for bar, mean_val in zip(bars, cv_means):
     yval = bar.get_height()
-    ax_comp.text(bar.get_x() + bar.get_width()/2.0, yval + 1.5, f"{mean_val:.2f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+    ax_comp.text(bar.get_x() + bar.get_width()/2.0, yval + 1.8, f"{mean_val:.2f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
 
 fig_comp.tight_layout()
 fig_comp_path = os.path.join(FIGURES_DIR, "model_comparison.png")
@@ -765,8 +895,8 @@ bar_colors = ['#d62728' if d > 1.0 else '#1f77b4' if d > 0 else '#2ca02c' for d 
 
 ax_abl.barh(plot_df['dropped_group'], plot_df['delta_rmse'], color=bar_colors, alpha=0.85, edgecolor='black', height=0.65)
 ax_abl.axvline(0, color='black', linewidth=1)
-ax_abl.set_title("Grouped Feature Ablation: Change in CV RMSE when Dropping Group (Delta RMSE)", fontsize=13, fontweight='bold', pad=12)
-ax_abl.set_xlabel("Change in Mean CV RMSE (Positive = Performance Degrades Without Feature)", fontsize=10, labelpad=8)
+ax_abl.set_title("Grouped Feature Ablation: Change in CV RMSE when Dropping Group\n(Linear sensitivity analysis; does not imply causality or statistical significance)", fontsize=12, fontweight='bold', pad=12)
+ax_abl.set_xlabel("Change in Mean CV RMSE (Positive = Performance Degrades Without Feature Group)", fontsize=10, labelpad=8)
 ax_abl.set_ylabel("Original Feature Group Dropped", fontsize=10)
 ax_abl.grid(True, axis='x', linestyle='--', alpha=0.6)
 
