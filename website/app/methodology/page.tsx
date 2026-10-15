@@ -4,11 +4,8 @@ import {
   ShieldCheck, 
   CheckCircle2, 
   AlertTriangle, 
-  Cpu, 
   Layers, 
   ExternalLink,
-  Target,
-  Clock,
   ArrowRight
 } from "lucide-react";
 
@@ -22,7 +19,7 @@ export default function MethodologyPage() {
     {
       step: "02",
       name: "Data Understanding (資料理解)",
-      desc: "審查 UCI Capital Bikeshare 17,379 筆逐時紀錄。探討時段雙峰效應、目標右偏態分佈、氣溫體感共線性，並完成 1,135 筆缺漏小時系統審計，證實缺漏源於站點通訊維護而非需求歸零。",
+      desc: "審查 UCI Capital Bikeshare 17,379 筆逐時紀錄。探討時段雙峰效應、目標右偏態分佈、氣溫體感共線性，並完成 165 筆缺漏小時系統審計，證實缺漏源於站點通訊維護而非需求歸零。",
     },
     {
       step: "03",

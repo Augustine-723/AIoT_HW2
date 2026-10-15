@@ -8,9 +8,6 @@ import {
 } from "@/lib/data";
 import { 
   ArrowRight, 
-  CheckCircle2, 
-  Layers, 
-  TrendingUp, 
   Calendar, 
   Activity, 
   Sliders, 
@@ -322,7 +319,7 @@ export default function OverviewPage() {
               <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
             </div>
             <p className="text-xs text-slate-400">
-              探索 17,379 筆觀測值特徵分佈、時段雙峰現象、相關性熱圖、氣溫影響及 1,135 筆缺漏小時審計。
+              探索 17,379 筆觀測值特徵分佈、時段雙峰現象、相關性熱圖、氣溫影響及 165 筆缺漏小時審計。
             </p>
           </Link>
 

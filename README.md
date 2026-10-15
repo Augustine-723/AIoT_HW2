@@ -23,18 +23,19 @@
 
 - **Phase 4 學術研究儀表板與互動預測系統:** [`website/`](website/)
   - **技術堆疊:** Next.js 16 (App Router), TypeScript, Tailwind CSS, Turbopack, 響應式 SVG 圖表系統
-  - **推論核心:** 採行 **Option B（確定性 TypeScript 引擎）**，直接執行已擬合之 M2 線性方程（截距 `-76.1581`，30 個選定特徵係數，校準共形分位數 `q = 302.6015`），浮點精度經 17,379 筆樣本檢驗達 `< 2.27 × 10⁻¹³` 機器極限全等。
+  - **推論核心:** 採行 **Option B（確定性 TypeScript 引擎）**，模型規格動態讀取權威成果 `website/data/m2_model_spec.json`（消除參數手動重複維護），直接執行已擬合之 M2 線性方程（截距 `-76.1581`，30 個選定特徵係數，校準共形分位數 `q = 302.6015`），浮點精度經 Python 與 TypeScript 雙向可重現測試達 `< 5.69 × 10⁻¹⁴`（IEEE-754 機器極限全等）。
+  - **集中輸入驗證與防呆 (Centralized Input Validation):** 涵蓋所有 12 項原始預測變數之數值邊界鉗制、合法類別碼審計，以及曆法矛盾警示（週末/假日標記工作日、氣溫與體感溫度懸殊等）。
   - **六大研究頁面:**
     1. `/` (研究總覽 Overview): 展現核心指標（Test MAE 97.5211, RMSE 133.2088, R² 0.6112, 實證覆蓋率 94.84%）、學號、實驗識別與研究架構。
-    2. `/dataset` (資料集與 EDA): 呈現時段雙峰需求、目標右偏、氣象相關矩陣、氣溫影響，並標示嚴格排除之洩漏變數（`casual`, `registered`）與 1,135 筆缺漏小時審計。
+    2. `/dataset` (資料集與 EDA): 呈現時段雙峰需求、目標右偏、氣象相關矩陣、氣溫影響，並標示嚴格排除之洩漏變數（`casual`, `registered`）與 165 筆缺漏小時審計。
     3. `/models` (模型比較與消融): 完整展現 M1 ~ M4 在 5-Fold 擴展視窗 CV 下的無偏樣本標準差 (ddof=1) 表現、RFE 淘汰歷程、超參數調校與群組消融重要度。
-    4. `/evaluation` (最終測試集評估): 提供互動式實際值 vs 預測值散佈圖、7 天時序共形區間軸（支援原始與非負截斷切換）、殘差診斷與 0–100% 全幅時段覆蓋率分析（標記 08:00、17:00、18:00 尖峰條件覆蓋差異）。
-    5. `/predict` (互動預測推論): 支援 12 項特徵輸入調節與 5 大典型情境快速切換，即時計算原生連續預測、非負呈現推估、95% 名義共形預測區間與各特徵貢獻分項。
+    4. `/evaluation` (最終測試集評估): 提供互動式實際值 vs 預測值散佈圖、**可自由選取歷史 Test 日期區間歷程探索器**（內建首週 7 天、次週、10 月首週、桑迪颶風期、感恩節週、聖誕冬期或自訂起訖日期，所有觀測皆嚴格源自 Phase 3 凍結之 2,576 筆測試預測）、動態切片 MAE/RMSE/覆蓋率計算、原始與非負截斷共形區間切換、殘差診斷與 0–100% 全幅時段覆蓋率分析。
+    5. `/predict` (互動預測推論): 支援 12 項特徵輸入集中驗證、邊界自動防呆、曆法組合異常即時警告提示、5 大典型情境快速切換，即時計算原生連續預測、非負呈現推估、95% 名義共形預測區間與各特徵貢獻分項。
     6. `/methodology` (研究方法論): CRISP-DM 六大階段、端到端研究管線、分裂共形預測數學公式、可交換性前提與正式學術文獻引用。
 
 ---
 
-## 本地開發與建置指南 (Local Development)
+## 本地開發、驗證與建置指南 (Local Development & Testing)
 
 ### 1. 執行研究實驗與匯出前端資料
 ```bash
@@ -45,17 +46,30 @@ python 7115093001_hw2/build_notebook.py
 python 7115093001_hw2/export_website_data.py
 ```
 
-### 2. 本地啟動與建置研究網站
+### 2. 執行數值對齊與集中驗證測試 (Reproducible Numerical Parity Tests)
+```bash
+# 透過 Python 執行完整對齊驗證測試
+python 7115093001_hw2/test_parity_reproducible.py
+
+# 或在 website 目錄下透過 TypeScript 引擎直接測試
+cd website
+npm run test:parity
+```
+
+### 3. 本地啟動與建置研究網站
 ```bash
 cd website
 
 # 安裝相依套件
 npm install
 
-# 執行開發伺服器
-npm run dev
+# 執行 ESLint 程式碼檢查 (0 errors, 0 warnings)
+npm run lint
 
-# 執行生產建置與 TypeScript 型別驗證
+# 執行 TypeScript 型別無發射檢查
+npx tsc --noEmit
+
+# 執行生產建置
 npm run build
 
 # 啟動生產伺服器

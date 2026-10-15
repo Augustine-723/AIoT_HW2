@@ -18,10 +18,7 @@ import {
   Wind, 
   Droplets, 
   SunMedium, 
-  HelpCircle,
-  Cpu,
-  Layers,
-  ArrowRight
+  Layers
 } from "lucide-react";
 
 export default function InteractivePredictionPage() {
@@ -140,6 +137,27 @@ export default function InteractivePredictionPage() {
               </h2>
               <span className="text-xs font-mono text-slate-400">12 Predictors</span>
             </div>
+
+            {/* Centralized Calendar Consistency & Validation Warnings */}
+            {prediction.validation.warnings.length > 0 && (
+              <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-950/20 space-y-2 text-xs">
+                <div className="flex items-center gap-2 text-amber-400 font-semibold">
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                  <span>輸入驗證與曆法組合提示 ({prediction.validation.warnings.length} 項警示)</span>
+                </div>
+                <ul className="space-y-1.5 pl-5 list-disc text-slate-300">
+                  {prediction.validation.warnings.map((w, idx) => (
+                    <li key={idx}>
+                      <strong className="text-amber-300">{w.title}：</strong>
+                      <span className="text-slate-400">{w.message}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="text-[10px] text-slate-400 pt-1 border-t border-amber-500/10">
+                  * 說明：上述提示為 UCI 領域語意一致性輔助警示，已確立之 M2 迴歸模型仍忠實依據您的特徵數值進行推論，未改動既定模型結構。
+                </div>
+              </div>
+            )}
 
             {/* 1. Calendar & Time Features */}
             <div className="space-y-4">

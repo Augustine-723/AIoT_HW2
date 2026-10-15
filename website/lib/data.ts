@@ -8,9 +8,11 @@ import selectedFeatures from "../data/selected_features.json";
 import groupedFeatureAblation from "../data/grouped_feature_ablation.json";
 import hourlyCoverageDiagnostic from "../data/hourly_coverage_diagnostic.json";
 import testTimeline7d from "../data/test_timeline_7d.json";
+import testTimelineAll from "../data/test_timeline_all.json";
 import testScatterSamples from "../data/test_scatter_samples.json";
 import residualDistributionBins from "../data/residual_distribution_bins.json";
 import m2ModelSpec from "../data/m2_model_spec.json";
+import missingTimestamps from "../data/missing_timestamps.json";
 
 export {
   finalTestMetrics,
@@ -23,9 +25,11 @@ export {
   groupedFeatureAblation,
   hourlyCoverageDiagnostic,
   testTimeline7d,
+  testTimelineAll,
   testScatterSamples,
   residualDistributionBins,
   m2ModelSpec,
+  missingTimestamps,
 };
 
 export interface ModelComparisonRow {
@@ -69,6 +73,7 @@ export interface HourlyCoverageRow {
 
 export interface TimelinePoint {
   timestamp: string;
+  dteday?: string;
   actual_cnt: number;
   predicted_cnt: number;
   pi_lower_raw: number;

@@ -1,15 +1,9 @@
 import Image from "next/image";
-import { datasetMetadata } from "@/lib/data";
 import { 
   Database, 
   Calendar, 
   AlertTriangle, 
-  ShieldCheck, 
   Clock, 
-  CloudRain, 
-  Thermometer, 
-  Wind,
-  CheckCircle2,
   Info
 } from "lucide-react";
 
@@ -73,7 +67,7 @@ export default function DatasetPage() {
 
         <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-1">
           <span className="text-xs text-slate-400">缺漏小時審計</span>
-          <div className="text-lg font-bold text-amber-400 font-mono">1,135 小時</div>
+          <div className="text-lg font-bold text-amber-400 font-mono">165 小時</div>
           <p className="text-[11px] text-slate-400">為系統連線/維護中斷，非需求為零</p>
         </div>
       </section>

@@ -1,6 +1,7 @@
 [
   {
     "timestamp": "2012-09-14 00:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 87.0,
     "predicted_cnt": 131.9239,
     "pi_lower_raw": -170.6777,
@@ -12,6 +13,7 @@
   },
   {
     "timestamp": "2012-09-14 01:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 41.0,
     "predicted_cnt": 131.9239,
     "pi_lower_raw": -170.6777,
@@ -23,6 +25,7 @@
   },
   {
     "timestamp": "2012-09-14 02:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 30.0,
     "predicted_cnt": 135.7315,
     "pi_lower_raw": -166.87,
@@ -34,6 +37,7 @@
   },
   {
     "timestamp": "2012-09-14 03:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 14.0,
     "predicted_cnt": 128.2129,
     "pi_lower_raw": -174.3887,
@@ -45,6 +49,7 @@
   },
   {
     "timestamp": "2012-09-14 04:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 12.0,
     "predicted_cnt": 128.2129,
     "pi_lower_raw": -174.3887,
@@ -56,6 +61,7 @@
   },
   {
     "timestamp": "2012-09-14 05:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 41.0,
     "predicted_cnt": 123.8318,
     "pi_lower_raw": -178.7698,
@@ -67,6 +73,7 @@
   },
   {
     "timestamp": "2012-09-14 06:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 152.0,
     "predicted_cnt": 169.6455,
     "pi_lower_raw": -132.9561,
@@ -78,6 +85,7 @@
   },
   {
     "timestamp": "2012-09-14 07:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 454.0,
     "predicted_cnt": 285.1509,
     "pi_lower_raw": -17.4506,
@@ -89,6 +97,7 @@
   },
   {
     "timestamp": "2012-09-14 08:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 766.0,
     "predicted_cnt": 420.2568,
     "pi_lower_raw": 117.6552,
@@ -100,6 +109,7 @@
   },
   {
     "timestamp": "2012-09-14 09:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 347.0,
     "predicted_cnt": 301.0253,
     "pi_lower_raw": -1.5762,
@@ -111,6 +121,7 @@
   },
   {
     "timestamp": "2012-09-14 10:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 246.0,
     "predicted_cnt": 281.2487,
     "pi_lower_raw": -21.3528,
@@ -122,6 +133,7 @@
   },
   {
     "timestamp": "2012-09-14 11:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 280.0,
     "predicted_cnt": 299.9447,
     "pi_lower_raw": -2.6568,
@@ -133,6 +145,7 @@
   },
   {
     "timestamp": "2012-09-14 12:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 409.0,
     "predicted_cnt": 337.9342,
     "pi_lower_raw": 35.3326,
@@ -144,6 +157,7 @@
   },
   {
     "timestamp": "2012-09-14 13:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 408.0,
     "predicted_cnt": 335.507,
     "pi_lower_raw": 32.9054,
@@ -155,6 +169,7 @@
   },
   {
     "timestamp": "2012-09-14 14:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 371.0,
     "predicted_cnt": 331.5711,
     "pi_lower_raw": 28.9696,
@@ -166,6 +181,7 @@
   },
   {
     "timestamp": "2012-09-14 15:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 367.0,
     "predicted_cnt": 340.6534,
     "pi_lower_raw": 38.0519,
@@ -177,6 +193,7 @@
   },
   {
     "timestamp": "2012-09-14 16:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 563.0,
     "predicted_cnt": 395.5163,
     "pi_lower_raw": 92.9148,
@@ -188,6 +205,7 @@
   },
   {
     "timestamp": "2012-09-14 17:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 894.0,
     "predicted_cnt": 519.2462,
     "pi_lower_raw": 216.6447,
@@ -199,6 +217,7 @@
   },
   {
     "timestamp": "2012-09-14 18:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 808.0,
     "predicted_cnt": 495.2372,
     "pi_lower_raw": 192.6356,
@@ -210,6 +229,7 @@
   },
   {
     "timestamp": "2012-09-14 19:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 579.0,
     "predicted_cnt": 388.2897,
     "pi_lower_raw": 85.6882,
@@ -221,6 +241,7 @@
   },
   {
     "timestamp": "2012-09-14 20:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 404.0,
     "predicted_cnt": 314.3571,
     "pi_lower_raw": 11.7556,
@@ -232,6 +253,7 @@
   },
   {
     "timestamp": "2012-09-14 21:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 312.0,
     "predicted_cnt": 256.4619,
     "pi_lower_raw": -46.1397,
@@ -243,6 +265,7 @@
   },
   {
     "timestamp": "2012-09-14 22:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 229.0,
     "predicted_cnt": 213.3631,
     "pi_lower_raw": -89.2385,
@@ -254,6 +277,7 @@
   },
   {
     "timestamp": "2012-09-14 23:00:00",
+    "dteday": "2012-09-14",
     "actual_cnt": 195.0,
     "predicted_cnt": 189.4579,
     "pi_lower_raw": -113.1436,
@@ -265,6 +289,7 @@
   },
   {
     "timestamp": "2012-09-15 00:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 207.0,
     "predicted_cnt": 133.1993,
     "pi_lower_raw": -169.4023,
@@ -276,6 +301,7 @@
   },
   {
     "timestamp": "2012-09-15 01:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 109.0,
     "predicted_cnt": 149.3567,
     "pi_lower_raw": -153.2448,
@@ -287,6 +313,7 @@
   },
   {
     "timestamp": "2012-09-15 02:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 93.0,
     "predicted_cnt": 132.2523,
     "pi_lower_raw": -170.3493,
@@ -298,6 +325,7 @@
   },
   {
     "timestamp": "2012-09-15 03:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 37.0,
     "predicted_cnt": 138.5755,
     "pi_lower_raw": -164.0261,
@@ -309,6 +337,7 @@
   },
   {
     "timestamp": "2012-09-15 04:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 6.0,
     "predicted_cnt": 137.0553,
     "pi_lower_raw": -165.5462,
@@ -320,6 +349,7 @@
   },
   {
     "timestamp": "2012-09-15 05:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 16.0,
     "predicted_cnt": 127.6364,
     "pi_lower_raw": -174.9651,
@@ -331,6 +361,7 @@
   },
   {
     "timestamp": "2012-09-15 06:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 33.0,
     "predicted_cnt": 180.3634,
     "pi_lower_raw": -122.2381,
@@ -342,6 +373,7 @@
   },
   {
     "timestamp": "2012-09-15 07:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 73.0,
     "predicted_cnt": 294.7876,
     "pi_lower_raw": -7.8139,
@@ -353,6 +385,7 @@
   },
   {
     "timestamp": "2012-09-15 08:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 212.0,
     "predicted_cnt": 419.2257,
     "pi_lower_raw": 116.6241,
@@ -364,6 +397,7 @@
   },
   {
     "timestamp": "2012-09-15 09:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 342.0,
     "predicted_cnt": 317.8174,
     "pi_lower_raw": 15.2159,
@@ -375,6 +409,7 @@
   },
   {
     "timestamp": "2012-09-15 10:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 442.0,
     "predicted_cnt": 272.8723,
     "pi_lower_raw": -29.7293,
@@ -386,6 +421,7 @@
   },
   {
     "timestamp": "2012-09-15 11:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 627.0,
     "predicted_cnt": 297.6767,
     "pi_lower_raw": -4.9248,
@@ -397,6 +433,7 @@
   },
   {
     "timestamp": "2012-09-15 12:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 706.0,
     "predicted_cnt": 334.8892,
     "pi_lower_raw": 32.2876,
@@ -408,6 +445,7 @@
   },
   {
     "timestamp": "2012-09-15 13:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 704.0,
     "predicted_cnt": 344.0523,
     "pi_lower_raw": 41.4508,
@@ -419,6 +457,7 @@
   },
   {
     "timestamp": "2012-09-15 14:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 715.0,
     "predicted_cnt": 325.6295,
     "pi_lower_raw": 23.028,
@@ -430,6 +469,7 @@
   },
   {
     "timestamp": "2012-09-15 15:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 654.0,
     "predicted_cnt": 335.3209,
     "pi_lower_raw": 32.7193,
@@ -441,6 +481,7 @@
   },
   {
     "timestamp": "2012-09-15 16:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 783.0,
     "predicted_cnt": 383.1313,
     "pi_lower_raw": 80.5297,
@@ -452,6 +493,7 @@
   },
   {
     "timestamp": "2012-09-15 17:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 729.0,
     "predicted_cnt": 513.839,
     "pi_lower_raw": 211.2375,
@@ -463,6 +505,7 @@
   },
   {
     "timestamp": "2012-09-15 18:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 614.0,
     "predicted_cnt": 485.2658,
     "pi_lower_raw": 182.6643,
@@ -474,6 +517,7 @@
   },
   {
     "timestamp": "2012-09-15 19:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 478.0,
     "predicted_cnt": 390.5645,
     "pi_lower_raw": 87.963,
@@ -485,6 +529,7 @@
   },
   {
     "timestamp": "2012-09-15 20:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 330.0,
     "predicted_cnt": 320.9402,
     "pi_lower_raw": 18.3387,
@@ -496,6 +541,7 @@
   },
   {
     "timestamp": "2012-09-15 21:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 296.0,
     "predicted_cnt": 256.2343,
     "pi_lower_raw": -46.3673,
@@ -507,6 +553,7 @@
   },
   {
     "timestamp": "2012-09-15 22:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 279.0,
     "predicted_cnt": 230.4201,
     "pi_lower_raw": -72.1815,
@@ -518,6 +565,7 @@
   },
   {
     "timestamp": "2012-09-15 23:00:00",
+    "dteday": "2012-09-15",
     "actual_cnt": 229.0,
     "predicted_cnt": 185.7879,
     "pi_lower_raw": -116.8136,
@@ -529,6 +577,7 @@
   },
   {
     "timestamp": "2012-09-16 00:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 151.0,
     "predicted_cnt": 137.7052,
     "pi_lower_raw": -164.8963,
@@ -540,6 +589,7 @@
   },
   {
     "timestamp": "2012-09-16 01:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 117.0,
     "predicted_cnt": 137.7052,
     "pi_lower_raw": -164.8963,
@@ -551,6 +601,7 @@
   },
   {
     "timestamp": "2012-09-16 02:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 89.0,
     "predicted_cnt": 133.8229,
     "pi_lower_raw": -168.7786,
@@ -562,6 +613,7 @@
   },
   {
     "timestamp": "2012-09-16 03:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 48.0,
     "predicted_cnt": 125.5596,
     "pi_lower_raw": -177.042,
@@ -573,6 +625,7 @@
   },
   {
     "timestamp": "2012-09-16 04:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 8.0,
     "predicted_cnt": 122.6388,
     "pi_lower_raw": -179.9627,
@@ -584,6 +637,7 @@
   },
   {
     "timestamp": "2012-09-16 05:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 13.0,
     "predicted_cnt": 122.6388,
     "pi_lower_raw": -179.9627,
@@ -595,6 +649,7 @@
   },
   {
     "timestamp": "2012-09-16 06:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 35.0,
     "predicted_cnt": 172.1034,
     "pi_lower_raw": -130.4981,
@@ -606,6 +661,7 @@
   },
   {
     "timestamp": "2012-09-16 07:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 71.0,
     "predicted_cnt": 274.9192,
     "pi_lower_raw": -27.6824,
@@ -617,6 +673,7 @@
   },
   {
     "timestamp": "2012-09-16 08:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 128.0,
     "predicted_cnt": 414.4563,
     "pi_lower_raw": 111.8548,
@@ -628,6 +685,7 @@
   },
   {
     "timestamp": "2012-09-16 09:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 296.0,
     "predicted_cnt": 304.0287,
     "pi_lower_raw": 1.4272,
@@ -639,6 +697,7 @@
   },
   {
     "timestamp": "2012-09-16 10:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 490.0,
     "predicted_cnt": 278.3525,
     "pi_lower_raw": -24.249,
@@ -650,6 +709,7 @@
   },
   {
     "timestamp": "2012-09-16 11:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 559.0,
     "predicted_cnt": 300.6199,
     "pi_lower_raw": -1.9816,
@@ -661,6 +721,7 @@
   },
   {
     "timestamp": "2012-09-16 12:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 656.0,
     "predicted_cnt": 337.292,
     "pi_lower_raw": 34.6904,
@@ -672,6 +733,7 @@
   },
   {
     "timestamp": "2012-09-16 13:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 694.0,
     "predicted_cnt": 334.6575,
     "pi_lower_raw": 32.056,
@@ -683,6 +745,7 @@
   },
   {
     "timestamp": "2012-09-16 14:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 635.0,
     "predicted_cnt": 325.6147,
     "pi_lower_raw": 23.0131,
@@ -694,6 +757,7 @@
   },
   {
     "timestamp": "2012-09-16 15:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 557.0,
     "predicted_cnt": 328.2734,
     "pi_lower_raw": 25.6718,
@@ -705,6 +769,7 @@
   },
   {
     "timestamp": "2012-09-16 16:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 596.0,
     "predicted_cnt": 377.429,
     "pi_lower_raw": 74.8275,
@@ -716,6 +781,7 @@
   },
   {
     "timestamp": "2012-09-16 17:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 570.0,
     "predicted_cnt": 520.9694,
     "pi_lower_raw": 218.3679,
@@ -727,6 +793,7 @@
   },
   {
     "timestamp": "2012-09-16 18:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 481.0,
     "predicted_cnt": 477.7195,
     "pi_lower_raw": 175.118,
@@ -738,6 +805,7 @@
   },
   {
     "timestamp": "2012-09-16 19:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 403.0,
     "predicted_cnt": 385.2635,
     "pi_lower_raw": 82.662,
@@ -749,6 +817,7 @@
   },
   {
     "timestamp": "2012-09-16 20:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 324.0,
     "predicted_cnt": 313.0052,
     "pi_lower_raw": 10.4037,
@@ -760,6 +829,7 @@
   },
   {
     "timestamp": "2012-09-16 21:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 191.0,
     "predicted_cnt": 271.3535,
     "pi_lower_raw": -31.248,
@@ -771,6 +841,7 @@
   },
   {
     "timestamp": "2012-09-16 22:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 127.0,
     "predicted_cnt": 214.9295,
     "pi_lower_raw": -87.672,
@@ -782,6 +853,7 @@
   },
   {
     "timestamp": "2012-09-16 23:00:00",
+    "dteday": "2012-09-16",
     "actual_cnt": 94.0,
     "predicted_cnt": 175.5056,
     "pi_lower_raw": -127.0959,
@@ -793,6 +865,7 @@
   },
   {
     "timestamp": "2012-09-17 00:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 45.0,
     "predicted_cnt": 127.8067,
     "pi_lower_raw": -174.7949,
@@ -804,6 +877,7 @@
   },
   {
     "timestamp": "2012-09-17 01:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 21.0,
     "predicted_cnt": 123.4437,
     "pi_lower_raw": -179.1579,
@@ -815,6 +889,7 @@
   },
   {
     "timestamp": "2012-09-17 02:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 13.0,
     "predicted_cnt": 127.2513,
     "pi_lower_raw": -175.3502,
@@ -826,6 +901,7 @@
   },
   {
     "timestamp": "2012-09-17 03:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 7.0,
     "predicted_cnt": 115.1803,
     "pi_lower_raw": -187.4213,
@@ -837,6 +913,7 @@
   },
   {
     "timestamp": "2012-09-17 04:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 11.0,
     "predicted_cnt": 118.9879,
     "pi_lower_raw": -183.6136,
@@ -848,6 +925,7 @@
   },
   {
     "timestamp": "2012-09-17 05:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 45.0,
     "predicted_cnt": 106.9314,
     "pi_lower_raw": -195.6701,
@@ -859,6 +937,7 @@
   },
   {
     "timestamp": "2012-09-17 06:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 164.0,
     "predicted_cnt": 160.2037,
     "pi_lower_raw": -142.3979,
@@ -870,6 +949,7 @@
   },
   {
     "timestamp": "2012-09-17 07:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 492.0,
     "predicted_cnt": 283.9725,
     "pi_lower_raw": -18.629,
@@ -881,6 +961,7 @@
   },
   {
     "timestamp": "2012-09-17 08:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 683.0,
     "predicted_cnt": 408.1342,
     "pi_lower_raw": 105.5326,
@@ -892,6 +973,7 @@
   },
   {
     "timestamp": "2012-09-17 09:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 299.0,
     "predicted_cnt": 298.1872,
     "pi_lower_raw": -4.4143,
@@ -903,6 +985,7 @@
   },
   {
     "timestamp": "2012-09-17 10:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 202.0,
     "predicted_cnt": 261.3963,
     "pi_lower_raw": -41.2053,
@@ -914,6 +997,7 @@
   },
   {
     "timestamp": "2012-09-17 11:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 252.0,
     "predicted_cnt": 277.421,
     "pi_lower_raw": -25.1805,
@@ -925,6 +1009,7 @@
   },
   {
     "timestamp": "2012-09-17 12:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 295.0,
     "predicted_cnt": 310.7753,
     "pi_lower_raw": 8.1738,
@@ -936,6 +1021,7 @@
   },
   {
     "timestamp": "2012-09-17 13:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 343.0,
     "predicted_cnt": 311.1296,
     "pi_lower_raw": 8.5281,
@@ -947,6 +1033,7 @@
   },
   {
     "timestamp": "2012-09-17 14:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 332.0,
     "predicted_cnt": 296.958,
     "pi_lower_raw": -5.6436,
@@ -958,6 +1045,7 @@
   },
   {
     "timestamp": "2012-09-17 15:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 338.0,
     "predicted_cnt": 304.7455,
     "pi_lower_raw": 2.1439,
@@ -969,6 +1057,7 @@
   },
   {
     "timestamp": "2012-09-17 16:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 453.0,
     "predicted_cnt": 353.171,
     "pi_lower_raw": 50.5694,
@@ -980,6 +1069,7 @@
   },
   {
     "timestamp": "2012-09-17 17:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 842.0,
     "predicted_cnt": 489.3322,
     "pi_lower_raw": 186.7307,
@@ -991,6 +1081,7 @@
   },
   {
     "timestamp": "2012-09-17 18:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 774.0,
     "predicted_cnt": 456.5105,
     "pi_lower_raw": 153.909,
@@ -1002,6 +1093,7 @@
   },
   {
     "timestamp": "2012-09-17 19:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 486.0,
     "predicted_cnt": 365.3209,
     "pi_lower_raw": 62.7194,
@@ -1013,6 +1105,7 @@
   },
   {
     "timestamp": "2012-09-17 20:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 340.0,
     "predicted_cnt": 295.1182,
     "pi_lower_raw": -7.4834,
@@ -1024,6 +1117,7 @@
   },
   {
     "timestamp": "2012-09-17 21:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 233.0,
     "predicted_cnt": 185.9393,
     "pi_lower_raw": -116.6622,
@@ -1035,6 +1129,7 @@
   },
   {
     "timestamp": "2012-09-17 22:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 129.0,
     "predicted_cnt": 154.4179,
     "pi_lower_raw": -148.1837,
@@ -1046,6 +1141,7 @@
   },
   {
     "timestamp": "2012-09-17 23:00:00",
+    "dteday": "2012-09-17",
     "actual_cnt": 70.0,
     "predicted_cnt": 100.9657,
     "pi_lower_raw": -201.6359,
@@ -1057,6 +1153,7 @@
   },
   {
     "timestamp": "2012-09-18 00:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 13.0,
     "predicted_cnt": 55.8037,
     "pi_lower_raw": -246.7978,
@@ -1068,6 +1165,7 @@
   },
   {
     "timestamp": "2012-09-18 01:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 5.0,
     "predicted_cnt": 58.3408,
     "pi_lower_raw": -244.2608,
@@ -1079,6 +1177,7 @@
   },
   {
     "timestamp": "2012-09-18 02:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 4.0,
     "predicted_cnt": 58.3408,
     "pi_lower_raw": -244.2608,
@@ -1090,6 +1189,7 @@
   },
   {
     "timestamp": "2012-09-18 03:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 6.0,
     "predicted_cnt": 117.7539,
     "pi_lower_raw": -184.8477,
@@ -1101,6 +1201,7 @@
   },
   {
     "timestamp": "2012-09-18 04:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 7.0,
     "predicted_cnt": 114.5837,
     "pi_lower_raw": -188.0179,
@@ -1112,6 +1213,7 @@
   },
   {
     "timestamp": "2012-09-18 05:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 48.0,
     "predicted_cnt": 126.3136,
     "pi_lower_raw": -176.288,
@@ -1123,6 +1225,7 @@
   },
   {
     "timestamp": "2012-09-18 06:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 167.0,
     "predicted_cnt": 175.7781,
     "pi_lower_raw": -126.8234,
@@ -1134,6 +1237,7 @@
   },
   {
     "timestamp": "2012-09-18 07:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 356.0,
     "predicted_cnt": 281.6116,
     "pi_lower_raw": -20.9899,
@@ -1145,6 +1249,7 @@
   },
   {
     "timestamp": "2012-09-18 08:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 672.0,
     "predicted_cnt": 411.7255,
     "pi_lower_raw": 109.124,
@@ -1156,6 +1261,7 @@
   },
   {
     "timestamp": "2012-09-18 09:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 293.0,
     "predicted_cnt": 286.6255,
     "pi_lower_raw": -15.976,
@@ -1167,6 +1273,7 @@
   },
   {
     "timestamp": "2012-09-18 10:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 160.0,
     "predicted_cnt": 187.344,
     "pi_lower_raw": -115.2575,
@@ -1178,6 +1285,7 @@
   },
   {
     "timestamp": "2012-09-18 11:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 151.0,
     "predicted_cnt": 263.9683,
     "pi_lower_raw": -38.6333,
@@ -1189,6 +1297,7 @@
   },
   {
     "timestamp": "2012-09-18 12:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 88.0,
     "predicted_cnt": 244.9673,
     "pi_lower_raw": -57.6342,
@@ -1200,6 +1309,7 @@
   },
   {
     "timestamp": "2012-09-18 13:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 114.0,
     "predicted_cnt": 306.6253,
     "pi_lower_raw": 4.0237,
@@ -1211,6 +1321,7 @@
   },
   {
     "timestamp": "2012-09-18 14:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 143.0,
     "predicted_cnt": 192.4528,
     "pi_lower_raw": -110.1487,
@@ -1222,6 +1333,7 @@
   },
   {
     "timestamp": "2012-09-18 15:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 36.0,
     "predicted_cnt": 217.9179,
     "pi_lower_raw": -84.6836,
@@ -1233,6 +1345,7 @@
   },
   {
     "timestamp": "2012-09-18 16:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 141.0,
     "predicted_cnt": 267.3603,
     "pi_lower_raw": -35.2412,
@@ -1244,6 +1357,7 @@
   },
   {
     "timestamp": "2012-09-18 17:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 338.0,
     "predicted_cnt": 403.7753,
     "pi_lower_raw": 101.1738,
@@ -1255,6 +1369,7 @@
   },
   {
     "timestamp": "2012-09-18 18:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 281.0,
     "predicted_cnt": 436.5451,
     "pi_lower_raw": 133.9435,
@@ -1266,6 +1381,7 @@
   },
   {
     "timestamp": "2012-09-18 19:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 324.0,
     "predicted_cnt": 337.1112,
     "pi_lower_raw": 34.5097,
@@ -1277,6 +1393,7 @@
   },
   {
     "timestamp": "2012-09-18 20:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 290.0,
     "predicted_cnt": 272.6157,
     "pi_lower_raw": -29.9858,
@@ -1288,6 +1405,7 @@
   },
   {
     "timestamp": "2012-09-18 21:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 207.0,
     "predicted_cnt": 233.1546,
     "pi_lower_raw": -69.447,
@@ -1299,6 +1417,7 @@
   },
   {
     "timestamp": "2012-09-18 22:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 151.0,
     "predicted_cnt": 136.3258,
     "pi_lower_raw": -166.2757,
@@ -1310,6 +1429,7 @@
   },
   {
     "timestamp": "2012-09-18 23:00:00",
+    "dteday": "2012-09-18",
     "actual_cnt": 78.0,
     "predicted_cnt": 164.0768,
     "pi_lower_raw": -138.5248,
@@ -1321,6 +1441,7 @@
   },
   {
     "timestamp": "2012-09-19 00:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 26.0,
     "predicted_cnt": 127.3305,
     "pi_lower_raw": -175.271,
@@ -1332,6 +1453,7 @@
   },
   {
     "timestamp": "2012-09-19 01:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 12.0,
     "predicted_cnt": 124.0033,
     "pi_lower_raw": -178.5983,
@@ -1343,6 +1465,7 @@
   },
   {
     "timestamp": "2012-09-19 02:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 3.0,
     "predicted_cnt": 123.7495,
     "pi_lower_raw": -178.852,
@@ -1354,6 +1477,7 @@
   },
   {
     "timestamp": "2012-09-19 03:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 5.0,
     "predicted_cnt": 123.0417,
     "pi_lower_raw": -179.5599,
@@ -1365,6 +1489,7 @@
   },
   {
     "timestamp": "2012-09-19 04:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 10.0,
     "predicted_cnt": 114.9499,
     "pi_lower_raw": -187.6516,
@@ -1376,6 +1501,7 @@
   },
   {
     "timestamp": "2012-09-19 05:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 56.0,
     "predicted_cnt": 118.1201,
     "pi_lower_raw": -184.4814,
@@ -1387,6 +1513,7 @@
   },
   {
     "timestamp": "2012-09-19 06:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 172.0,
     "predicted_cnt": 172.5063,
     "pi_lower_raw": -130.0953,
@@ -1398,6 +1525,7 @@
   },
   {
     "timestamp": "2012-09-19 07:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 545.0,
     "predicted_cnt": 284.6802,
     "pi_lower_raw": -17.9214,
@@ -1409,6 +1537,7 @@
   },
   {
     "timestamp": "2012-09-19 08:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 797.0,
     "predicted_cnt": 410.9577,
     "pi_lower_raw": 108.3562,
@@ -1420,6 +1549,7 @@
   },
   {
     "timestamp": "2012-09-19 09:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 362.0,
     "predicted_cnt": 289.7443,
     "pi_lower_raw": -12.8573,
@@ -1431,6 +1561,7 @@
   },
   {
     "timestamp": "2012-09-19 10:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 192.0,
     "predicted_cnt": 252.651,
     "pi_lower_raw": -49.9506,
@@ -1442,6 +1573,7 @@
   },
   {
     "timestamp": "2012-09-19 11:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 247.0,
     "predicted_cnt": 294.9417,
     "pi_lower_raw": -7.6599,
@@ -1453,6 +1585,7 @@
   },
   {
     "timestamp": "2012-09-19 12:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 313.0,
     "predicted_cnt": 327.0254,
     "pi_lower_raw": 24.4238,
@@ -1464,6 +1597,7 @@
   },
   {
     "timestamp": "2012-09-19 13:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 289.0,
     "predicted_cnt": 326.7887,
     "pi_lower_raw": 24.1872,
@@ -1475,6 +1609,7 @@
   },
   {
     "timestamp": "2012-09-19 14:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 286.0,
     "predicted_cnt": 316.4752,
     "pi_lower_raw": 13.8737,
@@ -1486,6 +1621,7 @@
   },
   {
     "timestamp": "2012-09-19 15:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 311.0,
     "predicted_cnt": 337.2345,
     "pi_lower_raw": 34.633,
@@ -1497,6 +1633,7 @@
   },
   {
     "timestamp": "2012-09-19 16:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 466.0,
     "predicted_cnt": 388.5807,
     "pi_lower_raw": 85.9792,
@@ -1508,6 +1645,7 @@
   },
   {
     "timestamp": "2012-09-19 17:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 886.0,
     "predicted_cnt": 506.4517,
     "pi_lower_raw": 203.8501,
@@ -1519,6 +1657,7 @@
   },
   {
     "timestamp": "2012-09-19 18:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 892.0,
     "predicted_cnt": 464.122,
     "pi_lower_raw": 161.5204,
@@ -1530,6 +1669,7 @@
   },
   {
     "timestamp": "2012-09-19 19:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 611.0,
     "predicted_cnt": 366.1293,
     "pi_lower_raw": 63.5278,
@@ -1541,6 +1681,7 @@
   },
   {
     "timestamp": "2012-09-19 20:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 409.0,
     "predicted_cnt": 286.8687,
     "pi_lower_raw": -15.7328,
@@ -1552,6 +1693,7 @@
   },
   {
     "timestamp": "2012-09-19 21:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 349.0,
     "predicted_cnt": 234.7631,
     "pi_lower_raw": -67.8385,
@@ -1563,6 +1705,7 @@
   },
   {
     "timestamp": "2012-09-19 22:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 229.0,
     "predicted_cnt": 204.7575,
     "pi_lower_raw": -97.844,
@@ -1574,6 +1717,7 @@
   },
   {
     "timestamp": "2012-09-19 23:00:00",
+    "dteday": "2012-09-19",
     "actual_cnt": 123.0,
     "predicted_cnt": 163.0461,
     "pi_lower_raw": -139.5554,
@@ -1585,6 +1729,7 @@
   },
   {
     "timestamp": "2012-09-20 00:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 58.0,
     "predicted_cnt": 129.2105,
     "pi_lower_raw": -173.3911,
@@ -1596,6 +1741,7 @@
   },
   {
     "timestamp": "2012-09-20 01:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 18.0,
     "predicted_cnt": 108.9876,
     "pi_lower_raw": -193.614,
@@ -1607,6 +1753,7 @@
   },
   {
     "timestamp": "2012-09-20 02:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 11.0,
     "predicted_cnt": 109.6208,
     "pi_lower_raw": -192.9808,
@@ -1618,6 +1765,7 @@
   },
   {
     "timestamp": "2012-09-20 03:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 6.0,
     "predicted_cnt": 105.1796,
     "pi_lower_raw": -197.4219,
@@ -1629,6 +1777,7 @@
   },
   {
     "timestamp": "2012-09-20 04:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 6.0,
     "predicted_cnt": 100.7388,
     "pi_lower_raw": -201.8628,
@@ -1640,6 +1789,7 @@
   },
   {
     "timestamp": "2012-09-20 05:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 56.0,
     "predicted_cnt": 100.7388,
     "pi_lower_raw": -201.8628,
@@ -1651,6 +1801,7 @@
   },
   {
     "timestamp": "2012-09-20 06:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 170.0,
     "predicted_cnt": 154.6442,
     "pi_lower_raw": -147.9574,
@@ -1662,6 +1813,7 @@
   },
   {
     "timestamp": "2012-09-20 07:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 534.0,
     "predicted_cnt": 262.0579,
     "pi_lower_raw": -40.5437,
@@ -1673,6 +1825,7 @@
   },
   {
     "timestamp": "2012-09-20 08:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 790.0,
     "predicted_cnt": 405.4808,
     "pi_lower_raw": 102.8793,
@@ -1684,6 +1837,7 @@
   },
   {
     "timestamp": "2012-09-20 09:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 355.0,
     "predicted_cnt": 301.3158,
     "pi_lower_raw": -1.2857,
@@ -1695,6 +1849,7 @@
   },
   {
     "timestamp": "2012-09-20 10:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 190.0,
     "predicted_cnt": 260.9698,
     "pi_lower_raw": -41.6317,
@@ -1706,6 +1861,7 @@
   },
   {
     "timestamp": "2012-09-20 11:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 243.0,
     "predicted_cnt": 308.1207,
     "pi_lower_raw": 5.5192,
@@ -1717,6 +1873,7 @@
   },
   {
     "timestamp": "2012-09-20 12:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 290.0,
     "predicted_cnt": 334.4972,
     "pi_lower_raw": 31.8957,
@@ -1728,6 +1885,7 @@
   },
   {
     "timestamp": "2012-09-20 13:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 336.0,
     "predicted_cnt": 333.7376,
     "pi_lower_raw": 31.1361,
@@ -1739,6 +1897,7 @@
   },
   {
     "timestamp": "2012-09-20 14:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 298.0,
     "predicted_cnt": 314.8384,
     "pi_lower_raw": 12.2368,
@@ -1750,6 +1909,7 @@
   },
   {
     "timestamp": "2012-09-20 15:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 291.0,
     "predicted_cnt": 325.0237,
     "pi_lower_raw": 22.4221,
@@ -1761,6 +1921,7 @@
   },
   {
     "timestamp": "2012-09-20 16:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 457.0,
     "predicted_cnt": 375.2385,
     "pi_lower_raw": 72.6369,
@@ -1772,6 +1933,7 @@
   },
   {
     "timestamp": "2012-09-20 17:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 976.0,
     "predicted_cnt": 502.4851,
     "pi_lower_raw": 199.8835,
@@ -1783,6 +1945,7 @@
   },
   {
     "timestamp": "2012-09-20 18:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 900.0,
     "predicted_cnt": 467.1372,
     "pi_lower_raw": 164.5357,
@@ -1794,6 +1957,7 @@
   },
   {
     "timestamp": "2012-09-20 19:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 603.0,
     "predicted_cnt": 358.3287,
     "pi_lower_raw": 55.7272,
@@ -1805,6 +1969,7 @@
   },
   {
     "timestamp": "2012-09-20 20:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 417.0,
     "predicted_cnt": 285.6668,
     "pi_lower_raw": -16.9347,
@@ -1816,6 +1981,7 @@
   },
   {
     "timestamp": "2012-09-20 21:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 274.0,
     "predicted_cnt": 243.6687,
     "pi_lower_raw": -58.9329,
@@ -1827,6 +1993,7 @@
   },
   {
     "timestamp": "2012-09-20 22:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 287.0,
     "predicted_cnt": 206.0475,
     "pi_lower_raw": -96.5541,
@@ -1838,6 +2005,7 @@
   },
   {
     "timestamp": "2012-09-20 23:00:00",
+    "dteday": "2012-09-20",
     "actual_cnt": 154.0,
     "predicted_cnt": 175.5056,
     "pi_lower_raw": -127.0959,

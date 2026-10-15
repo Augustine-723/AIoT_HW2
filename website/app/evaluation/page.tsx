@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { 
   finalTestMetrics, 
   predictionIntervalMetrics, 
   hourlyCoverageDiagnostic,
-  testTimeline7d,
+  testTimelineAll,
   testScatterSamples,
   residualDistributionBins,
   HourlyCoverageRow,
@@ -16,15 +16,11 @@ import {
 } from "@/lib/data";
 import { 
   LineChart, 
-  BarChart3, 
   Target, 
   ShieldAlert, 
-  CheckCircle2, 
   Activity, 
   Clock, 
-  Info,
-  Calendar,
-  Layers
+  Calendar
 } from "lucide-react";
 
 export default function FinalEvaluationPage() {
@@ -33,19 +29,90 @@ export default function FinalEvaluationPage() {
   const [useClippedInterval, setUseClippedInterval] = useState(true);
   const [activeTab, setActiveTab] = useState<"INTERACTIVE" | "STATIC">("INTERACTIVE");
 
-  const timelineData = testTimeline7d as TimelinePoint[];
+  const allTimeline = testTimelineAll as TimelinePoint[];
   const scatterData = testScatterSamples as ScatterSample[];
   const hourlyData = hourlyCoverageDiagnostic as HourlyCoverageRow[];
   const residualBins = residualDistributionBins as ResidualBin[];
 
+  // Presets and date range states for timeline exploration
+  const [selectedPreset, setSelectedPreset] = useState<string>("W1");
+  const [startDate, setStartDate] = useState<string>("2012-09-14");
+  const [endDate, setEndDate] = useState<string>("2012-09-20");
+
+  const timelinePresets = [
+    { id: "W1", label: "首週 7 天 (Sep 14–20)", start: "2012-09-14", end: "2012-09-20", desc: "測試期初秋常態通勤" },
+    { id: "W2", label: "次週 7 天 (Sep 21–27)", start: "2012-09-21", end: "2012-09-27", desc: "初秋連續晴朗週" },
+    { id: "OCT1", label: "10 月首週 (Oct 01–07)", start: "2012-10-01", end: "2012-10-07", desc: "秋季高運量時段" },
+    { id: "SANDY", label: "桑迪颶風期 (Oct 28–Nov 01)", start: "2012-10-28", end: "2012-11-01", desc: "強烈颶風極端天氣衝擊" },
+    { id: "THANKSGIVING", label: "感恩節週 (Nov 19–25)", start: "2012-11-19", end: "2012-11-25", desc: "節慶休假模式與通勤落差" },
+    { id: "CHRISTMAS", label: "聖誕冬期 (Dec 22–28)", start: "2012-12-22", end: "2012-12-28", desc: "冬季嚴寒氣溫驟降" },
+    { id: "ALL", label: "完整測試期 (Sep 14–Dec 31)", start: "2012-09-14", end: "2012-12-31", desc: "全部 2,576 筆觀測時序全貌" },
+  ];
+
+  const handleSelectPreset = (presetId: string) => {
+    setSelectedPreset(presetId);
+    const p = timelinePresets.find((item) => item.id === presetId);
+    if (p) {
+      setStartDate(p.start);
+      setEndDate(p.end);
+    }
+  };
+
+  const handleDateChange = (type: "start" | "end", value: string) => {
+    setSelectedPreset("CUSTOM");
+    if (type === "start") setStartDate(value);
+    else setEndDate(value);
+  };
+
+  const timelineData = useMemo(() => {
+    const filtered = allTimeline.filter((pt) => {
+      const d = pt.dteday || pt.timestamp.slice(0, 10);
+      return d >= startDate && d <= endDate;
+    });
+    return filtered.length > 0 ? filtered : allTimeline.slice(0, 168);
+  }, [allTimeline, startDate, endDate]);
+
+  const sliceStats = useMemo(() => {
+    const count = timelineData.length;
+    if (count === 0) return { count: 0, mae: 0, rmse: 0, coveragePct: 0, maxY: 800 };
+    let sumAbsErr = 0;
+    let sumSqErr = 0;
+    let coveredCount = 0;
+    let maxVal = 0;
+
+    timelineData.forEach((pt) => {
+      const err = pt.actual_cnt - pt.predicted_cnt;
+      sumAbsErr += Math.abs(err);
+      sumSqErr += err * err;
+      if (useClippedInterval) {
+        if (pt.actual_cnt >= pt.pi_lower_clipped && pt.actual_cnt <= pt.pi_upper_clipped) {
+          coveredCount += 1;
+        }
+      } else {
+        if (pt.actual_cnt >= pt.pi_lower_raw && pt.actual_cnt <= pt.pi_upper_raw) {
+          coveredCount += 1;
+        }
+      }
+      const upper = useClippedInterval ? pt.pi_upper_clipped : pt.pi_upper_raw;
+      maxVal = Math.max(maxVal, pt.actual_cnt, upper);
+    });
+
+    return {
+      count,
+      mae: sumAbsErr / count,
+      rmse: Math.sqrt(sumSqErr / count),
+      coveragePct: (coveredCount / count) * 100,
+      maxY: Math.max(600, Math.ceil((maxVal + 60) / 100) * 100),
+    };
+  }, [timelineData, useClippedInterval]);
+
   // Max values for scatter SVG scaling
   const maxActual = 980;
-  const maxPred = 750;
   const scatterSvgSize = 500;
 
   // Max values for timeline SVG scaling
-  const maxTimelineY = 900;
-  const timelineSvgW = 800;
+  const maxTimelineY = sliceStats.maxY;
+  const timelineSvgW = Math.max(800, timelineData.length * (timelineData.length > 300 ? 3 : 5));
   const timelineSvgH = 320;
 
   // Hourly coverage chart dimensions
@@ -294,16 +361,16 @@ export default function FinalEvaluationPage() {
             </div>
           </section>
 
-          {/* 2. Prediction Interval Timeline (7-Day Slice) */}
-          <section className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          {/* 2. Prediction Interval Timeline with Selectable Date Ranges */}
+          <section className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-5">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
               <div>
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
                   <Clock className="w-5 h-5 text-indigo-400" />
-                  <span>測試集前 7 天時序預測區間帶 (7-Day Prediction Interval Timeline)</span>
+                  <span>測試集時序預測區間帶與歷程探索 (Test Prediction Interval Explorer)</span>
                 </h3>
-                <p className="text-xs text-slate-400">
-                  2012-09-14 至 2012-09-20 連續 168 小時之實際值、M2 預測值與 95% 名義預測區間陰影帶
+                <p className="text-xs text-slate-400 mt-0.5">
+                  支援自由切換 2012-09-14 至 2012-12-31 測試集全貌（共 2,576 筆觀測），或選取歷史典型情境探索 M2 模型與 95% 共形區間之動態表現。
                 </p>
               </div>
 
@@ -318,6 +385,101 @@ export default function FinalEvaluationPage() {
                 >
                   {useClippedInterval ? "顯示：非負截斷區間 [max(0, y-q), y+q]" : "顯示：原始對稱區間 [y-q, y+q]"}
                 </button>
+              </div>
+            </div>
+
+            {/* Range Presets and Date Controls */}
+            <div className="p-4 rounded-xl border border-slate-800 bg-slate-950/60 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                  <Calendar className="w-4 h-4 text-cyan-400" />
+                  <span>典型情境預設區間 (Scenario Presets)：</span>
+                </span>
+                <span className="text-[11px] font-mono text-slate-400">
+                  測試集完整範圍：2012-09-14 至 2012-12-31
+                </span>
+              </div>
+
+              {/* Preset buttons */}
+              <div className="flex flex-wrap gap-2">
+                {timelinePresets.map((preset) => (
+                  <button
+                    key={preset.id}
+                    onClick={() => handleSelectPreset(preset.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      selectedPreset === preset.id
+                        ? "bg-indigo-600 text-white shadow-md shadow-indigo-950 ring-1 ring-indigo-400"
+                        : "bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800"
+                    }`}
+                    title={preset.desc}
+                  >
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Custom Date Pickers */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-slate-800/80 text-xs text-slate-300">
+                <span className="font-semibold text-slate-400">自訂起訖日期：</span>
+                <div className="flex items-center gap-2">
+                  <label className="text-slate-400">開始：</label>
+                  <input
+                    type="date"
+                    min="2012-09-14"
+                    max="2012-12-31"
+                    value={startDate}
+                    onChange={(e) => handleDateChange("start", e.target.value)}
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <label className="text-slate-400">結束：</label>
+                  <input
+                    type="date"
+                    min="2012-09-14"
+                    max="2012-12-31"
+                    value={endDate}
+                    onChange={(e) => handleDateChange("end", e.target.value)}
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                  />
+                </div>
+                {startDate > endDate && (
+                  <span className="text-red-400 text-xs">開始日期不能晚於結束日期</span>
+                )}
+              </div>
+            </div>
+
+            {/* Slice Diagnostics Metric Summary */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="p-3 rounded-lg border border-slate-800 bg-slate-950">
+                <span className="text-[10px] text-slate-400 block">選取範圍樣本數</span>
+                <span className="text-lg font-bold font-mono text-white">
+                  {sliceStats.count.toLocaleString()}
+                </span>
+                <span className="text-[10px] text-slate-400 ml-1">小時觀測</span>
+              </div>
+              <div className="p-3 rounded-lg border border-slate-800 bg-slate-950">
+                <span className="text-[10px] text-slate-400 block">範圍切片實證覆蓋率</span>
+                <span className={`text-lg font-bold font-mono ${
+                  sliceStats.coveragePct >= 94.0 ? "text-emerald-400" : "text-amber-400"
+                }`}>
+                  {sliceStats.coveragePct.toFixed(2)}%
+                </span>
+                <span className="text-[10px] text-slate-400 ml-1">名義 95%</span>
+              </div>
+              <div className="p-3 rounded-lg border border-slate-800 bg-slate-950">
+                <span className="text-[10px] text-slate-400 block">範圍切片 MAE</span>
+                <span className="text-lg font-bold font-mono text-cyan-400">
+                  {sliceStats.mae.toFixed(2)}
+                </span>
+                <span className="text-[10px] text-slate-400 ml-1">輛 / 小時</span>
+              </div>
+              <div className="p-3 rounded-lg border border-slate-800 bg-slate-950">
+                <span className="text-[10px] text-slate-400 block">範圍切片 RMSE</span>
+                <span className="text-lg font-bold font-mono text-indigo-300">
+                  {sliceStats.rmse.toFixed(2)}
+                </span>
+                <span className="text-[10px] text-slate-400 ml-1">輛 / 小時</span>
               </div>
             </div>
 
@@ -355,14 +517,16 @@ export default function FinalEvaluationPage() {
               </div>
             )}
 
-            {/* Responsive Timeline SVG */}
+            {/* Responsive Timeline SVG with horizontal scroll for wide ranges */}
             <div className="w-full overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 p-2">
               <svg
                 viewBox={`0 0 ${timelineSvgW} ${timelineSvgH}`}
-                className="w-full h-auto min-w-[700px]"
+                style={{ minWidth: timelineData.length > 168 ? `${Math.min(2400, timelineSvgW)}px` : "700px" }}
+                className="w-full h-auto"
               >
                 {/* Horizontal Grid */}
                 {[0, 200, 400, 600, 800].map((val) => {
+                  if (val > maxTimelineY) return null;
                   const y = timelineSvgH - 30 - (val / maxTimelineY) * (timelineSvgH - 50);
                   return (
                     <g key={val}>
@@ -388,20 +552,33 @@ export default function FinalEvaluationPage() {
                   );
                 })}
 
-                {/* Day Boundary Separators */}
-                {[24, 48, 72, 96, 120, 144].map((hrIndex) => {
-                  const x = 45 + (hrIndex / timelineData.length) * (timelineSvgW - 55);
-                  return (
-                    <line
-                      key={hrIndex}
-                      x1={x}
-                      y1={10}
-                      x2={x}
-                      y2={timelineSvgH - 30}
-                      stroke="#334155"
-                      strokeDasharray="4 4"
-                    />
-                  );
+                {/* Day Boundary Separators with Date Markers */}
+                {timelineData.map((pt, hrIndex) => {
+                  if (hrIndex > 0 && pt.timestamp.endsWith("00:00:00")) {
+                    const x = 45 + (hrIndex / (timelineData.length - 1 || 1)) * (timelineSvgW - 55);
+                    return (
+                      <g key={`day-${hrIndex}`}>
+                        <line
+                          x1={x}
+                          y1={10}
+                          x2={x}
+                          y2={timelineSvgH - 30}
+                          stroke="#334155"
+                          strokeDasharray="3 3"
+                        />
+                        <text
+                          x={x + 3}
+                          y={20}
+                          fill="#64748B"
+                          fontSize="9"
+                          fontFamily="monospace"
+                        >
+                          {pt.timestamp.slice(5, 10)}
+                        </text>
+                      </g>
+                    );
+                  }
+                  return null;
                 })}
 
                 {/* Shaded Prediction Interval Band Polygon */}
@@ -410,7 +587,7 @@ export default function FinalEvaluationPage() {
                   const pointsLower: string[] = [];
 
                   timelineData.forEach((pt, i) => {
-                    const x = 45 + (i / (timelineData.length - 1)) * (timelineSvgW - 55);
+                    const x = 45 + (i / (timelineData.length - 1 || 1)) * (timelineSvgW - 55);
                     const upper = useClippedInterval ? pt.pi_upper_clipped : pt.pi_upper_raw;
                     const lower = useClippedInterval ? pt.pi_lower_clipped : pt.pi_lower_raw;
                     const yUpper = timelineSvgH - 30 - (Math.max(0, upper) / maxTimelineY) * (timelineSvgH - 50);
@@ -433,7 +610,7 @@ export default function FinalEvaluationPage() {
                 {/* Predicted Polyline */}
                 {(() => {
                   const pts = timelineData.map((pt, i) => {
-                    const x = 45 + (i / (timelineData.length - 1)) * (timelineSvgW - 55);
+                    const x = 45 + (i / (timelineData.length - 1 || 1)) * (timelineSvgW - 55);
                     const y = timelineSvgH - 30 - (pt.predicted_cnt / maxTimelineY) * (timelineSvgH - 50);
                     return `${x},${y}`;
                   }).join(" ");
@@ -451,7 +628,7 @@ export default function FinalEvaluationPage() {
                 {/* Actual Polyline & Data Points */}
                 {(() => {
                   const pts = timelineData.map((pt, i) => {
-                    const x = 45 + (i / (timelineData.length - 1)) * (timelineSvgW - 55);
+                    const x = 45 + (i / (timelineData.length - 1 || 1)) * (timelineSvgW - 55);
                     const y = timelineSvgH - 30 - (pt.actual_cnt / maxTimelineY) * (timelineSvgH - 50);
                     return `${x},${y}`;
                   }).join(" ");
@@ -467,14 +644,14 @@ export default function FinalEvaluationPage() {
 
                 {/* Hover trigger columns */}
                 {timelineData.map((pt, i) => {
-                  const x = 45 + (i / (timelineData.length - 1)) * (timelineSvgW - 55);
+                  const x = 45 + (i / (timelineData.length - 1 || 1)) * (timelineSvgW - 55);
                   const isHovered = hoveredTimeline?.timestamp === pt.timestamp;
                   return (
                     <rect
                       key={i}
-                      x={x - 2.5}
+                      x={x - Math.max(2, (timelineSvgW - 55) / (timelineData.length * 2))}
                       y={10}
-                      width={5}
+                      width={Math.max(4, (timelineSvgW - 55) / timelineData.length)}
                       height={timelineSvgH - 40}
                       fill={isHovered ? "rgba(255, 255, 255, 0.15)" : "transparent"}
                       className="cursor-crosshair"
@@ -501,7 +678,7 @@ export default function FinalEvaluationPage() {
                 </span>
               </div>
               <span className="text-[11px] font-mono text-slate-400">
-                滑鼠懸停於圖表上可即時檢視該小時數值
+                可水平滾動查看更多時序，滑鼠懸停於圖表上可即時檢視該小時數值
               </span>
             </div>
           </section>

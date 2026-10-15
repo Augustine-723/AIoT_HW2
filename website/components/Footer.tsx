@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Code2, BookOpen, ExternalLink, ShieldCheck } from "lucide-react";
+import { Code2, ExternalLink, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   return (

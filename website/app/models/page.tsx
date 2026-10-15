@@ -13,14 +13,9 @@ import {
 import { 
   Sliders, 
   Trophy, 
-  CheckCircle2, 
-  Filter, 
   Layers, 
   BarChart2, 
-  Search,
-  Sparkles,
-  Info,
-  ChevronDown
+  Search
 } from "lucide-react";
 
 export default function ModelComparisonPage() {

@@ -23,7 +23,8 @@ json_files = [
     "best_model_metadata.json",
     "phase3_experiment_metadata.json",
     "dataset_metadata.json",
-    "m2_model_spec.json"
+    "m2_model_spec.json",
+    "missing_timestamps.json"
 ]
 
 for jf in json_files:
@@ -84,6 +85,7 @@ timeline_records = []
 for _, r in timeline_7d.iterrows():
     timeline_records.append({
         "timestamp": r["timestamp"],
+        "dteday": r["dteday"],
         "actual_cnt": float(r["actual_cnt"]),
         "predicted_cnt": float(r["predicted_cnt"]),
         "pi_lower_raw": float(r["pi_lower_raw"]),
@@ -97,6 +99,26 @@ timeline_path = os.path.join(DATA_OUT_DIR, "test_timeline_7d.json")
 with open(timeline_path, "w", encoding="utf-8") as f:
     json.dump(timeline_records, f, indent=2)
 print(f"[OK] Generated test_timeline_7d.json ({len(timeline_records)} hours)")
+
+# 5b2. Full test timeline records (all 2,576 observations for selectable historical date ranges)
+timeline_all = []
+for _, r in tp_df.iterrows():
+    timeline_all.append({
+        "timestamp": r["timestamp"],
+        "dteday": r["dteday"],
+        "actual_cnt": float(r["actual_cnt"]),
+        "predicted_cnt": float(r["predicted_cnt"]),
+        "pi_lower_raw": float(r["pi_lower_raw"]),
+        "pi_upper_raw": float(r["pi_upper_raw"]),
+        "pi_lower_clipped": float(r["pi_lower_clipped"]),
+        "pi_upper_clipped": float(r["pi_upper_clipped"]),
+        "residual": float(r["residual"]),
+        "covered": bool(r["covered_clipped"])
+    })
+timeline_all_path = os.path.join(DATA_OUT_DIR, "test_timeline_all.json")
+with open(timeline_all_path, "w", encoding="utf-8") as f:
+    json.dump(timeline_all, f, indent=2)
+print(f"[OK] Generated test_timeline_all.json ({len(timeline_all)} total test hours)")
 
 # 5c. All available test dates list
 dates_summary = {

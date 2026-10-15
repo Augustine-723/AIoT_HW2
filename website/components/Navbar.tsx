@@ -13,7 +13,6 @@ import {
   Menu, 
   X, 
   CheckCircle2, 
-  ExternalLink,
   Cpu
 } from "lucide-react";
 
