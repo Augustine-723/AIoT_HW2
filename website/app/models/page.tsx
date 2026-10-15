@@ -53,7 +53,7 @@ export default function ModelComparisonPage() {
         </h1>
         <p className="text-sm sm:text-base text-[#334155] max-w-4xl leading-relaxed">
           以嚴格的 5-Fold 擴展視窗交叉驗證（Expanding Window CV, ddof=1 樣本標準差）評估 4 大候選模型。
-          M2 藉由遞歸特徵消除（RFE）在剔除 18 個編碼維度下達成最低 CV RMSE，獲得最高泛化效能。
+          M2 藉由遞歸特徵消除（RFE）在 53 個候選特徵中剔除 23 個編碼維度，精準保留 30 個特徵並達成最低 CV RMSE，獲得最高泛化效能。
         </p>
       </section>
 
@@ -77,7 +77,7 @@ export default function ModelComparisonPage() {
         </div>
 
         <div className="overflow-x-auto rounded-2xl border border-[#DFE5ED] bg-white shadow-xs">
-          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+          <table className="w-full text-left text-sm border-collapse">
             <thead>
               <tr className="border-b border-[#DFE5ED] bg-[#F1F5F9] text-[#17243A] font-mono">
                 <th className="py-3 px-4 font-bold">排名</th>
@@ -105,7 +105,7 @@ export default function ModelComparisonPage() {
                   >
                     <td className="py-3.5 px-4 font-mono">
                       {isSelected ? (
-                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-500 text-white font-bold text-[11px]">
+                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-500 text-white font-bold text-xs">
                           1
                         </span>
                       ) : (
@@ -117,15 +117,15 @@ export default function ModelComparisonPage() {
                         <span className="font-mono font-bold text-[#17243A] text-sm">
                           {m.model_id}
                         </span>
-                        <span className="text-[#334155]">{m.model_name}</span>
+                        <span className="text-[#17243A]">{m.model_name}</span>
                         {isSelected && (
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold">
+                          <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold">
                             Selected
                           </span>
                         )}
                       </div>
                     </td>
-                    <td className="py-3.5 px-4 text-right font-mono text-[#334155]">
+                    <td className="py-3.5 px-4 text-right font-mono text-[#17243A] font-semibold">
                       {m.selected_features_count}
                     </td>
                     <td className={`py-3.5 px-4 text-right font-mono font-bold ${
@@ -133,7 +133,7 @@ export default function ModelComparisonPage() {
                     }`}>
                       {m.cv_rmse_mean.toFixed(4)}
                     </td>
-                    <td className="py-3.5 px-4 text-right font-mono text-[#475569]">
+                    <td className="py-3.5 px-4 text-right font-mono text-[#334155]">
                       ±{m.cv_rmse_std.toFixed(4)}
                     </td>
                     <td className="py-3.5 px-4 text-right font-mono text-[#334155]">
@@ -163,9 +163,9 @@ export default function ModelComparisonPage() {
             最優 RMSE 與精簡特徵
           </div>
           <div className="text-base font-bold text-[#17243A]">M2 (RFE + OLS)</div>
-          <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+          <p className="text-sm text-[#334155] leading-relaxed">
             M2 在 5-Fold 擴展視窗 CV 評比中取得最低之平均 CV RMSE (107.44)，
-            成功剔除 18 個貢獻極低之冗餘特徵，僅保留 30 個特徵，兼具最低均方根誤差與最優模型精簡性 (Parsimony)。
+            在 53 個候選特徵中成功剔除 23 個貢獻極低之冗餘特徵，僅保留 30 個特徵，兼具最低均方根誤差與最優模型精簡性 (Parsimony)。
           </p>
         </div>
 
@@ -174,9 +174,9 @@ export default function ModelComparisonPage() {
             最優 MAE 絕對誤差
           </div>
           <div className="text-base font-bold text-[#17243A]">M4 (Lasso Regression)</div>
-          <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+          <p className="text-sm text-[#334155] leading-relaxed">
             Lasso 在最佳懲罰係數 α = 0.1 下取得最低之平均 CV MAE。
-            L1 正則化能將部分不重要係數自動歸零，對常態分佈誤差中位數展現絕佳適應度。
+            L1 正則化能將部分不重要係數自動歸零（淘汰 6 個特徵，保留 47 個特徵），對常態分佈誤差中位數展現絕佳適應度。
           </p>
         </div>
 
@@ -185,8 +185,8 @@ export default function ModelComparisonPage() {
             最低摺間變異度
           </div>
           <div className="text-base font-bold text-[#17243A]">M1 (Standard OLS)</div>
-          <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-            未篩選特徵之 OLS 在 5-Fold CV 展現最低之 RMSE 標準差 (15.36)。
+          <p className="text-sm text-[#334155] leading-relaxed">
+            未篩選特徵之 OLS（全 53 維特徵）在 5-Fold CV 展現最低之 RMSE 標準差 (15.36)。
             各模型間 CV RMSE 差異幅度相對較小，顯示線性結構在該問題具備極佳的基礎適應力。
           </p>
         </div>
@@ -286,7 +286,7 @@ export default function ModelComparisonPage() {
       <section className="space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#17243A]">群組消融實驗詳細數據 (Grouped Feature Ablation Results)</h2>
         <div className="overflow-x-auto rounded-2xl border border-[#DFE5ED] bg-white shadow-xs">
-          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+          <table className="w-full text-left text-sm border-collapse">
             <thead>
               <tr className="border-b border-[#DFE5ED] bg-[#F1F5F9] text-[#17243A] font-mono">
                 <th className="py-3 px-4 font-bold">排名</th>
@@ -346,7 +346,7 @@ export default function ModelComparisonPage() {
             <div className="flex rounded-lg border border-[#DFE5ED] p-0.5 bg-[#F1F5F9]">
               <button
                 onClick={() => setFilterType("ALL")}
-                className={`px-3 py-1 text-xs rounded-md font-semibold transition-colors cursor-pointer ${
+                className={`px-3 py-1 text-xs sm:text-sm rounded-md font-semibold transition-colors cursor-pointer ${
                   filterType === "ALL" ? "bg-blue-600 text-white shadow-xs" : "text-[#475569] hover:text-[#17243A]"
                 }`}
               >
@@ -354,7 +354,7 @@ export default function ModelComparisonPage() {
               </button>
               <button
                 onClick={() => setFilterType("SELECTED")}
-                className={`px-3 py-1 text-xs rounded-md font-semibold transition-colors cursor-pointer ${
+                className={`px-3 py-1 text-xs sm:text-sm rounded-md font-semibold transition-colors cursor-pointer ${
                   filterType === "SELECTED" ? "bg-blue-600 text-white shadow-xs" : "text-[#475569] hover:text-[#17243A]"
                 }`}
               >
@@ -362,7 +362,7 @@ export default function ModelComparisonPage() {
               </button>
               <button
                 onClick={() => setFilterType("ELIMINATED")}
-                className={`px-3 py-1 text-xs rounded-md font-semibold transition-colors cursor-pointer ${
+                className={`px-3 py-1 text-xs sm:text-sm rounded-md font-semibold transition-colors cursor-pointer ${
                   filterType === "ELIMINATED" ? "bg-blue-600 text-white shadow-xs" : "text-[#475569] hover:text-[#17243A]"
                 }`}
               >
@@ -373,7 +373,7 @@ export default function ModelComparisonPage() {
         </div>
 
         <div className="overflow-x-auto rounded-2xl border border-[#DFE5ED] bg-white shadow-xs max-h-96">
-          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+          <table className="w-full text-left text-sm border-collapse">
             <thead className="sticky top-0 bg-[#F1F5F9] border-b border-[#DFE5ED] text-[#17243A] font-mono z-10">
               <tr>
                 <th className="py-3 px-4 font-bold">編碼特徵識別代號</th>
@@ -390,16 +390,16 @@ export default function ModelComparisonPage() {
                     <td className="py-2.5 px-4 font-mono font-bold text-[#17243A]">
                       {f.encoded_feature_name}
                     </td>
-                    <td className="py-2.5 px-4 font-mono text-[#475569]">
+                    <td className="py-2.5 px-4 font-mono text-[#334155]">
                       {f.original_feature_name}
                     </td>
                     <td className="py-2.5 px-4 text-center">
                       {isSelected ? (
-                        <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300">
                           保留 (Selected)
                         </span>
                       ) : (
-                        <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-slate-100 text-[#64748B] border border-[#CBD5E1]">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-slate-100 text-[#475569] border border-[#CBD5E1]">
                           RFE 淘汰
                         </span>
                       )}
@@ -411,7 +411,7 @@ export default function ModelComparisonPage() {
                           {f.coefficient.toFixed(4)}
                         </span>
                       ) : (
-                        <span className="text-[#94A3B8] font-normal">N/A (淘汰無係數)</span>
+                        <span className="text-[#64748B] font-normal">N/A (淘汰無係數)</span>
                       )}
                     </td>
                   </tr>

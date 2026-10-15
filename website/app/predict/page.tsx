@@ -74,7 +74,7 @@ export default function InteractivePredictionPage() {
             Parity Error: 2.27 × 10⁻¹³
           </span>
         </div>
-        <p className="text-xs sm:text-sm text-emerald-900/90 leading-relaxed">
+        <p className="text-sm sm:text-base text-emerald-950 leading-relaxed">
           經實地測試，本專案採用 <strong>Option B（純 TypeScript 確定性推論引擎）</strong>，
           將凍結訓練之 30 個選定係數與截距以 IEEE-754 雙精度浮點數重構。在歷史全部 17,379 筆樣本上進行數值對齊測試，
           推論結果與原生 Python Scikit-learn Pipeline 之絕對誤差最大值僅為 <strong>2.27 × 10⁻¹³</strong>（機器浮點精度極限），
@@ -89,7 +89,7 @@ export default function InteractivePredictionPage() {
             <Sliders className="w-4 h-4 text-blue-600" />
             <span>典型情境快速載入 (Preset Archetype Scenarios)</span>
           </h2>
-          <span className="text-xs text-[#475569]">點擊切換標準特徵組合</span>
+          <span className="text-xs sm:text-sm text-[#475569]">點擊切換標準特徵組合</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -107,16 +107,16 @@ export default function InteractivePredictionPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-[#334155] border border-[#CBD5E1] font-semibold">
+                    <span className="text-xs font-mono px-2 py-0.5 rounded bg-slate-100 text-[#334155] border border-[#CBD5E1] font-semibold">
                       {preset.tag}
                     </span>
                     {isSelected && <CheckCircle2 className="w-4 h-4 text-blue-600" />}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-[#17243A] mb-1">
+                  <div className="text-sm font-bold text-[#17243A] mb-1">
                     {preset.name}
                   </div>
                 </div>
-                <p className="text-[11px] text-[#475569] leading-tight mt-1">
+                <p className="text-xs text-[#334155] leading-normal mt-1">
                   {preset.description}
                 </p>
               </button>
@@ -516,12 +516,12 @@ export default function InteractivePredictionPage() {
                 </span>
               </div>
 
-              <div className="overflow-y-auto max-h-56 rounded-xl border border-[#DFE5ED] bg-[#F8FAFC] divide-y divide-[#DFE5ED] text-xs font-mono">
+              <div className="overflow-y-auto max-h-56 rounded-xl border border-[#DFE5ED] bg-[#F8FAFC] divide-y divide-[#DFE5ED] text-xs sm:text-sm font-mono">
                 {prediction.featureContributions.map((fc, idx) => (
                   <div key={idx} className="p-2.5 flex items-center justify-between hover:bg-slate-100/60">
                     <div className="flex flex-col">
                       <span className="text-[#17243A] font-semibold">{fc.feature_name}</span>
-                      <span className="text-[11px] text-[#475569] font-sans">{fc.description}</span>
+                      <span className="text-xs text-[#475569] font-sans">{fc.description}</span>
                     </div>
                     <div className="text-right">
                       <span className={`font-bold ${
@@ -537,18 +537,18 @@ export default function InteractivePredictionPage() {
             </div>
 
             {/* Experiment Metadata */}
-            <div className="pt-2 border-t border-[#DFE5ED] text-xs font-mono text-[#64748B] space-y-1">
+            <div className="pt-2 border-t border-[#DFE5ED] text-xs sm:text-sm font-mono text-[#475569] space-y-1.5">
               <div className="flex justify-between">
                 <span>實驗識別 ID</span>
                 <span className="text-blue-700 font-semibold">{prediction.experimentId}</span>
               </div>
               <div className="flex justify-between">
                 <span>推論引擎架構</span>
-                <span className="text-[#334155]">Option B (TypeScript Deterministic)</span>
+                <span className="text-[#17243A] font-medium">Option B (TypeScript Deterministic)</span>
               </div>
               <div className="flex justify-between">
                 <span>共形校準資料集</span>
-                <span className="text-[#334155]">Calibration Set (n = 2,640)</span>
+                <span className="text-[#17243A] font-medium">Calibration Set (n = 2,640)</span>
               </div>
             </div>
           </div>

@@ -139,51 +139,51 @@ export default function FinalEvaluationPage() {
       {/* Top Test Metric Cards */}
       <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Test MAE</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Test MAE</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#17243A] mt-1">
             {finalTestMetrics.test_mae.toFixed(4)}
           </div>
-          <span className="text-[11px] text-[#64748B]">輛 / 小時</span>
+          <span className="text-xs text-[#475569] font-medium">輛 / 小時</span>
         </div>
 
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Test RMSE</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Test RMSE</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#17243A] mt-1">
             {finalTestMetrics.test_rmse.toFixed(4)}
           </div>
-          <span className="text-[11px] text-[#64748B]">輛 / 小時</span>
+          <span className="text-xs text-[#475569] font-medium">輛 / 小時</span>
         </div>
 
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Test R²</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Test R²</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-blue-700 mt-1">
             {finalTestMetrics.test_r2.toFixed(4)}
           </div>
-          <span className="text-[11px] text-[#64748B]">解釋變異量</span>
+          <span className="text-xs text-[#475569] font-medium">解釋變異量</span>
         </div>
 
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Nominal Coverage</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Nominal Coverage</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#17243A] mt-1">
             {(predictionIntervalMetrics.nominal_coverage * 100).toFixed(0)}%
           </div>
-          <span className="text-[11px] text-[#64748B]">1 - α 目標</span>
+          <span className="text-xs text-[#475569] font-medium">1 - α 目標</span>
         </div>
 
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Empirical Coverage</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Empirical Coverage</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-emerald-800 mt-1">
             {(predictionIntervalMetrics.empirical_coverage_clipped * 100).toFixed(2)}%
           </div>
-          <span className="text-[11px] text-[#64748B]">2,576 筆觀測</span>
+          <span className="text-xs text-[#475569] font-medium">2,576 筆觀測</span>
         </div>
 
         <div className="p-4 rounded-xl border border-[#DFE5ED] bg-white shadow-xs">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">Conformal Quantile (q)</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">Conformal Quantile (q)</span>
           <div className="text-xl sm:text-2xl font-extrabold font-mono text-teal-800 mt-1">
             {predictionIntervalMetrics.conformal_quantile.toFixed(2)}
           </div>
-          <span className="text-[11px] text-[#64748B]">半區間長度</span>
+          <span className="text-xs text-[#475569] font-medium">半區間長度</span>
         </div>
       </section>
 
@@ -819,33 +819,33 @@ export default function FinalEvaluationPage() {
             </div>
 
             {/* In-depth Peak Hours Coverage Commentary */}
-            <div className="p-5 rounded-xl border border-amber-200 bg-amber-50 space-y-2 text-xs sm:text-sm text-amber-950">
-              <div className="flex items-center gap-2 text-amber-900 font-bold">
-                <ShieldAlert className="w-4 h-4" />
+            <div className="p-5 rounded-xl border border-amber-200 bg-amber-50 space-y-2 text-sm text-amber-950">
+              <div className="flex items-center gap-2 text-amber-900 font-bold text-sm sm:text-base">
+                <ShieldAlert className="w-4 h-4 flex-shrink-0" />
                 <span>尖峰時段條件覆蓋率下滑現象深入解析 (Conditional Coverage Disparity)</span>
               </div>
-              <p className="leading-relaxed text-amber-900/90">
+              <p className="leading-relaxed text-amber-950">
                 雖然 M2 模型在整個測試集 2,576 筆樣本上達成了 <strong>94.84%</strong> 的實證覆蓋率，近乎完美貼合 95% 的名義目標；
                 但在逐時段（Conditional on Hour）診斷中，可觀察到嚴重的時段條件覆蓋差異：
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 font-mono text-xs">
                 <div className="p-3 rounded-lg bg-white border border-amber-200 shadow-2xs">
-                  <span className="text-amber-800 block font-bold">08:00 (早通勤峰)</span>
+                  <span className="text-amber-800 block font-bold text-xs sm:text-sm">08:00 (早通勤峰)</span>
                   <span className="text-[#17243A] text-sm font-extrabold">覆蓋率 64.49%</span>
-                  <span className="text-[#64748B] block text-[11px] mt-0.5">實際均值 366.5 vs 預測 324.9</span>
+                  <span className="text-[#475569] block text-xs mt-0.5 font-sans">實際均值 366.5 vs 預測 324.9</span>
                 </div>
                 <div className="p-3 rounded-lg bg-white border border-amber-200 shadow-2xs">
-                  <span className="text-amber-800 block font-bold">17:00 (晚通勤峰)</span>
+                  <span className="text-amber-800 block font-bold text-xs sm:text-sm">17:00 (晚通勤峰)</span>
                   <span className="text-[#17243A] text-sm font-extrabold">覆蓋率 75.00%</span>
-                  <span className="text-[#64748B] block text-[11px] mt-0.5">實際均值 479.2 vs 預測 432.4</span>
+                  <span className="text-[#475569] block text-xs mt-0.5 font-sans">實際均值 479.2 vs 預測 432.4</span>
                 </div>
                 <div className="p-3 rounded-lg bg-white border border-amber-200 shadow-2xs">
-                  <span className="text-amber-800 block font-bold">18:00 (晚通勤峰)</span>
+                  <span className="text-amber-800 block font-bold text-xs sm:text-sm">18:00 (晚通勤峰)</span>
                   <span className="text-[#17243A] text-sm font-extrabold">覆蓋率 80.56%</span>
-                  <span className="text-[#64748B] block text-[11px] mt-0.5">實際均值 432.8 vs 預測 398.2</span>
+                  <span className="text-[#475569] block text-xs mt-0.5 font-sans">實際均值 432.8 vs 預測 398.2</span>
                 </div>
               </div>
-              <p className="text-xs text-amber-900/80 pt-1 leading-relaxed">
+              <p className="text-sm text-amber-950 pt-1 leading-relaxed">
                 <strong>統計學核心意涵：</strong>共形預測的邊際保證（Marginal Guarantee）意味著在全樣本總體空間期望覆蓋率大於等於 95%，但<strong>不保證</strong>在任何特定子群體或時段內具備均等的條件覆蓋率（Equal Conditional Coverage）。由於通勤尖峰需求受天氣良好度與平日突發活動之交互放大效應影響，線性模型的加性常數無法完全吸納高階非線性波動，導致殘差擴大並突破固定半徑 q = 302.60 的區間邊界。
               </p>
             </div>

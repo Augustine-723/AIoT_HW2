@@ -29,7 +29,7 @@ export default function MethodologyPage() {
     {
       step: "04",
       name: "Modeling (模型建構)",
-      desc: "以 Expanding Window Cross-Validation (5 摺) 評估候選模型。運用 RFE 淘汰 18 個低貢獻特徵收斂至 M2 (30 特徵)，並與 L2 正則化 Ridge (α=10.0) 及 L1 稀疏化 Lasso (α=0.1) 進行交叉評比。",
+      desc: "以 Expanding Window Cross-Validation (5 摺) 評估候選模型。運用 RFE 自 53 個候選編碼特徵中淘汰 23 個低貢獻特徵收斂至 M2 (30 特徵)，並與 L2 正則化 Ridge (α=1.0) 及 L1 稀疏化 Lasso (α=0.1) 進行交叉評比。",
     },
     {
       step: "05",
@@ -123,7 +123,7 @@ export default function MethodologyPage() {
               <h3 className="text-base font-bold text-[#17243A]">
                 {stage.name}
               </h3>
-              <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
+              <p className="text-sm text-[#334155] leading-relaxed">
                 {stage.desc}
               </p>
             </div>
@@ -209,48 +209,48 @@ export default function MethodologyPage() {
           <span>正式學術文獻引用清單 (Academic References &amp; Attribution)</span>
         </h2>
 
-        <div className="space-y-3 text-xs sm:text-sm text-[#475569] leading-relaxed divide-y divide-[#DFE5ED]">
+        <div className="space-y-4 text-sm text-[#334155] leading-relaxed divide-y divide-[#DFE5ED]">
           <div className="pt-2">
-            <p className="text-[#17243A] font-bold">
+            <p className="text-[#17243A] font-bold text-sm sm:text-base">
               [1] UCI Machine Learning Repository: Bike Sharing Dataset
             </p>
-            <p className="text-xs text-[#475569] mt-0.5">
+            <p className="text-sm text-[#334155] mt-1">
               Fanaee-T, H., &amp; Gama, J. (2014). Event labeling combining ensemble detectors and background knowledge. <em>Progress in Artificial Intelligence</em>, 2(2-4), 113-127.
               <a
                 href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-700 hover:underline inline-flex items-center gap-1 ml-2 font-medium"
+                className="bib-link text-blue-700 hover:underline inline-flex items-center gap-1 ml-2 font-medium"
               >
                 <span>[Link]</span>
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </p>
           </div>
 
           <div className="pt-3">
-            <p className="text-[#17243A] font-bold">
+            <p className="text-[#17243A] font-bold text-sm sm:text-base">
               [2] Algorithmic Learning in a Random World (Conformal Prediction Foundations)
             </p>
-            <p className="text-xs text-[#475569] mt-0.5">
+            <p className="text-sm text-[#334155] mt-1">
               Vovk, V., Gammerman, A., &amp; Shafer, G. (2005). <em>Algorithmic Learning in a Random World</em>. Springer Science &amp; Business Media.
             </p>
           </div>
 
           <div className="pt-3">
-            <p className="text-[#17243A] font-bold">
+            <p className="text-[#17243A] font-bold text-sm sm:text-base">
               [3] Distribution-Free Uncertainty Quantification &amp; Split Conformal Prediction
             </p>
-            <p className="text-xs text-[#475569] mt-0.5">
+            <p className="text-sm text-[#334155] mt-1">
               Angelopoulos, A. N., &amp; Bates, S. (2021). A gentle introduction to conformal prediction and distribution-free uncertainty quantification. <em>arXiv preprint arXiv:2107.07511</em>.
             </p>
           </div>
 
           <div className="pt-3">
-            <p className="text-[#17243A] font-bold">
+            <p className="text-[#17243A] font-bold text-sm sm:text-base">
               [4] Scikit-Learn: Machine Learning in Python
             </p>
-            <p className="text-xs text-[#475569] mt-0.5">
+            <p className="text-sm text-[#334155] mt-1">
               Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... &amp; Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. <em>Journal of Machine Learning Research</em>, 12, 2825-2830.
             </p>
           </div>

@@ -61,21 +61,21 @@ export default function DatasetPage() {
         </div>
 
         <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">有效觀測筆數</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">有效觀測筆數</span>
           <div className="text-xl font-extrabold text-[#17243A] font-mono">17,379 筆</div>
-          <p className="text-xs text-[#64748B]">完整跨越 2011/01/01 ~ 2012/12/31</p>
+          <p className="text-sm text-[#475569]">完整跨越 2011/01/01 ~ 2012/12/31</p>
         </div>
 
         <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">原始輸入預測因子</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">原始輸入預測因子</span>
           <div className="text-xl font-extrabold text-blue-700 font-mono">12 項可用特徵</div>
-          <p className="text-xs text-[#64748B]">涵蓋曆法、時段與正規化氣象變數</p>
+          <p className="text-sm text-[#475569]">涵蓋曆法、時段與正規化氣象變數</p>
         </div>
 
         <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">缺漏小時審計</span>
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#334155]">缺漏小時審計</span>
           <div className="text-xl font-extrabold text-amber-800 font-mono">165 小時</div>
-          <p className="text-xs text-[#64748B]">為系統連線/維護中斷，非需求為零</p>
+          <p className="text-sm text-[#475569]">為系統連線/維護中斷，非需求為零</p>
         </div>
       </section>
 
@@ -85,7 +85,7 @@ export default function DatasetPage() {
           <AlertTriangle className="w-5 h-5 flex-shrink-0" />
           <span>嚴格防範目標洩漏 (Target Leakage Prevention)</span>
         </div>
-        <p className="text-xs sm:text-sm text-amber-900/90 leading-relaxed">
+        <p className="text-sm sm:text-base text-amber-950 leading-relaxed">
           原始資料集中包含 <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono text-amber-900 font-semibold">casual</code> (臨時散客借車數) 與 <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono text-amber-900 font-semibold">registered</code> (註冊會員借車數)。
           由於數學恆等式：
           <span className="block my-2 text-center font-mono text-sm sm:text-base text-[#17243A] bg-white py-2 rounded-lg border border-amber-200 font-bold shadow-xs">
@@ -312,7 +312,7 @@ export default function DatasetPage() {
         </div>
 
         <div className="overflow-x-auto rounded-2xl border border-[#DFE5ED] bg-white shadow-xs">
-          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+          <table className="w-full text-left text-sm border-collapse">
             <thead>
               <tr className="border-b border-[#DFE5ED] bg-[#F1F5F9] text-[#17243A] font-mono">
                 <th className="py-3 px-4 font-bold">特徵名稱</th>
@@ -327,11 +327,11 @@ export default function DatasetPage() {
                   <td className="py-3 px-4 font-mono font-bold text-[#17243A]">
                     {feat.name}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#475569]">
+                  <td className="py-3 px-4 font-mono text-[#334155] font-semibold">
                     {feat.type}
                   </td>
                   <td className="py-3 px-4">
-                    <span className={`px-2 py-0.5 rounded text-[11px] font-mono font-semibold ${
+                    <span className={`px-2.5 py-0.5 rounded text-xs font-mono font-semibold ${
                       feat.role.includes("排除")
                         ? "bg-amber-50 text-amber-900 border border-amber-200"
                         : feat.role.includes("目標")
@@ -343,7 +343,7 @@ export default function DatasetPage() {
                       {feat.role}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-[#334155] leading-relaxed">
+                  <td className="py-3 px-4 text-[#334155] text-sm leading-relaxed">
                     {feat.desc}
                   </td>
                 </tr>

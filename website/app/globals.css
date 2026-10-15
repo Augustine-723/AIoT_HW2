@@ -55,14 +55,14 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 15mm 12mm 15mm 12mm;
+    margin: 12mm 10mm 12mm 10mm;
   }
 
   html, body {
     background-color: #FFFFFF !important;
     color: #111827 !important;
-    font-size: 10pt !important;
-    line-height: 1.5 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
   }
 
   /* Hide interactive or irrelevant web chrome in PDF/print */
@@ -81,16 +81,37 @@ body {
     margin: 0 !important;
   }
 
-  /* Prevent awkward page splits inside cards, tables, and charts */
+  /* Allow normal content flow for large sections and long containers */
+  main,
   section,
   article,
-  .rounded-2xl,
-  .rounded-xl,
-  .card,
+  .space-y-12,
+  .space-y-10,
+  .space-y-8,
+  .space-y-6,
+  .space-y-4 {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Allow grid containers to flow across pages while keeping short items intact */
+  .grid {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .grid > * {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Preserve page-break protection for figures, table rows, SVGs, and short discrete cards */
   figure,
-  table,
+  svg,
+  img,
   tr,
-  svg {
+  .break-inside-avoid,
+  .print-avoid-break {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
@@ -109,11 +130,31 @@ body {
     filter: none !important;
   }
 
+  /* Compact print spacing for clean A4 multi-page distribution */
+  .space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.25rem !important;
+  }
+  .space-y-10 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem !important;
+  }
+  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.75rem !important;
+  }
+  .gap-6 {
+    gap: 0.75rem !important;
+  }
+  .p-8, .sm\:p-12 {
+    padding: 1.25rem !important;
+  }
+  .p-6 {
+    padding: 1rem !important;
+  }
+
   /* Ensure table borders and cell backgrounds print crisp and clear */
   table {
     border-collapse: collapse !important;
     width: 100% !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.75rem !important;
   }
 
   th, td {
@@ -140,9 +181,21 @@ body {
     page-break-inside: avoid !important;
   }
 
-  /* Retain clear links with textual URL citations if needed */
+  /* Print-only link styling: readable dark blue without excessive underlines on navigation cards */
   a {
-    color: #1D4ED8 !important;
+    color: #1E3A8A !important;
+    text-decoration: none !important;
+  }
+
+  /* Preserve recognizable underlines for inline and bibliographic links */
+  p a,
+  li a,
+  td a,
+  cite a,
+  .prose a,
+  .bib-link,
+  a.print-underline {
     text-decoration: underline !important;
+    text-underline-offset: 2px !important;
   }
 }
