@@ -1,0 +1,70 @@
+{
+  "experiment_id": "AIoT_HW2_PHASE3_EXP01",
+  "dataset_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "phase2_model_provenance": "models/best_model_pipeline.joblib (Phase 2.1 M2 RFE + OLS, k=30)",
+  "scikit_learn_version": "1.9.1",
+  "prediction_interval_method": "Split Conformal Prediction (Inductive Conformal Prediction) with finite-sample order statistic quantile ceil((n+1)(1-alpha))",
+  "exact_date_boundaries": {
+    "training": {
+      "calendar_days": 512,
+      "date_range": [
+        "2011-01-01",
+        "2012-05-26"
+      ],
+      "observations": 12163
+    },
+    "calibration": {
+      "calendar_days": 110,
+      "date_range": [
+        "2012-05-27",
+        "2012-09-13"
+      ],
+      "observations": 2640
+    },
+    "test": {
+      "calendar_days": 109,
+      "date_range": [
+        "2012-09-14",
+        "2012-12-31"
+      ],
+      "observations": 2576
+    }
+  },
+  "nominal_coverage": 0.95,
+  "conformal_quantile": 302.6015,
+  "plot_window_date_range": [
+    "2012-09-14",
+    "2012-09-20"
+  ],
+  "plot_window_description": "First 7 complete calendar days of Test period (2012-09-14 to 2012-09-20, 168 hours) selected by predefined chronological rule",
+  "preprocessing_and_feature_selection_configuration": {
+    "categorical_predictors": [
+      "season",
+      "mnth",
+      "hr",
+      "weekday",
+      "weathersit"
+    ],
+    "numeric_predictors": [
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed",
+      "yr",
+      "holiday",
+      "workingday"
+    ],
+    "encoder": "OneHotEncoder(handle_unknown='ignore', drop='first')",
+    "transformed_features_dim": 53,
+    "selected_features_k": 30,
+    "estimator": "LinearRegression()"
+  },
+  "evaluation_summary": {
+    "test_mae": 97.5211,
+    "test_rmse": 133.2088,
+    "test_r2": 0.6112,
+    "empirical_coverage_raw": 0.9484,
+    "empirical_coverage_clipped": 0.9484,
+    "avg_interval_width_clipped": 513.187
+  }
+}
