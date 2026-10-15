@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --background-secondary: #F7F9FC;
+  --foreground: #17243A;
+  --foreground-body: #334155;
+  --foreground-secondary: #475569;
+  --border-color: #DFE5ED;
+  --accent-primary: #2563EB;
+  --accent-secondary: #0F766E;
+  --text-warning: #92400E;
+  --text-error: #B91C1C;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground-body);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for tables and charts */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Accessible focus ring utility */
+:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* =====================================================================
+   Academic Print & PDF Export Styles (@media print)
+   ===================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 12mm 15mm 12mm;
+  }
+
+  html, body {
+    background-color: #FFFFFF !important;
+    color: #111827 !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hide interactive or irrelevant web chrome in PDF/print */
+  header,
+  nav,
+  .print-hide,
+  button:not(.print-show),
+  [aria-label="Toggle Menu"],
+  .backdrop-blur-md {
+    display: none !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Prevent awkward page splits inside cards, tables, and charts */
+  section,
+  article,
+  .rounded-2xl,
+  .rounded-xl,
+  .card,
+  figure,
+  table,
+  tr,
+  svg {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure headings never become orphans at the bottom of a page */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    color: #0F172A !important;
+  }
+
+  /* Flatten box shadows and background gradients */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Ensure table borders and cell backgrounds print crisp and clear */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+
+  th, td {
+    border: 1px solid #CBD5E1 !important;
+    color: #1E293B !important;
+    padding: 4pt 6pt !important;
+    font-size: 8.5pt !important;
+  }
+
+  thead, th {
+    background-color: #F1F5F9 !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+  }
+
+  /* Ensure SVG charts and image plots fit nicely within A4 page width */
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Retain clear links with textual URL citations if needed */
+  a {
+    color: #1D4ED8 !important;
+    text-decoration: underline !important;
+  }
 }

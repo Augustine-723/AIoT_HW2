@@ -2,81 +2,81 @@ import { Code2, ExternalLink, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-slate-800/80 bg-slate-950 py-10 mt-auto text-slate-400">
+    <footer className="w-full border-t border-[#DFE5ED] bg-[#F7F9FC] py-10 mt-auto text-[#475569]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Research Summary */}
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-slate-100 text-sm">
+              <span className="font-bold text-[#17243A] text-sm sm:text-base">
                 AIoT HW2 研究儀表板與預測系統
               </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                 Phase 4 Deployed
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-lg">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed max-w-xl">
               本研究基於 UCI Machine Learning Repository 之 Capital Bikeshare 每小時資料集 (17,379 筆)，
               採用時間序列擴展視窗交叉驗證 (Expanding Window CV)、遞歸特徵消除 (RFE)、
               以及傳統分裂共形預測 (Split Conformal Prediction)。須注意共形預測之有限樣本邊際覆蓋保證仰賴可交換性 (Exchangeability) 假設；本每小時資料集具備時間相依性，95% 為名義目標，實證測試覆蓋率約 94.84%，條件覆蓋率因時段而異，歷史觀察結果不構成對未來時段之無條件保證。
             </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-[11px] font-mono text-slate-400">
-              <span>學號: <strong className="text-slate-300">7115093001</strong></span>
-              <span>·</span>
-              <span>實驗識別: <strong className="text-cyan-400">AIoT_HW2_PHASE3_EXP01</strong></span>
-              <span>·</span>
-              <span>選定模型: <strong className="text-indigo-300">M2 (RFE + OLS, 30 Features)</strong></span>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs font-mono text-[#334155]">
+              <span>學號: <strong className="text-[#17243A]">7115093001</strong></span>
+              <span className="text-[#94A3B8]">·</span>
+              <span>實驗識別: <strong className="text-blue-700">AIoT_HW2_PHASE3_EXP01</strong></span>
+              <span className="text-[#94A3B8]">·</span>
+              <span>選定模型: <strong className="text-teal-800">M2 (RFE + OLS, 30 Features)</strong></span>
             </div>
           </div>
 
           {/* Academic Attributions & References */}
           <div className="space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#17243A]">
               學術引用與來源
             </h4>
-            <ul className="space-y-1.5 text-xs">
+            <ul className="space-y-1.5 text-xs sm:text-sm">
               <li>
                 <a
                   href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-slate-200 flex items-center gap-1 transition-colors"
+                  className="hover:text-blue-700 flex items-center gap-1 transition-colors font-medium"
                 >
                   <span>UCI Bike Sharing Dataset</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400" />
+                  <ExternalLink className="w-3.5 h-3.5 text-[#64748B]" />
                 </a>
               </li>
               <li>
-                <span className="text-slate-400">Fanaee-T & Gama (2014)</span>
+                <span className="text-[#475569]">Fanaee-T &amp; Gama (2014)</span>
               </li>
               <li>
-                <span className="text-slate-400">Vovk et al. (2005) Conformal</span>
+                <span className="text-[#475569]">Vovk et al. (2005) Conformal</span>
               </li>
               <li>
-                <span className="text-slate-400">Angelopoulos & Bates (2021)</span>
+                <span className="text-[#475569]">Angelopoulos &amp; Bates (2021)</span>
               </li>
             </ul>
           </div>
 
           {/* Links & Repository Isolation Notice */}
           <div className="space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#17243A]">
               專案資源與隔離
             </h4>
-            <ul className="space-y-1.5 text-xs">
+            <ul className="space-y-1.5 text-xs sm:text-sm">
               <li>
                 <a
                   href="https://github.com/Augustine-723/AIoT_HW2.git"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-slate-200 flex items-center gap-1.5 transition-colors"
+                  className="hover:text-blue-700 flex items-center gap-1.5 transition-colors font-medium"
                 >
-                  <Code2 className="w-3.5 h-3.5" />
+                  <Code2 className="w-4 h-4 text-[#64748B]" />
                   <span>GitHub Repository</span>
                 </a>
               </li>
-              <li className="pt-2 text-[11px] text-slate-400 leading-tight">
-                <span className="inline-block px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 mr-1">
+              <li className="pt-2 text-xs text-[#475569] leading-normal">
+                <span className="inline-block px-1.5 py-0.5 rounded bg-slate-200/80 text-[#17243A] border border-[#CBD5E1] mr-1 font-semibold text-[11px]">
                   嚴格隔離
                 </span>
                 本專案為獨立 AIoT HW2 提交，與先前的 50 Startups 作業完全隔離，未改動任何既有專案與部署。
@@ -85,13 +85,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        <div className="pt-6 border-t border-[#DFE5ED] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B]">
           <div>
             © 2026 AIoT Course Research Dashboard. Student ID: 7115093001. All rights reserved.
           </div>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-500/80" />
-            <span>所有呈現數值皆來自凍結實驗結果 (Frozen Artifacts)，無隨機模擬假造數據。</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span className="text-[#475569]">所有呈現數值皆來自凍結實驗結果 (Frozen Artifacts)，無隨機模擬假造數據。</span>
           </div>
         </div>
       </div>

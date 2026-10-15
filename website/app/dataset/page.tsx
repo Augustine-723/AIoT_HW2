@@ -39,14 +39,14 @@ export default function DatasetPage() {
     <div className="space-y-10">
       {/* Page Header */}
       <section className="space-y-3">
-        <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-          <Database className="w-4 h-4" />
-          <span>DATASET & EXPLORATORY DATA ANALYSIS</span>
+        <div className="flex items-center gap-2 text-xs font-mono font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full w-fit">
+          <Database className="w-4 h-4 text-teal-700" />
+          <span>DATASET &amp; EXPLORATORY DATA ANALYSIS</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#17243A] tracking-tight">
           研究資料集結構、探索性分析 (EDA) 與時序劃分
         </h1>
-        <p className="text-sm text-slate-300 max-w-4xl leading-relaxed">
+        <p className="text-sm sm:text-base text-[#334155] max-w-4xl leading-relaxed">
           深入探討 Capital Bikeshare 每小時資料集之統計特徵、雙峰分佈樣態、氣候變數相關性，
           並落實嚴謹防止資料洩漏之特徵剔除機制與時序擴展劃分策略。
         </p>
@@ -54,41 +54,41 @@ export default function DatasetPage() {
 
       {/* Dataset Overview Cards */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-1">
-          <span className="text-xs text-slate-400">資料集來源</span>
-          <div className="text-lg font-bold text-white">UCI ML Repository</div>
-          <p className="text-[11px] text-slate-400">Capital Bikeshare, Washington D.C.</p>
+        <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">資料集來源</span>
+          <div className="text-lg font-bold text-[#17243A]">UCI ML Repository</div>
+          <p className="text-xs text-[#64748B]">Capital Bikeshare, Washington D.C.</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-1">
-          <span className="text-xs text-slate-400">有效觀測筆數</span>
-          <div className="text-lg font-bold text-white font-mono">17,379 筆</div>
-          <p className="text-[11px] text-slate-400">完整跨越 2011/01/01 ~ 2012/12/31</p>
+        <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">有效觀測筆數</span>
+          <div className="text-xl font-extrabold text-[#17243A] font-mono">17,379 筆</div>
+          <p className="text-xs text-[#64748B]">完整跨越 2011/01/01 ~ 2012/12/31</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-1">
-          <span className="text-xs text-slate-400">原始輸入預測因子</span>
-          <div className="text-lg font-bold text-cyan-400 font-mono">12 項可用特徵</div>
-          <p className="text-[11px] text-slate-400">涵蓋曆法、時段與正規化氣象變數</p>
+        <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">原始輸入預測因子</span>
+          <div className="text-xl font-extrabold text-blue-700 font-mono">12 項可用特徵</div>
+          <p className="text-xs text-[#64748B]">涵蓋曆法、時段與正規化氣象變數</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-1">
-          <span className="text-xs text-slate-400">缺漏小時審計</span>
-          <div className="text-lg font-bold text-amber-400 font-mono">165 小時</div>
-          <p className="text-[11px] text-slate-400">為系統連線/維護中斷，非需求為零</p>
+        <div className="p-5 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">缺漏小時審計</span>
+          <div className="text-xl font-extrabold text-amber-800 font-mono">165 小時</div>
+          <p className="text-xs text-[#64748B]">為系統連線/維護中斷，非需求為零</p>
         </div>
       </section>
 
       {/* Strict Leakage Prevention Alert */}
-      <section className="p-5 rounded-2xl border border-amber-500/30 bg-amber-950/20 text-slate-200 space-y-3">
-        <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
+      <section className="p-5 rounded-2xl border border-amber-200 bg-amber-50 text-amber-950 shadow-xs space-y-3">
+        <div className="flex items-center gap-2 text-amber-900 font-bold text-sm sm:text-base">
           <AlertTriangle className="w-5 h-5 flex-shrink-0" />
           <span>嚴格防範目標洩漏 (Target Leakage Prevention)</span>
         </div>
-        <p className="text-xs text-slate-300 leading-relaxed">
-          原始資料集中包含 <code className="px-1.5 py-0.5 rounded bg-slate-900 font-mono text-amber-300">casual</code> (臨時散客借車數) 與 <code className="px-1.5 py-0.5 rounded bg-slate-900 font-mono text-amber-300">registered</code> (註冊會員借車數)。
+        <p className="text-xs sm:text-sm text-amber-900/90 leading-relaxed">
+          原始資料集中包含 <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono text-amber-900 font-semibold">casual</code> (臨時散客借車數) 與 <code className="px-1.5 py-0.5 rounded bg-amber-100 font-mono text-amber-900 font-semibold">registered</code> (註冊會員借車數)。
           由於數學恆等式：
-          <span className="block my-2 text-center font-mono text-sm text-cyan-300 bg-slate-900/80 py-1.5 rounded-lg border border-slate-800">
+          <span className="block my-2 text-center font-mono text-sm sm:text-base text-[#17243A] bg-white py-2 rounded-lg border border-amber-200 font-bold shadow-xs">
             cnt = casual + registered
           </span>
           在實際營運與未來的任何時點，營運商在尚未結算之前<strong>絕對不可能預先得知</strong>散客與會員的分項數值。若將這兩個欄位納入模型訓練，迴歸模型將學會簡單將兩者相加，造成 R² = 1.0 的<strong>偽完美預測（Data Leakage）</strong>。本研究在進入任何特徵工程與交叉驗證前，已徹底自特徵矩陣中剔除該二變數。
@@ -98,108 +98,108 @@ export default function DatasetPage() {
       {/* Chronological Three-Split Architecture */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-indigo-400" />
+          <h2 className="text-xl sm:text-2xl font-bold text-[#17243A] flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-blue-600" />
             <span>三階段時序切分架構 (Chronological Split Boundaries)</span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs sm:text-sm text-[#475569]">
             為了杜絕未來資訊洩漏 (Data Snooping)，所有切分均以自然日期邊界為依據，嚴禁進行時序洗牌 (No Shuffling)。
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-5 rounded-2xl border border-indigo-500/30 bg-indigo-950/20 space-y-3">
+          <div className="p-5 rounded-2xl border border-blue-200 bg-blue-50/40 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300 font-mono">
                 Training Set (訓練集)
               </span>
-              <span className="text-xs font-mono text-slate-400">
+              <span className="text-xs font-mono font-semibold text-[#475569]">
                 {((trainBound.observations / totalObs) * 100).toFixed(1)}%
               </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#17243A]">
               {trainBound.observations.toLocaleString()} 筆
             </div>
-            <div className="text-xs space-y-1 text-slate-300">
+            <div className="text-xs sm:text-sm space-y-1.5 text-[#334155]">
               <div className="flex justify-between">
-                <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">{trainBound.date_range[0]} 00:00</span>
+                <span className="text-[#475569]">起始日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{trainBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">{trainBound.date_range[1]} 23:00</span>
+                <span className="text-[#475569]">截止日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{trainBound.date_range[1]} 23:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">自然天數</span>
-                <span className="font-mono">{trainBound.calendar_days} 天</span>
+                <span className="text-[#475569]">自然天數</span>
+                <span className="font-mono font-medium text-[#17243A]">{trainBound.calendar_days} 天</span>
               </div>
-              <div className="flex justify-between pt-1 border-t border-slate-800">
-                <span className="text-slate-400">主要職責</span>
-                <span className="text-indigo-300">5-Fold 擴展視窗 CV、RFE 特徵淘汰與模型擬合</span>
+              <div className="flex justify-between pt-1.5 border-t border-blue-200/60">
+                <span className="text-[#475569]">主要職責</span>
+                <span className="text-blue-800 font-medium">5-Fold 擴展視窗 CV、RFE 特徵淘汰與模型擬合</span>
               </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 space-y-3">
+          <div className="p-5 rounded-2xl border border-teal-200 bg-teal-50/40 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-mono">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-800 border border-teal-300 font-mono">
                 Calibration Set (校準集)
               </span>
-              <span className="text-xs font-mono text-slate-400">
+              <span className="text-xs font-mono font-semibold text-[#475569]">
                 {((calBound.observations / totalObs) * 100).toFixed(1)}%
               </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-white">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#17243A]">
               {calBound.observations.toLocaleString()} 筆
             </div>
-            <div className="text-xs space-y-1 text-slate-300">
+            <div className="text-xs sm:text-sm space-y-1.5 text-[#334155]">
               <div className="flex justify-between">
-                <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">{calBound.date_range[0]} 00:00</span>
+                <span className="text-[#475569]">起始日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{calBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">{calBound.date_range[1]} 23:00</span>
+                <span className="text-[#475569]">截止日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{calBound.date_range[1]} 23:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">自然天數</span>
-                <span className="font-mono">{calBound.calendar_days} 天</span>
+                <span className="text-[#475569]">自然天數</span>
+                <span className="font-mono font-medium text-[#17243A]">{calBound.calendar_days} 天</span>
               </div>
-              <div className="flex justify-between pt-1 border-t border-slate-800">
-                <span className="text-slate-400">主要職責</span>
-                <span className="text-cyan-300">共形預測非符合性分數校準 (Conformal q = 302.60)</span>
+              <div className="flex justify-between pt-1.5 border-t border-teal-200/60">
+                <span className="text-[#475569]">主要職責</span>
+                <span className="text-teal-800 font-medium">共形預測非符合性分數校準 (Conformal q = 302.60)</span>
               </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 space-y-3">
+          <div className="p-5 rounded-2xl border border-emerald-200 bg-emerald-50/40 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-mono">
                 Test Set (最終測試集)
               </span>
-              <span className="text-xs font-mono text-slate-400">
+              <span className="text-xs font-mono font-semibold text-[#475569]">
                 {((testBound.observations / totalObs) * 100).toFixed(1)}%
               </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-emerald-400">
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-900">
               {testBound.observations.toLocaleString()} 筆
             </div>
-            <div className="text-xs space-y-1 text-slate-300">
+            <div className="text-xs sm:text-sm space-y-1.5 text-[#334155]">
               <div className="flex justify-between">
-                <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">{testBound.date_range[0]} 00:00</span>
+                <span className="text-[#475569]">起始日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{testBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">{testBound.date_range[1]} 23:00</span>
+                <span className="text-[#475569]">截止日期</span>
+                <span className="font-mono font-medium text-[#17243A]">{testBound.date_range[1]} 23:00</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">自然天數</span>
-                <span className="font-mono">{testBound.calendar_days} 天</span>
+                <span className="text-[#475569]">自然天數</span>
+                <span className="font-mono font-medium text-[#17243A]">{testBound.calendar_days} 天</span>
               </div>
-              <div className="flex justify-between pt-1 border-t border-slate-800">
-                <span className="text-slate-400">主要職責</span>
-                <span className="text-emerald-300">最終鎖定之未見測試集獨立泛化評估</span>
+              <div className="flex justify-between pt-1.5 border-t border-emerald-200/60">
+                <span className="text-[#475569]">主要職責</span>
+                <span className="text-emerald-800 font-medium">最終鎖定之未見測試集獨立泛化評估</span>
               </div>
             </div>
           </div>
@@ -209,23 +209,23 @@ export default function DatasetPage() {
       {/* EDA Visualizations Grid */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <Clock className="w-5 h-5 text-indigo-400" />
+          <h2 className="text-xl sm:text-2xl font-bold text-[#17243A] flex items-center gap-2">
+            <Clock className="w-5 h-5 text-blue-600" />
             <span>探索性資料分析核心圖表 (Phase 1 EDA Visualizations)</span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs sm:text-sm text-[#475569]">
             呈現資料集內在時段規律、右偏目標分佈、氣候相關矩陣以及氣溫與需求的關聯性。
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* 1. Hourly Demand */}
-          <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-3">
+          <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">1. 時段平均需求分佈 (Hourly Demand Distribution)</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">Figure: hourly_demand.png</span>
+              <h3 className="text-base font-bold text-[#17243A]">1. 時段平均需求分佈 (Hourly Demand Distribution)</h3>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-[#475569] border border-[#DFE5ED]">Figure: hourly_demand.png</span>
             </div>
-            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-[#DFE5ED] bg-[#F8FAFC]">
               <Image
                 src="/figures/hourly_demand.png"
                 alt="Hourly Bike Sharing Demand"
@@ -234,18 +234,18 @@ export default function DatasetPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
               <strong>觀察：</strong>時段呈现極為鮮明的<strong>通勤雙峰（Bimodal Pattern）</strong>：早尖峰落在 08:00（平均需求約 360 輛），晚尖峰落在 17:00–18:00（平均需求突破 460 輛）。深夜 01:00–05:00 需求降至 10~30 輛的極低基準。此現象證明時段（hr）為整個預測模型中最重要的主導因子。
             </p>
           </div>
 
           {/* 2. Target Distribution */}
-          <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-3">
+          <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">2. 目標變數分佈 (Target Count Distribution)</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">Figure: target_distribution.png</span>
+              <h3 className="text-base font-bold text-[#17243A]">2. 目標變數分佈 (Target Count Distribution)</h3>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-[#475569] border border-[#DFE5ED]">Figure: target_distribution.png</span>
             </div>
-            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-[#DFE5ED] bg-[#F8FAFC]">
               <Image
                 src="/figures/target_distribution.png"
                 alt="Target Distribution"
@@ -254,18 +254,18 @@ export default function DatasetPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>觀察：</strong>每小時總租借量 <code className="text-cyan-400 font-mono">cnt</code> 呈現強烈<strong>右偏態分佈（Right-skewed, positive skewness）</strong>，中位數約 142 輛，且有大量低需求夜間與惡劣天候樣本，極端高值可達 977 輛。由於線性迴歸假設加性誤差，此右偏結構在極端尖峰時段容易出現預測下凹或夜間預測值偶爾小於零的現象。
+            <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
+              <strong>觀察：</strong>每小時總租借量 <code className="text-blue-700 font-mono font-semibold">cnt</code> 呈現強烈<strong>右偏態分佈（Right-skewed, positive skewness）</strong>，中位數約 142 輛，且有大量低需求夜間與惡劣天候樣本，極端高值可達 977 輛。由於線性迴歸假設加性誤差，此右偏結構在極端尖峰時段容易出現預測下凹或夜間預測值偶爾小於零的現象。
             </p>
           </div>
 
           {/* 3. Correlation Heatmap */}
-          <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-3">
+          <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">3. 特徵相關性熱圖 (Correlation Heatmap)</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">Figure: correlation_heatmap.png</span>
+              <h3 className="text-base font-bold text-[#17243A]">3. 特徵相關性熱圖 (Correlation Heatmap)</h3>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-[#475569] border border-[#DFE5ED]">Figure: correlation_heatmap.png</span>
             </div>
-            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-[#DFE5ED] bg-[#F8FAFC]">
               <Image
                 src="/figures/correlation_heatmap.png"
                 alt="Correlation Heatmap"
@@ -274,18 +274,18 @@ export default function DatasetPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>觀察：</strong>氣溫 <code className="text-cyan-400 font-mono">temp</code> 與體感溫度 <code className="text-cyan-400 font-mono">atemp</code> 呈現極高的共線性（相關係數高達 <strong>0.99</strong>），在傳統未正則化的 OLS 模型中容易造成係數方差膨脹。此外，濕度（hum）與需求呈負相關 (-0.32)，風速與天候代碼亦呈現統計抑制效果。
+            <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
+              <strong>觀察：</strong>氣溫 <code className="text-blue-700 font-mono font-semibold">temp</code> 與體感溫度 <code className="text-blue-700 font-mono font-semibold">atemp</code> 呈現極高的共線性（相關係數高達 <strong>0.99</strong>），在傳統未正則化的 OLS 模型中容易造成係數方差膨脹。此外，濕度（hum）與需求呈負相關 (-0.32)，風速與天候代碼亦呈現統計抑制效果。
             </p>
           </div>
 
           {/* 4. Temperature vs Demand */}
-          <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-3">
+          <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">4. 氣溫與租借需求關係 (Temperature vs Demand)</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">Figure: temperature_vs_demand.png</span>
+              <h3 className="text-base font-bold text-[#17243A]">4. 氣溫與租借需求關係 (Temperature vs Demand)</h3>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-[#475569] border border-[#DFE5ED]">Figure: temperature_vs_demand.png</span>
             </div>
-            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-[#DFE5ED] bg-[#F8FAFC]">
               <Image
                 src="/figures/temperature_vs_demand.png"
                 alt="Temperature vs Demand"
@@ -294,7 +294,7 @@ export default function DatasetPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
               <strong>觀察：</strong>散佈圖與擬合趨勢顯示在低溫至適溫區間（0°C ~ 25°C），需求隨氣溫升高呈現顯著正向成長；然而當氣溫過高（&gt; 35°C）時，高溫曝曬反而使部分騎乘意願趨緩，顯示氣溫影響具備輕微非線性特徵。
             </p>
           </div>
@@ -304,44 +304,46 @@ export default function DatasetPage() {
       {/* Feature Definitions Table */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <Info className="w-5 h-5 text-cyan-400" />
-            <span>特徵欄位定義清單 (Feature Dictionary & Transformation Reference)</span>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#17243A] flex items-center gap-2">
+            <Info className="w-5 h-5 text-blue-600" />
+            <span>特徵欄位定義清單 (Feature Dictionary &amp; Transformation Reference)</span>
           </h2>
-          <span className="text-xs text-slate-400 font-mono">17 Total Fields</span>
+          <span className="text-xs text-[#475569] font-mono font-semibold bg-slate-100 px-2.5 py-1 rounded border border-[#DFE5ED]">17 Total Fields</span>
         </div>
 
-        <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/40">
-          <table className="w-full text-left text-xs border-collapse">
+        <div className="overflow-x-auto rounded-2xl border border-[#DFE5ED] bg-white shadow-xs">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse">
             <thead>
-              <tr className="border-b border-slate-800 bg-slate-900/80 text-slate-400 font-mono">
-                <th className="py-3 px-4 font-semibold">特徵名稱</th>
-                <th className="py-3 px-4 font-semibold">型態</th>
-                <th className="py-3 px-4 font-semibold">角色/用途</th>
-                <th className="py-3 px-4 font-semibold">數值範圍與詳細規格說明</th>
+              <tr className="border-b border-[#DFE5ED] bg-[#F1F5F9] text-[#17243A] font-mono">
+                <th className="py-3 px-4 font-bold">特徵名稱</th>
+                <th className="py-3 px-4 font-bold">型態</th>
+                <th className="py-3 px-4 font-bold">角色/用途</th>
+                <th className="py-3 px-4 font-bold">數值範圍與詳細規格說明</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-sans">
+            <tbody className="divide-y divide-[#DFE5ED] font-sans">
               {featureDefinitions.map((feat, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="py-3 px-4 font-mono font-bold text-white">
+                <tr key={idx} className="hover:bg-blue-50/20 transition-colors">
+                  <td className="py-3 px-4 font-mono font-bold text-[#17243A]">
                     {feat.name}
                   </td>
-                  <td className="py-3 px-4 font-mono text-slate-400">
+                  <td className="py-3 px-4 font-mono text-[#475569]">
                     {feat.type}
                   </td>
                   <td className="py-3 px-4">
-                    <span className={`px-2 py-0.5 rounded text-[11px] font-mono ${
+                    <span className={`px-2 py-0.5 rounded text-[11px] font-mono font-semibold ${
                       feat.role.includes("排除")
-                        ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                        ? "bg-amber-50 text-amber-900 border border-amber-200"
                         : feat.role.includes("目標")
-                        ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
-                        : "bg-indigo-500/10 text-indigo-300 border border-indigo-500/20"
+                        ? "bg-teal-50 text-teal-800 border border-teal-200"
+                        : feat.role.includes("預測")
+                        ? "bg-blue-50 text-blue-800 border border-blue-200"
+                        : "bg-slate-100 text-[#334155] border border-[#CBD5E1]"
                     }`}>
                       {feat.role}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-slate-300 leading-relaxed">
+                  <td className="py-3 px-4 text-[#334155] leading-relaxed">
                     {feat.desc}
                   </td>
                 </tr>

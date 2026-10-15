@@ -18,6 +18,11 @@ import {
 } from "lucide-react";
 
 export default function OverviewPage() {
+  const splitBoundaries = phase3ExperimentMetadata.exact_date_boundaries;
+  const trainBound = splitBoundaries.training;
+  const calBound = splitBoundaries.calibration;
+  const testBound = splitBoundaries.test;
+
   const headlineCards = [
     {
       label: "Test MAE",
@@ -64,44 +69,41 @@ export default function OverviewPage() {
   return (
     <div className="space-y-12">
       {/* Hero Header */}
-      <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900/90 via-slate-900/40 to-slate-950 p-6 sm:p-10 shadow-2xl">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
-
+      <section className="relative overflow-hidden rounded-3xl border border-[#DFE5ED] bg-[#F7F9FC] p-6 sm:p-10 shadow-xs">
         <div className="relative space-y-6 max-w-4xl">
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="px-2.5 py-1 rounded-full font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <span className="px-3 py-1 rounded-full font-mono font-semibold bg-teal-50 text-teal-800 border border-teal-200">
               NCU AIoT 課程研究
             </span>
-            <span className="px-2.5 py-1 rounded-full font-mono bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+            <span className="px-3 py-1 rounded-full font-mono font-semibold bg-blue-50 text-blue-800 border border-blue-200">
               學號: 7115093001
             </span>
-            <span className="px-2.5 py-1 rounded-full font-mono bg-slate-800 text-slate-300 border border-slate-700">
+            <span className="px-3 py-1 rounded-full font-mono font-semibold bg-slate-100 text-[#334155] border border-[#CBD5E1]">
               EXP-ID: {phase3ExperimentMetadata.experiment_id}
             </span>
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#17243A] leading-tight">
               以多元線性迴歸與特徵選擇預測共享單車每小時租借需求
             </h1>
-            <p className="text-sm sm:text-lg text-slate-400 font-medium">
+            <p className="text-base sm:text-lg text-[#475569] font-medium">
               Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection
             </p>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#334155] leading-relaxed">
             本學術研究專案針對都市共享單車系統的資源動態調度與調度風險控制，
             採用 UCI Capital Bikeshare 歷史資料集（2011–2012 年，共 17,379 筆觀測值），
             以嚴格防止目標洩漏（Target Leakage）之特徵工程為基礎，透過時間序列擴展視窗交叉驗證
             （Expanding Window CV）評估多元線性模型，並結合遞歸特徵消除（RFE）選出最佳 30 個編碼特徵。
-            最終引入分裂共形預測（Split Conformal Prediction），在未見測試集上提供具嚴謹統計意義的 95% 名義區間不確定性量化。
+            最終引入傳統分裂共形預測（Split Conformal Prediction），在未見測試集上提供具嚴謹統計意義的 95% 名義區間不確定性量化。
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4">
             <Link
               href="/predict"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 shadow-lg shadow-indigo-600/25 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all"
             >
               <Sparkles className="w-4 h-4" />
               <span>啟動互動預測推論</span>
@@ -110,9 +112,9 @@ export default function OverviewPage() {
 
             <Link
               href="/evaluation"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/80 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-[#17243A] bg-white hover:bg-slate-50 border border-[#DFE5ED] shadow-xs transition-all"
             >
-              <LineChart className="w-4 h-4 text-cyan-400" />
+              <LineChart className="w-4 h-4 text-teal-700" />
               <span>檢視最終測試集評估</span>
             </Link>
           </div>
@@ -121,17 +123,17 @@ export default function OverviewPage() {
 
       {/* Authoritative Headline Metrics Grid */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <Activity className="w-5 h-5 text-indigo-400" />
+            <h2 className="text-xl sm:text-2xl font-bold text-[#17243A] flex items-center gap-2">
+              <Activity className="w-5 h-5 text-blue-600" />
               <span>權威凍結實驗指標 (Authoritative Headline Metrics)</span>
             </h2>
-            <p className="text-xs text-slate-400">
-              直接讀取自 Phase 3 凍結之成果檔案 (final_test_metrics.json & prediction_interval_metrics.json)
+            <p className="text-xs sm:text-sm text-[#475569]">
+              直接讀取自 Phase 3 凍結之成果檔案 (final_test_metrics.json &amp; prediction_interval_metrics.json)
             </p>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">
+          <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-[#F7F9FC] border border-[#DFE5ED] text-[#475569] self-start sm:self-auto">
             {phase3ExperimentMetadata.experiment_id}
           </span>
         </div>
@@ -142,25 +144,25 @@ export default function OverviewPage() {
               key={idx}
               className={`p-5 rounded-2xl border transition-all ${
                 card.highlight
-                  ? "bg-gradient-to-br from-indigo-950/40 via-slate-900/60 to-slate-900/40 border-indigo-500/40 shadow-lg shadow-indigo-950/30"
-                  : "bg-slate-900/50 border-slate-800 hover:border-slate-700"
+                  ? "bg-blue-50/50 border-blue-200 shadow-xs"
+                  : "bg-white border-[#DFE5ED] shadow-xs hover:border-slate-300"
               }`}
             >
               <div className="flex items-baseline justify-between mb-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">
                   {card.label}
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-[11px] text-[#64748B] font-mono">
                   {card.unit}
                 </span>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white my-1 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#17243A] my-1 font-mono">
                 {card.value}
               </div>
-              <div className="text-xs font-medium text-indigo-300 mb-2">
+              <div className="text-xs font-bold text-blue-700 mb-2">
                 {card.sublabel}
               </div>
-              <p className="text-[11px] text-slate-400 leading-tight">
+              <p className="text-xs text-[#475569] leading-relaxed">
                 {card.desc}
               </p>
             </div>
@@ -171,39 +173,39 @@ export default function OverviewPage() {
       {/* Dataset & Model Specification Summary Cards */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Research Dataset Spec */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-4">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+        <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-4">
+          <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-700">
             <Database className="w-5 h-5" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white">研究資料集架構</h3>
-            <p className="text-xs text-slate-400">UCI Bike Sharing Dataset (Hourly)</p>
+            <h3 className="text-lg font-bold text-[#17243A]">研究資料集架構</h3>
+            <p className="text-xs text-[#475569]">UCI Bike Sharing Dataset (Hourly)</p>
           </div>
-          <ul className="space-y-2 text-xs text-slate-300">
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">總歷史觀測筆數</span>
-              <strong className="font-mono text-white">{datasetMetadata.number_of_rows.toLocaleString()} 筆</strong>
+          <ul className="space-y-2 text-xs sm:text-sm text-[#334155]">
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">總歷史觀測筆數</span>
+              <strong className="font-mono text-[#17243A]">{datasetMetadata.number_of_rows.toLocaleString()} 筆</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">原始輸入預測變數</span>
-              <strong className="font-mono text-white">12 個 (12 Predictors)</strong>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">原始輸入預測變數</span>
+              <strong className="font-mono text-[#17243A]">12 個 (12 Predictors)</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">預測目標變數</span>
-              <strong className="font-mono text-cyan-400">cnt (每小時總租借量)</strong>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">預測目標變數</span>
+              <strong className="font-mono text-teal-800">cnt (每小時總租借量)</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">防範目標洩漏排除變數</span>
-              <span className="font-mono text-amber-400">casual, registered</span>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">防範目標洩漏排除變數</span>
+              <span className="font-mono text-amber-800 font-semibold">casual, registered</span>
             </li>
-            <li className="flex justify-between py-1">
-              <span className="text-slate-400">跨年度時間跨度</span>
-              <span className="font-mono text-slate-300">2011-01-01 至 2012-12-31</span>
+            <li className="flex justify-between py-1.5">
+              <span className="text-[#475569]">跨年度時間跨度</span>
+              <span className="font-mono text-[#334155]">2011-01-01 至 2012-12-31</span>
             </li>
           </ul>
           <Link
             href="/dataset"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-cyan-400 hover:text-cyan-300 transition-colors pt-2"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors pt-2"
           >
             <span>檢視資料集特徵與 EDA 分析</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -211,39 +213,39 @@ export default function OverviewPage() {
         </div>
 
         {/* Selected Model Spec */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-4">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+        <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-4">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
             <Sliders className="w-5 h-5" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white">選定最佳模型架構</h3>
-            <p className="text-xs text-slate-400">M2 — RFE + OLS (最優泛化模型)</p>
+            <h3 className="text-lg font-bold text-[#17243A]">選定最佳模型架構</h3>
+            <p className="text-xs text-[#475569]">M2 — RFE + OLS (最優泛化模型)</p>
           </div>
-          <ul className="space-y-2 text-xs text-slate-300">
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">模型識別名稱</span>
-              <strong className="font-mono text-indigo-300">{bestModelMetadata.chosen_model.model_name}</strong>
+          <ul className="space-y-2 text-xs sm:text-sm text-[#334155]">
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">模型識別名稱</span>
+              <strong className="font-mono text-blue-700">{bestModelMetadata.chosen_model.model_name}</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">RFE 篩選編碼特徵數</span>
-              <strong className="font-mono text-white">{bestModelMetadata.chosen_model.selected_encoded_feature_count} / 48 (剔除 18 冗餘特徵)</strong>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">RFE 篩選編碼特徵數</span>
+              <strong className="font-mono text-[#17243A]">{bestModelMetadata.chosen_model.selected_encoded_feature_count} / 48 (剔除 18 特徵)</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">5-Fold CV 平均 RMSE</span>
-              <strong className="font-mono text-white">{bestModelMetadata.chosen_model.cv_performance.cv_rmse_mean.toFixed(4)}</strong>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">5-Fold CV 平均 RMSE</span>
+              <strong className="font-mono text-[#17243A]">{bestModelMetadata.chosen_model.cv_performance.cv_rmse_mean.toFixed(4)}</strong>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">CV RMSE 樣本標準差</span>
-              <span className="font-mono text-slate-300">{bestModelMetadata.chosen_model.cv_performance.cv_rmse_std.toFixed(4)} (ddof=1)</span>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">CV RMSE 樣本標準差</span>
+              <span className="font-mono text-[#334155]">{bestModelMetadata.chosen_model.cv_performance.cv_rmse_std.toFixed(4)} (ddof=1)</span>
             </li>
-            <li className="flex justify-between py-1">
-              <span className="text-slate-400">數值推論精確度</span>
-              <span className="font-mono text-emerald-400">&lt; 2.27 × 10⁻¹³ (浮點全等)</span>
+            <li className="flex justify-between py-1.5">
+              <span className="text-[#475569]">數值推論精確度</span>
+              <span className="font-mono text-emerald-700 font-semibold">&lt; 2.27 × 10⁻¹³ (全等)</span>
             </li>
           </ul>
           <Link
             href="/models"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors pt-2"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors pt-2"
           >
             <span>檢視 4 大候選模型比較與消融實驗</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -251,40 +253,40 @@ export default function OverviewPage() {
         </div>
 
         {/* Chronological Partitioning */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 space-y-4">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+        <div className="p-6 rounded-2xl border border-[#DFE5ED] bg-white shadow-xs space-y-4">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
             <Calendar className="w-5 h-5" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-bold text-white">嚴謹時序三階段切分</h3>
-            <p className="text-xs text-slate-400">無未來資訊洩漏之標準劃分</p>
+            <h3 className="text-lg font-bold text-[#17243A]">嚴謹時序三階段切分</h3>
+            <p className="text-xs text-[#475569]">無未來資訊洩漏之標準劃分</p>
           </div>
-          <ul className="space-y-2 text-xs text-slate-300">
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">訓練集 (Training Set)</span>
+          <ul className="space-y-2 text-xs sm:text-sm text-[#334155]">
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">訓練集 (Training Set)</span>
               <div className="text-right">
-                <span className="font-mono text-white">12,163 筆</span>
-                <div className="text-[10px] text-slate-400">2011/01/01 ~ 2012/05/25</div>
+                <span className="font-mono font-bold text-[#17243A]">{trainBound.observations.toLocaleString()} 筆</span>
+                <div className="text-[11px] text-[#64748B]">{trainBound.date_range[0]} ~ {trainBound.date_range[1]}</div>
               </div>
             </li>
-            <li className="flex justify-between py-1 border-b border-slate-800/60">
-              <span className="text-slate-400">校準集 (Calibration Set)</span>
+            <li className="flex justify-between py-1.5 border-b border-[#DFE5ED]">
+              <span className="text-[#475569]">校準集 (Calibration Set)</span>
               <div className="text-right">
-                <span className="font-mono text-white">2,640 筆</span>
-                <div className="text-[10px] text-slate-400">2012/05/26 ~ 2012/09/13</div>
+                <span className="font-mono font-bold text-[#17243A]">{calBound.observations.toLocaleString()} 筆</span>
+                <div className="text-[11px] text-[#64748B]">{calBound.date_range[0]} ~ {calBound.date_range[1]}</div>
               </div>
             </li>
-            <li className="flex justify-between py-1">
-              <span className="text-slate-400">最終測試集 (Test Set)</span>
+            <li className="flex justify-between py-1.5">
+              <span className="text-[#475569]">最終測試集 (Test Set)</span>
               <div className="text-right">
-                <span className="font-mono text-emerald-400 font-semibold">2,576 筆</span>
-                <div className="text-[10px] text-slate-400">2012/09/14 ~ 2012/12/31</div>
+                <span className="font-mono text-emerald-800 font-bold">{testBound.observations.toLocaleString()} 筆</span>
+                <div className="text-[11px] text-[#64748B]">{testBound.date_range[0]} ~ {testBound.date_range[1]}</div>
               </div>
             </li>
           </ul>
           <Link
             href="/evaluation"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors pt-2"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors pt-2"
           >
             <span>檢視共形預測區間與時序覆蓋分析</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -293,12 +295,12 @@ export default function OverviewPage() {
       </section>
 
       {/* Critical Scientific Disclaimer */}
-      <section className="p-5 rounded-2xl border border-amber-500/30 bg-amber-950/20 text-slate-300 space-y-2">
-        <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold">
-          <ShieldAlert className="w-4 h-4" />
+      <section className="p-5 rounded-2xl border border-amber-200 bg-amber-50 text-amber-950 shadow-xs space-y-2">
+        <div className="flex items-center gap-2 text-amber-900 text-sm font-bold">
+          <ShieldAlert className="w-4 h-4 flex-shrink-0" />
           <span>研究方法論重要限制與統計假設說明</span>
         </div>
-        <p className="text-xs text-slate-400 leading-relaxed">
+        <p className="text-xs sm:text-sm text-amber-900/90 leading-relaxed">
           1. <strong>歷史回歸本質：</strong>本系統基於 2011–2012 年之歷史資料進行條件需求推估，非即時感測資料流，且氣象輸入為正規化後之氣溫、體感溫度、濕度與風速，不可視為即時氣象預報。<br />
           2. <strong>共形保證前提：</strong>傳統分裂共形預測 (Split Conformal Prediction) 所提供之有限樣本邊際覆蓋率保證嚴格仰賴校準集與測試集之可交換性 (Exchangeability) 假設；本每小時資料集具備顯著之時間相依性與自相關性，因此 95% 為名義覆蓋目標 (Nominal Target)，實證測試集觀察值約為 94.84%，且條件覆蓋率因時段而異（如 08:00、17:00 等上下班通勤尖峰時段覆蓋率下滑），歷史觀察結果不構成對未來時間區段之無條件保證。
         </p>
@@ -306,79 +308,79 @@ export default function OverviewPage() {
 
       {/* Quick Navigation Cards */}
       <section className="space-y-4">
-        <h2 className="text-lg font-bold text-white">研究導覽模組 (Research Navigation Modules)</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#17243A]">研究導覽模組 (Research Navigation Modules)</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Link
             href="/dataset"
-            className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 hover:bg-slate-900/70 hover:border-slate-700 transition-all group"
+            className="p-5 rounded-xl border border-[#DFE5ED] bg-white hover:bg-slate-50/80 hover:border-blue-300 transition-all group shadow-xs hover:shadow-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
+              <span className="text-base font-bold text-[#17243A] group-hover:text-blue-700 transition-colors">
                 1. 資料集與 EDA
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-[#64748B] group-hover:text-blue-700 group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               探索 17,379 筆觀測值特徵分佈、時段雙峰現象、相關性熱圖、氣溫影響及 165 筆缺漏小時審計。
             </p>
           </Link>
 
           <Link
             href="/models"
-            className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 hover:bg-slate-900/70 hover:border-slate-700 transition-all group"
+            className="p-5 rounded-xl border border-[#DFE5ED] bg-white hover:bg-slate-50/80 hover:border-blue-300 transition-all group shadow-xs hover:shadow-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors">
+              <span className="text-base font-bold text-[#17243A] group-hover:text-blue-700 transition-colors">
                 2. 模型比較與特徵消融
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-[#64748B] group-hover:text-blue-700 group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               比較 M1 (OLS)、M2 (RFE+OLS)、M3 (Ridge)、M4 (Lasso) 在擴展視窗 CV 下的穩定度與群組消融分析。
             </p>
           </Link>
 
           <Link
             href="/evaluation"
-            className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 hover:bg-slate-900/70 hover:border-slate-700 transition-all group"
+            className="p-5 rounded-xl border border-[#DFE5ED] bg-white hover:bg-slate-50/80 hover:border-blue-300 transition-all group shadow-xs hover:shadow-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+              <span className="text-base font-bold text-[#17243A] group-hover:text-blue-700 transition-colors">
                 3. 最終測試集評估
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-[#64748B] group-hover:text-blue-700 group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               互動式實際值 vs 預測值散佈圖、7 天共形區間時序軸、殘差分佈與 24 小時覆蓋率全幅診斷。
             </p>
           </Link>
 
           <Link
             href="/predict"
-            className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 hover:bg-slate-900/70 hover:border-slate-700 transition-all group"
+            className="p-5 rounded-xl border border-[#DFE5ED] bg-white hover:bg-slate-50/80 hover:border-blue-300 transition-all group shadow-xs hover:shadow-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
+              <span className="text-base font-bold text-[#17243A] group-hover:text-blue-700 transition-colors">
                 4. 互動式模型預測引擎
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-[#64748B] group-hover:text-blue-700 group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               以真實 M2 權重與校準分位數進行 12 項特徵即時推論，提供連續值、非負截斷與 95% 預測區間。
             </p>
           </Link>
 
           <Link
             href="/methodology"
-            className="p-5 rounded-xl border border-slate-800 bg-slate-900/30 hover:bg-slate-900/70 hover:border-slate-700 transition-all group sm:col-span-2 lg:col-span-2"
+            className="p-5 rounded-xl border border-[#DFE5ED] bg-white hover:bg-slate-50/80 hover:border-blue-300 transition-all group sm:col-span-2 lg:col-span-2 shadow-xs hover:shadow-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors">
+              <span className="text-base font-bold text-[#17243A] group-hover:text-blue-700 transition-colors">
                 5. 完整 CRISP-DM 研究方法論
               </span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-[#64748B] group-hover:text-blue-700 group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
               詳解業務理解、資料準備（防洩漏與單熱編碼）、時序擴展視窗 CV、RFE 特徵淘汰機制、分裂共形數學校準、交換性前提與論文參考文獻。
             </p>
           </Link>
