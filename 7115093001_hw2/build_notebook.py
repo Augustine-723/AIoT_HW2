@@ -1143,8 +1143,8 @@ print("✓ 模型完整性與數值重現性檢核全數通過！")"""))
 cells.append(new_markdown_cell("""### 15. 分拆共形預測區間校準 (Phase 3 Step 2 — Split Conformal Calibration)
 #### 共形預測數學原理 (Conformal Prediction Framework)
 傳統線性迴歸的信心區間通常依賴強烈之**常態同質誤差假設（Normal Homoscedastic Errors）**，在智慧城市真實高波動物聯網資料中經常失效。  
-**分拆共形預測 (Split Conformal Prediction)** 是一種**非參數、模型無關（Model-Agnostic）且具備有限樣本無偏覆蓋保證**的不確定性量化方法：
-1. **校準殘差分數 (Nonconformity Score):**  
+**分拆共形預測 (Split Conformal Prediction / Inductive Conformal Prediction)** 是一種**非參數、模型無關（Model-Agnostic）且在有限樣本下控制邊際錯誤率**的不確定性量化方法：
+1. **校準非整合度分數 (Nonconformity Score):**  
    使用完全未參與模型訓練的**校準集（Calibration Set, $n = 2640$ 筆）**，計算各樣本預測之絕對殘差：
    $$s_i = |y_i - \\hat{y}_i|, \\quad i = 1, \\dots, n$$
 2. **有限樣本次序統計量分位數 (Finite-Sample Conformal Quantile):**  
@@ -1152,15 +1152,20 @@ cells.append(new_markdown_cell("""### 15. 分拆共形預測區間校準 (Phase 
    $$k^* = \\left\\lceil (n + 1)(1 - \\alpha) \\right\\rceil$$
    $$q = s_{(k^*)}$$
    在 $n = 2640, \\alpha = 0.05$ 下，$(n + 1)(1 - \\alpha) = 2641 \\times 0.95 = 2508.95$，其向上取整階數為 $k^* = 2509$。
-3. **預測區間建構 (Prediction Interval):**  
-   - **原始對稱區間 (Raw Interval):**
+3. **對稱原始區間與非對稱非負截斷區間 (Interval Symmetry & Clipping):**  
+   - **原始對稱區間 (Symmetric Raw Interval):**
      $$C_{\\text{raw}}(x) = \\left[ \\hat{y}(x) - q, \\; \\hat{y}(x) + q \\right]$$
-   - **非負計數截斷區間 (Clipped Interval):**  
-     由於自行車租借量為非負整數（$y \\ge 0$），下界若為負值在業務領域無物理意義，故定義截斷區間：
+     因採用絕對殘差分數 $s_i = |y_i - \\hat{y}_i|$，原始預測區間以點預測值 $\\hat{y}(x)$ 為中心**嚴格對稱**，總區間寬度恆為 $2q$。
+   - **非負計數截斷非對稱區間 (Asymmetric Clipped Interval):**  
+     由於自行車租借量本質為非負整數（$y \\ge 0$），下界若小於 0 在現實業務上無物理意義，故依領域知識定義非負截斷區間：
      $$C_{\\text{clipped}}(x) = \\left[ \\max(0, \\hat{y}(x) - q), \\; \\hat{y}(x) + q \\right]$$
+     當 $\\hat{y}(x) < q$ 時（在測試集中佔比高達 72.17%），下界被截斷在 0，使展示區間相對於點預測值呈現**非對稱形態**。
 
 > [!IMPORTANT]
-> **固定臨界值守則:** 共形臨界值 $q$ 一旦在校準集確定後即永久固定，**嚴禁使用測試集殘差調整分位數或區間寬度**。"""))
+> **統計假設與名義覆蓋率宣稱守則:**
+> 1. **可交換性假設 (Exchangeability Assumption):** 標準分拆共形預測之有限樣本邊際覆蓋保證（$\\mathbb{P}(Y_{n+1} \\in C(X_{n+1})) \\ge 1 - \\alpha$）嚴格要求樣本間具備可交換性（如 i.i.d.）。然而每小時自行車租借需求具備顯著的時間序列自相關、日週期與逐年規模成長趨勢，資料不完全符合可交換性。
+> 2. **名義目標定位:** 95% 應嚴謹視為**名義目標覆蓋率（Nominal Target Coverage）**，而測試集實證結果應客觀報告為**經驗覆蓋率（Empirical Coverage）**，不作無條件保證之宣稱。
+> 3. **固定臨界值守則:** 共形臨界值 $q$ 一旦在校準集確定後即永久固定，**嚴禁使用測試集殘差事後調整分位數或區間寬度**。"""))
 
 cells.append(new_code_cell("""# 在校準集上計算絕對殘差並決定共形臨界值
 calib_preds = loaded_pipeline.predict(X_calib)
@@ -1176,9 +1181,9 @@ sorted_residuals = np.sort(calib_residuals)
 conformal_quantile = float(sorted_residuals[k_star - 1])  # Python 0-indexed
 
 print(f"校準集樣本總數 (n):             {n_calib} 筆 ({calib_data['dteday'].min()} 至 {calib_data['dteday'].max()})")
-print(f"目標標稱涵蓋率 (1 - alpha):      {nominal_coverage * 100:.1f}% (alpha = {alpha:.2f})")
+print(f"名義目標涵蓋率 (1 - alpha):      {nominal_coverage * 100:.1f}% (alpha = {alpha:.2f})")
 print(f"理論次序統計階數 rank (k*):      {k_star} / {n_calib}")
-print(f"95% 標稱分拆共形臨界值 q:        {conformal_quantile:.4f} 輛")
+print(f"95% 名義分拆共形臨界值 q:        {conformal_quantile:.4f} 輛")
 
 # 匯出校準分數表
 calib_scores_df = pd.DataFrame({
@@ -1198,7 +1203,7 @@ cells.append(new_markdown_cell("""### 16. 最終測試集單次泛化評估 (Pha
 測試集涵蓋 **2012-09-14 至 2012-12-31（109 天，共 2,576 筆觀測值）**。在全專案生命週期中，測試集**僅在此刻進行唯一一次推論與評估**，絕不根據測試結果回頭微調特徵、模型或共形臨界值。
 
 #### 點預測與預測區間評估維度
-1. **點預測準確度:** 評估 MAE, MSE, RMSE, $R^2$，並與訓練集、時序交叉驗證及常數均值基準（`DummyRegressor`）進行嚴格對比。
+1. **點預測準確度:** 評估 MAE, MSE, RMSE, $R^2$，並與訓練集（M2 Training）、時序交叉驗證及常數均值基準（`DummyRegressor`）進行嚴格對比。
 2. **經驗涵蓋率 (Empirical Coverage):**  
    $$\\text{Coverage} = \\frac{1}{n_{\\text{test}}} \\sum_{i=1}^{n_{\\text{test}}} \\mathbb{I}\\left( y_i \\in C(x_i) \\right)$$
 3. **區間緊湊度與非負截斷:** 計算原始與截斷區間之平均與中位數寬度，統計點預測小於 0 與原始區間下界小於 0 之比例。"""))
@@ -1245,17 +1250,17 @@ neg_lower_raw_rate = float(np.mean(pi_lower_raw < 0))
 print("=== 最終測試集點預測評估指標 (Test Set Metrics) ===")
 print(f"Test MAE:   {test_mae:.4f} 輛")
 print(f"Test MSE:   {test_mse:.4f} 輛²")
-print(f"Test RMSE:  {test_rmse:.4f} 輛 (訓練集 RMSE: 86.19 輛 | 5-Fold CV Mean RMSE: 107.44 輛)")
-print(f"Test R²:    {test_r2:.4f} (5-Fold CV Mean R²: 0.4767)")
+print(f"Test RMSE:  {test_rmse:.4f} 輛 (M2 訓練集 RMSE: 86.1871 輛 | 5-Fold CV Mean RMSE: 107.4394 輛)")
+print(f"Test R²:    {test_r2:.4f} (M2 訓練集 R²: 0.6809 | 5-Fold CV Mean R²: 0.4767)")
 print(f"Dummy RMSE: {dummy_test_rmse:.4f} 輛 (模型表現顯著優於常數均值預測)")
 
-print("\\n=== 分拆共形預測區間評估結果 (95% Nominal Target) ===")
-print(f"原始區間經驗涵蓋率 (Raw Coverage):     {empirical_coverage_raw * 100:.2f}% ({np.sum(covered_raw)} / {len(y_test)})")
-print(f"截斷區間經驗涵蓋率 (Clipped Coverage): {empirical_coverage_clipped * 100:.2f}% ({np.sum(covered_clipped)} / {len(y_test)})")
-print(f"原始區間平均寬度:                     {avg_width_raw:.2f} 輛 (中位數: {med_width_raw:.2f} 輛)")
-print(f"截斷非負平均寬度:                     {avg_width_clipped:.2f} 輛 (中位數: {med_width_clipped:.2f} 輛)")
-print(f"點預測小於 0 之樣本數:                {neg_preds_count} 筆 ({neg_preds_rate * 100:.2f}%)")
-print(f"原始下界小於 0 之樣本數:              {neg_lower_raw_count} 筆 ({neg_lower_raw_rate * 100:.2f}%)")
+print(f"\\n=== 分拆共形預測區間評估結果 ({nominal_coverage*100:.1f}% Nominal Target) ===")
+print(f"原始對稱區間經驗涵蓋率 (Raw Coverage):     {empirical_coverage_raw * 100:.2f}% ({np.sum(covered_raw)} / {len(y_test)})")
+print(f"截斷非對稱區間經驗涵蓋率 (Clipped Coverage): {empirical_coverage_clipped * 100:.2f}% ({np.sum(covered_clipped)} / {len(y_test)})")
+print(f"原始對稱區間平均寬度:                     {avg_width_raw:.4f} 輛 (中位數: {med_width_raw:.4f} 輛)")
+print(f"截斷非負平均寬度:                         {avg_width_clipped:.4f} 輛 (中位數: {med_width_clipped:.4f} 輛)")
+print(f"點預測小於 0 之樣本數:                    {neg_preds_count} 筆 ({neg_preds_rate * 100:.2f}%)")
+print(f"原始下界小於 0 之樣本數:                  {neg_lower_raw_count} 筆 ({neg_lower_raw_rate * 100:.2f}%)")
 
 # 匯出詳細測試集預測明細表
 test_predictions_df = pd.DataFrame({
@@ -1273,6 +1278,12 @@ test_predictions_df = pd.DataFrame({
 })
 test_predictions_df.to_csv(os.path.join(RESULTS_DIR, "test_predictions.csv"), index=False)
 
+# 計算逐時經驗涵蓋率診斷
+test_eval_diag = test_data.copy()
+test_eval_diag['covered'] = covered_clipped
+hourly_diag = test_eval_diag.groupby('hr')['covered'].agg(['mean', 'count']).reset_index()
+hourly_diag.columns = ['hr', 'empirical_coverage', 'sample_count']
+
 # 儲存機器可讀結果
 final_test_metrics = {
     "experiment_id": "AIoT_HW2_PHASE3_EXP01",
@@ -1287,6 +1298,7 @@ final_test_metrics = {
     "training_and_cv_reference_metrics": {
         "training_rmse": 86.1871,
         "training_mae": 63.8103,
+        "training_mse": 7428.2163,
         "training_r2": 0.6809,
         "cv_rmse_mean": 107.4394,
         "cv_rmse_std": 16.5259,
@@ -1313,14 +1325,24 @@ prediction_interval_metrics = {
     "median_interval_width_clipped": round(med_width_clipped, 4),
     "negative_prediction_rate": round(neg_preds_rate, 6),
     "lower_bound_clipping_rate": round(neg_lower_raw_rate, 6),
+    "raw_interval_symmetry": "Symmetric around point prediction [pred - q, pred + q] due to absolute residual conformity scores",
+    "clipped_interval_symmetry": "Asymmetric around point prediction due to lower-bound non-negative clipping [max(0, pred - q), pred + q]",
     "calibration_date_range": [str(calib_data['dteday'].min()), str(calib_data['dteday'].max())],
     "test_date_range": [str(test_data['dteday'].min()), str(test_data['dteday'].max())],
+    "hourly_coverage_commuting_peaks_diagnostic": {
+        "hr_08_am_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==8, 'empirical_coverage'].values[0]), 4),
+        "hr_17_pm_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==17, 'empirical_coverage'].values[0]), 4),
+        "hr_18_pm_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==18, 'empirical_coverage'].values[0]), 4),
+        "interpretation": "Commuting peaks exhibit lower coverage because demand volatility surges during rush hours, while off-peak hours reach near 100% coverage."
+    },
     "assumptions_and_temporal_dependence_limitations": (
         "Standard split conformal prediction guarantees finite-sample marginal validity under the assumption that calibration "
         "and test samples are exchangeable (e.g. i.i.d.). Because hourly bike rental counts exhibit strong autocorrelation, "
         "diurnal commuting periodicity, and seasonal non-stationarity over the 2011-2012 expanding horizon, exchangeability "
         "is violated. Consequently, the 95% target functions as a nominal coverage goal. Empirical coverage on the unobserved "
-        "Test period achieves 94.84%, demonstrating robust empirical reliability despite temporal drift."
+        f"Test period achieves {empirical_coverage_clipped * 100:.2f}% ({int(np.sum(covered_clipped))}/{len(y_test)}), "
+        "demonstrating robust empirical reliability despite temporal drift. Furthermore, marginal coverage does not guarantee "
+        "conditional coverage for each individual hour, as peak commuting hours exhibit lower coverage due to heightened demand volatility."
     )
 }
 
@@ -1337,7 +1359,7 @@ cells.append(new_markdown_cell("""### 17. 測試集視覺化剖析 (Phase 3 Step
 1. **圖 A (Actual vs. Predicted):** 測試集實際需求與預測散佈圖及 $y=x$ 理想基準線。
 2. **圖 B (Time-Series Prediction Interval):** 依客觀預設規則選取測試期前 7 個完整日曆天（2012-09-14 至 2012-09-20，共 168 小時），展示真實值、點預測與 95% 共形陰影帶。
 3. **圖 C (Residual Analysis):** 殘差對配適值散佈圖與殘差機率密度分佈直方圖。
-4. **圖 D (Hourly Coverage Diagnostic):** 各小時時段（0~23）之經驗涵蓋率診斷長條圖（附 95% 標稱參考線）。"""))
+4. **圖 D (Hourly Coverage Diagnostic - Full 0–100% Scale):** 各小時時段（0~23）之經驗涵蓋率診斷長條圖，完整呈現 0~100% 範圍，清晰標註通勤尖峰覆蓋率下降之現象（附 95% 名義參考線）。"""))
 
 cells.append(new_code_cell("""# 1. Figure A: Actual vs Predicted
 fig_a, ax_a = plt.subplots(figsize=(7.5, 7.5), dpi=300)
@@ -1411,29 +1433,36 @@ fig_c.tight_layout()
 fig_c.savefig(os.path.join(FIGURES_DIR, "residual_analysis.png"), dpi=300)
 plt.show()
 
-# 4. Figure D: Diagnostic - Hourly Empirical Coverage
-test_eval_diag = test_data.copy()
-test_eval_diag['covered'] = covered_clipped
-hourly_diag = test_eval_diag.groupby('hr')['covered'].agg(['mean', 'count']).reset_index()
-hourly_diag.columns = ['hr', 'empirical_coverage', 'sample_count']
+# 4. Figure D: Diagnostic - Hourly Empirical Coverage (Full 0–100% Scale)
+from matplotlib.patches import Patch
 
-fig_d, ax_d = plt.subplots(figsize=(10, 5), dpi=300)
+fig_d, ax_d = plt.subplots(figsize=(11, 5.5), dpi=300)
 hours = hourly_diag['hr']
 cov_pct = hourly_diag['empirical_coverage'] * 100.0
 
-ax_d.bar(hours, cov_pct, color='#5b92e5', alpha=0.85, edgecolor='black', width=0.65, label='Hourly Empirical Coverage')
+bar_colors = ['#d95f02' if h in [8, 17, 18] else '#3470a3' for h in hours]
+bars = ax_d.bar(hours, cov_pct, color=bar_colors, alpha=0.85, edgecolor='black', width=0.65)
 ax_d.axhline(95.0, color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
-ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day\\n(Marginal coverage guarantee applies overall; hourly breakdown is diagnostic)",
+
+legend_elements = [
+    Patch(facecolor='#3470a3', edgecolor='black', alpha=0.85, label='Hourly Empirical Coverage'),
+    Patch(facecolor='#d95f02', edgecolor='black', alpha=0.85, label='Commuting Peaks (08:00: 64.5%, 17:00: 75.0%, 18:00: 80.6%)'),
+    plt.Line2D([0], [0], color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
+]
+
+ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day (Full 0–100% Scale)\\n(Marginal 95% target does not imply conditional hourly coverage; peak commuting hours exhibit lower coverage)",
                fontsize=12, fontweight='bold', pad=12)
 ax_d.set_xlabel("Hour of Day (0–23)", fontsize=10.5, labelpad=8)
 ax_d.set_ylabel("Empirical Coverage (%)", fontsize=10.5, labelpad=8)
 ax_d.set_xticks(range(24))
-ax_d.set_ylim(80, 102)
-ax_d.legend(loc='lower right', frameon=True, facecolor='white', fontsize=10)
+ax_d.set_ylim(0, 115)
+ax_d.legend(handles=legend_elements, loc='lower right', frameon=True, facecolor='white', fontsize=9.5)
 ax_d.grid(True, axis='y', linestyle='--', alpha=0.6)
 
 for h, cp in zip(hours, cov_pct):
-    ax_d.text(h, cp + 0.6, f"{cp:.1f}%", ha='center', va='bottom', fontsize=7.5, rotation=90)
+    fw = 'bold' if h in [8, 17, 18] else 'normal'
+    color = '#b33000' if h in [8, 17, 18] else '#222222'
+    ax_d.text(h, cp + 1.8, f"{cp:.1f}%", ha='center', va='bottom', fontsize=8, rotation=90, fontweight=fw, color=color)
 
 fig_d.tight_layout()
 fig_d.savefig(os.path.join(FIGURES_DIR, "interval_coverage_by_hour.png"), dpi=300)
@@ -1444,18 +1473,31 @@ plt.show()"""))
 # ==============================================================================
 cells.append(new_markdown_cell("""### 18. Phase 3 研究總結、統計限制與後續展望 (Research Findings, Limitations & Next Steps)
 #### 核心實證發現摘要 (Summary of Empirical Findings)
-1. **點預測泛化表現:** M2 模型在完全未觀測之測試集（2012-09-14 至 2012-12-31）上取得 **RMSE = 133.21 輛**、**MAE = 97.52 輛** 與 **$R^2 = 0.6112$**。雖然測試 RMSE 高於時序交叉驗證平均（107.44 輛），但判定係數 $R^2$ 自 0.4767 提升至 0.6112，且顯著優於常數均值基準模型（Dummy RMSE = 226.12 輛），證明模型捕捉到了整體季節規律與系統成長趨勢。
-2. **共形預測區間可靠性:** 在 95% 標稱目標下，校準集求得臨界值 $q = 302.60$ 輛。在測試集上實現了高達 **94.84% 之經驗涵蓋率**（僅距理論標稱差距 0.16%），展現分拆共形預測在面對真實世界時序擾動時的強大適應性。
-3. **非負截斷之實務效益:** 透過將區間下界截斷於 0（$\\max(0, \\hat{y} - q)$），在不損失任何實際涵蓋率的前提下，成功將平均區間寬度由 605.20 輛大幅縮窄至 **513.19 輛**（縮窄約 15.2%），大幅提升智慧城市運維調度之實用性。
+1. **點預測泛化表現 (Test vs Benchmarks):**  
+   M2 模型（RFE + OLS, $k=30$）在完全未觀測之測試集（2012-09-14 至 2012-12-31，共 2,576 筆）上取得：
+   - **MAE:** 97.5211 輛
+   - **MSE:** 17744.5877 輛$^2$
+   - **RMSE:** 133.2088 輛（相對於 M2 訓練集 RMSE 86.1871 輛、5-Fold CV Mean RMSE 107.4394 輛）
+   - **$R^2$ 判定係數:** 0.6112（高於 5-Fold CV 平均之 0.4767）
+   - **基準對比:** 顯著優於常數均值預測基準（`DummyRegressor` 測試 RMSE: 226.1197 輛，誤差大幅縮減 41.09%）。測試集絕對誤差 RMSE 的上升符合 2012 年秋冬租借總量與峰值方差顯著增長之客觀概念漂移特徵。
+2. **共形預測區間可靠性 (Conformal Coverage Reliability):**  
+   在 95% 名義目標涵蓋率下，校準集求得有限樣本臨界值 $q = 302.6015$ 輛（$k^* = 2509$）。在測試集上實現了高達 **94.84% (2,443 / 2,576 筆) 之經驗涵蓋率**（距理論名義目標僅有 0.16% 差距），實證證明分拆共形預測在時序外推情境下具備優異之經驗可靠性。
+3. **對稱原始區間 vs. 非對稱截斷區間:**  
+   - 原始區間因絕對殘差分數而嚴格對稱（寬度 605.20 輛），但有 72.17%（1,859 筆）樣本之下界小於 0。
+   - 經非負截斷（$\\max(0, \\hat{y} - q)$）後，區間呈現符合物理真實的非對稱型態，**涵蓋率維持 94.84% 完全不變**，平均區間寬度由 605.20 輛大幅縮減至 **513.19 輛（節省 15.20%）**。
+4. **通勤尖峰時段覆蓋率弱化現象 (Marginal vs. Conditional Coverage):**  
+   - 圖 D 診斷分析揭示：**整體邊際覆蓋率（94.84%）並不代表各小時均具備條件覆蓋率**。
+   - 晨峰通勤（**08:00**）經驗覆蓋率顯著降至 **64.49%** (69/107)；晚峰通勤（**17:00**）降至 **75.00%** (81/108)，**18:00** 降至 **80.56%** (87/108)。
+   - 其統計成因為：通勤尖峰時段需求方差劇烈膨脹且易受突發通勤干擾，而全域定寬共形區間（$2q$）無法局部自適應尖峰高變異數，致使尖峰區間偏緊、離峰夜間（20:00–07:00，覆蓋率 99%–100%）偏寬。
 
 #### 方法論限制與統計警告 (Methodological Limitations & Caveats)
-1. **時序非可交換性 (Violation of Exchangeability):** 標準分拆共形預測之有限樣本覆蓋保證根植於數據的「可交換性（Exchangeability / i.i.d.）」假設。然而自行車租借量具備強烈時間序列自相關性、長期增長趨勢與氣候季節突變，嚴格來說並不符合可交換性。因此 95% 應視為標稱設計目標，94.84% 乃經驗實證結果。
-2. **線性迴歸之非負限制:** 多元線性迴歸屬於未受約束的連續實數模型，在測試集中產生 20 筆負值點預測（佔比 0.78%）。未來研究可考慮對數轉換（$\\log(1 + cnt)$）或廣義泊松/負二項迴歸（Poisson/Negative Binomial GLM）。
-3. **相關性非因果關係:** 所有迴歸係數與消融權重皆代表條件統計關聯，不可解讀為介入性因果效應。
+1. **時序非可交換性 (Violation of Exchangeability):** 標準分拆共形預測之理論保證根植於資料的可交換性（Exchangeability / i.i.d.）。因計時資料具強自相關與季節概念漂移，95% 為名義目標，94.84% 乃經驗實證結果，不可宣稱數學上的無條件保證。
+2. **線性迴歸之非負限制:** 未受約束之連續 OLS 在測試集產生 20 筆負值點預測（0.78%，最低 -21.46 輛），均發生於極端寒冷之冬季清晨。在評估指標計算上，本研究嚴格保持原始實數點預測，杜絕事後修改評估規則。
+3. **相關性非因果關係:** 所有迴歸係數與群組消融權重皆代表條件統計關聯，絕不可解讀為現實中的直接因果效應。
 
 #### 後續作業銜接 (Roadmap Ahead)
-- **Phase 4:** 撰寫正式學術論文報告（LaTeX / Prism 報告格式），呈現完整研究圖表與理論探討。
-- **Phase 5:** 構建獨立之 AIoT HW2 Web 應用程式介面（完全獨立於 50 Startups），提供使用者互動式時間氣象輸入、每小時借車需求點預測與 95% 共形預測區間視覺化。"""))
+- **Phase 4:** 撰寫正式學術論文報告（LaTeX / Prism 報告格式），引用本階段完整之 Metadata、CSV 資料表與 300 DPI 圖表。
+- **Phase 5:** 構建獨立之 AIoT HW2 Web 應用程式介面（嚴格獨立於 50 Startups），提供使用者互動式時間氣象輸入、需求點預測與 95% 共形預測區間查詢。"""))
 
 nb.cells = cells
 

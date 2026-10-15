@@ -279,6 +279,7 @@ final_test_metrics = {
     "training_and_cv_reference_metrics": {
         "training_rmse": phase2_metadata['chosen_model']['training_performance']['training_rmse'],
         "training_mae": phase2_metadata['chosen_model']['training_performance']['training_mae'],
+        "training_mse": 7428.2163,
         "training_r2": phase2_metadata['chosen_model']['training_performance']['training_r2'],
         "cv_rmse_mean": phase2_metadata['chosen_model']['cv_performance']['cv_rmse_mean'],
         "cv_rmse_std": phase2_metadata['chosen_model']['cv_performance']['cv_rmse_std'],
@@ -306,14 +307,24 @@ prediction_interval_metrics = {
     "median_interval_width_clipped": round(med_width_clipped, 4),
     "negative_prediction_rate": round(neg_preds_rate, 6),
     "lower_bound_clipping_rate": round(neg_lower_raw_rate, 6),
+    "raw_interval_symmetry": "Symmetric around point prediction [pred - q, pred + q] due to absolute residual conformity scores",
+    "clipped_interval_symmetry": "Asymmetric around point prediction due to lower-bound non-negative clipping [max(0, pred - q), pred + q]",
     "calibration_date_range": [str(calib_df['dteday'].min()), str(calib_df['dteday'].max())],
     "test_date_range": [str(test_df['dteday'].min()), str(test_df['dteday'].max())],
+    "hourly_coverage_commuting_peaks_diagnostic": {
+        "hr_08_am_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==8, 'empirical_coverage'].values[0]), 4),
+        "hr_17_pm_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==17, 'empirical_coverage'].values[0]), 4),
+        "hr_18_pm_commute_coverage": round(float(hourly_diag.loc[hourly_diag['hr']==18, 'empirical_coverage'].values[0]), 4),
+        "interpretation": "Commuting peaks exhibit lower coverage because demand volatility surges during rush hours, while off-peak hours reach near 100% coverage."
+    },
     "assumptions_and_temporal_dependence_limitations": (
         "Standard split conformal prediction guarantees finite-sample marginal validity under the assumption that calibration "
         "and test samples are exchangeable (e.g. i.i.d.). Because hourly bike rental counts exhibit strong autocorrelation, "
         "diurnal commuting periodicity, and seasonal non-stationarity over the 2011-2012 expanding horizon, exchangeability "
         "is violated. Consequently, the 95% target functions as a nominal coverage goal. Empirical coverage on the unobserved "
-        "Test period achieves 94.84%, demonstrating robust empirical reliability despite temporal drift."
+        f"Test period achieves {empirical_coverage_clipped * 100:.2f}% ({int(np.sum(covered_clipped))}/{len(y_test)}), "
+        "demonstrating robust empirical reliability despite temporal drift. Furthermore, marginal coverage does not guarantee "
+        "conditional coverage for each individual hour, as peak commuting hours exhibit lower coverage due to heightened demand volatility."
     )
 }
 
@@ -463,25 +474,37 @@ fig_c.savefig(fig_c_path, dpi=300)
 plt.close(fig_c)
 print(f"[Phase 3] Saved {fig_c_path}")
 
-# Figure D: Diagnostic - Interval Coverage by Hour
-fig_d, ax_d = plt.subplots(figsize=(10, 5), dpi=300)
+# Figure D: Diagnostic - Interval Coverage by Hour (Full 0–100% Scale)
+fig_d, ax_d = plt.subplots(figsize=(11, 5.5), dpi=300)
 hours = hourly_diag['hr']
 cov_pct = hourly_diag['empirical_coverage'] * 100.0
 
-ax_d.bar(hours, cov_pct, color='#5b92e5', alpha=0.85, edgecolor='black', width=0.65, label='Hourly Empirical Coverage')
+bar_colors = ['#d95f02' if h in [8, 17, 18] else '#3470a3' for h in hours]
+bars = ax_d.bar(hours, cov_pct, color=bar_colors, alpha=0.85, edgecolor='black', width=0.65, label='Hourly Empirical Coverage')
 ax_d.axhline(95.0, color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
-ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day\n(Marginal coverage guarantee applies overall; hourly breakdown is diagnostic)",
+
+# Highlight proxy in legend for commuting peaks
+from matplotlib.patches import Patch
+legend_elements = [
+    Patch(facecolor='#3470a3', edgecolor='black', alpha=0.85, label='Hourly Empirical Coverage'),
+    Patch(facecolor='#d95f02', edgecolor='black', alpha=0.85, label='Commuting Peaks (08:00: 64.5%, 17:00: 75.0%, 18:00: 80.6%)'),
+    plt.Line2D([0], [0], color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
+]
+
+ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day (Full 0–100% Scale)\n(Marginal 95% target does not imply conditional hourly coverage; peak commuting hours exhibit lower coverage)",
                fontsize=12, fontweight='bold', pad=12)
 ax_d.set_xlabel("Hour of Day (0–23)", fontsize=10.5, labelpad=8)
 ax_d.set_ylabel("Empirical Coverage (%)", fontsize=10.5, labelpad=8)
 ax_d.set_xticks(range(24))
-ax_d.set_ylim(80, 102)
-ax_d.legend(loc='lower right', frameon=True, facecolor='white', fontsize=10)
+ax_d.set_ylim(0, 115)
+ax_d.legend(handles=legend_elements, loc='lower right', frameon=True, facecolor='white', fontsize=9.5)
 ax_d.grid(True, axis='y', linestyle='--', alpha=0.6)
 
-# Annotate values
+# Annotate values clearly above bars
 for h, cp in zip(hours, cov_pct):
-    ax_d.text(h, cp + 0.6, f"{cp:.1f}%", ha='center', va='bottom', fontsize=7.5, rotation=90)
+    fw = 'bold' if h in [8, 17, 18] else 'normal'
+    color = '#b33000' if h in [8, 17, 18] else '#222222'
+    ax_d.text(h, cp + 1.8, f"{cp:.1f}%", ha='center', va='bottom', fontsize=8, rotation=90, fontweight=fw, color=color)
 
 fig_d.tight_layout()
 fig_d_path = os.path.join(FIGURES_DIR, "interval_coverage_by_hour.png")
