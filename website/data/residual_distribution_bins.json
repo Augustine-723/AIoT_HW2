@@ -1,0 +1,212 @@
+[
+  {
+    "bin_start": -382.1,
+    "bin_end": -357.6,
+    "bin_center": -369.9,
+    "count": 2
+  },
+  {
+    "bin_start": -357.6,
+    "bin_end": -333.2,
+    "bin_center": -345.4,
+    "count": 0
+  },
+  {
+    "bin_start": -333.2,
+    "bin_end": -308.7,
+    "bin_center": -321.0,
+    "count": 2
+  },
+  {
+    "bin_start": -308.7,
+    "bin_end": -284.3,
+    "bin_center": -296.5,
+    "count": 6
+  },
+  {
+    "bin_start": -284.3,
+    "bin_end": -259.8,
+    "bin_center": -272.1,
+    "count": 10
+  },
+  {
+    "bin_start": -259.8,
+    "bin_end": -235.4,
+    "bin_center": -247.6,
+    "count": 24
+  },
+  {
+    "bin_start": -235.4,
+    "bin_end": -211.0,
+    "bin_center": -223.2,
+    "count": 29
+  },
+  {
+    "bin_start": -211.0,
+    "bin_end": -186.5,
+    "bin_center": -198.7,
+    "count": 31
+  },
+  {
+    "bin_start": -186.5,
+    "bin_end": -162.1,
+    "bin_center": -174.3,
+    "count": 16
+  },
+  {
+    "bin_start": -162.1,
+    "bin_end": -137.6,
+    "bin_center": -149.8,
+    "count": 60
+  },
+  {
+    "bin_start": -137.6,
+    "bin_end": -113.2,
+    "bin_center": -125.4,
+    "count": 121
+  },
+  {
+    "bin_start": -113.2,
+    "bin_end": -88.7,
+    "bin_center": -101.0,
+    "count": 202
+  },
+  {
+    "bin_start": -88.7,
+    "bin_end": -64.3,
+    "bin_center": -76.5,
+    "count": 328
+  },
+  {
+    "bin_start": -64.3,
+    "bin_end": -39.8,
+    "bin_center": -52.1,
+    "count": 331
+  },
+  {
+    "bin_start": -39.8,
+    "bin_end": -15.4,
+    "bin_center": -27.6,
+    "count": 261
+  },
+  {
+    "bin_start": -15.4,
+    "bin_end": 9.1,
+    "bin_center": -3.2,
+    "count": 260
+  },
+  {
+    "bin_start": 9.1,
+    "bin_end": 33.5,
+    "bin_center": 21.3,
+    "count": 172
+  },
+  {
+    "bin_start": 33.5,
+    "bin_end": 57.9,
+    "bin_center": 45.7,
+    "count": 100
+  },
+  {
+    "bin_start": 57.9,
+    "bin_end": 82.4,
+    "bin_center": 70.2,
+    "count": 95
+  },
+  {
+    "bin_start": 82.4,
+    "bin_end": 106.8,
+    "bin_center": 94.6,
+    "count": 72
+  },
+  {
+    "bin_start": 106.8,
+    "bin_end": 131.3,
+    "bin_center": 119.1,
+    "count": 76
+  },
+  {
+    "bin_start": 131.3,
+    "bin_end": 155.7,
+    "bin_center": 143.5,
+    "count": 51
+  },
+  {
+    "bin_start": 155.7,
+    "bin_end": 180.2,
+    "bin_center": 167.9,
+    "count": 45
+  },
+  {
+    "bin_start": 180.2,
+    "bin_end": 204.6,
+    "bin_center": 192.4,
+    "count": 30
+  },
+  {
+    "bin_start": 204.6,
+    "bin_end": 229.1,
+    "bin_center": 216.8,
+    "count": 40
+  },
+  {
+    "bin_start": 229.1,
+    "bin_end": 253.5,
+    "bin_center": 241.3,
+    "count": 24
+  },
+  {
+    "bin_start": 253.5,
+    "bin_end": 278.0,
+    "bin_center": 265.7,
+    "count": 26
+  },
+  {
+    "bin_start": 278.0,
+    "bin_end": 302.4,
+    "bin_center": 290.2,
+    "count": 32
+  },
+  {
+    "bin_start": 302.4,
+    "bin_end": 326.8,
+    "bin_center": 314.6,
+    "count": 27
+  },
+  {
+    "bin_start": 326.8,
+    "bin_end": 351.3,
+    "bin_center": 339.1,
+    "count": 31
+  },
+  {
+    "bin_start": 351.3,
+    "bin_end": 375.7,
+    "bin_center": 363.5,
+    "count": 24
+  },
+  {
+    "bin_start": 375.7,
+    "bin_end": 400.2,
+    "bin_center": 388.0,
+    "count": 25
+  },
+  {
+    "bin_start": 400.2,
+    "bin_end": 424.6,
+    "bin_center": 412.4,
+    "count": 13
+  },
+  {
+    "bin_start": 424.6,
+    "bin_end": 449.1,
+    "bin_center": 436.8,
+    "count": 9
+  },
+  {
+    "bin_start": 449.1,
+    "bin_end": 473.5,
+    "bin_center": 461.3,
+    "count": 1
+  }
+]

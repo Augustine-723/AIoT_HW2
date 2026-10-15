@@ -1,0 +1,5707 @@
+[
+  {
+    "actual": 87.0,
+    "predicted": 131.9239,
+    "residual": -44.9239,
+    "timestamp": "2012-09-14 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 14.0,
+    "predicted": 128.2129,
+    "residual": -114.2129,
+    "timestamp": "2012-09-14 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 454.0,
+    "predicted": 285.1509,
+    "residual": 168.8491,
+    "timestamp": "2012-09-14 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 766.0,
+    "predicted": 420.2568,
+    "residual": 345.7432,
+    "timestamp": "2012-09-14 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 280.0,
+    "predicted": 299.9447,
+    "residual": -19.9447,
+    "timestamp": "2012-09-14 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 367.0,
+    "predicted": 340.6534,
+    "residual": 26.3466,
+    "timestamp": "2012-09-14 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 894.0,
+    "predicted": 519.2462,
+    "residual": 374.7538,
+    "timestamp": "2012-09-14 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 808.0,
+    "predicted": 495.2372,
+    "residual": 312.7628,
+    "timestamp": "2012-09-14 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 579.0,
+    "predicted": 388.2897,
+    "residual": 190.7103,
+    "timestamp": "2012-09-14 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 195.0,
+    "predicted": 189.4579,
+    "residual": 5.5421,
+    "timestamp": "2012-09-14 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 37.0,
+    "predicted": 138.5755,
+    "residual": -101.5755,
+    "timestamp": "2012-09-15 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 73.0,
+    "predicted": 294.7876,
+    "residual": -221.7876,
+    "timestamp": "2012-09-15 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 627.0,
+    "predicted": 297.6767,
+    "residual": 329.3233,
+    "timestamp": "2012-09-15 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 706.0,
+    "predicted": 334.8892,
+    "residual": 371.1108,
+    "timestamp": "2012-09-15 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 704.0,
+    "predicted": 344.0523,
+    "residual": 359.9477,
+    "timestamp": "2012-09-15 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 715.0,
+    "predicted": 325.6295,
+    "residual": 389.3705,
+    "timestamp": "2012-09-15 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 654.0,
+    "predicted": 335.3209,
+    "residual": 318.6791,
+    "timestamp": "2012-09-15 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 783.0,
+    "predicted": 383.1313,
+    "residual": 399.8687,
+    "timestamp": "2012-09-15 16:00:00",
+    "covered": false
+  },
+  {
+    "actual": 729.0,
+    "predicted": 513.839,
+    "residual": 215.161,
+    "timestamp": "2012-09-15 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 614.0,
+    "predicted": 485.2658,
+    "residual": 128.7342,
+    "timestamp": "2012-09-15 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 478.0,
+    "predicted": 390.5645,
+    "residual": 87.4355,
+    "timestamp": "2012-09-15 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 229.0,
+    "predicted": 185.7879,
+    "residual": 43.2121,
+    "timestamp": "2012-09-15 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 48.0,
+    "predicted": 125.5596,
+    "residual": -77.5596,
+    "timestamp": "2012-09-16 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 71.0,
+    "predicted": 274.9192,
+    "residual": -203.9192,
+    "timestamp": "2012-09-16 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 559.0,
+    "predicted": 300.6199,
+    "residual": 258.3801,
+    "timestamp": "2012-09-16 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 656.0,
+    "predicted": 337.292,
+    "residual": 318.708,
+    "timestamp": "2012-09-16 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 694.0,
+    "predicted": 334.6575,
+    "residual": 359.3425,
+    "timestamp": "2012-09-16 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 635.0,
+    "predicted": 325.6147,
+    "residual": 309.3853,
+    "timestamp": "2012-09-16 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 557.0,
+    "predicted": 328.2734,
+    "residual": 228.7266,
+    "timestamp": "2012-09-16 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 403.0,
+    "predicted": 385.2635,
+    "residual": 17.7365,
+    "timestamp": "2012-09-16 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 94.0,
+    "predicted": 175.5056,
+    "residual": -81.5056,
+    "timestamp": "2012-09-16 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 115.1803,
+    "residual": -108.1803,
+    "timestamp": "2012-09-17 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 492.0,
+    "predicted": 283.9725,
+    "residual": 208.0275,
+    "timestamp": "2012-09-17 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 683.0,
+    "predicted": 408.1342,
+    "residual": 274.8658,
+    "timestamp": "2012-09-17 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 252.0,
+    "predicted": 277.421,
+    "residual": -25.421,
+    "timestamp": "2012-09-17 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 338.0,
+    "predicted": 304.7455,
+    "residual": 33.2545,
+    "timestamp": "2012-09-17 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 842.0,
+    "predicted": 489.3322,
+    "residual": 352.6678,
+    "timestamp": "2012-09-17 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 774.0,
+    "predicted": 456.5105,
+    "residual": 317.4895,
+    "timestamp": "2012-09-17 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 486.0,
+    "predicted": 365.3209,
+    "residual": 120.6791,
+    "timestamp": "2012-09-17 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 70.0,
+    "predicted": 100.9657,
+    "residual": -30.9657,
+    "timestamp": "2012-09-17 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 117.7539,
+    "residual": -111.7539,
+    "timestamp": "2012-09-18 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 356.0,
+    "predicted": 281.6116,
+    "residual": 74.3884,
+    "timestamp": "2012-09-18 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 672.0,
+    "predicted": 411.7255,
+    "residual": 260.2745,
+    "timestamp": "2012-09-18 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 151.0,
+    "predicted": 263.9683,
+    "residual": -112.9683,
+    "timestamp": "2012-09-18 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 36.0,
+    "predicted": 217.9179,
+    "residual": -181.9179,
+    "timestamp": "2012-09-18 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 324.0,
+    "predicted": 337.1112,
+    "residual": -13.1112,
+    "timestamp": "2012-09-18 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 78.0,
+    "predicted": 164.0768,
+    "residual": -86.0768,
+    "timestamp": "2012-09-18 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": 123.7495,
+    "residual": -120.7495,
+    "timestamp": "2012-09-19 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 172.0,
+    "predicted": 172.5063,
+    "residual": -0.5063,
+    "timestamp": "2012-09-19 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 797.0,
+    "predicted": 410.9577,
+    "residual": 386.0423,
+    "timestamp": "2012-09-19 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 192.0,
+    "predicted": 252.651,
+    "residual": -60.651,
+    "timestamp": "2012-09-19 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 286.0,
+    "predicted": 316.4752,
+    "residual": -30.4752,
+    "timestamp": "2012-09-19 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 886.0,
+    "predicted": 506.4517,
+    "residual": 379.5483,
+    "timestamp": "2012-09-19 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 892.0,
+    "predicted": 464.122,
+    "residual": 427.878,
+    "timestamp": "2012-09-19 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 611.0,
+    "predicted": 366.1293,
+    "residual": 244.8707,
+    "timestamp": "2012-09-19 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 229.0,
+    "predicted": 204.7575,
+    "residual": 24.2425,
+    "timestamp": "2012-09-19 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 109.6208,
+    "residual": -98.6208,
+    "timestamp": "2012-09-20 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 170.0,
+    "predicted": 154.6442,
+    "residual": 15.3558,
+    "timestamp": "2012-09-20 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 790.0,
+    "predicted": 405.4808,
+    "residual": 384.5192,
+    "timestamp": "2012-09-20 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 190.0,
+    "predicted": 260.9698,
+    "residual": -70.9698,
+    "timestamp": "2012-09-20 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 298.0,
+    "predicted": 314.8384,
+    "residual": -16.8384,
+    "timestamp": "2012-09-20 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 976.0,
+    "predicted": 502.4851,
+    "residual": 473.5149,
+    "timestamp": "2012-09-20 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 900.0,
+    "predicted": 467.1372,
+    "residual": 432.8628,
+    "timestamp": "2012-09-20 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 603.0,
+    "predicted": 358.3287,
+    "residual": 244.6713,
+    "timestamp": "2012-09-20 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 287.0,
+    "predicted": 206.0475,
+    "residual": 80.9525,
+    "timestamp": "2012-09-20 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 14.0,
+    "predicted": 127.2513,
+    "residual": -113.2513,
+    "timestamp": "2012-09-21 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 165.0,
+    "predicted": 164.6448,
+    "residual": 0.3552,
+    "timestamp": "2012-09-21 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 757.0,
+    "predicted": 409.1553,
+    "residual": 347.8447,
+    "timestamp": "2012-09-21 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 225.0,
+    "predicted": 263.0464,
+    "residual": -38.0464,
+    "timestamp": "2012-09-21 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 412.0,
+    "predicted": 316.8945,
+    "residual": 95.1055,
+    "timestamp": "2012-09-21 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 846.0,
+    "predicted": 501.8471,
+    "residual": 344.1529,
+    "timestamp": "2012-09-21 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 805.0,
+    "predicted": 470.6797,
+    "residual": 334.3203,
+    "timestamp": "2012-09-21 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 295.0,
+    "predicted": 220.4672,
+    "residual": 74.5328,
+    "timestamp": "2012-09-21 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 83.0,
+    "predicted": 113.9975,
+    "residual": -30.9975,
+    "timestamp": "2012-09-22 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 41.0,
+    "predicted": 165.2092,
+    "residual": -124.2092,
+    "timestamp": "2012-09-22 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 474.0,
+    "predicted": 262.6805,
+    "residual": 211.3195,
+    "timestamp": "2012-09-22 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 626.0,
+    "predicted": 299.1221,
+    "residual": 326.8779,
+    "timestamp": "2012-09-22 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 688.0,
+    "predicted": 338.1058,
+    "residual": 349.8942,
+    "timestamp": "2012-09-22 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 707.0,
+    "predicted": 337.7299,
+    "residual": 369.2701,
+    "timestamp": "2012-09-22 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 654.0,
+    "predicted": 333.5169,
+    "residual": 320.4831,
+    "timestamp": "2012-09-22 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 750.0,
+    "predicted": 332.2657,
+    "residual": 417.7343,
+    "timestamp": "2012-09-22 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 680.0,
+    "predicted": 383.9584,
+    "residual": 296.0416,
+    "timestamp": "2012-09-22 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 646.0,
+    "predicted": 515.9325,
+    "residual": 130.0675,
+    "timestamp": "2012-09-22 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 598.0,
+    "predicted": 488.3432,
+    "residual": 109.6568,
+    "timestamp": "2012-09-22 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 239.0,
+    "predicted": 238.9627,
+    "residual": 0.0373,
+    "timestamp": "2012-09-22 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 95.0,
+    "predicted": 152.5819,
+    "residual": -57.5819,
+    "timestamp": "2012-09-23 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 173.4031,
+    "residual": -157.4031,
+    "timestamp": "2012-09-23 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 489.0,
+    "predicted": 269.2148,
+    "residual": 219.7852,
+    "timestamp": "2012-09-23 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 776.0,
+    "predicted": 333.9133,
+    "residual": 442.0867,
+    "timestamp": "2012-09-23 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 702.0,
+    "predicted": 350.64,
+    "residual": 351.36,
+    "timestamp": "2012-09-23 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 666.0,
+    "predicted": 335.2019,
+    "residual": 330.7981,
+    "timestamp": "2012-09-23 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 640.0,
+    "predicted": 345.3697,
+    "residual": 294.6303,
+    "timestamp": "2012-09-23 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 691.0,
+    "predicted": 392.2751,
+    "residual": 298.7249,
+    "timestamp": "2012-09-23 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 723.0,
+    "predicted": 506.0195,
+    "residual": 216.9805,
+    "timestamp": "2012-09-23 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 540.0,
+    "predicted": 479.4972,
+    "residual": 60.5028,
+    "timestamp": "2012-09-23 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 138.0,
+    "predicted": 242.7179,
+    "residual": -104.7179,
+    "timestamp": "2012-09-23 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 132.8803,
+    "residual": -124.8803,
+    "timestamp": "2012-09-24 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 37.0,
+    "predicted": 138.5875,
+    "residual": -101.5875,
+    "timestamp": "2012-09-24 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 750.0,
+    "predicted": 429.1241,
+    "residual": 320.8759,
+    "timestamp": "2012-09-24 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 328.0,
+    "predicted": 312.0977,
+    "residual": 15.9023,
+    "timestamp": "2012-09-24 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 328.0,
+    "predicted": 350.044,
+    "residual": -22.044,
+    "timestamp": "2012-09-24 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 898.0,
+    "predicted": 526.968,
+    "residual": 371.032,
+    "timestamp": "2012-09-24 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 853.0,
+    "predicted": 480.7636,
+    "residual": 372.2364,
+    "timestamp": "2012-09-24 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 256.0,
+    "predicted": 260.4626,
+    "residual": -4.4626,
+    "timestamp": "2012-09-24 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 121.7108,
+    "residual": -108.7108,
+    "timestamp": "2012-09-25 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 47.0,
+    "predicted": 115.3469,
+    "residual": -68.3469,
+    "timestamp": "2012-09-25 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 805.0,
+    "predicted": 415.764,
+    "residual": 389.236,
+    "timestamp": "2012-09-25 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 409.0,
+    "predicted": 311.2525,
+    "residual": 97.7475,
+    "timestamp": "2012-09-25 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 305.0,
+    "predicted": 345.0605,
+    "residual": -40.0605,
+    "timestamp": "2012-09-25 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 967.0,
+    "predicted": 528.9653,
+    "residual": 438.0347,
+    "timestamp": "2012-09-25 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 822.0,
+    "predicted": 502.7394,
+    "residual": 319.2606,
+    "timestamp": "2012-09-25 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 297.0,
+    "predicted": 281.6968,
+    "residual": 15.3032,
+    "timestamp": "2012-09-25 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 29.0,
+    "predicted": 151.5474,
+    "residual": -122.5474,
+    "timestamp": "2012-09-26 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 36.0,
+    "predicted": 144.8041,
+    "residual": -108.8041,
+    "timestamp": "2012-09-26 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 838.0,
+    "predicted": 425.3628,
+    "residual": 412.6372,
+    "timestamp": "2012-09-26 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 334.0,
+    "predicted": 328.3858,
+    "residual": 5.6142,
+    "timestamp": "2012-09-26 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 340.0,
+    "predicted": 349.9031,
+    "residual": -9.9031,
+    "timestamp": "2012-09-26 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 953.0,
+    "predicted": 537.9812,
+    "residual": 415.0188,
+    "timestamp": "2012-09-26 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 884.0,
+    "predicted": 516.2466,
+    "residual": 367.7534,
+    "timestamp": "2012-09-26 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 627.0,
+    "predicted": 413.6656,
+    "residual": 213.3344,
+    "timestamp": "2012-09-26 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 360.0,
+    "predicted": 286.7594,
+    "residual": 73.2406,
+    "timestamp": "2012-09-26 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 21.0,
+    "predicted": 158.2855,
+    "residual": -137.2855,
+    "timestamp": "2012-09-27 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 66.0,
+    "predicted": 151.6297,
+    "residual": -85.6297,
+    "timestamp": "2012-09-27 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 794.0,
+    "predicted": 453.9383,
+    "residual": 340.0617,
+    "timestamp": "2012-09-27 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 335.0,
+    "predicted": 345.2934,
+    "residual": -10.2934,
+    "timestamp": "2012-09-27 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 326.0,
+    "predicted": 373.7301,
+    "residual": -47.7301,
+    "timestamp": "2012-09-27 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 905.0,
+    "predicted": 506.4267,
+    "residual": 398.5733,
+    "timestamp": "2012-09-27 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 899.0,
+    "predicted": 484.6921,
+    "residual": 414.3079,
+    "timestamp": "2012-09-27 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 253.0,
+    "predicted": 201.3566,
+    "residual": 51.6434,
+    "timestamp": "2012-09-27 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 93.9684,
+    "residual": -80.9684,
+    "timestamp": "2012-09-28 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 38.0,
+    "predicted": 143.3663,
+    "residual": -105.3663,
+    "timestamp": "2012-09-28 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 705.0,
+    "predicted": 436.1488,
+    "residual": 268.8512,
+    "timestamp": "2012-09-28 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 426.0,
+    "predicted": 316.2988,
+    "residual": 109.7012,
+    "timestamp": "2012-09-28 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 410.0,
+    "predicted": 353.748,
+    "residual": 56.252,
+    "timestamp": "2012-09-28 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 808.0,
+    "predicted": 517.3794,
+    "residual": 290.6206,
+    "timestamp": "2012-09-28 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 667.0,
+    "predicted": 496.1678,
+    "residual": 170.8322,
+    "timestamp": "2012-09-28 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 237.0,
+    "predicted": 231.92,
+    "residual": 5.08,
+    "timestamp": "2012-09-28 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 101.0,
+    "predicted": 149.6986,
+    "residual": -48.6986,
+    "timestamp": "2012-09-29 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 15.0,
+    "predicted": 139.5537,
+    "residual": -124.5537,
+    "timestamp": "2012-09-29 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 211.0,
+    "predicted": 415.8241,
+    "residual": -204.8241,
+    "timestamp": "2012-09-29 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 663.0,
+    "predicted": 287.6469,
+    "residual": 375.3531,
+    "timestamp": "2012-09-29 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 682.0,
+    "predicted": 347.5672,
+    "residual": 334.4328,
+    "timestamp": "2012-09-29 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 686.0,
+    "predicted": 345.14,
+    "residual": 340.86,
+    "timestamp": "2012-09-29 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 750.0,
+    "predicted": 331.2045,
+    "residual": 418.7955,
+    "timestamp": "2012-09-29 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 727.0,
+    "predicted": 336.8015,
+    "residual": 390.1985,
+    "timestamp": "2012-09-29 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 722.0,
+    "predicted": 392.0059,
+    "residual": 329.9941,
+    "timestamp": "2012-09-29 16:00:00",
+    "covered": false
+  },
+  {
+    "actual": 712.0,
+    "predicted": 519.3319,
+    "residual": 192.6681,
+    "timestamp": "2012-09-29 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 315.0,
+    "predicted": 299.0785,
+    "residual": 15.9215,
+    "timestamp": "2012-09-29 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 147.0,
+    "predicted": 150.7187,
+    "residual": -3.7187,
+    "timestamp": "2012-09-30 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 131.8592,
+    "residual": -124.8592,
+    "timestamp": "2012-09-30 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 144.0,
+    "predicted": 419.5674,
+    "residual": -275.5674,
+    "timestamp": "2012-09-30 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 680.0,
+    "predicted": 347.5672,
+    "residual": 332.4328,
+    "timestamp": "2012-09-30 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 612.0,
+    "predicted": 332.8721,
+    "residual": 279.1279,
+    "timestamp": "2012-09-30 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 649.0,
+    "predicted": 346.7083,
+    "residual": 302.2917,
+    "timestamp": "2012-09-30 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 648.0,
+    "predicted": 399.3209,
+    "residual": 248.6791,
+    "timestamp": "2012-09-30 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 194.0,
+    "predicted": 228.1818,
+    "residual": -34.1818,
+    "timestamp": "2012-09-30 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 45.0,
+    "predicted": 127.5751,
+    "residual": -82.5751,
+    "timestamp": "2012-10-01 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 111.0628,
+    "residual": -101.0628,
+    "timestamp": "2012-10-01 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 784.0,
+    "predicted": 407.6531,
+    "residual": 376.3469,
+    "timestamp": "2012-10-01 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 323.0,
+    "predicted": 349.4163,
+    "residual": -26.4163,
+    "timestamp": "2012-10-01 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 459.0,
+    "predicted": 388.3549,
+    "residual": 70.6451,
+    "timestamp": "2012-10-01 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 856.0,
+    "predicted": 433.2606,
+    "residual": 422.7394,
+    "timestamp": "2012-10-01 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 613.0,
+    "predicted": 411.7755,
+    "residual": 201.2245,
+    "timestamp": "2012-10-01 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 262.0,
+    "predicted": 246.0347,
+    "residual": 15.9653,
+    "timestamp": "2012-10-01 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 31.0,
+    "predicted": 154.319,
+    "residual": -123.319,
+    "timestamp": "2012-10-02 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 143.2095,
+    "residual": -133.2095,
+    "timestamp": "2012-10-02 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 134.0,
+    "predicted": 377.6973,
+    "residual": -243.6973,
+    "timestamp": "2012-10-02 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 104.0,
+    "predicted": 304.2619,
+    "residual": -200.2619,
+    "timestamp": "2012-10-02 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 374.0,
+    "predicted": 297.5236,
+    "residual": 76.4764,
+    "timestamp": "2012-10-02 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 715.0,
+    "predicted": 430.7641,
+    "residual": 284.2359,
+    "timestamp": "2012-10-02 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 687.0,
+    "predicted": 399.9113,
+    "residual": 287.0887,
+    "timestamp": "2012-10-02 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 306.0,
+    "predicted": 235.3487,
+    "residual": 70.6513,
+    "timestamp": "2012-10-02 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 52.0,
+    "predicted": 91.9851,
+    "residual": -39.9851,
+    "timestamp": "2012-10-03 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 134.9849,
+    "residual": -123.9849,
+    "timestamp": "2012-10-03 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 809.0,
+    "predicted": 434.2625,
+    "residual": 374.7375,
+    "timestamp": "2012-10-03 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 358.0,
+    "predicted": 348.6421,
+    "residual": 9.3579,
+    "timestamp": "2012-10-03 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 478.0,
+    "predicted": 408.9925,
+    "residual": 69.0075,
+    "timestamp": "2012-10-03 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 917.0,
+    "predicted": 531.2429,
+    "residual": 385.7571,
+    "timestamp": "2012-10-03 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 810.0,
+    "predicted": 506.3381,
+    "residual": 303.6619,
+    "timestamp": "2012-10-03 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 497.0,
+    "predicted": 343.6751,
+    "residual": 153.3249,
+    "timestamp": "2012-10-03 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 76.0,
+    "predicted": 102.4486,
+    "residual": -26.4486,
+    "timestamp": "2012-10-04 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 158.8568,
+    "residual": -148.8568,
+    "timestamp": "2012-10-04 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 738.0,
+    "predicted": 442.5857,
+    "residual": 295.4143,
+    "timestamp": "2012-10-04 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 214.0,
+    "predicted": 316.5584,
+    "residual": -102.5584,
+    "timestamp": "2012-10-04 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 325.0,
+    "predicted": 348.5151,
+    "residual": -23.5151,
+    "timestamp": "2012-10-04 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 901.0,
+    "predicted": 531.9506,
+    "residual": 369.0494,
+    "timestamp": "2012-10-04 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 887.0,
+    "predicted": 498.5283,
+    "residual": 388.4717,
+    "timestamp": "2012-10-04 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 534.0,
+    "predicted": 404.8017,
+    "residual": 129.1983,
+    "timestamp": "2012-10-04 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 155.0,
+    "predicted": 226.1264,
+    "residual": -71.1264,
+    "timestamp": "2012-10-04 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 149.7211,
+    "residual": -133.7211,
+    "timestamp": "2012-10-05 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 428.0,
+    "predicted": 293.738,
+    "residual": 134.262,
+    "timestamp": "2012-10-05 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 785.0,
+    "predicted": 449.232,
+    "residual": 335.768,
+    "timestamp": "2012-10-05 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 304.0,
+    "predicted": 328.819,
+    "residual": -24.819,
+    "timestamp": "2012-10-05 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 470.0,
+    "predicted": 358.5238,
+    "residual": 111.4762,
+    "timestamp": "2012-10-05 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 634.0,
+    "predicted": 422.1116,
+    "residual": 211.8884,
+    "timestamp": "2012-10-05 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 900.0,
+    "predicted": 538.8591,
+    "residual": 361.1409,
+    "timestamp": "2012-10-05 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 761.0,
+    "predicted": 494.8641,
+    "residual": 266.1359,
+    "timestamp": "2012-10-05 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 500.0,
+    "predicted": 381.3714,
+    "residual": 118.6286,
+    "timestamp": "2012-10-05 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 171.0,
+    "predicted": 190.9276,
+    "residual": -19.9276,
+    "timestamp": "2012-10-05 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 56.0,
+    "predicted": 137.2855,
+    "residual": -81.2855,
+    "timestamp": "2012-10-06 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 84.0,
+    "predicted": 290.1063,
+    "residual": -206.1063,
+    "timestamp": "2012-10-06 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 647.0,
+    "predicted": 300.0606,
+    "residual": 346.9394,
+    "timestamp": "2012-10-06 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 743.0,
+    "predicted": 360.325,
+    "residual": 382.675,
+    "timestamp": "2012-10-06 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 710.0,
+    "predicted": 326.34,
+    "residual": 383.66,
+    "timestamp": "2012-10-06 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 620.0,
+    "predicted": 327.6331,
+    "residual": 292.3669,
+    "timestamp": "2012-10-06 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 659.0,
+    "predicted": 376.729,
+    "residual": 282.271,
+    "timestamp": "2012-10-06 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 610.0,
+    "predicted": 487.3914,
+    "residual": 122.6086,
+    "timestamp": "2012-10-06 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 341.0,
+    "predicted": 357.5338,
+    "residual": -16.5338,
+    "timestamp": "2012-10-06 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 179.0,
+    "predicted": 174.1745,
+    "residual": 4.8255,
+    "timestamp": "2012-10-06 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 22.0,
+    "predicted": 129.0126,
+    "residual": -107.0126,
+    "timestamp": "2012-10-07 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 35.0,
+    "predicted": 230.0141,
+    "residual": -195.0141,
+    "timestamp": "2012-10-07 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 336.0,
+    "predicted": 249.1408,
+    "residual": 86.8592,
+    "timestamp": "2012-10-07 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 306.0,
+    "predicted": 210.3575,
+    "residual": 95.6425,
+    "timestamp": "2012-10-07 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 114.0,
+    "predicted": 324.4722,
+    "residual": -210.4722,
+    "timestamp": "2012-10-07 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 80.0,
+    "predicted": 128.7033,
+    "residual": -48.7033,
+    "timestamp": "2012-10-07 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 91.1721,
+    "residual": -81.1721,
+    "timestamp": "2012-10-08 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 154.0,
+    "predicted": 250.4434,
+    "residual": -96.4434,
+    "timestamp": "2012-10-08 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 308.0,
+    "predicted": 251.7477,
+    "residual": 56.2523,
+    "timestamp": "2012-10-08 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 370.0,
+    "predicted": 221.6939,
+    "residual": 148.3061,
+    "timestamp": "2012-10-08 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 371.0,
+    "predicted": 326.1638,
+    "residual": 44.8362,
+    "timestamp": "2012-10-08 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 69.0,
+    "predicted": 154.5848,
+    "residual": -85.5848,
+    "timestamp": "2012-10-08 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": 22.9549,
+    "residual": -19.9549,
+    "timestamp": "2012-10-09 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 362.0,
+    "predicted": 255.1539,
+    "residual": 106.8461,
+    "timestamp": "2012-10-09 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 713.0,
+    "predicted": 392.4487,
+    "residual": 320.5513,
+    "timestamp": "2012-10-09 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 193.0,
+    "predicted": 260.6206,
+    "residual": -67.6206,
+    "timestamp": "2012-10-09 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 244.0,
+    "predicted": 293.5793,
+    "residual": -49.5793,
+    "timestamp": "2012-10-09 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 806.0,
+    "predicted": 478.4203,
+    "residual": 327.5797,
+    "timestamp": "2012-10-09 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 784.0,
+    "predicted": 443.4453,
+    "residual": 340.5547,
+    "timestamp": "2012-10-09 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 162.0,
+    "predicted": 208.5246,
+    "residual": -46.5246,
+    "timestamp": "2012-10-09 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 120.333,
+    "residual": -112.333,
+    "timestamp": "2012-10-10 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 175.0,
+    "predicted": 165.9899,
+    "residual": 9.0101,
+    "timestamp": "2012-10-10 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 839.0,
+    "predicted": 414.3265,
+    "residual": 424.6735,
+    "timestamp": "2012-10-10 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 217.0,
+    "predicted": 266.7976,
+    "residual": -49.7976,
+    "timestamp": "2012-10-10 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 271.0,
+    "predicted": 335.0079,
+    "residual": -64.0079,
+    "timestamp": "2012-10-10 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 948.0,
+    "predicted": 507.9607,
+    "residual": 440.0393,
+    "timestamp": "2012-10-10 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 844.0,
+    "predicted": 476.5994,
+    "residual": 367.4006,
+    "timestamp": "2012-10-10 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 197.0,
+    "predicted": 211.0986,
+    "residual": -14.0986,
+    "timestamp": "2012-10-10 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 133.1623,
+    "residual": -122.1623,
+    "timestamp": "2012-10-11 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 159.0,
+    "predicted": 163.1331,
+    "residual": -4.1331,
+    "timestamp": "2012-10-11 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 798.0,
+    "predicted": 399.816,
+    "residual": 398.184,
+    "timestamp": "2012-10-11 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 204.0,
+    "predicted": 244.6614,
+    "residual": -40.6614,
+    "timestamp": "2012-10-11 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 348.0,
+    "predicted": 316.7692,
+    "residual": 31.2308,
+    "timestamp": "2012-10-11 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 827.0,
+    "predicted": 489.9091,
+    "residual": 337.0909,
+    "timestamp": "2012-10-11 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 692.0,
+    "predicted": 457.217,
+    "residual": 234.783,
+    "timestamp": "2012-10-11 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 743.0,
+    "predicted": 355.0518,
+    "residual": 387.9482,
+    "timestamp": "2012-10-11 19:00:00",
+    "covered": false
+  },
+  {
+    "actual": 177.0,
+    "predicted": 194.9655,
+    "residual": -17.9655,
+    "timestamp": "2012-10-11 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 118.781,
+    "residual": -102.781,
+    "timestamp": "2012-10-12 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 143.0,
+    "predicted": 141.2699,
+    "residual": 1.7301,
+    "timestamp": "2012-10-12 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 745.0,
+    "predicted": 403.457,
+    "residual": 341.543,
+    "timestamp": "2012-10-12 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 275.0,
+    "predicted": 269.2701,
+    "residual": 5.7299,
+    "timestamp": "2012-10-12 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 371.0,
+    "predicted": 306.4734,
+    "residual": 64.5266,
+    "timestamp": "2012-10-12 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 837.0,
+    "predicted": 476.988,
+    "residual": 360.012,
+    "timestamp": "2012-10-12 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 642.0,
+    "predicted": 451.2929,
+    "residual": 190.7071,
+    "timestamp": "2012-10-12 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 160.0,
+    "predicted": 203.1318,
+    "residual": -43.1318,
+    "timestamp": "2012-10-12 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 67.0,
+    "predicted": 105.5991,
+    "residual": -38.5991,
+    "timestamp": "2012-10-13 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 28.0,
+    "predicted": 137.8117,
+    "residual": -109.8117,
+    "timestamp": "2012-10-13 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 347.0,
+    "predicted": 249.2127,
+    "residual": 97.7873,
+    "timestamp": "2012-10-13 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 670.0,
+    "predicted": 309.7607,
+    "residual": 360.2393,
+    "timestamp": "2012-10-13 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 597.0,
+    "predicted": 302.392,
+    "residual": 294.608,
+    "timestamp": "2012-10-13 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 615.0,
+    "predicted": 312.5869,
+    "residual": 302.4131,
+    "timestamp": "2012-10-13 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 637.0,
+    "predicted": 367.584,
+    "residual": 269.416,
+    "timestamp": "2012-10-13 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 473.0,
+    "predicted": 458.4876,
+    "residual": 14.5124,
+    "timestamp": "2012-10-13 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 189.0,
+    "predicted": 204.8641,
+    "residual": -15.8641,
+    "timestamp": "2012-10-13 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 66.0,
+    "predicted": 111.4792,
+    "residual": -45.4792,
+    "timestamp": "2012-10-14 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 24.0,
+    "predicted": 153.3925,
+    "residual": -129.3925,
+    "timestamp": "2012-10-14 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 428.0,
+    "predicted": 263.7198,
+    "residual": 164.2802,
+    "timestamp": "2012-10-14 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 619.0,
+    "predicted": 341.1931,
+    "residual": 277.8069,
+    "timestamp": "2012-10-14 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 617.0,
+    "predicted": 332.1502,
+    "residual": 284.8498,
+    "timestamp": "2012-10-14 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 539.0,
+    "predicted": 526.7243,
+    "residual": 12.2757,
+    "timestamp": "2012-10-14 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 196.0,
+    "predicted": 244.899,
+    "residual": -48.899,
+    "timestamp": "2012-10-14 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 29.0,
+    "predicted": 149.0104,
+    "residual": -120.0104,
+    "timestamp": "2012-10-15 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 40.0,
+    "predicted": 142.2671,
+    "residual": -102.2671,
+    "timestamp": "2012-10-15 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 737.0,
+    "predicted": 443.9667,
+    "residual": 293.0333,
+    "timestamp": "2012-10-15 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 359.0,
+    "predicted": 257.8636,
+    "residual": 101.1364,
+    "timestamp": "2012-10-15 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 146.0,
+    "predicted": 293.5538,
+    "residual": -147.5538,
+    "timestamp": "2012-10-15 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 766.0,
+    "predicted": 486.748,
+    "residual": 279.252,
+    "timestamp": "2012-10-15 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 206.0,
+    "predicted": 250.9852,
+    "residual": -44.9852,
+    "timestamp": "2012-10-15 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 122.8247,
+    "residual": -109.8247,
+    "timestamp": "2012-10-16 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 52.0,
+    "predicted": 115.6751,
+    "residual": -63.6751,
+    "timestamp": "2012-10-16 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 835.0,
+    "predicted": 418.4487,
+    "residual": 416.5513,
+    "timestamp": "2012-10-16 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 355.0,
+    "predicted": 298.1598,
+    "residual": 56.8402,
+    "timestamp": "2012-10-16 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 328.0,
+    "predicted": 313.2042,
+    "residual": 14.7958,
+    "timestamp": "2012-10-16 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 943.0,
+    "predicted": 498.3292,
+    "residual": 444.6708,
+    "timestamp": "2012-10-16 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 838.0,
+    "predicted": 467.8878,
+    "residual": 370.1122,
+    "timestamp": "2012-10-16 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 195.0,
+    "predicted": 248.1973,
+    "residual": -53.1973,
+    "timestamp": "2012-10-16 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 17.0,
+    "predicted": 110.6744,
+    "residual": -93.6744,
+    "timestamp": "2012-10-17 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 41.0,
+    "predicted": 102.4256,
+    "residual": -61.4256,
+    "timestamp": "2012-10-17 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 817.0,
+    "predicted": 399.0158,
+    "residual": 417.9842,
+    "timestamp": "2012-10-17 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 382.0,
+    "predicted": 279.0542,
+    "residual": 102.9458,
+    "timestamp": "2012-10-17 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 310.0,
+    "predicted": 321.2407,
+    "residual": -11.2407,
+    "timestamp": "2012-10-17 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 888.0,
+    "predicted": 494.332,
+    "residual": 393.668,
+    "timestamp": "2012-10-17 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 884.0,
+    "predicted": 460.0871,
+    "residual": 423.9129,
+    "timestamp": "2012-10-17 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 329.0,
+    "predicted": 226.0796,
+    "residual": 102.9204,
+    "timestamp": "2012-10-17 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 14.0,
+    "predicted": 115.1992,
+    "residual": -101.1992,
+    "timestamp": "2012-10-18 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 42.0,
+    "predicted": 110.6013,
+    "residual": -68.6013,
+    "timestamp": "2012-10-18 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 834.0,
+    "predicted": 397.6617,
+    "residual": 436.3383,
+    "timestamp": "2012-10-18 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 387.0,
+    "predicted": 290.4971,
+    "residual": 96.5029,
+    "timestamp": "2012-10-18 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 332.0,
+    "predicted": 333.8408,
+    "residual": -1.8408,
+    "timestamp": "2012-10-18 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 890.0,
+    "predicted": 488.1861,
+    "residual": 401.8139,
+    "timestamp": "2012-10-18 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 788.0,
+    "predicted": 458.6688,
+    "residual": 329.3312,
+    "timestamp": "2012-10-18 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 283.0,
+    "predicted": 248.1659,
+    "residual": 34.8341,
+    "timestamp": "2012-10-18 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 82.3602,
+    "residual": -66.3602,
+    "timestamp": "2012-10-19 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 36.0,
+    "predicted": 138.7684,
+    "residual": -102.7684,
+    "timestamp": "2012-10-19 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 389.0,
+    "predicted": 289.846,
+    "residual": 99.154,
+    "timestamp": "2012-10-19 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 375.0,
+    "predicted": 320.5296,
+    "residual": 54.4704,
+    "timestamp": "2012-10-19 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 425.0,
+    "predicted": 440.4858,
+    "residual": -15.4858,
+    "timestamp": "2012-10-19 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 229.0,
+    "predicted": 283.0145,
+    "residual": -54.0145,
+    "timestamp": "2012-10-19 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 123.0,
+    "predicted": 119.0069,
+    "residual": 3.9931,
+    "timestamp": "2012-10-20 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 18.0,
+    "predicted": 127.418,
+    "residual": -109.418,
+    "timestamp": "2012-10-20 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 193.0,
+    "predicted": 413.6885,
+    "residual": -220.6885,
+    "timestamp": "2012-10-20 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 612.0,
+    "predicted": 285.586,
+    "residual": 326.414,
+    "timestamp": "2012-10-20 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 703.0,
+    "predicted": 331.7227,
+    "residual": 371.2773,
+    "timestamp": "2012-10-20 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 714.0,
+    "predicted": 328.949,
+    "residual": 385.051,
+    "timestamp": "2012-10-20 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 711.0,
+    "predicted": 323.9458,
+    "residual": 387.0542,
+    "timestamp": "2012-10-20 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 711.0,
+    "predicted": 329.5427,
+    "residual": 381.4573,
+    "timestamp": "2012-10-20 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 691.0,
+    "predicted": 364.9693,
+    "residual": 326.0307,
+    "timestamp": "2012-10-20 16:00:00",
+    "covered": false
+  },
+  {
+    "actual": 731.0,
+    "predicted": 503.1314,
+    "residual": 227.8686,
+    "timestamp": "2012-10-20 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 259.0,
+    "predicted": 304.8783,
+    "residual": -45.8783,
+    "timestamp": "2012-10-20 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 154.0,
+    "predicted": 133.5834,
+    "residual": 20.4166,
+    "timestamp": "2012-10-21 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 21.0,
+    "predicted": 98.3347,
+    "residual": -77.3347,
+    "timestamp": "2012-10-21 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 143.0,
+    "predicted": 410.1853,
+    "residual": -267.1853,
+    "timestamp": "2012-10-21 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 675.0,
+    "predicted": 322.7212,
+    "residual": 352.2788,
+    "timestamp": "2012-10-21 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 626.0,
+    "predicted": 329.5267,
+    "residual": 296.4733,
+    "timestamp": "2012-10-21 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 640.0,
+    "predicted": 319.3524,
+    "residual": 320.6476,
+    "timestamp": "2012-10-21 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 623.0,
+    "predicted": 321.4285,
+    "residual": 301.5715,
+    "timestamp": "2012-10-21 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 591.0,
+    "predicted": 371.1572,
+    "residual": 219.8428,
+    "timestamp": "2012-10-21 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 195.0,
+    "predicted": 297.9001,
+    "residual": -102.9001,
+    "timestamp": "2012-10-21 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 31.0,
+    "predicted": 125.5094,
+    "residual": -94.5094,
+    "timestamp": "2012-10-22 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 117.9762,
+    "residual": -110.9762,
+    "timestamp": "2012-10-22 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 728.0,
+    "predicted": 414.7978,
+    "residual": 313.2022,
+    "timestamp": "2012-10-22 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 283.0,
+    "predicted": 348.808,
+    "residual": -65.808,
+    "timestamp": "2012-10-22 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 524.0,
+    "predicted": 401.6507,
+    "residual": 122.3493,
+    "timestamp": "2012-10-22 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 922.0,
+    "predicted": 536.1619,
+    "residual": 385.8381,
+    "timestamp": "2012-10-22 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 786.0,
+    "predicted": 463.5857,
+    "residual": 322.4143,
+    "timestamp": "2012-10-22 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 403.0,
+    "predicted": 295.3487,
+    "residual": 107.6513,
+    "timestamp": "2012-10-22 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 37.0,
+    "predicted": 113.3551,
+    "residual": -76.3551,
+    "timestamp": "2012-10-23 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 114.7138,
+    "residual": -107.7138,
+    "timestamp": "2012-10-23 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 761.0,
+    "predicted": 411.9372,
+    "residual": 349.0628,
+    "timestamp": "2012-10-23 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 378.0,
+    "predicted": 352.7937,
+    "residual": 25.2063,
+    "timestamp": "2012-10-23 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 541.0,
+    "predicted": 406.197,
+    "residual": 134.803,
+    "timestamp": "2012-10-23 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 938.0,
+    "predicted": 544.1694,
+    "residual": 393.8306,
+    "timestamp": "2012-10-23 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 826.0,
+    "predicted": 497.2867,
+    "residual": 328.7133,
+    "timestamp": "2012-10-23 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 379.0,
+    "predicted": 308.8668,
+    "residual": 70.1332,
+    "timestamp": "2012-10-23 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 46.0,
+    "predicted": 145.9134,
+    "residual": -99.9134,
+    "timestamp": "2012-10-24 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 133.7677,
+    "residual": -127.7677,
+    "timestamp": "2012-10-24 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 801.0,
+    "predicted": 417.0949,
+    "residual": 383.9051,
+    "timestamp": "2012-10-24 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 316.0,
+    "predicted": 339.6409,
+    "residual": -23.6409,
+    "timestamp": "2012-10-24 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 532.0,
+    "predicted": 421.7229,
+    "residual": 110.2771,
+    "timestamp": "2012-10-24 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 963.0,
+    "predicted": 535.1758,
+    "residual": 427.8242,
+    "timestamp": "2012-10-24 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 858.0,
+    "predicted": 512.4615,
+    "residual": 345.5385,
+    "timestamp": "2012-10-24 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 441.0,
+    "predicted": 326.5821,
+    "residual": 114.4179,
+    "timestamp": "2012-10-24 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 123.0,
+    "predicted": 203.9367,
+    "residual": -80.9367,
+    "timestamp": "2012-10-24 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 128.4486,
+    "residual": -120.4486,
+    "timestamp": "2012-10-25 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 495.0,
+    "predicted": 286.2837,
+    "residual": 208.7163,
+    "timestamp": "2012-10-25 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 779.0,
+    "predicted": 414.5578,
+    "residual": 364.4422,
+    "timestamp": "2012-10-25 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 238.0,
+    "predicted": 268.0244,
+    "residual": -30.0244,
+    "timestamp": "2012-10-25 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 305.0,
+    "predicted": 326.0092,
+    "residual": -21.0092,
+    "timestamp": "2012-10-25 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 886.0,
+    "predicted": 500.5257,
+    "residual": 385.4743,
+    "timestamp": "2012-10-25 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 809.0,
+    "predicted": 454.3102,
+    "residual": 354.6898,
+    "timestamp": "2012-10-25 18:00:00",
+    "covered": false
+  },
+  {
+    "actual": 542.0,
+    "predicted": 352.1823,
+    "residual": 189.8177,
+    "timestamp": "2012-10-25 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 135.0,
+    "predicted": 181.874,
+    "residual": -46.874,
+    "timestamp": "2012-10-25 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 127.178,
+    "residual": -114.178,
+    "timestamp": "2012-10-26 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 421.0,
+    "predicted": 290.0871,
+    "residual": 130.9129,
+    "timestamp": "2012-10-26 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 734.0,
+    "predicted": 416.7901,
+    "residual": 317.2099,
+    "timestamp": "2012-10-26 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 290.0,
+    "predicted": 273.7362,
+    "residual": 16.2638,
+    "timestamp": "2012-10-26 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 448.0,
+    "predicted": 330.1963,
+    "residual": 117.8037,
+    "timestamp": "2012-10-26 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 817.0,
+    "predicted": 480.5229,
+    "residual": 336.4771,
+    "timestamp": "2012-10-26 17:00:00",
+    "covered": false
+  },
+  {
+    "actual": 665.0,
+    "predicted": 456.6947,
+    "residual": 208.3053,
+    "timestamp": "2012-10-26 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 471.0,
+    "predicted": 353.4486,
+    "residual": 117.5514,
+    "timestamp": "2012-10-26 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 178.0,
+    "predicted": 175.9909,
+    "residual": 2.0091,
+    "timestamp": "2012-10-26 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 26.0,
+    "predicted": 122.5655,
+    "residual": -96.5655,
+    "timestamp": "2012-10-27 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 86.0,
+    "predicted": 280.7242,
+    "residual": -194.7242,
+    "timestamp": "2012-10-27 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 585.0,
+    "predicted": 278.8847,
+    "residual": 306.1153,
+    "timestamp": "2012-10-27 11:00:00",
+    "covered": false
+  },
+  {
+    "actual": 668.0,
+    "predicted": 338.311,
+    "residual": 329.689,
+    "timestamp": "2012-10-27 12:00:00",
+    "covered": false
+  },
+  {
+    "actual": 760.0,
+    "predicted": 343.1857,
+    "residual": 416.8143,
+    "timestamp": "2012-10-27 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 750.0,
+    "predicted": 326.8234,
+    "residual": 423.1766,
+    "timestamp": "2012-10-27 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 711.0,
+    "predicted": 305.0777,
+    "residual": 405.9223,
+    "timestamp": "2012-10-27 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 612.0,
+    "predicted": 353.5032,
+    "residual": 258.4968,
+    "timestamp": "2012-10-27 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 618.0,
+    "predicted": 485.4774,
+    "residual": 132.5226,
+    "timestamp": "2012-10-27 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 300.0,
+    "predicted": 354.3311,
+    "residual": -54.3311,
+    "timestamp": "2012-10-27 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 167.0,
+    "predicted": 177.4287,
+    "residual": -10.4287,
+    "timestamp": "2012-10-27 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 79.0,
+    "predicted": 133.8422,
+    "residual": -54.8422,
+    "timestamp": "2012-10-28 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 65.0,
+    "predicted": 298.4057,
+    "residual": -233.4057,
+    "timestamp": "2012-10-28 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 462.0,
+    "predicted": 270.1133,
+    "residual": 191.8867,
+    "timestamp": "2012-10-28 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 301.0,
+    "predicted": 280.1869,
+    "residual": 20.8131,
+    "timestamp": "2012-10-28 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 54.0,
+    "predicted": 253.1185,
+    "residual": -199.1185,
+    "timestamp": "2012-10-28 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 14.0,
+    "predicted": 80.2732,
+    "residual": -66.2732,
+    "timestamp": "2012-10-28 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 163.7355,
+    "residual": -39.7355,
+    "timestamp": "2012-10-30 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 115.0,
+    "predicted": 353.91,
+    "residual": -238.91,
+    "timestamp": "2012-10-30 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 39.0,
+    "predicted": 123.6426,
+    "residual": -84.6426,
+    "timestamp": "2012-10-30 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": 81.9617,
+    "residual": -78.9617,
+    "timestamp": "2012-10-31 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 337.0,
+    "predicted": 234.4717,
+    "residual": 102.5283,
+    "timestamp": "2012-10-31 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 621.0,
+    "predicted": 369.0222,
+    "residual": 251.9778,
+    "timestamp": "2012-10-31 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 189.0,
+    "predicted": 229.4946,
+    "residual": -40.4946,
+    "timestamp": "2012-10-31 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 224.0,
+    "predicted": 274.8854,
+    "residual": -50.8854,
+    "timestamp": "2012-10-31 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 723.0,
+    "predicted": 458.0909,
+    "residual": 264.9091,
+    "timestamp": "2012-10-31 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 584.0,
+    "predicted": 433.1861,
+    "residual": 150.8139,
+    "timestamp": "2012-10-31 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 165.0,
+    "predicted": 189.1826,
+    "residual": -24.1826,
+    "timestamp": "2012-10-31 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 20.0,
+    "predicted": 96.246,
+    "residual": -76.246,
+    "timestamp": "2012-11-01 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 148.0,
+    "predicted": 150.4886,
+    "residual": -2.4886,
+    "timestamp": "2012-11-01 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 680.0,
+    "predicted": 399.9682,
+    "residual": 280.0318,
+    "timestamp": "2012-11-01 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 146.0,
+    "predicted": 157.0617,
+    "residual": -11.0617,
+    "timestamp": "2012-11-01 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 185.0,
+    "predicted": 270.2875,
+    "residual": -85.2875,
+    "timestamp": "2012-11-01 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 689.0,
+    "predicted": 404.9872,
+    "residual": 284.0128,
+    "timestamp": "2012-11-01 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 678.0,
+    "predicted": 439.0276,
+    "residual": 238.9724,
+    "timestamp": "2012-11-01 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 202.0,
+    "predicted": 187.912,
+    "residual": 14.088,
+    "timestamp": "2012-11-01 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 92.7752,
+    "residual": -82.7752,
+    "timestamp": "2012-11-02 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 122.0,
+    "predicted": 134.7066,
+    "residual": -12.7066,
+    "timestamp": "2012-11-02 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 687.0,
+    "predicted": 387.8129,
+    "residual": 299.1871,
+    "timestamp": "2012-11-02 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 204.0,
+    "predicted": 229.7246,
+    "residual": -25.7246,
+    "timestamp": "2012-11-02 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 262.0,
+    "predicted": 266.1749,
+    "residual": -4.1749,
+    "timestamp": "2012-11-02 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 638.0,
+    "predicted": 459.6439,
+    "residual": 178.3561,
+    "timestamp": "2012-11-02 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 522.0,
+    "predicted": 432.5485,
+    "residual": 89.4515,
+    "timestamp": "2012-11-02 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 149.0,
+    "predicted": 189.9259,
+    "residual": -40.9259,
+    "timestamp": "2012-11-02 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 46.0,
+    "predicted": 103.7827,
+    "residual": -57.7827,
+    "timestamp": "2012-11-03 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 21.0,
+    "predicted": 153.3865,
+    "residual": -132.3865,
+    "timestamp": "2012-11-03 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 328.0,
+    "predicted": 214.6895,
+    "residual": 113.3105,
+    "timestamp": "2012-11-03 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 455.0,
+    "predicted": 250.0068,
+    "residual": 204.9932,
+    "timestamp": "2012-11-03 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 297.0,
+    "predicted": 421.0344,
+    "residual": -124.0344,
+    "timestamp": "2012-11-03 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 146.0,
+    "predicted": 183.4387,
+    "residual": -37.4387,
+    "timestamp": "2012-11-03 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 37.0,
+    "predicted": 100.2856,
+    "residual": -63.2856,
+    "timestamp": "2012-11-04 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 137.9509,
+    "residual": -121.9509,
+    "timestamp": "2012-11-04 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 360.0,
+    "predicted": 218.3497,
+    "residual": 141.6503,
+    "timestamp": "2012-11-04 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 509.0,
+    "predicted": 278.8599,
+    "residual": 230.1401,
+    "timestamp": "2012-11-04 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 237.0,
+    "predicted": 427.9766,
+    "residual": -190.9766,
+    "timestamp": "2012-11-04 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 79.0,
+    "predicted": 170.4658,
+    "residual": -91.4658,
+    "timestamp": "2012-11-04 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 95.4646,
+    "residual": -89.4646,
+    "timestamp": "2012-11-05 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 139.0,
+    "predicted": 142.7663,
+    "residual": -3.7663,
+    "timestamp": "2012-11-05 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 648.0,
+    "predicted": 379.5676,
+    "residual": 268.4324,
+    "timestamp": "2012-11-05 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 142.0,
+    "predicted": 207.7294,
+    "residual": -65.7294,
+    "timestamp": "2012-11-05 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 196.0,
+    "predicted": 275.5138,
+    "residual": -79.5138,
+    "timestamp": "2012-11-05 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 638.0,
+    "predicted": 443.8783,
+    "residual": 194.1217,
+    "timestamp": "2012-11-05 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 152.0,
+    "predicted": 200.7209,
+    "residual": -48.7209,
+    "timestamp": "2012-11-05 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 76.5208,
+    "residual": -68.5208,
+    "timestamp": "2012-11-06 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 41.0,
+    "predicted": 67.7358,
+    "residual": -26.7358,
+    "timestamp": "2012-11-06 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 363.0,
+    "predicted": 241.0329,
+    "residual": 121.9671,
+    "timestamp": "2012-11-06 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 278.0,
+    "predicted": 272.9499,
+    "residual": 5.0501,
+    "timestamp": "2012-11-06 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 627.0,
+    "predicted": 434.1545,
+    "residual": 192.8455,
+    "timestamp": "2012-11-06 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 151.0,
+    "predicted": 199.0708,
+    "residual": -48.0708,
+    "timestamp": "2012-11-06 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 92.0,
+    "predicted": 81.1976,
+    "residual": 10.8024,
+    "timestamp": "2012-11-07 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 27.0,
+    "predicted": 82.3947,
+    "residual": -55.3947,
+    "timestamp": "2012-11-07 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 601.0,
+    "predicted": 357.5735,
+    "residual": 243.4265,
+    "timestamp": "2012-11-07 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 368.0,
+    "predicted": 233.7441,
+    "residual": 134.2559,
+    "timestamp": "2012-11-07 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 181.0,
+    "predicted": 255.9519,
+    "residual": -74.9519,
+    "timestamp": "2012-11-07 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 517.0,
+    "predicted": 424.9766,
+    "residual": 92.0234,
+    "timestamp": "2012-11-07 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 126.0,
+    "predicted": 206.8761,
+    "residual": -80.8761,
+    "timestamp": "2012-11-07 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 29.3181,
+    "residual": -17.3181,
+    "timestamp": "2012-11-08 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 152.6051,
+    "residual": -28.6051,
+    "timestamp": "2012-11-08 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 668.0,
+    "predicted": 388.7135,
+    "residual": 279.2865,
+    "timestamp": "2012-11-08 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 161.0,
+    "predicted": 218.9689,
+    "residual": -57.9689,
+    "timestamp": "2012-11-08 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 182.0,
+    "predicted": 294.6195,
+    "residual": -112.6195,
+    "timestamp": "2012-11-08 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 507.0,
+    "predicted": 447.2311,
+    "residual": 59.7689,
+    "timestamp": "2012-11-08 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 161.0,
+    "predicted": 184.1302,
+    "residual": -23.1302,
+    "timestamp": "2012-11-08 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 96.2495,
+    "residual": -84.2495,
+    "timestamp": "2012-11-09 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 131.0,
+    "predicted": 131.6841,
+    "residual": -0.6841,
+    "timestamp": "2012-11-09 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 693.0,
+    "predicted": 383.0758,
+    "residual": 309.9242,
+    "timestamp": "2012-11-09 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 197.0,
+    "predicted": 214.3058,
+    "residual": -17.3058,
+    "timestamp": "2012-11-09 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 274.0,
+    "predicted": 294.1286,
+    "residual": -20.1286,
+    "timestamp": "2012-11-09 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 654.0,
+    "predicted": 474.182,
+    "residual": 179.818,
+    "timestamp": "2012-11-09 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 496.0,
+    "predicted": 450.5436,
+    "residual": 45.4564,
+    "timestamp": "2012-11-09 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 163.0,
+    "predicted": 177.8287,
+    "residual": -14.8287,
+    "timestamp": "2012-11-09 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 44.0,
+    "predicted": 93.2152,
+    "residual": -49.2152,
+    "timestamp": "2012-11-10 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 107.2743,
+    "residual": -91.2743,
+    "timestamp": "2012-11-10 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 350.0,
+    "predicted": 238.26,
+    "residual": 111.74,
+    "timestamp": "2012-11-10 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 606.0,
+    "predicted": 316.2824,
+    "residual": 289.7176,
+    "timestamp": "2012-11-10 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 651.0,
+    "predicted": 329.6372,
+    "residual": 321.3628,
+    "timestamp": "2012-11-10 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 627.0,
+    "predicted": 321.5384,
+    "residual": 305.4616,
+    "timestamp": "2012-11-10 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 605.0,
+    "predicted": 380.6721,
+    "residual": 224.3279,
+    "timestamp": "2012-11-10 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 501.0,
+    "predicted": 489.3356,
+    "residual": 11.6644,
+    "timestamp": "2012-11-10 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 220.0,
+    "predicted": 232.1984,
+    "residual": -12.1984,
+    "timestamp": "2012-11-10 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 108.0,
+    "predicted": 95.4562,
+    "residual": 12.5438,
+    "timestamp": "2012-11-11 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 74.0995,
+    "residual": -62.0995,
+    "timestamp": "2012-11-11 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 273.0,
+    "predicted": 265.2459,
+    "residual": 7.7541,
+    "timestamp": "2012-11-11 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 686.0,
+    "predicted": 325.4278,
+    "residual": 360.5722,
+    "timestamp": "2012-11-11 13:00:00",
+    "covered": false
+  },
+  {
+    "actual": 654.0,
+    "predicted": 340.1192,
+    "residual": 313.8808,
+    "timestamp": "2012-11-11 14:00:00",
+    "covered": false
+  },
+  {
+    "actual": 724.0,
+    "predicted": 324.4089,
+    "residual": 399.5911,
+    "timestamp": "2012-11-11 15:00:00",
+    "covered": false
+  },
+  {
+    "actual": 653.0,
+    "predicted": 367.5063,
+    "residual": 285.4937,
+    "timestamp": "2012-11-11 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 493.0,
+    "predicted": 499.827,
+    "residual": -6.827,
+    "timestamp": "2012-11-11 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 171.0,
+    "predicted": 231.1638,
+    "residual": -60.1638,
+    "timestamp": "2012-11-11 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 30.0,
+    "predicted": 108.309,
+    "residual": -78.309,
+    "timestamp": "2012-11-12 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 24.0,
+    "predicted": 102.6424,
+    "residual": -78.6424,
+    "timestamp": "2012-11-12 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 397.0,
+    "predicted": 271.1938,
+    "residual": 125.8062,
+    "timestamp": "2012-11-12 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 420.0,
+    "predicted": 329.8388,
+    "residual": 90.1612,
+    "timestamp": "2012-11-12 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 596.0,
+    "predicted": 485.4774,
+    "residual": 110.5226,
+    "timestamp": "2012-11-12 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 155.0,
+    "predicted": 193.4078,
+    "residual": -38.4078,
+    "timestamp": "2012-11-12 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 32.0529,
+    "residual": -27.0529,
+    "timestamp": "2012-11-13 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 18.0,
+    "predicted": 74.7652,
+    "residual": -56.7652,
+    "timestamp": "2012-11-13 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 110.0,
+    "predicted": 176.1213,
+    "residual": -66.1213,
+    "timestamp": "2012-11-13 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 218.0,
+    "predicted": 260.5644,
+    "residual": -42.5644,
+    "timestamp": "2012-11-13 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 608.0,
+    "predicted": 433.7658,
+    "residual": 174.2342,
+    "timestamp": "2012-11-13 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 187.0,
+    "predicted": 197.5265,
+    "residual": -10.5265,
+    "timestamp": "2012-11-13 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 66.3988,
+    "residual": -54.3988,
+    "timestamp": "2012-11-14 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 39.0,
+    "predicted": 64.0849,
+    "residual": -25.0849,
+    "timestamp": "2012-11-14 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 691.0,
+    "predicted": 364.4735,
+    "residual": 326.5265,
+    "timestamp": "2012-11-14 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 332.0,
+    "predicted": 244.3552,
+    "residual": 87.6448,
+    "timestamp": "2012-11-14 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 214.0,
+    "predicted": 272.4642,
+    "residual": -58.4642,
+    "timestamp": "2012-11-14 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 583.0,
+    "predicted": 440.5606,
+    "residual": 142.4394,
+    "timestamp": "2012-11-14 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 213.0,
+    "predicted": 216.467,
+    "residual": -3.467,
+    "timestamp": "2012-11-14 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 82.2195,
+    "residual": -66.2195,
+    "timestamp": "2012-11-15 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 37.0,
+    "predicted": 87.0765,
+    "residual": -50.0765,
+    "timestamp": "2012-11-15 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 646.0,
+    "predicted": 370.8054,
+    "residual": 275.1946,
+    "timestamp": "2012-11-15 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 323.0,
+    "predicted": 255.0593,
+    "residual": 67.9407,
+    "timestamp": "2012-11-15 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 217.0,
+    "predicted": 282.0,
+    "residual": -65.0,
+    "timestamp": "2012-11-15 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 563.0,
+    "predicted": 442.6589,
+    "residual": 120.3411,
+    "timestamp": "2012-11-15 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 285.0,
+    "predicted": 254.8466,
+    "residual": 30.1534,
+    "timestamp": "2012-11-15 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 65.0,
+    "predicted": 97.5124,
+    "residual": -32.5124,
+    "timestamp": "2012-11-16 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 93.6446,
+    "residual": -88.6446,
+    "timestamp": "2012-11-16 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 711.0,
+    "predicted": 386.5465,
+    "residual": 324.4535,
+    "timestamp": "2012-11-16 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 290.0,
+    "predicted": 289.4606,
+    "residual": 0.5394,
+    "timestamp": "2012-11-16 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 383.0,
+    "predicted": 342.4348,
+    "residual": 40.5652,
+    "timestamp": "2012-11-16 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 227.0,
+    "predicted": 259.6421,
+    "residual": -32.6421,
+    "timestamp": "2012-11-16 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 106.0,
+    "predicted": 98.3853,
+    "residual": 7.6147,
+    "timestamp": "2012-11-17 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 65.7525,
+    "residual": -58.7525,
+    "timestamp": "2012-11-17 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 168.0,
+    "predicted": 358.6743,
+    "residual": -190.6743,
+    "timestamp": "2012-11-17 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 476.0,
+    "predicted": 296.7252,
+    "residual": 179.2748,
+    "timestamp": "2012-11-17 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 469.0,
+    "predicted": 336.723,
+    "residual": 132.277,
+    "timestamp": "2012-11-17 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 172.0,
+    "predicted": 251.8289,
+    "residual": -79.8289,
+    "timestamp": "2012-11-17 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 129.0,
+    "predicted": 85.242,
+    "residual": 43.758,
+    "timestamp": "2012-11-18 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 73.7435,
+    "residual": -61.7435,
+    "timestamp": "2012-11-18 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 119.0,
+    "predicted": 359.3165,
+    "residual": -240.3165,
+    "timestamp": "2012-11-18 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 442.0,
+    "predicted": 275.5872,
+    "residual": 166.4128,
+    "timestamp": "2012-11-18 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 372.0,
+    "predicted": 316.2182,
+    "residual": 55.7818,
+    "timestamp": "2012-11-18 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 129.0,
+    "predicted": 251.0565,
+    "residual": -122.0565,
+    "timestamp": "2012-11-18 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 27.0,
+    "predicted": 99.4486,
+    "residual": -72.4486,
+    "timestamp": "2012-11-19 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 12.0,
+    "predicted": 99.4486,
+    "residual": -87.4486,
+    "timestamp": "2012-11-19 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 663.0,
+    "predicted": 377.7926,
+    "residual": 285.2074,
+    "timestamp": "2012-11-19 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 242.0,
+    "predicted": 275.5872,
+    "residual": -33.5872,
+    "timestamp": "2012-11-19 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 380.0,
+    "predicted": 326.9113,
+    "residual": 53.0887,
+    "timestamp": "2012-11-19 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 619.0,
+    "predicted": 461.4225,
+    "residual": 157.5775,
+    "timestamp": "2012-11-19 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 259.0,
+    "predicted": 259.1866,
+    "residual": -0.1866,
+    "timestamp": "2012-11-19 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 29.0,
+    "predicted": 93.3252,
+    "residual": -64.3252,
+    "timestamp": "2012-11-20 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 96.1067,
+    "residual": -90.1067,
+    "timestamp": "2012-11-20 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 665.0,
+    "predicted": 378.7218,
+    "residual": 286.2782,
+    "timestamp": "2012-11-20 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 313.0,
+    "predicted": 288.5861,
+    "residual": 24.4139,
+    "timestamp": "2012-11-20 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 395.0,
+    "predicted": 330.9642,
+    "residual": 64.0358,
+    "timestamp": "2012-11-20 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 235.0,
+    "predicted": 259.7453,
+    "residual": -24.7453,
+    "timestamp": "2012-11-20 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 83.0,
+    "predicted": 131.7216,
+    "residual": -48.7216,
+    "timestamp": "2012-11-20 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 2.0,
+    "predicted": 70.768,
+    "residual": -68.768,
+    "timestamp": "2012-11-21 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 273.0,
+    "predicted": 229.3755,
+    "residual": 43.6245,
+    "timestamp": "2012-11-21 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 241.0,
+    "predicted": 256.0733,
+    "residual": -15.0733,
+    "timestamp": "2012-11-21 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 449.0,
+    "predicted": 307.8131,
+    "residual": 141.1869,
+    "timestamp": "2012-11-21 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 243.0,
+    "predicted": 344.5334,
+    "residual": -101.5334,
+    "timestamp": "2012-11-21 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 57.0,
+    "predicted": 152.9807,
+    "residual": -95.9807,
+    "timestamp": "2012-11-21 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 70.3198,
+    "residual": -64.3198,
+    "timestamp": "2012-11-22 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 56.0,
+    "predicted": 222.6129,
+    "residual": -166.6129,
+    "timestamp": "2012-11-22 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 232.0,
+    "predicted": 271.6795,
+    "residual": -39.6795,
+    "timestamp": "2012-11-22 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 228.0,
+    "predicted": 321.3445,
+    "residual": -93.3445,
+    "timestamp": "2012-11-22 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 44.0,
+    "predicted": 324.0837,
+    "residual": -280.0837,
+    "timestamp": "2012-11-22 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 36.0,
+    "predicted": 141.7966,
+    "residual": -105.7966,
+    "timestamp": "2012-11-22 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 1.0,
+    "predicted": 87.4243,
+    "residual": -86.4243,
+    "timestamp": "2012-11-23 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 77.0,
+    "predicted": 235.1665,
+    "residual": -158.1665,
+    "timestamp": "2012-11-23 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 251.0,
+    "predicted": 256.0733,
+    "residual": -5.0733,
+    "timestamp": "2012-11-23 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 447.0,
+    "predicted": 301.801,
+    "residual": 145.199,
+    "timestamp": "2012-11-23 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 154.0,
+    "predicted": 361.2998,
+    "residual": -207.2998,
+    "timestamp": "2012-11-23 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 67.0,
+    "predicted": 173.7639,
+    "residual": -106.7639,
+    "timestamp": "2012-11-23 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 89.1603,
+    "residual": -78.1603,
+    "timestamp": "2012-11-24 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 25.0,
+    "predicted": 243.9862,
+    "residual": -218.9862,
+    "timestamp": "2012-11-24 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 186.0,
+    "predicted": 221.7433,
+    "residual": -35.7433,
+    "timestamp": "2012-11-24 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 198.0,
+    "predicted": 246.2866,
+    "residual": -48.2866,
+    "timestamp": "2012-11-24 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 83.0,
+    "predicted": 306.9959,
+    "residual": -223.9959,
+    "timestamp": "2012-11-24 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 57.0,
+    "predicted": 129.8992,
+    "residual": -72.8992,
+    "timestamp": "2012-11-24 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 97.1986,
+    "residual": -89.1986,
+    "timestamp": "2012-11-25 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 21.0,
+    "predicted": 243.6038,
+    "residual": -222.6038,
+    "timestamp": "2012-11-25 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 204.0,
+    "predicted": 222.5157,
+    "residual": -18.5157,
+    "timestamp": "2012-11-25 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 245.0,
+    "predicted": 253.0019,
+    "residual": -8.0019,
+    "timestamp": "2012-11-25 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 127.0,
+    "predicted": 326.6068,
+    "residual": -199.6068,
+    "timestamp": "2012-11-25 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 41.0,
+    "predicted": 118.0982,
+    "residual": -77.0982,
+    "timestamp": "2012-11-25 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 74.3462,
+    "residual": -69.3462,
+    "timestamp": "2012-11-26 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 128.4087,
+    "residual": -4.4087,
+    "timestamp": "2012-11-26 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 638.0,
+    "predicted": 370.2062,
+    "residual": 267.7938,
+    "timestamp": "2012-11-26 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 147.0,
+    "predicted": 226.4108,
+    "residual": -79.4108,
+    "timestamp": "2012-11-26 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 228.0,
+    "predicted": 295.353,
+    "residual": -67.353,
+    "timestamp": "2012-11-26 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 521.0,
+    "predicted": 425.4024,
+    "residual": 95.5976,
+    "timestamp": "2012-11-26 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 104.0,
+    "predicted": 187.1735,
+    "residual": -83.1735,
+    "timestamp": "2012-11-26 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 89.8545,
+    "residual": -84.8545,
+    "timestamp": "2012-11-27 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 100.0,
+    "predicted": 126.6746,
+    "residual": -26.6746,
+    "timestamp": "2012-11-27 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 57.0,
+    "predicted": 133.9778,
+    "residual": -76.9778,
+    "timestamp": "2012-11-27 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 94.0,
+    "predicted": 144.6946,
+    "residual": -50.6946,
+    "timestamp": "2012-11-27 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 482.0,
+    "predicted": 364.8743,
+    "residual": 117.1257,
+    "timestamp": "2012-11-27 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 97.0,
+    "predicted": 140.5417,
+    "residual": -43.5417,
+    "timestamp": "2012-11-27 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 1.0,
+    "predicted": 67.6436,
+    "residual": -66.6436,
+    "timestamp": "2012-11-28 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 136.0,
+    "predicted": 124.41,
+    "residual": 11.59,
+    "timestamp": "2012-11-28 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 692.0,
+    "predicted": 350.7609,
+    "residual": 341.2391,
+    "timestamp": "2012-11-28 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 161.0,
+    "predicted": 215.1574,
+    "residual": -54.1574,
+    "timestamp": "2012-11-28 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 176.0,
+    "predicted": 258.5792,
+    "residual": -82.5792,
+    "timestamp": "2012-11-28 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 542.0,
+    "predicted": 421.3164,
+    "residual": 120.6836,
+    "timestamp": "2012-11-28 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 154.0,
+    "predicted": 176.0387,
+    "residual": -22.0387,
+    "timestamp": "2012-11-28 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 7.0,
+    "predicted": 82.595,
+    "residual": -75.595,
+    "timestamp": "2012-11-29 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 362.0,
+    "predicted": 238.3692,
+    "residual": 123.6308,
+    "timestamp": "2012-11-29 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 679.0,
+    "predicted": 349.2194,
+    "residual": 329.7806,
+    "timestamp": "2012-11-29 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 163.0,
+    "predicted": 250.6698,
+    "residual": -87.6698,
+    "timestamp": "2012-11-29 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 220.0,
+    "predicted": 264.8093,
+    "residual": -44.8093,
+    "timestamp": "2012-11-29 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 344.0,
+    "predicted": 312.926,
+    "residual": 31.074,
+    "timestamp": "2012-11-29 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 130.0,
+    "predicted": 143.7703,
+    "residual": -13.7703,
+    "timestamp": "2012-11-29 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 4.0,
+    "predicted": 79.1755,
+    "residual": -75.1755,
+    "timestamp": "2012-11-30 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 352.0,
+    "predicted": 231.2842,
+    "residual": 120.7158,
+    "timestamp": "2012-11-30 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 729.0,
+    "predicted": 348.6332,
+    "residual": 380.3668,
+    "timestamp": "2012-11-30 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 201.0,
+    "predicted": 242.2964,
+    "residual": -41.2964,
+    "timestamp": "2012-11-30 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 296.0,
+    "predicted": 296.5091,
+    "residual": -0.5091,
+    "timestamp": "2012-11-30 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 377.0,
+    "predicted": 322.1751,
+    "residual": 54.8249,
+    "timestamp": "2012-11-30 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 110.0,
+    "predicted": 132.1379,
+    "residual": -22.1379,
+    "timestamp": "2012-11-30 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 15.0,
+    "predicted": 69.2702,
+    "residual": -54.2702,
+    "timestamp": "2012-12-01 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 27.0,
+    "predicted": 107.5411,
+    "residual": -80.5411,
+    "timestamp": "2012-12-01 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 256.0,
+    "predicted": 174.3858,
+    "residual": 81.6142,
+    "timestamp": "2012-12-01 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 479.0,
+    "predicted": 255.2582,
+    "residual": 223.7418,
+    "timestamp": "2012-12-01 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 297.0,
+    "predicted": 413.1979,
+    "residual": -116.1979,
+    "timestamp": "2012-12-01 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 147.0,
+    "predicted": 163.5763,
+    "residual": -16.5763,
+    "timestamp": "2012-12-01 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 74.0,
+    "predicted": 84.2216,
+    "residual": -10.2216,
+    "timestamp": "2012-12-02 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 16.0,
+    "predicted": 103.16,
+    "residual": -87.16,
+    "timestamp": "2012-12-02 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 293.0,
+    "predicted": 194.0514,
+    "residual": 98.9486,
+    "timestamp": "2012-12-02 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 473.0,
+    "predicted": 269.4693,
+    "residual": 203.5307,
+    "timestamp": "2012-12-02 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 203.0,
+    "predicted": 434.711,
+    "residual": -231.711,
+    "timestamp": "2012-12-02 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 96.0,
+    "predicted": 194.8776,
+    "residual": -98.8776,
+    "timestamp": "2012-12-02 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 112.1767,
+    "residual": -102.1767,
+    "timestamp": "2012-12-03 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 138.0,
+    "predicted": 143.128,
+    "residual": -5.128,
+    "timestamp": "2012-12-03 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 731.0,
+    "predicted": 377.3923,
+    "residual": 353.6077,
+    "timestamp": "2012-12-03 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 136.0,
+    "predicted": 227.8897,
+    "residual": -91.8897,
+    "timestamp": "2012-12-03 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 260.0,
+    "predicted": 332.4934,
+    "residual": -72.4934,
+    "timestamp": "2012-12-03 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 708.0,
+    "predicted": 484.6082,
+    "residual": 223.3918,
+    "timestamp": "2012-12-03 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 692.0,
+    "predicted": 452.0732,
+    "residual": 239.9268,
+    "timestamp": "2012-12-03 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 144.0,
+    "predicted": 190.4176,
+    "residual": -46.4176,
+    "timestamp": "2012-12-03 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 107.3149,
+    "residual": -99.3149,
+    "timestamp": "2012-12-04 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 153.0,
+    "predicted": 143.128,
+    "residual": 9.872,
+    "timestamp": "2012-12-04 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 721.0,
+    "predicted": 392.4861,
+    "residual": 328.5139,
+    "timestamp": "2012-12-04 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 156.0,
+    "predicted": 226.2997,
+    "residual": -70.2997,
+    "timestamp": "2012-12-04 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 270.0,
+    "predicted": 307.3605,
+    "residual": -37.3605,
+    "timestamp": "2012-12-04 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 743.0,
+    "predicted": 482.4549,
+    "residual": 260.5451,
+    "timestamp": "2012-12-04 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 731.0,
+    "predicted": 450.0169,
+    "residual": 280.9831,
+    "timestamp": "2012-12-04 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 181.0,
+    "predicted": 214.4676,
+    "residual": -33.4676,
+    "timestamp": "2012-12-04 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": 128.6889,
+    "residual": -119.6889,
+    "timestamp": "2012-12-05 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 125.6052,
+    "residual": -1.6052,
+    "timestamp": "2012-12-05 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 759.0,
+    "predicted": 409.3176,
+    "residual": 349.6824,
+    "timestamp": "2012-12-05 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 141.0,
+    "predicted": 240.2803,
+    "residual": -99.2803,
+    "timestamp": "2012-12-05 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 218.0,
+    "predicted": 289.7069,
+    "residual": -71.7069,
+    "timestamp": "2012-12-05 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 605.0,
+    "predicted": 479.0215,
+    "residual": 125.9785,
+    "timestamp": "2012-12-05 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 609.0,
+    "predicted": 442.5263,
+    "residual": 166.4737,
+    "timestamp": "2012-12-05 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 105.0,
+    "predicted": 173.5341,
+    "residual": -68.5341,
+    "timestamp": "2012-12-05 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": 72.8734,
+    "residual": -63.8734,
+    "timestamp": "2012-12-06 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 117.1165,
+    "residual": 6.8835,
+    "timestamp": "2012-12-06 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 659.0,
+    "predicted": 354.3016,
+    "residual": 304.6984,
+    "timestamp": "2012-12-06 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 276.0,
+    "predicted": 241.7161,
+    "residual": 34.2839,
+    "timestamp": "2012-12-06 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 245.0,
+    "predicted": 278.9728,
+    "residual": -33.9728,
+    "timestamp": "2012-12-06 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 617.0,
+    "predicted": 444.8869,
+    "residual": 172.1131,
+    "timestamp": "2012-12-06 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 191.0,
+    "predicted": 187.4012,
+    "residual": 3.5988,
+    "timestamp": "2012-12-06 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 28.0,
+    "predicted": 65.7525,
+    "residual": -37.7525,
+    "timestamp": "2012-12-07 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 26.0,
+    "predicted": 70.5366,
+    "residual": -44.5366,
+    "timestamp": "2012-12-07 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 301.0,
+    "predicted": 238.3802,
+    "residual": 62.6198,
+    "timestamp": "2012-12-07 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 220.0,
+    "predicted": 262.9587,
+    "residual": -42.9587,
+    "timestamp": "2012-12-07 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 568.0,
+    "predicted": 454.6149,
+    "residual": 113.3851,
+    "timestamp": "2012-12-07 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 171.0,
+    "predicted": 196.6176,
+    "residual": -25.6176,
+    "timestamp": "2012-12-07 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 100.0,
+    "predicted": 83.5413,
+    "residual": 16.4587,
+    "timestamp": "2012-12-08 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 87.0078,
+    "residual": -81.0078,
+    "timestamp": "2012-12-08 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 170.0,
+    "predicted": 257.4307,
+    "residual": -87.4307,
+    "timestamp": "2012-12-08 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 547.0,
+    "predicted": 259.9795,
+    "residual": 287.0205,
+    "timestamp": "2012-12-08 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 345.0,
+    "predicted": 433.5738,
+    "residual": -88.5738,
+    "timestamp": "2012-12-08 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 209.0,
+    "predicted": 198.1619,
+    "residual": 10.8381,
+    "timestamp": "2012-12-08 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 102.0,
+    "predicted": 102.814,
+    "residual": -0.814,
+    "timestamp": "2012-12-09 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 102.814,
+    "residual": -94.814,
+    "timestamp": "2012-12-09 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 103.0,
+    "predicted": 256.3732,
+    "residual": -153.3732,
+    "timestamp": "2012-12-09 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 285.0,
+    "predicted": 250.2929,
+    "residual": 34.7071,
+    "timestamp": "2012-12-09 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 229.0,
+    "predicted": 363.7718,
+    "residual": -134.7718,
+    "timestamp": "2012-12-09 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 96.0,
+    "predicted": 191.5063,
+    "residual": -95.5063,
+    "timestamp": "2012-12-09 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 4.0,
+    "predicted": 88.5521,
+    "residual": -84.5521,
+    "timestamp": "2012-12-10 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 27.0,
+    "predicted": 93.0903,
+    "residual": -66.0903,
+    "timestamp": "2012-12-10 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 284.0,
+    "predicted": 252.7451,
+    "residual": 31.2549,
+    "timestamp": "2012-12-10 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 220.0,
+    "predicted": 200.7523,
+    "residual": 19.2477,
+    "timestamp": "2012-12-10 13:00:00",
+    "covered": true
+  },
+  {
+    "actual": 616.0,
+    "predicted": 453.9133,
+    "residual": 162.0867,
+    "timestamp": "2012-12-10 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 245.0,
+    "predicted": 217.3174,
+    "residual": 27.6826,
+    "timestamp": "2012-12-10 21:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 104.5059,
+    "residual": -96.5059,
+    "timestamp": "2012-12-11 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 41.0,
+    "predicted": 25.9214,
+    "residual": 15.0786,
+    "timestamp": "2012-12-11 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 724.0,
+    "predicted": 374.6309,
+    "residual": 349.3691,
+    "timestamp": "2012-12-11 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 334.0,
+    "predicted": 246.9939,
+    "residual": 87.0061,
+    "timestamp": "2012-12-11 09:00:00",
+    "covered": true
+  },
+  {
+    "actual": 226.0,
+    "predicted": 257.1409,
+    "residual": -31.1409,
+    "timestamp": "2012-12-11 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 358.0,
+    "predicted": 324.8087,
+    "residual": 33.1913,
+    "timestamp": "2012-12-11 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 601.0,
+    "predicted": 434.1545,
+    "residual": 166.8455,
+    "timestamp": "2012-12-11 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 257.0,
+    "predicted": 246.5868,
+    "residual": 10.4132,
+    "timestamp": "2012-12-11 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 34.0,
+    "predicted": 98.3853,
+    "residual": -64.3853,
+    "timestamp": "2012-12-12 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 4.0,
+    "predicted": 94.7261,
+    "residual": -90.7261,
+    "timestamp": "2012-12-12 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 688.0,
+    "predicted": 361.2113,
+    "residual": 326.7887,
+    "timestamp": "2012-12-12 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 232.0,
+    "predicted": 288.4198,
+    "residual": -56.4198,
+    "timestamp": "2012-12-12 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 329.0,
+    "predicted": 317.9119,
+    "residual": 11.0881,
+    "timestamp": "2012-12-12 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 268.0,
+    "predicted": 240.182,
+    "residual": 27.818,
+    "timestamp": "2012-12-12 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 32.0,
+    "predicted": 89.0357,
+    "residual": -57.0357,
+    "timestamp": "2012-12-13 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 8.0,
+    "predicted": 82.7877,
+    "residual": -74.7877,
+    "timestamp": "2012-12-13 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 679.0,
+    "predicted": 356.7832,
+    "residual": 322.2168,
+    "timestamp": "2012-12-13 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 282.0,
+    "predicted": 277.0819,
+    "residual": 4.9181,
+    "timestamp": "2012-12-13 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 406.0,
+    "predicted": 326.5042,
+    "residual": 79.4958,
+    "timestamp": "2012-12-13 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 241.0,
+    "predicted": 263.9601,
+    "residual": -22.9601,
+    "timestamp": "2012-12-13 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 47.0,
+    "predicted": 76.5872,
+    "residual": -29.5872,
+    "timestamp": "2012-12-14 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 61.7426,
+    "residual": -51.7426,
+    "timestamp": "2012-12-14 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 636.0,
+    "predicted": 349.8526,
+    "residual": 286.1474,
+    "timestamp": "2012-12-14 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 273.0,
+    "predicted": 274.5318,
+    "residual": -1.5318,
+    "timestamp": "2012-12-14 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 417.0,
+    "predicted": 323.1586,
+    "residual": 93.8414,
+    "timestamp": "2012-12-14 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 622.0,
+    "predicted": 440.5834,
+    "residual": 181.4166,
+    "timestamp": "2012-12-14 17:00:00",
+    "covered": true
+  },
+  {
+    "actual": 221.0,
+    "predicted": 248.9678,
+    "residual": -27.9678,
+    "timestamp": "2012-12-14 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 94.0,
+    "predicted": 96.6347,
+    "residual": -2.6347,
+    "timestamp": "2012-12-15 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 61.5576,
+    "residual": -55.5576,
+    "timestamp": "2012-12-15 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 119.0,
+    "predicted": 361.4945,
+    "residual": -242.4945,
+    "timestamp": "2012-12-15 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 453.0,
+    "predicted": 287.9811,
+    "residual": 165.0189,
+    "timestamp": "2012-12-15 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 413.0,
+    "predicted": 333.2289,
+    "residual": 79.7711,
+    "timestamp": "2012-12-15 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 201.0,
+    "predicted": 256.3618,
+    "residual": -55.3618,
+    "timestamp": "2012-12-15 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 110.0,
+    "predicted": 116.299,
+    "residual": -6.299,
+    "timestamp": "2012-12-16 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 93.432,
+    "residual": -82.432,
+    "timestamp": "2012-12-16 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 88.0,
+    "predicted": 371.6514,
+    "residual": -283.6514,
+    "timestamp": "2012-12-16 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 417.0,
+    "predicted": 260.1787,
+    "residual": 156.8213,
+    "timestamp": "2012-12-16 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 338.0,
+    "predicted": 255.1707,
+    "residual": 82.8293,
+    "timestamp": "2012-12-16 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 109.0,
+    "predicted": 301.5486,
+    "residual": -192.5486,
+    "timestamp": "2012-12-16 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 33.0,
+    "predicted": 128.7033,
+    "residual": -95.7033,
+    "timestamp": "2012-12-16 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": 93.6634,
+    "residual": -90.6634,
+    "timestamp": "2012-12-17 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 319.0,
+    "predicted": 243.9134,
+    "residual": 75.0866,
+    "timestamp": "2012-12-17 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 170.0,
+    "predicted": 233.4932,
+    "residual": -63.4932,
+    "timestamp": "2012-12-17 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 211.0,
+    "predicted": 264.4409,
+    "residual": -53.4409,
+    "timestamp": "2012-12-17 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 340.0,
+    "predicted": 323.4226,
+    "residual": 16.5774,
+    "timestamp": "2012-12-17 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 47.0,
+    "predicted": 85.9804,
+    "residual": -38.9804,
+    "timestamp": "2012-12-17 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 102.8783,
+    "residual": -97.8783,
+    "timestamp": "2012-12-18 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 355.0,
+    "predicted": 243.9134,
+    "residual": 111.0866,
+    "timestamp": "2012-12-18 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 662.0,
+    "predicted": 381.26,
+    "residual": 280.74,
+    "timestamp": "2012-12-18 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 269.0,
+    "predicted": 263.7311,
+    "residual": 5.2689,
+    "timestamp": "2012-12-18 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 246.0,
+    "predicted": 284.8499,
+    "residual": -38.8499,
+    "timestamp": "2012-12-18 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 353.0,
+    "predicted": 334.0943,
+    "residual": 18.9057,
+    "timestamp": "2012-12-18 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 81.0,
+    "predicted": 160.3331,
+    "residual": -79.3331,
+    "timestamp": "2012-12-18 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 73.6513,
+    "residual": -68.6513,
+    "timestamp": "2012-12-19 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 363.0,
+    "predicted": 234.0234,
+    "residual": 128.9766,
+    "timestamp": "2012-12-19 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 678.0,
+    "predicted": 345.2866,
+    "residual": 332.7134,
+    "timestamp": "2012-12-19 08:00:00",
+    "covered": false
+  },
+  {
+    "actual": 200.0,
+    "predicted": 251.8819,
+    "residual": -51.8819,
+    "timestamp": "2012-12-19 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 237.0,
+    "predicted": 280.1359,
+    "residual": -43.1359,
+    "timestamp": "2012-12-19 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 336.0,
+    "predicted": 331.1736,
+    "residual": 4.8264,
+    "timestamp": "2012-12-19 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 88.0,
+    "predicted": 141.4079,
+    "residual": -53.4079,
+    "timestamp": "2012-12-19 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 4.0,
+    "predicted": 90.6269,
+    "residual": -86.6269,
+    "timestamp": "2012-12-20 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 350.0,
+    "predicted": 257.0068,
+    "residual": 92.9932,
+    "timestamp": "2012-12-20 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 190.0,
+    "predicted": 229.2536,
+    "residual": -39.2536,
+    "timestamp": "2012-12-20 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 249.0,
+    "predicted": 255.9967,
+    "residual": -6.9967,
+    "timestamp": "2012-12-20 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 118.0,
+    "predicted": 249.3178,
+    "residual": -131.3178,
+    "timestamp": "2012-12-20 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 86.9745,
+    "residual": -73.9745,
+    "timestamp": "2012-12-20 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 17.0,
+    "predicted": -15.2467,
+    "residual": 32.2467,
+    "timestamp": "2012-12-21 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": -14.4419,
+    "residual": 23.4419,
+    "timestamp": "2012-12-21 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -14.225,
+    "residual": 17.225,
+    "timestamp": "2012-12-21 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -14.225,
+    "residual": 17.225,
+    "timestamp": "2012-12-21 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 208.0,
+    "predicted": 201.1765,
+    "residual": 6.8235,
+    "timestamp": "2012-12-21 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 162.0,
+    "predicted": 167.8734,
+    "residual": -5.8734,
+    "timestamp": "2012-12-21 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 263.0,
+    "predicted": 187.7997,
+    "residual": 75.2003,
+    "timestamp": "2012-12-21 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 243.0,
+    "predicted": 328.3898,
+    "residual": -85.3898,
+    "timestamp": "2012-12-21 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 63.0,
+    "predicted": 104.7729,
+    "residual": -41.7729,
+    "timestamp": "2012-12-21 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 23.0,
+    "predicted": 13.6886,
+    "residual": 9.3114,
+    "timestamp": "2012-12-22 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 69.8087,
+    "residual": -56.8087,
+    "timestamp": "2012-12-22 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 118.0,
+    "predicted": 131.0566,
+    "residual": -13.0566,
+    "timestamp": "2012-12-22 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 161.0,
+    "predicted": 185.8355,
+    "residual": -24.8355,
+    "timestamp": "2012-12-22 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 82.0,
+    "predicted": 327.9595,
+    "residual": -245.9595,
+    "timestamp": "2012-12-22 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 39.0,
+    "predicted": 93.2845,
+    "residual": -54.2845,
+    "timestamp": "2012-12-22 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 18.0,
+    "predicted": 16.606,
+    "residual": 1.394,
+    "timestamp": "2012-12-23 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": 52.7528,
+    "residual": -43.7528,
+    "timestamp": "2012-12-23 06:00:00",
+    "covered": true
+  },
+  {
+    "actual": 93.0,
+    "predicted": 120.2896,
+    "residual": -27.2896,
+    "timestamp": "2012-12-23 10:00:00",
+    "covered": true
+  },
+  {
+    "actual": 175.0,
+    "predicted": 201.0622,
+    "residual": -26.0622,
+    "timestamp": "2012-12-23 14:00:00",
+    "covered": true
+  },
+  {
+    "actual": 93.0,
+    "predicted": 357.9544,
+    "residual": -264.9544,
+    "timestamp": "2012-12-23 18:00:00",
+    "covered": true
+  },
+  {
+    "actual": 58.0,
+    "predicted": 103.3512,
+    "residual": -45.3512,
+    "timestamp": "2012-12-23 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": 12.689,
+    "residual": -7.689,
+    "timestamp": "2012-12-24 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": -7.8965,
+    "residual": 16.8965,
+    "timestamp": "2012-12-24 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 30.0,
+    "predicted": 177.4422,
+    "residual": -147.4422,
+    "timestamp": "2012-12-24 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 124.0,
+    "predicted": 153.9032,
+    "residual": -29.9032,
+    "timestamp": "2012-12-24 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 33.0,
+    "predicted": 91.7029,
+    "residual": -58.7029,
+    "timestamp": "2012-12-24 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 18.0,
+    "predicted": 214.4267,
+    "residual": -196.4267,
+    "timestamp": "2012-12-24 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": -2.4901,
+    "residual": 13.4901,
+    "timestamp": "2012-12-24 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": -55.8745,
+    "residual": 68.8745,
+    "timestamp": "2012-12-25 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 1.0,
+    "predicted": 4.9148,
+    "residual": -3.9148,
+    "timestamp": "2012-12-25 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -8.1785,
+    "residual": 11.1785,
+    "timestamp": "2012-12-25 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": 296.8662,
+    "residual": -285.8662,
+    "timestamp": "2012-12-25 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 114.0,
+    "predicted": 195.6974,
+    "residual": -81.6974,
+    "timestamp": "2012-12-25 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 86.0,
+    "predicted": 255.0389,
+    "residual": -169.0389,
+    "timestamp": "2012-12-25 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 40.0,
+    "predicted": 177.2814,
+    "residual": -137.2814,
+    "timestamp": "2012-12-25 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": 21.0009,
+    "residual": -12.0009,
+    "timestamp": "2012-12-26 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 2.0,
+    "predicted": -0.7161,
+    "residual": 2.7161,
+    "timestamp": "2012-12-26 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 2.0,
+    "predicted": -4.5838,
+    "residual": 6.5838,
+    "timestamp": "2012-12-26 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 31.0,
+    "predicted": 206.9778,
+    "residual": -175.9778,
+    "timestamp": "2012-12-26 08:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": 89.2608,
+    "residual": -79.2608,
+    "timestamp": "2012-12-26 12:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 139.7396,
+    "residual": -126.7396,
+    "timestamp": "2012-12-26 16:00:00",
+    "covered": true
+  },
+  {
+    "actual": 32.0,
+    "predicted": 102.4289,
+    "residual": -70.4289,
+    "timestamp": "2012-12-26 20:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": -0.5715,
+    "residual": 11.5715,
+    "timestamp": "2012-12-26 22:00:00",
+    "covered": true
+  },
+  {
+    "actual": 10.0,
+    "predicted": -17.2259,
+    "residual": 27.2259,
+    "timestamp": "2012-12-26 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -62.3878,
+    "residual": 65.3878,
+    "timestamp": "2012-12-27 00:00:00",
+    "covered": true
+  },
+  {
+    "actual": 5.0,
+    "predicted": -79.9262,
+    "residual": 84.9262,
+    "timestamp": "2012-12-27 01:00:00",
+    "covered": true
+  },
+  {
+    "actual": 2.0,
+    "predicted": -19.1369,
+    "residual": 21.1369,
+    "timestamp": "2012-12-27 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 1.0,
+    "predicted": -5.2073,
+    "residual": 6.2073,
+    "timestamp": "2012-12-27 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -11.8628,
+    "residual": 14.8628,
+    "timestamp": "2012-12-27 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 90.0,
+    "predicted": 167.5779,
+    "residual": -77.5779,
+    "timestamp": "2012-12-27 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 103.0,
+    "predicted": 144.9552,
+    "residual": -41.9552,
+    "timestamp": "2012-12-27 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 120.0,
+    "predicted": 161.4149,
+    "residual": -41.4149,
+    "timestamp": "2012-12-27 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 117.0,
+    "predicted": 227.7632,
+    "residual": -110.7632,
+    "timestamp": "2012-12-27 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 26.0,
+    "predicted": 58.4032,
+    "residual": -32.4032,
+    "timestamp": "2012-12-27 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 2.0,
+    "predicted": 19.2448,
+    "residual": -17.2448,
+    "timestamp": "2012-12-28 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 112.0,
+    "predicted": 172.0983,
+    "residual": -60.0983,
+    "timestamp": "2012-12-28 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 178.0,
+    "predicted": 161.8056,
+    "residual": 16.1944,
+    "timestamp": "2012-12-28 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 225.0,
+    "predicted": 205.8106,
+    "residual": 19.1894,
+    "timestamp": "2012-12-28 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 128.0,
+    "predicted": 230.1346,
+    "residual": -102.1346,
+    "timestamp": "2012-12-28 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 59.0,
+    "predicted": 66.1407,
+    "residual": -7.1407,
+    "timestamp": "2012-12-28 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 6.0,
+    "predicted": 15.2699,
+    "residual": -9.2699,
+    "timestamp": "2012-12-29 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 18.0,
+    "predicted": 175.9835,
+    "residual": -157.9835,
+    "timestamp": "2012-12-29 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 45.0,
+    "predicted": 67.1612,
+    "residual": -22.1612,
+    "timestamp": "2012-12-29 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 129.0,
+    "predicted": 159.826,
+    "residual": -30.826,
+    "timestamp": "2012-12-29 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 97.0,
+    "predicted": 239.9118,
+    "residual": -142.9118,
+    "timestamp": "2012-12-29 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 32.0,
+    "predicted": 73.7824,
+    "residual": -41.7824,
+    "timestamp": "2012-12-29 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 15.0,
+    "predicted": 11.5819,
+    "residual": 3.4181,
+    "timestamp": "2012-12-30 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 13.0,
+    "predicted": 169.8786,
+    "residual": -156.8786,
+    "timestamp": "2012-12-30 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 136.0,
+    "predicted": 152.5806,
+    "residual": -16.5806,
+    "timestamp": "2012-12-30 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 138.0,
+    "predicted": 188.6595,
+    "residual": -50.6595,
+    "timestamp": "2012-12-30 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 102.0,
+    "predicted": 273.1479,
+    "residual": -171.1479,
+    "timestamp": "2012-12-30 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 49.0,
+    "predicted": 57.0308,
+    "residual": -8.0308,
+    "timestamp": "2012-12-30 23:00:00",
+    "covered": true
+  },
+  {
+    "actual": 11.0,
+    "predicted": -0.6459,
+    "residual": 11.6459,
+    "timestamp": "2012-12-31 02:00:00",
+    "covered": true
+  },
+  {
+    "actual": 1.0,
+    "predicted": 4.0912,
+    "residual": -3.0912,
+    "timestamp": "2012-12-31 03:00:00",
+    "covered": true
+  },
+  {
+    "actual": 3.0,
+    "predicted": -7.8085,
+    "residual": 10.8085,
+    "timestamp": "2012-12-31 04:00:00",
+    "covered": true
+  },
+  {
+    "actual": 9.0,
+    "predicted": -7.7779,
+    "residual": 16.7779,
+    "timestamp": "2012-12-31 05:00:00",
+    "covered": true
+  },
+  {
+    "actual": 85.0,
+    "predicted": 159.546,
+    "residual": -74.546,
+    "timestamp": "2012-12-31 07:00:00",
+    "covered": true
+  },
+  {
+    "actual": 157.0,
+    "predicted": 143.4265,
+    "residual": 13.5735,
+    "timestamp": "2012-12-31 11:00:00",
+    "covered": true
+  },
+  {
+    "actual": 315.0,
+    "predicted": 196.2115,
+    "residual": 118.7885,
+    "timestamp": "2012-12-31 15:00:00",
+    "covered": true
+  },
+  {
+    "actual": 119.0,
+    "predicted": 241.8645,
+    "residual": -122.8645,
+    "timestamp": "2012-12-31 19:00:00",
+    "covered": true
+  },
+  {
+    "actual": 49.0,
+    "predicted": 68.8391,
+    "residual": -19.8391,
+    "timestamp": "2012-12-31 23:00:00",
+    "covered": true
+  }
+]

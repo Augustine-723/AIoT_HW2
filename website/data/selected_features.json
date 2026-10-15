@@ -1,0 +1,1486 @@
+[
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__season_2",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 25.408463
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__season_3",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 35.884851
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__season_4",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 49.78987
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_2",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 3.907768
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_3",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 18.997581
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_4",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 18.46194
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_5",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 31.439592
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_6",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 11.555184
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_7",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -23.651202
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_8",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -8.109268
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_9",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 17.350317
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_10",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 21.273336
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_11",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 9.666229
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__mnth_12",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 15.849685
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_1",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -13.862574
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_2",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -20.73029
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_3",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -29.957773
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_4",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -32.82724
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_5",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -18.80977
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_6",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 30.375425
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_7",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 141.631204
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_8",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 265.432811
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_9",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 142.540897
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_10",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 93.258188
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_11",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 114.144434
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_12",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 146.853748
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_13",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 144.645675
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_14",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 130.620119
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_15",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 138.394319
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_16",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 189.019729
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_17",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 320.704502
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_18",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 295.403131
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_19",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 201.121662
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_20",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 131.329558
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_21",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 91.634244
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_22",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 61.228882
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__hr_23",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 26.729314
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_1",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -4.898001
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_2",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -1.928677
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_3",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -3.73737
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_4",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 0.218973
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_5",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 5.645918
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weekday_6",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 10.772306
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weathersit_2",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -12.349249
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weathersit_3",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -62.791539
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "cat__weathersit_4",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -57.218349
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__temp",
+    "original_feature_name": "temp",
+    "selection_status": "selected",
+    "coefficient": 120.544766
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__atemp",
+    "original_feature_name": "atemp",
+    "selection_status": "selected",
+    "coefficient": 124.829034
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__hum",
+    "original_feature_name": "hum",
+    "selection_status": "selected",
+    "coefficient": -63.727886
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__windspeed",
+    "original_feature_name": "windspeed",
+    "selection_status": "selected",
+    "coefficient": -41.914746
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__yr",
+    "original_feature_name": "yr",
+    "selection_status": "selected",
+    "coefficient": 82.272206
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__holiday",
+    "original_feature_name": "holiday",
+    "selection_status": "selected",
+    "coefficient": -11.398694
+  },
+  {
+    "model_id": "M1",
+    "encoded_feature_name": "num__workingday",
+    "original_feature_name": "workingday",
+    "selection_status": "selected",
+    "coefficient": 6.699538
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__season_2",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 37.337185
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__season_3",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 38.688555
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__season_4",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 57.276029
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_2",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_3",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_4",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_5",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_6",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_7",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -39.235894
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_8",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -22.838395
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_9",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_10",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_11",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__mnth_12",
+    "original_feature_name": "mnth",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_1",
+    "original_feature_name": "hr",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_2",
+    "original_feature_name": "hr",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_3",
+    "original_feature_name": "hr",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_4",
+    "original_feature_name": "hr",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_5",
+    "original_feature_name": "hr",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_6",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 49.464585
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_7",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 160.372105
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_8",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 283.728927
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_9",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 159.899564
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_10",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 109.829858
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_11",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 130.045958
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_12",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 162.129651
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_13",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 159.70245
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_14",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 145.530781
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_15",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 153.318279
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_16",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 204.664497
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_17",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 336.638663
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_18",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 311.733865
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_19",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 218.007247
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_20",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 149.070892
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_21",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 109.609757
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_22",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 79.354727
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__hr_23",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 45.161938
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_1",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_2",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_3",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_4",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_5",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weekday_6",
+    "original_feature_name": "weekday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weathersit_2",
+    "original_feature_name": "weathersit",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weathersit_3",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -56.408157
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "cat__weathersit_4",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -52.817221
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__temp",
+    "original_feature_name": "temp",
+    "selection_status": "selected",
+    "coefficient": 119.8896
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__atemp",
+    "original_feature_name": "atemp",
+    "selection_status": "selected",
+    "coefficient": 145.703367
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__hum",
+    "original_feature_name": "hum",
+    "selection_status": "selected",
+    "coefficient": -73.018191
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__windspeed",
+    "original_feature_name": "windspeed",
+    "selection_status": "selected",
+    "coefficient": -42.496124
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__yr",
+    "original_feature_name": "yr",
+    "selection_status": "selected",
+    "coefficient": 82.099641
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__holiday",
+    "original_feature_name": "holiday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M2",
+    "encoded_feature_name": "num__workingday",
+    "original_feature_name": "workingday",
+    "selection_status": "eliminated",
+    "coefficient": null
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__season_2",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 25.434645
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__season_3",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 35.638197
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__season_4",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 49.715727
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_2",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 3.713366
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_3",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 18.622337
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_4",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 17.908542
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_5",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 30.778196
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_6",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 10.626557
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_7",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -24.454851
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_8",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -8.812533
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_9",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 16.863093
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_10",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 20.85213
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_11",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 9.369355
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__mnth_12",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 15.649568
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_1",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -18.614076
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_2",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -25.411753
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_3",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -34.590266
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_4",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -37.428012
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_5",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -23.42566
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_6",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 25.656358
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_7",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 136.657057
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_8",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 260.162731
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_9",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 137.421079
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_10",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 88.143327
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_11",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 108.906576
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_12",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 141.473173
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_13",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 139.206561
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_14",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 125.168179
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_15",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 132.909993
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_16",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 183.421122
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_17",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 314.911878
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_18",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 289.679568
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_19",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 195.694138
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_20",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 126.108908
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_21",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 86.555827
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_22",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 56.255558
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__hr_23",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 21.858426
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_1",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -4.906504
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_2",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -1.954285
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_3",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -3.758472
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_4",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 0.179968
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_5",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 5.634983
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weekday_6",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 10.731428
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weathersit_2",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -12.186632
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weathersit_3",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -62.327894
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "cat__weathersit_4",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -42.209955
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__temp",
+    "original_feature_name": "temp",
+    "selection_status": "selected",
+    "coefficient": 23.021214
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__atemp",
+    "original_feature_name": "atemp",
+    "selection_status": "selected",
+    "coefficient": 21.228904
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__hum",
+    "original_feature_name": "hum",
+    "selection_status": "selected",
+    "coefficient": -12.992018
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__windspeed",
+    "original_feature_name": "windspeed",
+    "selection_status": "selected",
+    "coefficient": -5.202105
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__yr",
+    "original_feature_name": "yr",
+    "selection_status": "selected",
+    "coefficient": 82.08646
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__holiday",
+    "original_feature_name": "holiday",
+    "selection_status": "selected",
+    "coefficient": -11.473499
+  },
+  {
+    "model_id": "M3",
+    "encoded_feature_name": "num__workingday",
+    "original_feature_name": "workingday",
+    "selection_status": "selected",
+    "coefficient": 6.669189
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__season_2",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 26.760046
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__season_3",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 28.148789
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__season_4",
+    "original_feature_name": "season",
+    "selection_status": "selected",
+    "coefficient": 51.824428
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_2",
+    "original_feature_name": "mnth",
+    "selection_status": "zeroed_out",
+    "coefficient": -0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_3",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 11.575309
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_4",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 8.365715
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_5",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 19.871544
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_6",
+    "original_feature_name": "mnth",
+    "selection_status": "zeroed_out",
+    "coefficient": 0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_7",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -28.2954
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_8",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": -11.572849
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_9",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 10.251096
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_10",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 9.434335
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_11",
+    "original_feature_name": "mnth",
+    "selection_status": "zeroed_out",
+    "coefficient": 0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__mnth_12",
+    "original_feature_name": "mnth",
+    "selection_status": "selected",
+    "coefficient": 7.464448
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_1",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -38.907942
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_2",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -45.386701
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_3",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -54.22849
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_4",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -56.904376
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_5",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": -42.854998
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_6",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 1.413863
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_7",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 112.342555
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_8",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 235.68663
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_9",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 112.020359
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_10",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 61.965732
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_11",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 82.170165
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_12",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 114.207994
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_13",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 111.475815
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_14",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 97.101004
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_15",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 104.731014
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_16",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 155.385031
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_17",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 287.462619
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_18",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 262.497198
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_19",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 169.021211
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_20",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 99.842733
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_21",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 60.677119
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_22",
+    "original_feature_name": "hr",
+    "selection_status": "selected",
+    "coefficient": 30.645068
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__hr_23",
+    "original_feature_name": "hr",
+    "selection_status": "zeroed_out",
+    "coefficient": -0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_1",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -2.745063
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_2",
+    "original_feature_name": "weekday",
+    "selection_status": "zeroed_out",
+    "coefficient": -0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_3",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": -1.098271
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_4",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 1.428202
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_5",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 6.974678
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weekday_6",
+    "original_feature_name": "weekday",
+    "selection_status": "selected",
+    "coefficient": 9.235301
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weathersit_2",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -10.4611
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weathersit_3",
+    "original_feature_name": "weathersit",
+    "selection_status": "selected",
+    "coefficient": -58.422564
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "cat__weathersit_4",
+    "original_feature_name": "weathersit",
+    "selection_status": "zeroed_out",
+    "coefficient": -0.0
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__temp",
+    "original_feature_name": "temp",
+    "selection_status": "selected",
+    "coefficient": 26.011634
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__atemp",
+    "original_feature_name": "atemp",
+    "selection_status": "selected",
+    "coefficient": 21.601964
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__hum",
+    "original_feature_name": "hum",
+    "selection_status": "selected",
+    "coefficient": -14.288945
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__windspeed",
+    "original_feature_name": "windspeed",
+    "selection_status": "selected",
+    "coefficient": -4.853046
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__yr",
+    "original_feature_name": "yr",
+    "selection_status": "selected",
+    "coefficient": 79.817761
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__holiday",
+    "original_feature_name": "holiday",
+    "selection_status": "selected",
+    "coefficient": -11.241695
+  },
+  {
+    "model_id": "M4",
+    "encoded_feature_name": "num__workingday",
+    "original_feature_name": "workingday",
+    "selection_status": "selected",
+    "coefficient": 3.640274
+  }
+]

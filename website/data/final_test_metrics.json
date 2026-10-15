@@ -1,0 +1,23 @@
+{
+  "experiment_id": "AIoT_HW2_PHASE3_EXP01",
+  "dataset_checksum": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "model_id": "M2",
+  "model_name": "RFE + OLS (k=30)",
+  "number_of_test_observations": 2576,
+  "test_mae": 97.5211,
+  "test_mse": 17744.5877,
+  "test_rmse": 133.2088,
+  "test_r2": 0.6112,
+  "training_and_cv_reference_metrics": {
+    "training_rmse": 86.1871,
+    "training_mae": 63.8103,
+    "training_mse": 7428.2163,
+    "training_r2": 0.6809,
+    "cv_rmse_mean": 107.4394,
+    "cv_rmse_std": 16.5259,
+    "cv_mae_mean": 79.9859,
+    "cv_r2_mean": 0.4767,
+    "dummy_test_rmse": 226.1197
+  },
+  "evaluation_timestamp": "2026-10-15T10:49:53.506753"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "model_id": "M1",
+    "model_name": "OLS Baseline",
+    "best_hyperparameters": "None (all 53 features)",
+    "selected_features_count": 53,
+    "training_mae": 63.1971,
+    "training_mse": 7307.1945,
+    "training_rmse": 85.4821,
+    "training_r2": 0.6861,
+    "cv_mae_mean": 81.2065,
+    "cv_mse_mean": 12001.3969,
+    "cv_rmse_mean": 108.686,
+    "cv_rmse_std": 15.3604,
+    "cv_r2_mean": 0.4624
+  },
+  {
+    "model_id": "M2",
+    "model_name": "RFE + OLS",
+    "best_hyperparameters": "k=30",
+    "selected_features_count": 30,
+    "training_mae": 63.8103,
+    "training_mse": 7428.2163,
+    "training_rmse": 86.1871,
+    "training_r2": 0.6809,
+    "cv_mae_mean": 79.9859,
+    "cv_mse_mean": 11761.7191,
+    "cv_rmse_mean": 107.4394,
+    "cv_rmse_std": 16.5259,
+    "cv_r2_mean": 0.4767
+  },
+  {
+    "model_id": "M3",
+    "model_name": "Ridge Regression",
+    "best_hyperparameters": "alpha=1.0",
+    "selected_features_count": 53,
+    "training_mae": 63.2064,
+    "training_mse": 7308.3422,
+    "training_rmse": 85.4888,
+    "training_r2": 0.6861,
+    "cv_mae_mean": 81.07,
+    "cv_mse_mean": 11974.2215,
+    "cv_rmse_mean": 108.5437,
+    "cv_rmse_std": 15.5112,
+    "cv_r2_mean": 0.4645
+  },
+  {
+    "model_id": "M4",
+    "model_name": "Lasso Regression",
+    "best_hyperparameters": "alpha=0.1",
+    "selected_features_count": 47,
+    "training_mae": 63.3895,
+    "training_mse": 7355.1299,
+    "training_rmse": 85.7621,
+    "training_r2": 0.6841,
+    "cv_mae_mean": 79.7394,
+    "cv_mse_mean": 11852.1509,
+    "cv_rmse_mean": 107.7984,
+    "cv_rmse_std": 17.0164,
+    "cv_r2_mean": 0.4757
+  }
+]

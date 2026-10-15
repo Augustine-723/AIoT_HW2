@@ -1,0 +1,31 @@
+{
+  "nominal_coverage": 0.95,
+  "empirical_coverage_raw": 0.94837,
+  "empirical_coverage_clipped": 0.94837,
+  "conformal_quantile": 302.6015,
+  "calibration_samples": 2640,
+  "test_samples": 2576,
+  "average_interval_width_raw": 605.2031,
+  "average_interval_width_clipped": 513.187,
+  "median_interval_width_raw": 605.2031,
+  "median_interval_width_clipped": 539.8648,
+  "negative_prediction_rate": 0.007764,
+  "lower_bound_clipping_rate": 0.721661,
+  "raw_interval_symmetry": "Symmetric around point prediction [pred - q, pred + q] due to absolute residual conformity scores",
+  "clipped_interval_symmetry": "Asymmetric around point prediction due to lower-bound non-negative clipping [max(0, pred - q), pred + q]",
+  "calibration_date_range": [
+    "2012-05-27",
+    "2012-09-13"
+  ],
+  "test_date_range": [
+    "2012-09-14",
+    "2012-12-31"
+  ],
+  "hourly_coverage_commuting_peaks_diagnostic": {
+    "hr_08_am_commute_coverage": 0.6449,
+    "hr_17_pm_commute_coverage": 0.75,
+    "hr_18_pm_commute_coverage": 0.8056,
+    "interpretation": "Commuting peaks exhibit lower coverage because demand volatility surges during rush hours, while off-peak hours reach near 100% coverage."
+  },
+  "assumptions_and_temporal_dependence_limitations": "Standard split conformal prediction guarantees finite-sample marginal validity under the assumption that calibration and test samples are exchangeable (e.g. i.i.d.). Because hourly bike rental counts exhibit strong autocorrelation, diurnal commuting periodicity, and seasonal non-stationarity over the 2011-2012 expanding horizon, exchangeability is violated. Consequently, the 95% target functions as a nominal coverage goal. Empirical coverage on the unobserved Test period achieves 94.84% (2443/2576), demonstrating robust empirical reliability despite temporal drift. Furthermore, marginal coverage does not guarantee conditional coverage for each individual hour, as peak commuting hours exhibit lower coverage due to heightened demand volatility."
+}

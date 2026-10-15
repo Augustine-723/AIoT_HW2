@@ -13,9 +13,9 @@ develop-eggs/
 dist/
 downloads/
 eggs/
-.eggs/
-lib/
-lib64/
+/lib/
+/lib64/
+!website/lib/
 parts/
 sdist/
 var/
@@ -46,3 +46,10 @@ env/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Website Node and Next.js
+node_modules/
+.next/
+website/node_modules/
+website/.next/
+website/out/

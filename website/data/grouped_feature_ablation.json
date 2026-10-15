@@ -1,0 +1,62 @@
+[
+  {
+    "dropped_group": "hr",
+    "cv_rmse": 142.8795,
+    "delta_rmse": 34.1935
+  },
+  {
+    "dropped_group": "yr",
+    "cv_rmse": 114.0081,
+    "delta_rmse": 5.3221
+  },
+  {
+    "dropped_group": "season",
+    "cv_rmse": 111.8582,
+    "delta_rmse": 3.1722
+  },
+  {
+    "dropped_group": "weathersit",
+    "cv_rmse": 110.2256,
+    "delta_rmse": 1.5396
+  },
+  {
+    "dropped_group": "temp",
+    "cv_rmse": 110.1275,
+    "delta_rmse": 1.4415
+  },
+  {
+    "dropped_group": "windspeed",
+    "cv_rmse": 109.5963,
+    "delta_rmse": 0.9103
+  },
+  {
+    "dropped_group": "weekday",
+    "cv_rmse": 108.9896,
+    "delta_rmse": 0.3036
+  },
+  {
+    "dropped_group": "atemp",
+    "cv_rmse": 108.9456,
+    "delta_rmse": 0.2596
+  },
+  {
+    "dropped_group": "holiday",
+    "cv_rmse": 108.686,
+    "delta_rmse": -0.0
+  },
+  {
+    "dropped_group": "workingday",
+    "cv_rmse": 108.686,
+    "delta_rmse": -0.0
+  },
+  {
+    "dropped_group": "hum",
+    "cv_rmse": 107.8387,
+    "delta_rmse": -0.8473
+  },
+  {
+    "dropped_group": "mnth",
+    "cv_rmse": 105.5924,
+    "delta_rmse": -3.0936
+  }
+]
