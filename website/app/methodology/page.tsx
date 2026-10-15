@@ -187,10 +187,10 @@ export default function MethodologyPage() {
         <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
           <p>
             1. <strong>可交換性前提 (Exchangeability Assumption)：</strong>
-            分裂共形預測的有限樣本邊際覆蓋率保證（Marginal Coverage Guarantee）嚴格仰賴校準集與測試集之觀測值具備<strong>可交換性（Exchangeability）</strong>或適當的分佈不變假設。
-            在共享單車等真實每小時時間序列中，觀測值存在顯著之自相關性（Autocorrelation）與季節趨勢演化，
-            因此 <strong>95% 為名義覆蓋目標 (Nominal Target)</strong>，實證觀察之測試集覆蓋率約為 <strong>94.84%</strong>。
-            研究者絕不可將此宣稱為「無條件保證（Unconditional Guarantee）」，亦不可單憑單一測試期間之成果斷言該方法具備絕對穩健性（Definitively Robust）。
+            傳統分裂共形預測 (Split Conformal Prediction) 之有限樣本邊際覆蓋率保證嚴格仰賴校準集與測試集之觀測值具備<strong>可交換性（Exchangeability）</strong>假設。
+            本歷史每小時時間序列資料具備顯著的時間相依性（Temporal Dependence）與自相關結構。
+            因此，<strong>95% 為名義目標覆蓋率 (Nominal Target Coverage)</strong>，實證觀察之測試集覆蓋率約為 <strong>94.84%</strong>。
+            各時段之條件覆蓋率存在顯著差異，歷史實證觀察成果不構成對未來時間區段之無條件保證（Unconditional Guarantee）。
           </p>
 
           <p>

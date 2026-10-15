@@ -24,7 +24,8 @@ json_files = [
     "phase3_experiment_metadata.json",
     "dataset_metadata.json",
     "m2_model_spec.json",
-    "missing_timestamps.json"
+    "missing_timestamps.json",
+    "data_split_summary.json"
 ]
 
 for jf in json_files:

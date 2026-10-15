@@ -18,7 +18,7 @@ export default function Footer() {
             <p className="text-xs text-slate-400 leading-relaxed max-w-lg">
               本研究基於 UCI Machine Learning Repository 之 Capital Bikeshare 每小時資料集 (17,379 筆)，
               採用時間序列擴展視窗交叉驗證 (Expanding Window CV)、遞歸特徵消除 (RFE)、
-              以及分裂共形預測 (Split Conformal Prediction) 建構具備分佈自由 (Distribution-Free) 邊際覆蓋保證之每小時單車需求推論模型。
+              以及傳統分裂共形預測 (Split Conformal Prediction)。須注意共形預測之有限樣本邊際覆蓋保證仰賴可交換性 (Exchangeability) 假設；本每小時資料集具備時間相依性，95% 為名義目標，實證測試覆蓋率約 94.84%，條件覆蓋率因時段而異，歷史觀察結果不構成對未來時段之無條件保證。
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-[11px] font-mono text-slate-400">
               <span>學號: <strong className="text-slate-300">7115093001</strong></span>

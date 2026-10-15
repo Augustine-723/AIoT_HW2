@@ -6,8 +6,15 @@ import {
   Clock, 
   Info
 } from "lucide-react";
+import { phase3ExperimentMetadata } from "@/lib/data";
 
 export default function DatasetPage() {
+  const splitBoundaries = phase3ExperimentMetadata.exact_date_boundaries;
+  const trainBound = splitBoundaries.training;
+  const calBound = splitBoundaries.calibration;
+  const testBound = splitBoundaries.test;
+  const totalObs = trainBound.observations + calBound.observations + testBound.observations;
+
   const featureDefinitions = [
     { name: "instant", type: "Index", role: "排除", desc: "資料流水號，無預測價值" },
     { name: "dteday", type: "Date", role: "切分邊界", desc: "日期標記 (YYYY-MM-DD)，用於嚴格按日期切分 Expanding Window CV" },
@@ -19,8 +26,8 @@ export default function DatasetPage() {
     { name: "weekday", type: "Categorical", role: "預測特徵 (7類)", desc: "星期 (0: 週日, 1: 週一, ..., 6: 週六)" },
     { name: "workingday", type: "Binary", role: "預測特徵 (2類)", desc: "工作日標記 (1: 既非週末亦非假日, 0: 其餘非工作日)" },
     { name: "weathersit", type: "Categorical", role: "預測特徵 (4類)", desc: "天候狀況代碼：1:晴朗/少雲, 2:薄霧/多雲, 3:小雨/小雪, 4:大豪雨/暴風雪" },
-    { name: "temp", type: "Numeric", role: "預測特徵 (連續)", desc: "攝氏氣溫經正規化：(t - t_min) / (t_max - t_min)，其中 t_min=-8°C, t_max=+39°C" },
-    { name: "atemp", type: "Numeric", role: "預測特徵 (連續)", desc: "體感溫度經正規化：(at - at_min) / (at_max - at_min)，其中 at_min=-16°C, at_max=+50°C" },
+    { name: "temp", type: "Numeric", role: "預測特徵 (連續)", desc: "正規化攝氏氣溫：temp = t / 41，其中 t 為攝氏溫度 (°C，有效範圍 0.00 ~ 1.00，例如 0.50 對應約 20.5°C)" },
+    { name: "atemp", type: "Numeric", role: "預測特徵 (連續)", desc: "正規化攝氏體感溫度：atemp = at / 50，其中 at 為攝氏體感溫度 (°C，有效範圍 0.00 ~ 1.00，例如 0.50 對應約 25.0°C)" },
     { name: "hum", type: "Numeric", role: "預測特徵 (連續)", desc: "相對濕度經正規化：hum / 100，有效範圍介於 0.00 ~ 1.00" },
     { name: "windspeed", type: "Numeric", role: "預測特徵 (連續)", desc: "風速經正規化：windspeed / 67 (km/h)，有效範圍介於 0.00 ~ 1.00" },
     { name: "casual", type: "Target Component", role: "嚴格排除 (目標洩漏)", desc: "臨時租借會員使用量。因 casual + registered = cnt，測試時不可得，納入將導致嚴重 Data Leakage" },
@@ -106,17 +113,25 @@ export default function DatasetPage() {
               <span className="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono">
                 Training Set (訓練集)
               </span>
-              <span className="text-xs font-mono text-slate-400">70.0%</span>
+              <span className="text-xs font-mono text-slate-400">
+                {((trainBound.observations / totalObs) * 100).toFixed(1)}%
+              </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-white">12,163 筆</div>
+            <div className="text-2xl font-bold font-mono text-white">
+              {trainBound.observations.toLocaleString()} 筆
+            </div>
             <div className="text-xs space-y-1 text-slate-300">
               <div className="flex justify-between">
                 <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">2011-01-01 00:00</span>
+                <span className="font-mono">{trainBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">2012-05-25 23:00</span>
+                <span className="font-mono">{trainBound.date_range[1]} 23:00</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">自然天數</span>
+                <span className="font-mono">{trainBound.calendar_days} 天</span>
               </div>
               <div className="flex justify-between pt-1 border-t border-slate-800">
                 <span className="text-slate-400">主要職責</span>
@@ -130,17 +145,25 @@ export default function DatasetPage() {
               <span className="text-xs font-semibold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-mono">
                 Calibration Set (校準集)
               </span>
-              <span className="text-xs font-mono text-slate-400">15.2%</span>
+              <span className="text-xs font-mono text-slate-400">
+                {((calBound.observations / totalObs) * 100).toFixed(1)}%
+              </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-white">2,640 筆</div>
+            <div className="text-2xl font-bold font-mono text-white">
+              {calBound.observations.toLocaleString()} 筆
+            </div>
             <div className="text-xs space-y-1 text-slate-300">
               <div className="flex justify-between">
                 <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">2012-05-26 00:00</span>
+                <span className="font-mono">{calBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">2012-09-13 23:00</span>
+                <span className="font-mono">{calBound.date_range[1]} 23:00</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">自然天數</span>
+                <span className="font-mono">{calBound.calendar_days} 天</span>
               </div>
               <div className="flex justify-between pt-1 border-t border-slate-800">
                 <span className="text-slate-400">主要職責</span>
@@ -154,17 +177,25 @@ export default function DatasetPage() {
               <span className="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
                 Test Set (最終測試集)
               </span>
-              <span className="text-xs font-mono text-slate-400">14.8%</span>
+              <span className="text-xs font-mono text-slate-400">
+                {((testBound.observations / totalObs) * 100).toFixed(1)}%
+              </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-emerald-400">2,576 筆</div>
+            <div className="text-2xl font-bold font-mono text-emerald-400">
+              {testBound.observations.toLocaleString()} 筆
+            </div>
             <div className="text-xs space-y-1 text-slate-300">
               <div className="flex justify-between">
                 <span className="text-slate-400">起始日期</span>
-                <span className="font-mono">2012-09-14 00:00</span>
+                <span className="font-mono">{testBound.date_range[0]} 00:00</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">截止日期</span>
-                <span className="font-mono">2012-12-31 23:00</span>
+                <span className="font-mono">{testBound.date_range[1]} 23:00</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">自然天數</span>
+                <span className="font-mono">{testBound.calendar_days} 天</span>
               </div>
               <div className="flex justify-between pt-1 border-t border-slate-800">
                 <span className="text-slate-400">主要職責</span>

@@ -300,7 +300,7 @@ export default function OverviewPage() {
         </div>
         <p className="text-xs text-slate-400 leading-relaxed">
           1. <strong>歷史回歸本質：</strong>本系統基於 2011–2012 年之歷史資料進行條件需求推估，非即時感測資料流，且氣象輸入為正規化後之氣溫、體感溫度、濕度與風速，不可視為即時氣象預報。<br />
-          2. <strong>共形保證前提：</strong>分裂共形預測 (Split Conformal Prediction) 所提供之有限樣本邊際覆蓋率保證需仰賴校準集與測試集之可交換性 (Exchangeability) 假設；在具備強時間序列自相關之每小時資料中，95% 為名義覆蓋目標 (Nominal Target)，實證測試集觀察值為 94.84%，且在上下班尖峰時段因需求劇烈波動呈現條件覆蓋率下降之現象。
+          2. <strong>共形保證前提：</strong>傳統分裂共形預測 (Split Conformal Prediction) 所提供之有限樣本邊際覆蓋率保證嚴格仰賴校準集與測試集之可交換性 (Exchangeability) 假設；本每小時資料集具備顯著之時間相依性與自相關性，因此 95% 為名義覆蓋目標 (Nominal Target)，實證測試集觀察值約為 94.84%，且條件覆蓋率因時段而異（如 08:00、17:00 等上下班通勤尖峰時段覆蓋率下滑），歷史觀察結果不構成對未來時間區段之無條件保證。
         </p>
       </section>
 

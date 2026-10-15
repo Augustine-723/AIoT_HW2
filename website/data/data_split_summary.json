@@ -1,0 +1,33 @@
+{
+  "total_observations": 17379,
+  "total_calendar_days": 731,
+  "subsets": {
+    "train": {
+      "days": 512,
+      "observations": 12163,
+      "percentage": 69.99,
+      "start_date": "2011-01-01",
+      "end_date": "2012-05-26",
+      "start_timestamp": "2011-01-01 00:00:00",
+      "end_timestamp": "2012-05-26 23:00:00"
+    },
+    "calibration": {
+      "days": 110,
+      "observations": 2640,
+      "percentage": 15.19,
+      "start_date": "2012-05-27",
+      "end_date": "2012-09-13",
+      "start_timestamp": "2012-05-27 00:00:00",
+      "end_timestamp": "2012-09-13 23:00:00"
+    },
+    "test": {
+      "days": 109,
+      "observations": 2576,
+      "percentage": 14.82,
+      "start_date": "2012-09-14",
+      "end_date": "2012-12-31",
+      "start_timestamp": "2012-09-14 00:00:00",
+      "end_timestamp": "2012-12-31 23:00:00"
+    }
+  }
+}

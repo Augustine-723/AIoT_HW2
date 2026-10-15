@@ -132,7 +132,7 @@ export default function FinalEvaluationPage() {
         </h1>
         <p className="text-sm text-slate-300 max-w-4xl leading-relaxed">
           以鎖定之 Phase 3 測試集（2012-09-14 至 2012-12-31，共 2,576 筆真實觀測）驗證 M2 模型泛化能力。
-          本頁面全面整合實際值 vs 預測值散佈圖、7 天時序共形區間、殘差分佈診斷與 0–100% 全幅時段實證覆蓋率。
+          本頁面全面整合實際值 vs 預測值散佈圖、歷史測試期預測區間時序歷程探索器、殘差分佈診斷與 0–100% 全幅時段實證覆蓋率。
         </p>
       </section>
 

@@ -13,6 +13,7 @@ import testScatterSamples from "../data/test_scatter_samples.json";
 import residualDistributionBins from "../data/residual_distribution_bins.json";
 import m2ModelSpec from "../data/m2_model_spec.json";
 import missingTimestamps from "../data/missing_timestamps.json";
+import dataSplitSummary from "../data/data_split_summary.json";
 
 export {
   finalTestMetrics,
@@ -30,6 +31,7 @@ export {
   residualDistributionBins,
   m2ModelSpec,
   missingTimestamps,
+  dataSplitSummary,
 };
 
 export interface ModelComparisonRow {
