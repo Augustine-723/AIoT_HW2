@@ -480,7 +480,7 @@ hours = hourly_diag['hr']
 cov_pct = hourly_diag['empirical_coverage'] * 100.0
 
 bar_colors = ['#d95f02' if h in [8, 17, 18] else '#3470a3' for h in hours]
-bars = ax_d.bar(hours, cov_pct, color=bar_colors, alpha=0.85, edgecolor='black', width=0.65, label='Hourly Empirical Coverage')
+bars = ax_d.bar(hours, cov_pct, color=bar_colors, alpha=0.85, edgecolor='black', width=0.65)
 ax_d.axhline(95.0, color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
 
 # Highlight proxy in legend for commuting peaks
@@ -491,13 +491,14 @@ legend_elements = [
     plt.Line2D([0], [0], color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
 ]
 
-ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day (Full 0–100% Scale)\n(Marginal 95% target does not imply conditional hourly coverage; peak commuting hours exhibit lower coverage)",
-               fontsize=12, fontweight='bold', pad=12)
+ax_d.set_title("Hourly Empirical Coverage by Time of Day",
+               fontsize=13, fontweight='bold', pad=14)
 ax_d.set_xlabel("Hour of Day (0–23)", fontsize=10.5, labelpad=8)
 ax_d.set_ylabel("Empirical Coverage (%)", fontsize=10.5, labelpad=8)
 ax_d.set_xticks(range(24))
-ax_d.set_ylim(0, 115)
-ax_d.legend(handles=legend_elements, loc='lower right', frameon=True, facecolor='white', fontsize=9.5)
+ax_d.set_yticks([0, 20, 40, 60, 80, 100])
+ax_d.set_ylim(0, 116)
+ax_d.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=True, facecolor='white', edgecolor='#cbd5e1', fontsize=9.2)
 ax_d.grid(True, axis='y', linestyle='--', alpha=0.6)
 
 # Annotate values clearly above bars
@@ -506,9 +507,8 @@ for h, cp in zip(hours, cov_pct):
     color = '#b33000' if h in [8, 17, 18] else '#222222'
     ax_d.text(h, cp + 1.8, f"{cp:.1f}%", ha='center', va='bottom', fontsize=8, rotation=90, fontweight=fw, color=color)
 
-fig_d.tight_layout()
 fig_d_path = os.path.join(FIGURES_DIR, "interval_coverage_by_hour.png")
-fig_d.savefig(fig_d_path, dpi=300)
+fig_d.savefig(fig_d_path, dpi=300, bbox_inches='tight')
 plt.close(fig_d)
 print(f"[Phase 3] Saved {fig_d_path}")
 

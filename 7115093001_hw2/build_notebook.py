@@ -1359,7 +1359,7 @@ cells.append(new_markdown_cell("""### 17. 測試集視覺化剖析 (Phase 3 Step
 1. **圖 A (Actual vs. Predicted):** 測試集實際需求與預測散佈圖及 $y=x$ 理想基準線。
 2. **圖 B (Time-Series Prediction Interval):** 依客觀預設規則選取測試期前 7 個完整日曆天（2012-09-14 至 2012-09-20，共 168 小時），展示真實值、點預測與 95% 共形陰影帶。
 3. **圖 C (Residual Analysis):** 殘差對配適值散佈圖與殘差機率密度分佈直方圖。
-4. **圖 D (Hourly Coverage Diagnostic - Full 0–100% Scale):** 各小時時段（0~23）之經驗涵蓋率診斷長條圖，完整呈現 0~100% 範圍，清晰標註通勤尖峰覆蓋率下降之現象（附 95% 名義參考線）。"""))
+4. **圖 D (Hourly Empirical Coverage by Time of Day):** 各小時時段（0~23）之經驗涵蓋率長條圖，完整呈現 0~100% 範圍，清晰標註 08:00、17:00、18:00 通勤尖峰覆蓋率下降之現象（附 95% 名義參考線），圖例移至圖表外側下方避免遮蔽柱狀圖。詳細統計方法與限制說明保留於下方總結區塊。"""))
 
 cells.append(new_code_cell("""# 1. Figure A: Actual vs Predicted
 fig_a, ax_a = plt.subplots(figsize=(7.5, 7.5), dpi=300)
@@ -1450,13 +1450,14 @@ legend_elements = [
     plt.Line2D([0], [0], color='#d62728', linestyle='--', linewidth=2, label='95% Nominal Target Coverage')
 ]
 
-ax_d.set_title("Diagnostic Analysis: Empirical Coverage by Hour of Day (Full 0–100% Scale)\\n(Marginal 95% target does not imply conditional hourly coverage; peak commuting hours exhibit lower coverage)",
-               fontsize=12, fontweight='bold', pad=12)
+ax_d.set_title("Hourly Empirical Coverage by Time of Day",
+               fontsize=13, fontweight='bold', pad=14)
 ax_d.set_xlabel("Hour of Day (0–23)", fontsize=10.5, labelpad=8)
 ax_d.set_ylabel("Empirical Coverage (%)", fontsize=10.5, labelpad=8)
 ax_d.set_xticks(range(24))
-ax_d.set_ylim(0, 115)
-ax_d.legend(handles=legend_elements, loc='lower right', frameon=True, facecolor='white', fontsize=9.5)
+ax_d.set_yticks([0, 20, 40, 60, 80, 100])
+ax_d.set_ylim(0, 116)
+ax_d.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=True, facecolor='white', edgecolor='#cbd5e1', fontsize=9.2)
 ax_d.grid(True, axis='y', linestyle='--', alpha=0.6)
 
 for h, cp in zip(hours, cov_pct):
@@ -1464,8 +1465,7 @@ for h, cp in zip(hours, cov_pct):
     color = '#b33000' if h in [8, 17, 18] else '#222222'
     ax_d.text(h, cp + 1.8, f"{cp:.1f}%", ha='center', va='bottom', fontsize=8, rotation=90, fontweight=fw, color=color)
 
-fig_d.tight_layout()
-fig_d.savefig(os.path.join(FIGURES_DIR, "interval_coverage_by_hour.png"), dpi=300)
+fig_d.savefig(os.path.join(FIGURES_DIR, "interval_coverage_by_hour.png"), dpi=300, bbox_inches='tight')
 plt.show()"""))
 
 # ==============================================================================
