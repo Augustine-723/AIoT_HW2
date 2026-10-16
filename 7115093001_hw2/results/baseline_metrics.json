@@ -1,15 +1,28 @@
 {
   "model_name": "Multiple Linear Regression (OLS Baseline)",
+  "estimator": "sklearn.linear_model.LinearRegression",
+  "preprocessing": "ColumnTransformer (OneHotEncoder drop='first' for 5 categoricals + passthrough for 7 numerics/binaries)",
   "training_samples": 12163,
   "original_predictors_count": 12,
   "encoded_input_columns_count": 53,
+  "excluded_columns": [
+    "instant",
+    "dteday",
+    "casual",
+    "registered"
+  ],
+  "target": "cnt",
   "training_metrics": {
-    "MAE": 63.197112569613935,
+    "MAE": 63.19711256961391,
     "MSE": 7307.194502900029,
     "RMSE": 85.48212972838257,
     "R2": 0.686141488434193
   },
-  "dummy_mean_training_rmse": 152.58378308142238,
+  "dummy_mean_reference_training": {
+    "MAE": 119.75260725957135,
+    "RMSE": 152.58378308142238,
+    "R2": 0.0
+  },
   "date_bounded_expanding_window_cv_5fold": {
     "splits": 5,
     "validation_rmse_mean": 108.68596,
@@ -18,5 +31,6 @@
     "validation_r2_mean": 0.46236,
     "dummy_rmse_mean": 164.7931,
     "split_methodology": "Expanding window cross-validation grouped by unique calendar dates (Zero date leakage across folds)"
-  }
+  },
+  "notes": "Baseline model evaluated strictly on Training set and date-bounded expanding window CV folds. Calibration and Test sets remain strictly unobserved in Phase 1."
 }

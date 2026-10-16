@@ -1,4 +1,4 @@
-encoded_col_idx,encoded_feature_name,source_feature,encoding_type
+encoded_column_index,encoded_feature_name,original_feature,type
 0,season_2,season,categorical_dummy
 1,season_3,season,categorical_dummy
 2,season_4,season,categorical_dummy
@@ -45,10 +45,10 @@ encoded_col_idx,encoded_feature_name,source_feature,encoding_type
 43,weathersit_2,weathersit,categorical_dummy
 44,weathersit_3,weathersit,categorical_dummy
 45,weathersit_4,weathersit,categorical_dummy
-46,temp,temp,numeric_or_binary
-47,atemp,atemp,numeric_or_binary
-48,hum,hum,numeric_or_binary
-49,windspeed,windspeed,numeric_or_binary
-50,yr,yr,numeric_or_binary
-51,holiday,holiday,numeric_or_binary
-52,workingday,workingday,numeric_or_binary
+46,yr,yr,numeric_or_binary
+47,holiday,holiday,numeric_or_binary
+48,workingday,workingday,numeric_or_binary
+49,temp,temp,numeric_or_binary
+50,atemp,atemp,numeric_or_binary
+51,hum,hum,numeric_or_binary
+52,windspeed,windspeed,numeric_or_binary

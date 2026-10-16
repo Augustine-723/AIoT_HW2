@@ -57,7 +57,7 @@ dataset_metadata = {
     "active_data_source": "UCI Machine Learning Repository (Official primary source)",
     "filename": "hour.csv",
     "sha256_checksum": sha256_hash,
-    "kaggle_verification_status": "待確認 (Pending direct download verification due to Kaggle API authentication requirement)",
+    "kaggle_verification_status": "NOT VERIFIED (Pending direct download verification due to Kaggle API authentication requirement; UCI hour.csv verified via SHA-256)",
     "source_differences_notes": "本專案使用之 hour.csv 經由 UCI 官方壓縮檔直接下載解壓縮取得（17,379 列，17 欄，SHA-256 驗證通過）。Kaggle marklvl/bike-sharing-dataset 為其公開轉載鏡像。因 Kaggle 下載需個人 API 憑證，標註為待比對；若手動下載 Kaggle 檔案置於 data/ 目錄，可比對 SHA-256 雜湊碼。",
     "number_of_rows": int(n_rows),
     "number_of_columns": int(n_cols),

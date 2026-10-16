@@ -1,13 +1,14 @@
 {
   "student_id": "7115093001",
   "research_title": "Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection",
+  "dataset_name": "Bike Sharing Dataset (Hourly Version)",
   "official_kaggle_url": "https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset",
   "original_source_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
   "active_data_source": "UCI Machine Learning Repository (Official primary source)",
   "filename": "hour.csv",
   "sha256_checksum": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
-  "kaggle_verification_status": "待確認 (Pending direct download verification due to Kaggle API authentication requirement)",
-  "source_differences_notes": "本專案使用之 hour.csv 取自 UCI 官方壓縮檔（17,379 列，17 欄）。Kaggle marklvl/bike-sharing-dataset 為其轉載鏡像。因 Kaggle API 需憑證，標註為待比對；手動置入 Kaggle 檔案可直接驗證雜湊值。",
+  "kaggle_verification_status": "NOT VERIFIED (Pending direct download verification due to Kaggle API authentication requirement; UCI hour.csv verified via SHA-256)",
+  "source_differences_notes": "本專案使用之 hour.csv 經由 UCI 官方壓縮檔直接下載解壓縮取得（17,379 列，17 欄，SHA-256 驗證通過）。Kaggle marklvl/bike-sharing-dataset 為其公開轉載鏡像。因 Kaggle 下載需個人 API 憑證，標註為待比對；若手動下載 Kaggle 檔案置於 data/ 目錄，可比對 SHA-256 雜湊碼。",
   "number_of_rows": 17379,
   "number_of_columns": 17,
   "column_names": [
@@ -47,5 +48,12 @@
     "casual": "int64",
     "registered": "int64",
     "cnt": "int64"
+  },
+  "environment_versions": {
+    "python": "3.13.15",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2"
   }
 }

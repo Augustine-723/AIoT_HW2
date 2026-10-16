@@ -40,12 +40,12 @@
     "delta_rmse": 0.2596
   },
   {
-    "dropped_group": "holiday",
+    "dropped_group": "workingday",
     "cv_rmse": 108.686,
     "delta_rmse": -0.0
   },
   {
-    "dropped_group": "workingday",
+    "dropped_group": "holiday",
     "cv_rmse": 108.686,
     "delta_rmse": -0.0
   },

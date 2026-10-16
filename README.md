@@ -23,7 +23,7 @@
 
 - **Phase 4 學術研究儀表板與互動預測系統:** [`website/`](website/)
   - **技術堆疊:** Next.js 16 (App Router), TypeScript, Tailwind CSS, Turbopack, 響應式 SVG 圖表系統
-  - **推論核心:** 採行 **Option B（確定性 TypeScript 引擎）**，模型規格動態讀取權威成果 `website/data/m2_model_spec.json`（消除參數手動重複維護），直接執行已擬合之 M2 線性方程（截距 `-76.1581`，30 個選定特徵係數，校準共形分位數 `q = 302.6015`），浮點精度經 Python 與 TypeScript 雙向可重現測試達 `< 5.69 × 10⁻¹⁴`（IEEE-754 機器極限全等）。
+  - **推論核心:** 採行 **Option B（確定性 TypeScript 引擎）**，模型規格動態讀取權威成果 `website/data/m2_model_spec.json`（消除參數手動重複維護），直接執行已擬合之 M2 線性方程（截距 `-76.1581`，30 個選定特徵係數，校準共形分位數 `q = 302.6015`），浮點精度經 Python 與 TypeScript 雙向可重現測試差異 `< 5.69 × 10⁻¹⁴`（在雙精度浮點數誤差容許範圍內高度一致）。
   - **集中輸入驗證與防呆 (Centralized Input Validation):** 涵蓋所有 12 項原始預測變數之數值邊界鉗制、合法類別碼審計，以及曆法矛盾警示（週末/假日標記工作日、氣溫與體感溫度懸殊等）。
   - **六大研究頁面:**
     1. `/` (研究總覽 Overview): 展現核心指標（Test MAE 97.5211, RMSE 133.2088, R² 0.6112, 實證覆蓋率 94.84%）、學號、實驗識別與研究架構。
