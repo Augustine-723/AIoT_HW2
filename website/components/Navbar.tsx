@@ -115,10 +115,10 @@ export default function Navbar() {
               value={currentProblem}
               onChange={(e) => handleProblemChange(e.target.value)}
               aria-label="選擇研究問題"
-              className="w-full md:w-[360px] lg:w-[400px] max-w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-sm font-semibold rounded-xl px-3 py-2.5 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none cursor-pointer transition-all"
+              className="w-full md:w-[390px] lg:w-[455px] max-w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-sm font-semibold rounded-xl px-3 py-2.5 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none cursor-pointer transition-all"
             >
-              <option value="p1">Problem 1 · Bike Sharing Dataset</option>
-              <option value="p2">Problem 2 · Appliances Energy Prediction Dataset</option>
+              <option value="p1">Problem 1 · Bike Sharing Dataset (12 原始特徵)</option>
+              <option value="p2">Problem 2 · Appliances Energy Prediction (25 原始特徵)</option>
               <option value="custom">Custom Dataset — 自訂資料集</option>
             </select>
           </div>
@@ -176,7 +176,7 @@ export default function Navbar() {
                   currentProblem === "p1" ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-700"
                 }`}
               >
-                <span>Problem 1 · Bike Sharing Dataset</span>
+                <span>Problem 1 · Bike Sharing Dataset (12 原始特徵)</span>
                 {currentProblem === "p1" && <CheckCircle2 className="w-4 h-4 text-white" />}
               </button>
               <button
@@ -185,7 +185,7 @@ export default function Navbar() {
                   currentProblem === "p2" ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-700"
                 }`}
               >
-                <span>Problem 2 · Appliances Energy Prediction Dataset</span>
+                <span>Problem 2 · Appliances Energy Prediction (25 原始特徵)</span>
                 {currentProblem === "p2" && <CheckCircle2 className="w-4 h-4 text-white" />}
               </button>
               <button
