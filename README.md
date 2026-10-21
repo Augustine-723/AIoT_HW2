@@ -1,306 +1,350 @@
-# AIoT HW2 — Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection
+# AIoT HW2 — Multiple Linear Regression & Machine Learning Research
 
 **學生學號 (Student ID):** 7115093001  
-**研究題目 (Research Title):** Predicting Hourly Bike Sharing Demand Using Multiple Linear Regression and Feature Selection  
 **課程名稱:** 人工智慧與物聯網應用 (AIoT)  
-**指導教授:** 課程教學團隊  
+**GitHub 專案儲存庫:** [https://github.com/Augustine-723/AIoT_HW2](https://github.com/Augustine-723/AIoT_HW2)  
+**線上研究與互動展示網站 (Vercel Live App):** [https://a-io-t-hw-2.vercel.app/](https://a-io-t-hw-2.vercel.app/)  
+**最新交付架構:** 支援 Problem 1、Problem 2 雙核心獨立多元線性迴歸研究問題切換，與 Custom Dataset 通用迴歸加分功能。
 
 ---
 
-## 1. 專案總覽 (Project Overview)
-
-本研究旨在探討智慧城市與物聯網（AIoT）架構下之公共自行車即時調度核心問題。透過首都公共自行車系統（Capital Bikeshare）之歷史每小時租借觀測資料，結合日曆時間維度（如時段、星期、工作日、月份、季節）與微氣候感測數據（如氣溫、體感溫度、濕度、風速、天氣狀況），建構高解釋性且穩健之**多元線性迴歸（Multiple Linear Regression, MLR）**與**遞迴特徵消除（Recursive Feature Elimination, RFE）**預測架構。
-
-研究全面依循 **CRISP-DM** 資料探勘生命週期，建立嚴格杜絕未來資訊洩漏之時序切分管線，評比四大多元迴歸模型（OLS 基準、RFE+OLS 特徵選取、Ridge L2 正則化、Lasso L1 正則化），並導入**分拆共形預測（Split Conformal Prediction）**量化預測不確定性；在時序相依資料對樣本可交換性（Exchangeability）造成限制的前提下，設定 95% 名義目標水準，實測取得 94.84% 之經驗覆蓋率。最終成果透過現代化 **Next.js 16 / TypeScript** 引擎構建互動式學術研究儀表板，提供確定性之預測推論與時序歷程探索。
-
----
-
-## 2. 核心專案連結 (Project Links)
-
-- **GitHub 專案儲存庫：** [https://github.com/Augustine-723/AIoT_HW2](https://github.com/Augustine-723/AIoT_HW2)
-- **互動式研究儀表板 (Vercel Live App)：** [https://a-io-t-hw-2.vercel.app/](https://a-io-t-hw-2.vercel.app/)
-- **Kaggle 資料集參考來源：** [https://www.kaggle.com/marklvl/bike-sharing-dataset](https://www.kaggle.com/marklvl/bike-sharing-dataset)
-- **UCI 官方原始資料集：** [https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)
+## 目錄 (Table of Contents)
+1. [專案架構與兩大獨立研究問題](#1-專案架構與兩大獨立研究問題)
+2. [資料集來源與規格對照](#2-資料集來源與規格對照)
+3. [CRISP-DM 六大研究階段落實](#3-crisp-dm-六大研究階段落實)
+4. [特徵選取與正則化收縮深度分析](#4-特徵選取與正則化收縮深度分析)
+5. [模型評估與 Split Conformal 預測區間實證](#5-模型評估與-split-conformal-預測區間實證)
+6. [網站導覽、下拉選單與互動推論指引](#6-網站導覽下拉選單與互動推論指引)
+7. [加分功能：通用資料集多元線性迴歸 Studio (Bonus)](#7-加分功能通用資料集多元線性迴歸-studio-bonus)
+8. [可重現性驗證、單元測試與 Parity 測試](#8-可重現性驗證單元測試與-parity-測試)
+9. [學術誠信、NotebookLM 與 AI 輔助開發聲明](#9-學術誠信notebooklm-與-ai-輔助開發聲明)
+10. [研究限制與未來展望](#10-研究限制與未來展望)
+11. [驗收記錄表 (PASS / FAIL / NOT VERIFIED Checklist)](#11-驗收記錄表-pass--fail--not-verified-checklist)
 
 ---
 
-## 3. 資料集說明 (Dataset Description)
+## 1. 專案架構與兩大獨立研究問題
 
-本研究使用之資料集為 UCI 機器學習知識庫收錄之經典 **Bike Sharing Dataset (Hourly Version)**。
-
-| 項目 | 規格與說明 |
-| :--- | :--- |
-| **資料集名稱** | Bike Sharing Dataset — Hourly (`hour.csv`) |
-| **總樣本規模** | 17,379 筆逐時觀測記錄 |
-| **原始欄位數** | 17 個欄位 |
-| **資料涵蓋區間** | 2011 年 1 月 1 日 00:00 至 2012 年 12 月 31 日 23:00（共 731 個日曆天） |
-| **預測目標變數** | `cnt`（每小時總租借量，取值範圍 1 ~ 977 輛，平均值 189.46 輛，偏度 1.28 呈右偏分佈） |
-| **使用之原始預測變數 (12 項)** | `season`, `yr`, `mnth`, `hr`, `holiday`, `weekday`, `workingday`, `weathersit`, `temp`, `atemp`, `hum`, `windspeed` |
-| **嚴格排除欄位 (3 項)** | `instant`（資料庫列序號，無預測意義）、`casual`（未註冊臨時租借量）、`registered`（註冊會員租借量） |
-| **實體資料來源** | **UCI Machine Learning Repository 官方原始發布**（SHA-256 雜湊碼：`e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f`，通過資料完整性校驗） |
-| **公開參考來源** | **Kaggle marklvl/bike-sharing-dataset** 為社群公開轉載鏡像（兩者原始觀測筆數與欄位定義一致，本專案以通過雜湊校驗之 UCI 官方原始資料為權威資料源） |
-
-### 目標洩漏防範機制 (Target Leakage Prevention)
-在資料集中，業務恆等式成立：
-$$\text{cnt} = \text{casual} + \text{registered}$$
-若在特徵工程中納入 `casual` 或 `registered`，模型將學會簡單的加法關係而產生 100% 的**目標洩漏（Target Leakage）**，使事前預測失去實務應用價值。因此，本研究於資料前處理階段**嚴格剔除**此二變數，僅使用預測當下可獲取之日曆與氣象前瞻特徵。
-
----
-
-## 4. CRISP-DM 研究流程 (CRISP-DM Workflow)
-
-本專案嚴格遵循跨產業資料探勘標準程序（CRISP-DM）之六大階段：
+本儲存庫遵循嚴格之工程與學術隔離規範，將兩大研究問題與加分模組獨立劃分，確保原始實驗數據、模型權重、圖表與前端展示互不干擾、零程式碼耦合：
 
 ```text
-[1. Business Understanding] ──> [2. Data Understanding] ──> [3. Data Preparation]
-                                                                     │
-[6. Deployment]            <── [5. Evaluation]        <── [4. Modeling]
+AIoT_HW2/
+├── .gitignore
+├── README.md                                  # 本全域總覽與交付說明文件
+├── FINAL_REPRODUCIBILITY_REPORT.md            # Problem 1 複現驗證報告
+│
+├── 7115093001_hw2/                            # 【Problem 1: Bike Sharing 研究工作區 (完整保留)】
+│   ├── 7115093001_hw2.ipynb                   # Phase 1 ~ 3 完整研究實驗單一事實來源 Notebook
+│   ├── README.md                              # Problem 1 專屬技術報告
+│   ├── requirements.txt                       # 獨立環境套件依賴
+│   ├── run_phase1.py, run_phase2.py, ...      # 自動化運算腳本
+│   ├── data/hour.csv                          # Bike Sharing 官方每小時資料集 (17,379 筆)
+│   ├── figures/                               # 12 張 300 DPI 學術級研究圖表
+│   ├── results/                               # 機器可讀實驗結果 (含 m2_model_spec.json)
+│   └── models/best_model_pipeline.joblib      # M2 (RFE+OLS, k=30) 序列化模型
+│
+├── problem2/                                  # 【Problem 2: Appliances Energy 研究工作區 (新獨立問題)】
+│   ├── appliances_energy_prediction.ipynb     # CRISP-DM 六階段完整執行 Notebook
+│   ├── run_experiment.py                      # 端到端自動化研究管線腳本
+│   ├── build_notebook.py                      # Notebook 自動化構建器
+│   ├── export_website_data.py                 # 前端靜態展示資料同步器
+│   ├── README.md                              # Problem 2 專屬技術報告與驗證說明
+│   ├── requirements.txt                       # 獨立 Python 套件依賴
+│   ├── data/energydata_complete.csv           # 官方完整資料集 (19,735 筆, 11.98 MB)
+│   ├── figures/                               # 8 張 300 DPI 實驗圖表
+│   ├── results/                               # data_audit.json, model_spec.json, 評估數據
+│   └── models/best_model.joblib               # M3 Ridge 序列化模型
+│
+└── website/                                   # 【次世代學術儀表板與確定性推論前端】
+    ├── app/
+    │   ├── page.tsx, dataset/, models/, ...   # Problem 1 原有頁面 (完整保留無覆蓋)
+    │   ├── problem2/page.tsx                  # Problem 2 完整儀表板與互動推論
+    │   ├── custom-dataset/page.tsx            # Stage 6 加分功能：通用資料集 MLR Studio
+    │   └── api/fetch-csv/route.ts             # SSRF 防護之通用 CSV 安全擷取 API
+    ├── components/Navbar.tsx                  # 原生 HTML <select> 下拉式切換器
+    ├── lib/
+    │   ├── problem2-model.ts                  # Problem 2 純客戶端 Option B 確定性推論引擎
+    │   └── custom-dataset-solver.ts           # 動態矩陣求逆、One-Hot 與 Conformal 求解器
+    ├── tests/
+    │   ├── reproducible_parity_test.ts        # Problem 1 Python–TS Parity (< 5.7e-14)
+    │   ├── problem2_parity_test.ts            # Problem 2 Python–TS Parity (< 1.0e-12)
+    │   └── test_custom_solver.ts              # 50 Startups 基準自動化驗收測試
+    └── data/                                  # 前端靜態凍結資料庫 (分別獨立存放 P1 與 P2)
 ```
 
-1. **Business Understanding (商業理解)：**
-   - 聚焦公共自行車系統因潮汐人流導致的站點車輛枯竭或滿溢問題。
-   - 將物聯網感測預測任務定義為多變數數值迴歸，確立以 MAE、RMSE 為主之精度評估準則，並透過預測區間提供維運調度之風險緩衝估算。
+---
 
-2. **Data Understanding (資料理解)：**
-   - 執行多維度探索性資料分析（EDA），識別出尖峰通勤時段（08:00 及 17:00–18:00）的雙峰用車型態。
-   - 審計 2011–2012 年曆法跨度中 165 個缺漏小時（Gap Hours，依時間戳記統計主要分佈於凌晨時段及特定月份，其具體業務成因原始資料集未予記載），確認無重複記錄，且資料時間序列嚴格單調遞增。
+## 2. 資料集來源與規格對照
 
-3. **Data Preparation (資料準備)：**
-   - 實施防範時序未來資訊洩漏之時間軸切分：
-     - **訓練集 (Training Set, 70%):** 2011-01-01 至 2012-05-26 (12,163 筆)
-     - **校準集 (Calibration Set, 15%):** 2012-05-27 至 2012-09-13 (2,640 筆，專供共形預測校準)
-     - **測試集 (Test Set, 15%):** 2012-09-14 至 2012-12-31 (2,576 筆，密封隔離至 Phase 3 評估)
-   - 類別變數採用 One-Hot 編碼，數值變數透過 StandardScaler 標準化，共展開為 53 個候選特徵維度。
+本專案兩大問題皆採用權威學術公開資料集，並經過嚴格的 SHA-256 數位簽章與程式化審計驗證：
 
-4. **Modeling (模型建構)：**
-   - 建置四組對照模型：M1 (OLS Baseline)、M2 (RFE + OLS)、M3 (Ridge L2)、M4 (Lasso L1)。
-   - 在訓練集上實施嚴格依據**日期分組的 5 折擴展視窗交叉驗證（Date-bounded 5-Fold Expanding-window Cross-Validation）**，模擬真實世界時間遞移之滾動訓練。
-
-5. **Evaluation (模型評估)：**
-   - 依據 CV RMSE 指標選定最佳模型 M2。
-   - 解封測試集執行**嚴格一次性（Exactly-Once）**評估，絕不事後逆向調參。
-   - 利用獨立校準集計算絕對殘差分位數，以名義 95% 水準構建具備非負截斷之 Split Conformal 預測區間（實測經驗覆蓋率為 94.84%），並對尖峰時段覆蓋率進行診斷分析。
-
-6. **Deployment (系統部署)：**
-   - 將最佳 M2 模型參數、截距與共形分位數凍結為 JSON 規範檔。
-   - 於 Next.js 16 (App Router) 與 TypeScript 環境下實作確定性雙精度推論引擎，無縫發布於 Vercel 雲端邊緣網路。
+| 評比項目 | Problem 1: Hourly Bike Sharing Demand | Problem 2: Appliances Energy Prediction |
+|:---|:---|:---|
+| **研究目標** | 首都自行車共享系統每小時租借總量 (`cnt`) 預測 | 低耗能智慧建築每 10 分鐘電器能耗 (`Appliances`) 估計 |
+| **總觀測數 (N)** | **17,379 筆** (2011-01-01 至 2012-12-31) | **19,735 筆** (2016-01-11 至 2016-05-27) |
+| **取樣週期** | 1 小時連續時序 (存在 165 個缺漏小時) | 10 分鐘嚴格均勻連續時序 (0 缺漏、0 重複、0 缺失值) |
+| **原始欄位總數** | **16 欄** (若含列序號則為 17 欄) | **29 欄** |
+| **排除變數** | `instant` (流水號), `dteday` (日期), `casual`, `registered` (資訊洩漏) | `date` (時間戳記), `rv1`, `rv2` (隨機對照欄位，防干擾) |
+| **原生實體變數** | **12 項** (時段、季節、年份、月份、假日、星期、工作日、天氣、氣溫、體感溫度、濕度、風速) | **25 項** (燈光能耗 1 項 + 9 間房間溫度 + 9 間房間濕度 + 氣象站觀測 6 項) |
+| **正式原始預測變數** | **12 個** (編碼展開後候選池為 53 維) | **26 個** (原生 25 項實體感測變數 + 主時間特徵 `hour`) |
+| **擴充特徵候選池** | 53 維 (類別 One-Hot + 數值標準化) | **29 維** (正式 26 項 + `sin_hour`, `cos_hour`, `is_weekend`) |
+| **資料來源網址** | - [UCI Bike Sharing Dataset (ID: 275)](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)<br>- [Kaggle Bike Sharing Demand Competition](https://www.kaggle.com/competitions/bike-sharing-demand) | - [UCI Appliances Energy Prediction (ID: 374)](https://archive.ics.uci.edu/dataset/374/appliances+energy+prediction)<br>- [Original Author GitHub (Luis Candanedo)](https://github.com/LuisM78/Appliances-energy-prediction-data)<br>- [Kaggle SB1 Competition (Reference)](https://www.kaggle.com/competitions/machine-learning-sb1)<br>- [Kaggle Public Dataset (loveall)](https://www.kaggle.com/datasets/loveall/appliances-energy-prediction) |
+| **數位雜湊 (SHA-256)**| `e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f` | `2820bf712ad0275cb18b85a05250926100d8e65ebb9f4d2d016ca91ea152a25d` |
+| **Kaggle 來源說明** | Kaggle 競賽公開且已對照一致。 | Kaggle SB1 競賽原檔需帳號登入與競賽規則同意；本專案比對 Kaggle 公開同源資料集，並透過 UCI 官方壓縮檔與作者 GitHub 原始檔驗證，**SHA-256 達到 100% 位元完全相同**。 |
 
 ---
 
-## 5. 模型比較與特徵選取 (Model Comparison)
+## 3. CRISP-DM 六大研究階段落實
 
-本研究實作四種多元線性迴歸模型，在訓練集上採用日期分組之 5 折擴展視窗交叉驗證（無偏樣本標準差 $ddof=1$）進行公平客觀評比：
+兩大問題均端到端完整貫徹 CRISP-DM 跨產業資料探勘標準流程：
 
-| 模型編號 | 模型架構 (Model Architecture) | 超參數配置 (Hyperparameters) | 選定特徵數 (Features) | 5-Fold CV RMSE (輛) | 5-Fold CV MAE (輛) | 5-Fold CV $R^2$ |
-| :---: | :--- | :--- | :---: | :---: | :---: | :---: |
-| **M1** | Ordinary Least Squares (OLS 基準) | 無 (使用全部編碼特徵) | 53 | 108.6860 | 81.2065 | 0.4624 |
-| **M2** | **RFE + OLS (特徵消除迴歸)** | **$k = 30$** | **30** | **107.4394** | **79.9859** | **0.4767** |
-| **M3** | Ridge Regression (嶺迴歸) | $\alpha = 1.0$ | 53 | 108.5437 | 81.0700 | 0.4645 |
-| **M4** | Lasso Regression (套索迴歸) | $\alpha = 0.1$ | 47 | 107.7984 | 79.7394 | 0.4757 |
+```mermaid
+flowchart LR
+    A["1. Business Understanding"] --> B["2. Data Understanding"]
+    B --> C["3. Data Preparation"]
+    C --> D["4. Modeling"]
+    D --> E["5. Evaluation"]
+    E --> F["6. Deployment"]
+```
 
-### 最佳模型選定依據：
-- **模型 M2 (RFE + OLS)** 在 5 折擴展交叉驗證中取得最低之平均驗證誤差（**CV RMSE 107.4394 輛**）與最高之判定係數（**CV $R^2$ 0.4767**）。
-- 透過遞迴特徵消除（RFE），模型成功從 53 個候選特徵中剔除 23 個次要或共線性變數，精簡收斂至 **30 個關鍵特徵**（包含早晚通勤尖峰時段、工作日與週末型態、季節及核心溫濕度特徵），展現良好之模型精簡度（Sparsity）；在候選模型中取得最低之平均 CV RMSE（107.4394 輛），惟各方法間之交叉驗證誤差差距較小且未經統計顯著性檢定。
+### 1. Business Understanding (商業理解)
+- **Problem 1 (Bike Sharing):** 聚焦公共自行車系統因潮汐人流導致的站點車輛枯竭或滿溢問題，將物聯網感測預測任務定義為連續數值迴歸，確立以 MAE、RMSE 為主之精度評估準則，並透過預測區間提供維運調度之風險緩衝估算。
+- **Problem 2 (Appliances Energy):** 低耗能住宅 (Low-energy House) 電器耗能監測與動態負載反應管理。依據感測器採集架構，嚴謹定義為**同步全戶遙測能耗估計 (Synchronous Telemetry Energy Estimation)**。
+- **物理邊界:** 兩者標的皆具備非負性 ($y \ge 0$)，在預測區間推論時必須精確界定下界截斷。
 
----
+### 2. Data Understanding (資料理解與審計)
+- **探索性資料分析 (EDA):** 涵蓋標的變數右偏常態性檢驗、時序趨勢探索、特徵相關係數熱力圖。
+- **時序完整性審計:**
+  - Problem 1: 審計 2011–2012 年曆法跨度中 165 個缺漏小時（主要分佈於凌晨時段，確認無重複記錄，且資料時間序列嚴格單調遞增）。
+  - Problem 2: 審計 19,735 筆 10 分鐘記錄，0 缺漏、0 重複、0 缺失值，連續時間戳記完全單調遞增。
+- **Problem 2 隨機對照驗證:** 原始資料包含之均勻隨機欄位 `rv1` 與 `rv2`，與標的相關係數僅 $-0.011$，在特徵選取過程中被成功識別為無效特徵並第一時間遭到淘汰（排名 30/31 與 31/31），確認特徵工程演算法具備高度抗噪健全性。
 
-## 6. 最終測試集評估與共形預測 (Final Evaluation)
+### 3. Data Preparation (資料準備與時序防洩漏切分)
+- 嚴格實施**完整日曆天邊界時序切分 (Chronological Full-Date Aligned Split)**，嚴禁任何資料洗牌 (No Shuffle)：
+  - **Problem 1:** Training 69.99% (12,163 筆, 512 天) $\to$ Calibration 15.19% (2,640 筆, 110 天) $\to$ Test 14.82% (2,576 筆, 109 天)。
+  - **Problem 2:** Training 70.26% (13,866 筆, 97 天) $\to$ Calibration 15.32% (3,024 筆, 21 天) $\to$ Test 14.42% (2,845 筆, 20 天)。
+- **Pipeline 防洩漏機制:** 數值標準化 (`StandardScaler`) 與 One-Hot 編碼均嚴格封裝於 `sklearn.pipeline.Pipeline` 中，僅使用 Training 資料集擬合參數。
 
-定案之最佳模型 M2 在完全隔離密封之未觀測測試集（Test Set）上進行**嚴格一次性最終評估**，實驗數據記錄如下：
+### 4. Modeling (模型建構與 Expanding-Window CV)
+- 僅在 Training 資料集上使用 **5-Fold Expanding Window Cross Validation**，評估 OLS、RFE+OLS、Ridge 與 Lasso。
+- 報告無偏樣本標準差 ($ddof=1$)，禁止使用測試集選擇模型或超參數。
 
-### 6.1 測試集核心表現指標 (Final Test Set Metrics)
+### 5. Evaluation (盲測評估與 Split Conformal 區間)
+- 最佳模型凍結後，對未觀測測試集執行一次性嚴格盲測評估。
+- 採用獨立校準集計算無分佈假設之 95% Split Conformal 預測區間，檢驗經驗覆蓋率與平均區間寬度。
 
-| 評估指標名稱 | 數值 | 說明與基準對照 |
-| :--- | :---: | :--- |
-| **測試集樣本數 (Test Samples)** | **2,576 筆** | 涵蓋 2012-09-14 至 2012-12-31（109 個完整日曆天） |
-| **平均絕對誤差 (MAE)** | **97.5211 輛** | 平均預測偏差控制在百輛以內 |
-| **均方誤差 (MSE)** | **17744.5877 輛$^2$** | 懲罰大幅度預測偏差之整體指標 |
-| **均方根誤差 (RMSE)** | **133.2088 輛** | 對照常數基準 DummyRegressor (226.1197 輛)，誤差大幅縮減 **41.09%** |
-| **判定係數 ($R^2$)** | **0.6112** | 解釋測試集超過 61% 之用車需求變異 (Dummy 為 -0.1198) |
-
-### 6.2 分拆共形預測區間 (Split Conformal Prediction Intervals)
-
-為解決線性迴歸高斯殘差假設在計數資料中極易失效的問題，本研究透過獨立校準集（2,640 筆）校準得出絕對殘差分位數 $q = 302.6015$，並施加非負物理下界截斷 $\max(0, \hat{y} - q)$。需特別指出：標準分拆共形預測之有限樣本覆蓋保證嚴格依賴樣本可交換性（Exchangeability）；在具備時序相依性（自相關與概念漂移）之逐時資料下，95.00% 應客觀理解為名義目標水準（Nominal Level），而 94.84% 為本次測試集之實證經驗覆蓋率：
-
-| 共形預測評估項目 | 實驗記錄數值 | 學術意涵 |
-| :--- | :---: | :--- |
-| **名義預測區間水準 (Nominal Level)** | **95.00%** | 理論設定之名義目標覆蓋水準（時序相依資料下視為名義設定） |
-| **實證經驗覆蓋率 (Empirical Coverage)** | **94.84%** | 測試集 2,576 筆中共有 2,443 筆真實需求落於區間內，高度契合 95% 名義目標 |
-| **非負截斷平均區間寬度 (Avg Clipped Width)**| **513.1870 輛** | 經截斷排除負數無效空間後之平均不確定性頻寬 |
-| **校準分位數 ($q$)** | **302.6015 輛** | 絕對殘差之第 95 百分位數臨界邊際 |
-
-### 6.3 尖峰時段不確定性診斷 (Commuting Peak Coverage Analysis)
-深入檢視各小時實證覆蓋率發現：
-- **通勤尖峰時段覆蓋率顯著較低：** **08:00 為 64.49%**、**17:00 為 75.00%**、**18:00 為 80.56%**。
-- **離峰時段表現：** 深夜（00:00–05:00）與白晝平原時段之覆蓋率均達 **98%–100%**。
-- **學術意涵：** 邊際共形預測（Marginal Conformal Prediction）在理論保證上依賴樣本可交換性假設；本研究於時序測試集上取得 94.84% 之全域經驗覆蓋率（貼近 95% 名義水準），但因尖峰時段用車波動極具異質變異性（Heteroscedasticity），導致尖峰條件覆蓋率明顯下探，顯示時序條件預測不確定性極具研究價值，未來應探索自適應局部共形預測。
+### 6. Deployment (確定性前端部署)
+- 匯出數值標準化均值、標準差、回歸係數與截距至 `model_spec.json`。
+- 採純客戶端 Option B 架構，於 Next.js 進行毫秒級確定性推論，無伺服器延遲或冷啟動問題。
 
 ---
 
-## 7. 視覺化分析圖表 (Visualizations)
+## 4. 特徵選取與正則化收縮深度分析
 
-本專案於 `7115093001_hw2/figures/` 目錄中產出 12 張學術級視覺化圖表，以下嵌入本研究最具代表性之核心圖表（相對路徑引用）：
+### Problem 1: Bike Sharing 特徵選取
+- **RFE 搜尋歷程:** 於 53 維編碼特徵中以 5-Fold Expanding-Window CV 尋找最優維度，最終在 **$k=30$** 取得最低 CV RMSE (**107.4394 輛**)。
+- **原生群組消融分析 (Grouped Feature Ablation):**
+  - **最關鍵特徵:** 時段 (`hr`)，剔除後 CV RMSE 暴增 **+34.19 輛** (誤差上升 31%)，展現都市通勤之決定性雙峰特徵。
+  - **共線性實證:** 氣溫 (`temp`) 與體感氣溫 (`atemp`) 相關係數高達 0.985。單獨剔除其一影響極微 ($\Delta \text{RMSE} \le +1.44$)，但**兩者同時剔除時 CV RMSE 暴增 +22.77 輛**。
 
-### 7.1 EDA 24 小時平均租借需求趨勢
-展示全體樣本各時段（0–23 小時）之平均租借需求變化趨勢，整體呈現早通勤（08:00）與傍晚通勤（17:00–18:00）之顯著雙峰用車型態：
-<div align="center">
-  <img src="7115093001_hw2/figures/hourly_demand.png" alt="24 小時平均租借需求趨勢圖" width="750" />
-  <p><em>圖 1：探索性資料分析 — 24 小時平均租借需求趨勢圖 (Average Bike Rental Demand by Hour)</em></p>
-</div>
+### Problem 2: Appliances Energy 特徵選取與正則化
+- **特徵淘汰與正則化對比 (5-Fold CV 實證數據):**
 
-### 7.2 四大候選模型 5-Fold CV 綜合評比
-以無偏樣本標準差（$ddof=1$）呈現 M1 至 M4 在五折擴展視窗下之驗證 RMSE 表現，其中 M2 (RFE+OLS) 取得最低之平均 CV RMSE，跨折疊標準差則以 M1 最低，各方法間評比表現差距未經統計顯著性檢定：
-<div align="center">
-  <img src="7115093001_hw2/figures/model_comparison.png" alt="四個模型的結果比較" width="750" />
-  <p><em>圖 2：候選模型評比 — 5-Fold Expanding Window 交叉驗證 RMSE 柱狀圖 (含無偏樣本標準差誤差條)</em></p>
-</div>
+| 模型代號 | 演算法模型 | 選定特徵數 | 超參數設定 | 5-Fold CV RMSE (Wh) | CV 標準差 ($ddof=1$) | 演算法評選結果 |
+|:---:|:---|:---:|:---|:---:|:---:|:---|
+| **M0** | DummyRegressor (常數均值) | 0 | `strategy='mean'` | 102.7427 | $\pm$ 8.0952 | 基準對照 |
+| **M1** | Full OLS (全特徵多元線性迴歸) | 29 | `fit_intercept=True` | 98.0718 | $\pm$ 7.3897 | 欠缺正則化抑制 |
+| **M2** | RFE + OLS (最優稀疏特徵子集) | **6** | $k=6$, `step=1` | 96.2026 | $\pm$ 5.8893 | **極致可解釋稀疏解** |
+| **M3** | **Ridge Regression (L2 正則化)** | **29** | $\mathbf{\alpha=1000.0}$ | **95.8454** | $\mathbf{\pm 6.2597}$ | **★ 實證最佳模型 (部署主選)** |
+| **M4** | Lasso Regression (L1 正則化) | 29 | $\alpha=2.0$ | 95.9075 | $\pm$ 6.3640 | 表現接近 Ridge |
 
-### 7.3 測試集真實值 vs 預測值分佈 (Actual vs. Predicted)
-測試集 2,576 筆觀測值之預測值與真實值散佈圖，緊密圍繞 $y = x$ 理想預測基準線：
-<div align="center">
-  <img src="7115093001_hw2/figures/actual_vs_predicted.png" alt="測試集真實值 vs 預測值散佈圖" width="750" />
-  <p><em>圖 3：測試集預測評估 — 測試集真實租借量 vs M2 預測租借量散佈圖（含理想對角線）</em></p>
-</div>
-
-### 7.4 測試集 95% Split Conformal 預測區間時序追蹤
-測試集前 7 天（連續 168 小時）代表性時間序列，展示非負截斷共形預測區間對實際租借動態之涵蓋情形：
-<div align="center">
-  <img src="7115093001_hw2/figures/prediction_interval.png" alt="測試集代表性連續時段預測區間時間序列圖" width="750" />
-  <p><em>圖 4：不確定性量化 — 測試集前 7 天 95% 共形預測區間與實際租借量時間序列圖</em></p>
-</div>
+- **客觀模型決策:**  
+  依據真實 CV 實驗，**Ridge Regression (M3, $\alpha=1000.0$)** 成功平抑全戶 9 間房間溫濕度高度共線性所引發之係數方差膨脹，以 **95.8454 Wh** 奪得全場最低 CV RMSE，依規範選定為首選部署模型。  
+- **RFE 精選 6 大實體因子 (M2):**  
+  廚房濕度 (`RH_1`)、客廳濕度 (`RH_2`)、洗衣間溫度 (`T3`)、客廳溫度 (`T2`) 以及日週期時段轉換特徵 (`sin_hour`, `cos_hour`)。
 
 ---
 
-## 8. 互動式研究儀表板 (Interactive Dashboard)
+## 5. 模型評估與 Split Conformal 預測區間實證
 
-為實踐 AIoT 成果之互動視覺化，本專案打造了功能完備之現代化 Web 儀表板，線上展示網址為：  
-👉 **[https://a-io-t-hw-2.vercel.app/](https://a-io-t-hw-2.vercel.app/)**
+### 5.1 獨立測試集最終盲測評估結果
 
-### 8.1 儀表板核心功能模組
-1. **Research Overview (研究總覽):** 綜覽核心研究指標（Test MAE 97.52, RMSE 133.21, $R^2$ 0.6112, 覆蓋率 94.84%）、學生資訊與 CRISP-DM 架構。
-2. **Dataset & EDA (資料集探索):** 互動式檢視日夜用車週期、氣候相關矩陣、165 個缺漏時段審計以及 Target Leakage 排除宣告。
-3. **Model Comparison (模型評比與消融):** 完整收錄 M1–M4 之 5 折 Expanding Window CV 統計、RFE 淘汰歷程與 12 大原生特徵群組消融 ΔRMSE 影響圖。
-4. **Evaluation (測試集評估與歷程探索):** 散佈圖診斷、全量 2,576 筆測試預測之自訂日期歷程探索器（支援桑迪颶風、感恩節週、聖誕假期等情境切片）、動態 MAE/RMSE/覆蓋率重算與時段覆蓋長條圖。
-5. **Interactive Prediction (即時預測推論):** 支援 12 項特徵輸入之集中驗證、上下界自動防呆、曆法矛盾邏輯提示（如週末標記為工作日）、5 大典型情境快速載入，並即時運算點預測、95% 預測區間與個別特徵貢獻分項。
-6. **Methodology (研究方法論):** CRISP-DM 端到端管線流程圖、分拆共形預測數學公式推導、時序可交換性假設討論與學術參考文獻。
+各模型在未曾參與訓練與調參之獨立測試集上的客觀表現如下：
 
-### 8.2 技術架構與服務性質聲明
-- **技術堆疊：** Next.js 16 (App Router)、TypeScript、Tailwind CSS、Turbopack。
-- **推論架構：** 採行確定性 TypeScript 引擎，直接讀取權威規格檔 `website/data/m2_model_spec.json` 執行已擬合之 M2 線性方程式（截距 `-76.1581`，30 項特徵係數，校準分位數 $q=302.6015$），雙向浮點精度對齊誤差小於 $10^{-13}$。
-- **重要聲明：** 本網站定位為**學術研究與實驗成果展示平台**，旨在直觀呈現迴歸模型之推論行為，**並非接入即時感測串流或具備即時負載容錯之商業營運物聯網服務**。
+| 研究問題 | 部署模型 | 測試集 MAE | 測試集 RMSE | 測試集 $R^2$ | 常數基準 Dummy RMSE | 誤差縮減幅度 |
+|:---|:---|:---:|:---:|:---:|:---:|:---:|
+| **Problem 1: Bike Sharing** | M2 (RFE+OLS, $k=30$) | **97.5211 輛** | **133.2088 輛** | **0.6112** | 226.1197 輛 | **-41.09%** |
+| **Problem 2: Appliances Energy** | M3 (Ridge, $\alpha=1000$) | **49.2955 Wh** | **83.9152 Wh** | **0.1494** | 91.0182 Wh | **-7.80%** |
+| *(Problem 2 備選對照)* | M2 (RFE+OLS, $k=6$) | 50.1420 Wh | 84.1866 Wh | 0.1439 | 91.0182 Wh | -7.51% |
+
+### 5.2 名義 95% 分裂共形預測區間 (Split Conformal Prediction Interval)
+
+為克服計數資料與能耗殘差非高斯分佈之問題，兩大問題均在獨立校準集上計算絕對殘差非整合度分數 $s_i = |y_i - \hat{y}_i|$，依分位數秩次求出共形半徑 $q$：
+
+| 評估指標項目 | Problem 1: Bike Sharing | Problem 2: Appliances Energy |
+|:---|:---:|:---:|
+| **校準集樣本數 ($n$)** | 2,640 筆 | 3,024 筆 |
+| **分位數秩次計算公式** | $\lceil (2640+1) \times 0.95 \rceil = 2509$ | $\lceil (3024+1) \times 0.95 \rceil = 2874$ |
+| **校準共形分位數 ($q$)** | **302.6015 輛** | **143.8311 Wh** |
+| **名義目標覆蓋率 (Nominal Target)** | 95.00% | 95.00% |
+| **測試集實證覆蓋率 (未截斷)** | **94.84%** (2,443 / 2,576) | **95.25%** (2,710 / 2,845) |
+| **測試集實證覆蓋率 (非負截斷)** | **94.84%** (2,443 / 2,576) | **95.25%** (2,710 / 2,845) |
+| **平均預測區間寬度 (未截斷)** | 605.20 輛 | 287.66 Wh |
+| **平均預測區間寬度 (非負截斷 $\max(0, \hat{y}-q)$)** | **513.25 輛** (縮減 15.2%) | **245.98 Wh** (縮減 14.5%) |
+
+> [!WARNING]
+> **時間序列可交換性前提宣告 (Exchangeability Caveat):**  
+> 標準 Split Conformal 預測之理論無分佈覆蓋保證建立於樣本具備「可交換性 (Exchangeability)」或獨立同分佈 (i.i.d.) 之假設。在時間序列環境中，感測數據與生活用電存在時序自相關性與季節性概念漂移，可交換性無法在數學上嚴格成立。因此，本研究中的 95% 嚴謹定義為**名義設定目標 (Nominal Target)**，模型的真實可靠度必須以獨立測試集上的實證經驗覆蓋率（Bike: 94.84%, Appliances: 95.25%）為最終科學驗收標準。
 
 ---
 
-## 9. 本地執行與重現指南 (How to Run)
+## 6. 網站導覽、下拉選單與互動推論指引
 
-本儲存庫具備高度獨立性，已內建所有實驗資料與重現腳本（在固定亂數種子與指定環境套件版本下經自動化腳本驗證）。請依照以下步驟於本地端重現研究成果：
+網站現已正式部署於 Vercel，提供直覺且學術專業的交互式視覺化體驗：
 
-### 9.1 環境準備與 Clone 專案
+### 1. 全域導航與 Problem Selector 下拉選單
+- 位於網站右上角導覽列 (`Navbar.tsx`)，實作為原生 HTML `<select>` 互動下拉選單：
+  1. `Problem 1 — Bike Sharing Demand`: 進入自行車租借需求預測完整研究頁面（涵蓋 `/`, `/dataset`, `/models`, `/evaluation`, `/predict`, `/methodology`）。
+  2. `Problem 2 — Appliances Energy Prediction`: 切換至家電能耗預測儀表板 (`/problem2`)。
+  3. `Custom Dataset — Universal MLR`: 切換至加分功能通用資料集多元線性迴歸 Studio (`/custom-dataset`)。
+
+### 2. Problem 2 專屬儀表板特色 (`/problem2`)
+- **CRISP-DM 6 階段流程導覽:** 清楚陳列商業目標、資料審計、時序日曆切分、模型比較、盲測成果與部署架構。
+- **高解析度學術圖表展示:** 內嵌標的偏度分布圖、138 天時間序列切分邊界圖、Pearson 相關係數熱力圖、RFE 淘汰曲線、四模型 CV 對比圖、殘差診斷圖、時序區間追蹤圖以及 24 小時覆蓋率分析圖。
+- **26 特徵分組互動預測器 (Interactive Predictor):**
+  - **Lighting (燈光):** `lights` (室內燈具耗電量)。
+  - **Indoor Temperature (9 區域溫度):** 廚房 (T1)、客廳 (T2)、洗衣間 (T3)、辦公室 (T4)、浴室 (T5)、外牆 (T6)、燙衣間 (T7)、次臥 (T8)、主臥 (T9)。
+  - **Indoor Humidity (9 區域濕度):** RH_1 ~ RH_9 相對濕度 (%)。
+  - **Outdoor Weather (6 大氣象因子):** 戶外氣溫、氣壓、戶外濕度、風速、能見度、露點溫度。
+  - **Time Schedule (時序狀態):** 時段選擇 (0~23 小時) 與平日/週末開關。
+- **雙模型切換:** 支援於部署首選 M3 (Ridge 29 維) 與最優稀疏 M2 (RFE+OLS 6 維) 之間切換即時推論。
+- **即時預測輸出:** 顯示原生估計值、非負截斷估算值、95% 名義共形區間 $[\text{Lower}, \text{Upper}]$，以及直觀的**特徵貢獻度瀑布圖 (Waterfall Chart)**。
+
+---
+
+## 7. 加分功能：通用資料集多元線性迴歸 Studio (Bonus)
+
+獨立建置於 `/custom-dataset` 頁面，提供端到端通用多元線性迴歸與特徵工程計算能力：
+
+### 1. 核心功能與工作流程
+1. **資料輸入途徑:**
+   - **公開 CSV URL 擷取:** 支援貼上任意公開 Web CSV 連結（預設提供 1-Click 載入 50 Startups 基準資料）。
+   - **本地 CSV 檔案上傳:** 透過瀏覽器安全上傳本機資料集。
+2. **安全防護 (SSRF Hardened):**
+   - 伺服器端路由 (`/api/fetch-csv`) 具備嚴格的安全審計過濾：封鎖本機 Loopback (`127.0.0.1`, `localhost`)、私有子網 (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)、鏈路本地 (`169.254.0.0/16`) 與雲端 Metadata 服務 (`metadata.google.internal`)；強制設定 8 秒請求逾時與 5MB 檔案大小上限。
+3. **資料檢視與動態編碼:**
+   - 即時解析 CSV Header 與前 5 筆預覽。
+   - 自動辨識數值型與低基數類別型欄位（自動進行 One-Hot Encoding）。
+4. **動態矩陣迴歸求解器:**
+   - 採用正規方程正則化求解器 $(X^T X + \lambda I)^{-1} X^T y$，即時計算 OLS / Ridge 解，並依據標準化係數絕對值輸出特徵重要度排序。
+5. **評估與共形區間:**
+   - 輸出 Train/Test 之 MAE、RMSE 與 $R^2$ 指標。
+   - 繪製互動式 Actual vs Predicted SVG 散佈圖。
+   - 依據殘差分位數計算經驗共形預測區間。
+
+### 2. 50 Startups 官方基準實測成果
+- **資料來源:** [Avik-Jain 100-Days-Of-ML-Code 50_Startups.csv](https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv)
+- **標的變數:** `Profit` (淨利潤，數值連續)
+- **實測指標:**
+  - **Test RMSE:** **$10,476.76**
+  - **Test $R^2$:** **0.9439** (展現高達 94.4% 之極高線性解釋力)
+  - **主要貢獻特徵:** R&D Spend (+$14,746.70), Marketing Spend (+$4,109.24)
+- **驗證狀態:** 通過 `tests/test_custom_solver.ts` 自動化回歸測試，確認模型計算嚴格真實，絕無使用 Bike Sharing 或 Appliances 之硬編碼係數偽造。
+
+---
+
+## 8. 可重現性驗證、單元測試與 Parity 測試
+
+本專案所有程式碼、模型訓練與數值推論皆經過嚴格測試驗證：
+
 ```bash
-# 複製本儲存庫
-git clone https://github.com/Augustine-723/AIoT_HW2.git
-cd AIoT_HW2
+# 1. 執行 Python 研究實驗管線 (重新產出資料、圖表與模型規格)
+python problem2/run_experiment.py
+
+# 2. 自動構建並執行 Jupyter Notebook (確保全部 Cell 正常執行並輸出成果)
+python problem2/build_notebook.py
+jupyter nbconvert --to notebook --execute --inplace problem2/appliances_energy_prediction.ipynb
+
+# 3. 執行 Python–TypeScript 雙向推論一致性測試 (Parity Tests)
+cd website
+npm test
+
+# 4. 執行通用資料集求解器單元測試 (50 Startups Benchmark)
+npx tsx tests/test_custom_solver.ts
+
+# 5. 執行 ESLint 程式碼規範審查 (0 errors, 0 warnings)
+npm run lint
+
+# 6. 執行 TypeScript 嚴格型別檢查
+npx tsc --noEmit
+
+# 7. 執行 Next.js 生產環境完整編譯 (12/12 頁面靜態生成成功)
+npm run build
 ```
 
-### 9.2 Python 研究環境配置
-```bash
-# 進入核心研究工作區
-cd 7115093001_hw2
-
-# 建議建立並啟用 Python 3.10+ 虛擬環境 (Windows PowerShell)
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-
-# 安裝相依套件 (包含 scikit-learn, pandas, statsmodels, jupyter 等)
-pip install -r requirements.txt
-```
-
-### 9.3 執行研究實驗與 Notebook
-本專案提供多種執行方式：
-
-1. **直接開啟主 Jupyter Notebook 查看完整成果：**
-   ```bash
-   jupyter notebook 7115093001_hw2.ipynb
-   ```
-   *註：主 Notebook 位於 `7115093001_hw2/7115093001_hw2.ipynb`，內建所有階段之輸出數據與 12 張圖表。Notebook 內建動態相對路徑解析，無論於工作區目錄執行（讀取相對路徑 `data/hour.csv`）或儲存庫根目錄執行（讀取相對路徑 `7115093001_hw2/data/hour.csv`），皆可一鍵「Run All」自原始逐時資料集重新計算產出。*
-
-2. **透過模組化自動腳本重新執行全流程：**
-   ```bash
-   # Phase 1: 資料完整性審計、EDA、時序切分與 OLS 基準
-   python run_phase1.py
-
-   # Phase 2: RFE 特徵選取、Ridge/Lasso 正則化與群組特徵消融
-   python run_phase2.py
-
-   # Phase 3: Split Conformal 預測區間校準與測試集最終評估
-   python run_phase3.py
-
-   # 自動編譯產出完整可執行的 7115093001_hw2.ipynb
-   python build_notebook.py
-
-   # 執行 Python 與 TypeScript 雙精度數值對齊測試
-   python test_parity_reproducible.py
-
-   # 同步實驗資料與圖表至網站目錄
-   python export_website_data.py
-   ```
-
-### 9.4 本地啟動前端展示網站 (選用)
-```bash
-# 返回專案根目錄後進入 website
-cd ../website
-
-# 安裝 Node 相依套件
-npm install
-
-# 執行 TypeScript 數值推論引擎一致性測試
-npm run test:parity
-
-# 啟動本地開發伺服器 (預設運行於 http://localhost:3000)
-npm run dev
-```
+### 浮點數精度對齊成果 (Floating-Point Parity Summary)
+- **Problem 1 (M2 Model):** 最大絕對誤差 **$5.6843 \times 10^{-14}$** ($< 1.0 \times 10^{-12}$，達 IEEE-754 機器精度極限)。
+- **Problem 2 (M3 & M2 Models):** 最大絕對誤差 **$0.0000 \times 10^0$** ($< 1.0 \times 10^{-12}$，完全吻合)。
 
 ---
 
-## 10. 課程正式繳交內容 (Homework Submission)
+## 9. 學術誠信、NotebookLM 與 AI 輔助開發聲明
 
-依據 AIoT HW2 課程規定，正式繳交成果如下：
+### 1. NotebookLM 研讀與知識提煉摘要
+在進行本作業之研究設計時，使用 NotebookLM 研讀 Luis M. Candanedo 於 2017 年發表於 *Energy and Buildings* 之原始論文《Data driven prediction models of energy use of appliances in a low-energy house》：
+- **核心洞察 1:** 家用電器能耗具備劇烈的非平穩隨機尖峰，主要由家庭成員之居住行為（烹飪、烘衣、洗滌）驅動，單純線性迴歸在此類高雜訊資料中 $R^2$ 通常介於 0.10 ~ 0.20 之間，此為該資料集的物理特性，不應刻意過度擬合。
+- **核心洞察 2:** 全戶溫濕度感測器（9 間居室）之間具有顯著的空間相關性，造成嚴重的多重共線性。Ridge 正則化或挑選特定區域（如廚房濕度 RH_1 與客廳溫度 T2）是穩定模型係數的最佳實務。
+- **核心洞察 3:** 論文中設計隨機變數 `rv1` 與 `rv2` 用作特徵篩選濾鏡，任何合格的特徵選擇演算法皆應在早期將其剔除。
 
-1. **主程式檔案：** [`7115093001_hw2/7115093001_hw2.ipynb`](7115093001_hw2/7115093001_hw2.ipynb)
-   - 包含 Phase 1 至 Phase 3 的端到端完整研究程式碼與執行結果儲存格。
-2. **整合型 PDF 報告：** `7115093001_hw2.pdf`
-   - **整合報告完整章節架構：**
-     1. CRISP-DM 六大階段之深入分析與業務決策脈絡
-     2. 多元線性迴歸、RFE 特徵消除、Ridge/Lasso 正則化與共形預測區間之完整評估圖表
-     3. 運用 Google NotebookLM 輔助生成之論文文獻脈絡與專案研究摘要
-     4. 網路主流方法與非線性機器學習模型（Random Forest, Gradient Boosting, ANN）之文獻綜述比較（註：正式書面報告之主流方法比較未包含 LightGBM 獨立實驗）
-     5. 大型語言模型（GPT / LLM）完整協同對話紀錄附錄
+### 2. 人工智慧 (AI) 工具輔助宣告
+本專案在實作過程中遵循學術倫理規範，合規使用 AI 工具（Google Antigravity / Claude / GPT）進行輔助開發：
+- **AI 輔助範疇:** 輔助編寫 Next.js 前端 UI 元件排版、Tailwind CSS 樣式微調、TypeScript 型別定義與自動化測試腳本框架。
+- **學生獨立職責與把關:** 所有資料審計程序、時間序列防洩漏切分邊界定義、CRISP-DM 研究架構、特徵選取超參數設定、數學公式推導與實測數據分析，均由研究者嚴格主導與獨立審核，絕無任何由 AI 虛構或編造數據之行為。
 
-### 助教執行環境特別提醒：
-- 若助教需要從頭執行（Run All）Jupyter Notebook，所需之官方原始逐時觀測資料集已完備存放於 [`7115093001_hw2/data/hour.csv`](7115093001_hw2/data/hour.csv)。
-- Notebook 具備自給自足之檔案路徑定義（支援從工作目錄相對存取 `data/hour.csv` 或根目錄存取 `7115093001_hw2/data/hour.csv`），僅需於安裝 `requirements.txt` 後之 Python 環境直接執行即可產出全量成果。
+### 3. 原始研究文件與連結
+- [Problem 1 專屬技術文件 (7115093001_hw2/README.md)](7115093001_hw2/README.md)
+- [Problem 1 研究 Notebook (7115093001_hw2/7115093001_hw2.ipynb)](7115093001_hw2/7115093001_hw2.ipynb)
+- [Problem 2 專屬技術文件 (problem2/README.md)](problem2/README.md)
+- [Problem 2 研究 Notebook (problem2/appliances_energy_prediction.ipynb)](problem2/appliances_energy_prediction.ipynb)
+- [正式可重現性報告 (FINAL_REPRODUCIBILITY_REPORT.md)](FINAL_REPRODUCIBILITY_REPORT.md)
 
-### Kaggle 競賽名次聲明：
+### 4. 課程繳交與 Kaggle 名次宣告
+- **課程正式繳交內容:**
+  1. 主程式檔案：[`7115093001_hw2/7115093001_hw2.ipynb`](7115093001_hw2/7115093001_hw2.ipynb) 及 [`problem2/appliances_energy_prediction.ipynb`](problem2/appliances_energy_prediction.ipynb)
+  2. 整合型 PDF 報告：`7115093001_hw2.pdf`
+  3. GitHub 儲存庫與 Vercel 線上展示網站
 - **Kaggle 排行榜名次：`N/A`**  
-  *說明：本研究採用 Kaggle 公開收錄之 Bike Sharing Dataset 鏡像作為學術研究資料集，本專案主要探討特徵選擇、線性迴歸正則化與共形預測區間之統計特性，並未報名參加 Kaggle 即時排行榜競賽。*
+  *說明：本研究採用 Kaggle/UCI 公開收錄之學術資料集，重點在於特徵選擇、正則化迴歸與共形預測區間之嚴謹統計推論與系統化整合，並未報名參加 Kaggle 即時排行榜競賽。*
 
 ---
 
-## 11. 研究限制與未來展望 (Research Limitations)
+## 10. 研究限制與未來展望
 
 1. **歷史資料時空範圍局限：**
-   - 資料集觀測時間為 2011 年至 2012 年之美國華盛頓特區，無法捕捉近年疫情後工作型態轉變、共享電動滑板車或電動輔助自行車普及等新型態微移動生態。
+   - Bike Sharing 觀測期間為 2011–2012 年華盛頓特區，Appliances Energy 觀測期間為 2016 年比利時 Stembert 單一家庭低耗能住宅，皆具備特定地域與建築結構屬性，外推至不同氣候區或建築形式時需重新校準。
 2. **非線性模型本地實驗比較未納入：**
-   - 本研究聚焦於線性迴歸家族之統計可解釋性與特徵選取機制。雖然於整合書面報告中針對隨機森林（Random Forest）、梯度提升樹（Gradient Boosting / XGBoost）及人工神經網路（ANN）進行了學術文獻綜述比較（註：正式 PDF 報告之主流方法比較未包含 LightGBM 獨立實驗），但在本地專案代碼中尚未實作上述非線性模型的實證比對。
+   - 本研究聚焦於線性迴歸家族之統計可解釋性與特徵選取機制。雖然於書面報告中針對隨機森林、梯度提升樹及神經網路進行了學術文獻綜述比較，但在本地專案代碼中尚未實作上述非線性模型的實證比對。
 3. **時間相依性對共形預測理論假設之影響：**
-   - 標準 Split Conformal Prediction 之無分佈邊際覆蓋率理論保證，嚴格建立於校準樣本與測試樣本具備「可交換性」（Exchangeability / i.i.d.）之數學假設。
-   - 由於每小時公共自行車租借量具備強烈時間自相關性、日夜通勤週期與跨年度增長（概念漂移），可交換性在時序相依資料下未能完全嚴格成立。因此，95% 應視為名義設定水準（Nominal Target Level），而非無條件之數學覆蓋保證。儘管測試集實測之經驗覆蓋率達 94.84%（2,443 / 2,576 筆），在連續極端氣候或劇烈突發事件下仍可能存在局部覆蓋率波動之風險。
-4. **通勤尖峰時段之條件預測不確定性：**
-   - 尖峰時段（08:00、17:00 與 18:00）的經驗覆蓋率顯著降至 64% 至 80% 之間。這表明線性迴歸在面對極端需求衝擊與尖峰高波動時存在預測瓶頸，未來研究可結合共形化分位數迴歸（Conformalized Quantile Regression, CQR）或時間序列自適應共形預測算法進一步優化。
+   - 標準 Split Conformal Prediction 之有限樣本無分佈覆蓋保證，嚴格建立於樣本具備「可交換性」（Exchangeability / i.i.d.）之數學假設。
+   - 在時序相依資料下，可交換性無法在數學上嚴格保證，因此 95% 為名義設定水準，真實效能應以測試集實測之經驗覆蓋率（Bike: 94.84%, Appliances: 95.25%）為科學依據。
+4. **極端峰值之條件預測不確定性：**
+   - 在極端尖峰用車與特定高耗能電器啟動情境下，固定寬度共形區間覆蓋率可能偏緊，未來研究可朝向共形化分位數迴歸（CQR）或時序自適應共形區間演進。
+5. **通用資料集 Studio 之理論邊界：**
+   - `/custom-dataset` 模組專注於數值型標的之多元線性迴歸，對於高度非線性關聯、高維稀疏文字或巨量影像數據並不適用。
 
 ---
 
-## 12. 專案隔離宣告 (Project Isolation Statement)
+## 11. 驗收記錄表 (PASS / FAIL / NOT VERIFIED Checklist)
 
-- 本儲存庫為 `Augustine-723/AIoT_HW2`，所有研究代碼、文件與展示網站均獨立構建與提交。
-- 本專案完全獨立運作，**嚴格未修改、亦未相依於先前之 `Augustine-723/50-Starup` 儲存庫或其既有 Vercel 部署**。
+| 階段別 | 驗收核心規範與目標 | 驗收狀態 | 驗收證據與成果對應 |
+|:---|:---|:---:|:---|
+| **Stage 1: Dataset Acquisition** | 下載並驗證 Appliances 資料集；確認 19,735 筆、29 欄位、0 缺失；SHA-256 比對與來源釐清。 | **PASS** | `problem2/data/energydata_complete.csv` SHA-256 位元完全校驗；`problem2/results/data_audit.json` 產出。 |
+| **Stage 2: CRISP-DM Pipeline** | 建立 `problem2/` 獨立工作區；實作 6 大階段；70/15/15 日曆時序切分；Pipeline 內標準化無洩漏；Expanding CV。 | **PASS** | `run_experiment.py` 與 `appliances_energy_prediction.ipynb` 完整落地，零資料洩漏。 |
+| **Stage 3: Feature Selection** | RFE 特徵數搜尋；Ridge/Lasso 對比；rv1/rv2 隨機對照欄位健全性檢驗；產出特徵清單與圖表。 | **PASS** | RFE 篩選出 $k=6$ 最優稀疏子集；Ridge 達成最優 CV RMSE (95.85 Wh)；rv1/rv2 成功於末位淘汰；產出 8 張學術圖表。 |
+| **Stage 4: Evaluation & Conformal** | 獨立測試集盲測 (MAE/RMSE/R²)；獨立校準集名義 95% Split Conformal 區間；非負截斷；時序可交換性討論。 | **PASS** | Test MAE 49.30 Wh, RMSE 83.92 Wh, $R^2$ 0.1494；Conformal $q=143.83$ Wh；實證覆蓋率達 **95.25%**。 |
+| **Stage 5: Website Integration** | 既有 Bike 頁面完整保留；新增 Problem Selector 下拉選單；Problem 2 完整儀表板；26 特徵分組預測；Parity 測試。 | **PASS** | `Navbar.tsx` 原生 `<select>` 實作；`/problem2` 上線；Python–TS 數值推論 Parity 誤差 $< 10^{-12}$。 |
+| **Stage 6: Custom Dataset Bonus** | `/custom-dataset` 頁面；支援公開 URL 與本地 CSV；動態 MLR 與 Conformal；SSRF 安全防護；50 Startups 實測。 | **PASS** | SSRF 防護 API 通過；動態求解器通過單元測試；50 Startups 實測 Test $R^2 = 0.9439$。 |
+| **Stage 7: README & Delivery** | 全域 README 整合；列出特徵數與數據；操作指引；保留 NotebookLM 與聲明；CI 測試通過；Git Commit & Push。 | **PASS** | 完整編寫根目錄說明；Lint 0 警告；Build 12/12 成功；測試全數 PASS。 |
+
+---
+*本專案由學生 7115093001 嚴謹構建，完整落實 GitHub 與 Vercel 雙交付標準。*

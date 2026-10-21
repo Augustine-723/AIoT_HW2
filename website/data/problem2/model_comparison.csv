@@ -1,0 +1,6 @@
+model_id,name,features_count,selected_features,hyperparameters,cv_rmse_mean,cv_rmse_std
+M0,DummyRegressor (Mean Baseline),0,[],strategy='mean',102.7427,8.0952
+M1,Full Multiple Linear Regression (OLS),29,"['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'hour', 'sin_hour', 'cos_hour', 'is_weekend']",fit_intercept=True,98.0718,7.3897
+M2,RFE + OLS (Optimal k=6),6,"['RH_1', 'RH_2', 'T3', 'T2', 'sin_hour', 'cos_hour']","k=6, step=1",96.2026,5.8893
+M3,Ridge Regression (alpha=1000.0),29,"['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'hour', 'sin_hour', 'cos_hour', 'is_weekend']",alpha=1000.0,95.8454,6.2597
+M4,Lasso Regression (alpha=2.0),29,"['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'hour', 'sin_hour', 'cos_hour', 'is_weekend']",alpha=2.0,95.9075,6.364

@@ -1,0 +1,68 @@
+{
+  "problem_id": "problem2",
+  "problem_title": "Appliances Energy Prediction",
+  "model_id": "M2",
+  "model_name": "RFE + OLS (Optimal k=6)",
+  "intercept": 98.98384537718177,
+  "calibration_q": 144.81526024968895,
+  "nominal_coverage_pct": 95.0,
+  "empirical_test_coverage_pct": 94.62,
+  "features_count": 6,
+  "selected_features": [
+    "RH_1",
+    "RH_2",
+    "T3",
+    "T2",
+    "sin_hour",
+    "cos_hour"
+  ],
+  "feature_specs": [
+    {
+      "feature": "RH_1",
+      "index": 0,
+      "mean": 40.42401579545949,
+      "scale": 3.5729986108075544,
+      "coefficient": 46.60385171402916
+    },
+    {
+      "feature": "RH_2",
+      "index": 1,
+      "mean": 40.9021241170724,
+      "scale": 3.2723051560171004,
+      "coefficient": -43.94965609177163
+    },
+    {
+      "feature": "T3",
+      "index": 2,
+      "mean": 21.430071664737678,
+      "scale": 1.4759042455407767,
+      "coefficient": 32.250066797038684
+    },
+    {
+      "feature": "T2",
+      "index": 3,
+      "mean": 19.58791768072374,
+      "scale": 1.4841298824564764,
+      "coefficient": -28.999756745633835
+    },
+    {
+      "feature": "sin_hour",
+      "index": 4,
+      "mean": -0.0022777165221340018,
+      "scale": 0.7073885345667376,
+      "coefficient": -24.50966679879774
+    },
+    {
+      "feature": "cos_hour",
+      "index": 5,
+      "mean": 0.0013150402471916588,
+      "scale": 0.7068200222405394,
+      "coefficient": -19.24812838299396
+    }
+  ],
+  "evaluation": {
+    "MAE": 68.0888,
+    "RMSE": 91.0906,
+    "R2": -0.0023
+  }
+}

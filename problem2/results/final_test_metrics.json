@@ -1,0 +1,60 @@
+{
+  "model_id": "M3",
+  "model_name": "Ridge Regression (alpha=1000.0)",
+  "selected_features_count": 29,
+  "selected_features": [
+    "lights",
+    "T1",
+    "RH_1",
+    "T2",
+    "RH_2",
+    "T3",
+    "RH_3",
+    "T4",
+    "RH_4",
+    "T5",
+    "RH_5",
+    "T6",
+    "RH_6",
+    "T7",
+    "RH_7",
+    "T8",
+    "RH_8",
+    "T9",
+    "RH_9",
+    "T_out",
+    "Press_mm_hg",
+    "RH_out",
+    "Windspeed",
+    "Visibility",
+    "Tdewpoint",
+    "hour",
+    "sin_hour",
+    "cos_hour",
+    "is_weekend"
+  ],
+  "test_observations": 2845,
+  "metrics": {
+    "MAE": 49.2955,
+    "MSE": 7041.7581,
+    "RMSE": 83.9152,
+    "R2": 0.1494
+  },
+  "dummy_baseline": {
+    "MAE": 53.2476,
+    "RMSE": 91.0182,
+    "R2": -0.0008
+  },
+  "conformal_prediction_interval": {
+    "calibration_sample_count": 3024,
+    "alpha": 0.05,
+    "nominal_coverage_pct": 95.0,
+    "quantile_rank": 2874,
+    "calibration_quantile_q": 143.8311,
+    "empirical_test_coverage_raw_pct": 95.25,
+    "empirical_test_coverage_clipped_pct": 95.25,
+    "mean_interval_width_raw": 287.6621,
+    "mean_interval_width_clipped": 245.9764,
+    "exchangeability_caveat": "Standard split conformal prediction assumes exchangeability (i.i.d.), which is violated under temporal autocorrelation. The 95% is a nominal target; empirical coverage on strictly held-out test data is reported transparently."
+  }
+}

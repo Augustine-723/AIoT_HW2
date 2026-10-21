@@ -1,0 +1,24 @@
+{
+  "total_observations": 19735,
+  "train_set": {
+    "start_date": "2016-01-11",
+    "end_date": "2016-04-16",
+    "days_count": 97,
+    "observations": 13866,
+    "percentage": 70.26
+  },
+  "calibration_set": {
+    "start_date": "2016-04-17",
+    "end_date": "2016-05-07",
+    "days_count": 21,
+    "observations": 3024,
+    "percentage": 15.32
+  },
+  "test_set": {
+    "start_date": "2016-05-08",
+    "end_date": "2016-05-27",
+    "days_count": 20,
+    "observations": 2845,
+    "percentage": 14.42
+  }
+}

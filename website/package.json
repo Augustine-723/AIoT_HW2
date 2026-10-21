@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx tests/reproducible_parity_test.ts",
-    "test:parity": "tsx tests/reproducible_parity_test.ts"
+    "test": "tsx tests/reproducible_parity_test.ts && tsx tests/problem2_parity_test.ts",
+    "test:p1": "tsx tests/reproducible_parity_test.ts",
+    "test:p2": "tsx tests/problem2_parity_test.ts",
+    "test:custom": "tsx tests/test_custom_solver.ts",
+    "test:parity": "tsx tests/reproducible_parity_test.ts && tsx tests/problem2_parity_test.ts"
   },
   "dependencies": {
     "lucide-react": "^1.57.0",
