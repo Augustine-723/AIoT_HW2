@@ -10,6 +10,22 @@
 
 ---
 
+## Live Demo｜線上互動展示
+
+**[開啟 AIoT HW2 Live Demo →](https://a-io-t-hw-2.vercel.app/)**
+
+網站提供三個可實際操作的研究入口：
+
+| 功能 | 資料集／內容 | 開啟示範 |
+|:---|:---|:---|
+| **Problem 1** | Bike Sharing Dataset（12 個原始預測特徵） | [共享單車需求預測 ↗](https://a-io-t-hw-2.vercel.app/) |
+| **Problem 2** | Appliances Energy Prediction（25 個原始預測特徵） | [家庭電器耗能預測 ↗](https://a-io-t-hw-2.vercel.app/problem2) |
+| **Custom Dataset** | 貼上 CSV URL 或上傳 CSV，自行選擇目標變數與執行迴歸分析 | [自訂資料分析 ↗](https://a-io-t-hw-2.vercel.app/custom-dataset) |
+
+> 建議操作：切換兩種 Problem 查看模型評估與預測區間；再前往 Custom Dataset，以頁面提供的 `50_Startups.csv` 範例測試資料匯入、特徵選擇與預測圖。
+
+---
+
 ## 目錄 (Table of Contents)
 1. [專案架構與兩大獨立研究問題](#1-專案架構與兩大獨立研究問題)
 2. [資料集來源與規格對照](#2-資料集來源與規格對照)
