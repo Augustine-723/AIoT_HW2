@@ -183,17 +183,17 @@ export default function CustomDatasetPage() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AIoT HW2 · 加分題 (+2分)</span>
+              <span>AIoT HW2 · 自訂資料分析</span>
             </span>
             <span className="px-3 py-1 rounded-full text-xs font-mono text-slate-300 bg-white/10">
               獨立於 Problem 1 & Problem 2
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-            Universal MLR & Feature Selection Playground
+            自訂資料集分析 · Multiple Linear Regression
           </h1>
           <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-            通用多元線性迴歸與特徵重要性分析沙盒：支援公開 CSV 網址（含 SSRF 安全防護）與本機 CSV 上傳，動態矩陣求逆計算，即時展示 MAE、RMSE、R²、殘差診斷與 95% 共形預測區間。
+            上傳資料、建立迴歸模型並探索預測結果：支援公開 CSV 網址（含 SSRF 安全防護）與本機 CSV 上傳，動態矩陣求逆計算，即時展示 MAE、RMSE、R²、殘差診斷與 95% 共形預測區間。
           </p>
         </div>
       </section>
