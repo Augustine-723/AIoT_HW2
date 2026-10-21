@@ -83,11 +83,11 @@ AIoT_HW2/
 | **研究目標** | 首都自行車共享系統每小時租借總量 (`cnt`) 預測 | 低耗能智慧建築每 10 分鐘電器能耗 (`Appliances`) 估計 |
 | **總觀測數 (N)** | **17,379 筆** (2011-01-01 至 2012-12-31) | **19,735 筆** (2016-01-11 至 2016-05-27) |
 | **取樣週期** | 1 小時連續時序 (存在 165 個缺漏小時) | 10 分鐘嚴格均勻連續時序 (0 缺漏、0 重複、0 缺失值) |
-| **原始欄位總數** | **16 欄** (若含列序號則為 17 欄) | **29 欄** |
+| **原始資料欄位** | **16 欄** (若含列序號則為 17 欄) | **29 個原始資料欄位** |
 | **排除變數** | `instant` (流水號), `dteday` (日期), `casual`, `registered` (資訊洩漏) | `date` (時間戳記), `rv1`, `rv2` (隨機對照欄位，防干擾) |
-| **原生實體變數** | **12 項** (時段、季節、年份、月份、假日、星期、工作日、天氣、氣溫、體感溫度、濕度、風速) | **25 項** (燈光能耗 1 項 + 9 間房間溫度 + 9 間房間濕度 + 氣象站觀測 6 項) |
-| **正式原始預測變數** | **12 個** (編碼展開後候選池為 53 維) | **26 個** (原生 25 項實體感測變數 + 主時間特徵 `hour`) |
-| **擴充特徵候選池** | 53 維 (類別 One-Hot + 數值標準化) | **29 維** (正式 26 項 + `sin_hour`, `cos_hour`, `is_weekend`) |
+| **原始感測及氣象預測變數** | **12 項** (時段、季節、年份、月份、假日、星期、工作日、天氣、氣溫、體感溫度、濕度、風速) | **25 個原始感測及氣象預測變數** (燈光能耗 1 項 + 9 間居室溫度 + 9 間居室濕度 + 氣象站觀測 6 項) |
+| **基本模型輸入特徵** | **12 個** (編碼展開後候選池為 53 維) | **26 個基本模型輸入特徵（包含衍生 hour）** (25 個原始感測變數 + 主時間特徵 `hour`) |
+| **擴充候選特徵** | 53 維 (類別 One-Hot + 數值標準化) | **29 個擴充候選特徵** (26 個基本特徵 + `sin_hour`, `cos_hour`, `is_weekend`) |
 | **資料來源網址** | - [UCI Bike Sharing Dataset (ID: 275)](https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset)<br>- [Kaggle Bike Sharing Demand Competition](https://www.kaggle.com/competitions/bike-sharing-demand) | - [UCI Appliances Energy Prediction (ID: 374)](https://archive.ics.uci.edu/dataset/374/appliances+energy+prediction)<br>- [Original Author GitHub (Luis Candanedo)](https://github.com/LuisM78/Appliances-energy-prediction-data)<br>- [Kaggle SB1 Competition (Reference)](https://www.kaggle.com/competitions/machine-learning-sb1)<br>- [Kaggle Public Dataset (loveall)](https://www.kaggle.com/datasets/loveall/appliances-energy-prediction) |
 | **數位雜湊 (SHA-256)**| `e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f` | `2820bf712ad0275cb18b85a05250926100d8e65ebb9f4d2d016ca91ea152a25d` |
 | **Kaggle 來源說明** | Kaggle 競賽公開且已對照一致。 | Kaggle SB1 競賽原檔需帳號登入與競賽規則同意；本專案比對 Kaggle 公開同源資料集，並透過 UCI 官方壓縮檔與作者 GitHub 原始檔驗證，**SHA-256 達到 100% 位元完全相同**。 |

@@ -74,7 +74,10 @@ export default function CustomDatasetPage() {
 
   // Fetch via SSRF-Protected API Route
   const handleFetchUrl = async () => {
-    if (!csvUrl.trim()) return;
+    if (!csvUrl.trim()) {
+      setErrorMsg("請輸入有效的公開 CSV 檔案網址（URL 不得為空白）。");
+      return;
+    }
     setLoading(true);
     setErrorMsg(null);
     setSuccessMsg(null);

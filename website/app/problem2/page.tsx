@@ -465,16 +465,20 @@ export default function Problem2Page() {
               <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">特徵欄位結構明確區分</h3>
               <div className="space-y-2 text-xs text-slate-600">
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
-                  <span className="font-bold text-slate-800 block">29 個原始欄位:</span>
-                  <span className="text-[11px] text-slate-500">date + Appliances + lights + 9室溫 + 9室濕 + 6氣象 + 2隨機</span>
+                  <span className="font-bold text-slate-800 block">29 個原始資料欄位:</span>
+                  <span className="text-[11px] text-slate-500">date (時間) + Appliances (標的) + lights + 9 居室溫度 + 9 居室濕度 + 6 氣象 + 2 隨機對照 (rv1, rv2)</span>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
-                  <span className="font-bold text-slate-800 block">26 個正式原始預測變數:</span>
-                  <span className="text-[11px] text-slate-500">25 項實體感測變數 + 1 項時間主特徵 (hour)。排除 rv1/rv2</span>
+                  <span className="font-bold text-slate-800 block">25 個原始感測及氣象預測變數:</span>
+                  <span className="text-[11px] text-slate-500">lights + 9 居室溫度 (T1~T9) + 9 居室相對濕度 (RH_1~RH_9) + 6 氣象站觀測</span>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
-                  <span className="font-bold text-slate-800 block">候選擴充特徵 (29項):</span>
-                  <span className="text-[11px] text-slate-500">加入週期編碼 sin_hour, cos_hour 與 is_weekend</span>
+                  <span className="font-bold text-slate-800 block">26 個基本模型輸入特徵（包含衍生 hour）:</span>
+                  <span className="text-[11px] text-slate-500">25 個原始感測及氣象變數 + 主時間特徵 hour (0~23)。嚴格排除 rv1 與 rv2</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <span className="font-bold text-slate-800 block">29 個擴充候選特徵:</span>
+                  <span className="text-[11px] text-slate-500">26 個基本特徵 + 日週期轉換 sin_hour, cos_hour 與行事曆 is_weekend</span>
                 </div>
               </div>
             </div>

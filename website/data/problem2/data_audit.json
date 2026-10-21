@@ -20,6 +20,18 @@
     "rv1",
     "rv2"
   ],
+  "feature_counts_summary": {
+    "raw_data_columns": 29,
+    "raw_sensor_and_weather_predictors": 25,
+    "base_model_input_features": 26,
+    "expanded_candidate_features": 29,
+    "unified_terminology": {
+      "level_1": "29 個原始資料欄位 (date, Appliances, lights, 9 居室溫度, 9 居室濕度, 6 氣象觀測, 2 隨機對照 rv1/rv2)",
+      "level_2": "25 個原始感測及氣象預測變數 (lights, T1~T9, RH_1~RH_9, 6 氣象變數)",
+      "level_3": "26 個基本模型輸入特徵（包含衍生 hour，排除 rv1/rv2）",
+      "level_4": "29 個擴充候選特徵 (26 基本特徵 + sin_hour, cos_hour, is_weekend)"
+    }
+  },
   "formal_raw_predictors_count": 25,
   "formal_raw_predictors": [
     "lights",
