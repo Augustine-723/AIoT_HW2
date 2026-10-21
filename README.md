@@ -4,7 +4,9 @@
 **課程名稱:** 人工智慧與物聯網應用 (AIoT)  
 **GitHub 專案儲存庫:** [https://github.com/Augustine-723/AIoT_HW2](https://github.com/Augustine-723/AIoT_HW2)  
 **線上研究與互動展示網站 (Vercel Live App):** [https://a-io-t-hw-2.vercel.app/](https://a-io-t-hw-2.vercel.app/)  
-**最新交付架構:** 支援 Problem 1、Problem 2 雙核心獨立多元線性迴歸研究問題切換，與 Custom Dataset 通用迴歸加分功能。
+**最新交付架構:** 支援 Problem 1、Problem 2 雙核心獨立多元線性迴歸研究問題切換，與 Custom Dataset 自訂資料分析功能。
+
+**新版網站介面：** 三個研究入口已統一採用淺色研究儀表板設計，包括淺灰色標題卡、白色數據卡、藍色主要操作按鈕與統一導覽列；網站以「研究問題與資料集」區分研究內容，不在介面展示加分分數。
 
 ---
 
@@ -15,7 +17,7 @@
 4. [特徵選取與正則化收縮深度分析](#4-特徵選取與正則化收縮深度分析)
 5. [模型評估與 Split Conformal 預測區間實證](#5-模型評估與-split-conformal-預測區間實證)
 6. [網站導覽、下拉選單與互動推論指引](#6-網站導覽下拉選單與互動推論指引)
-7. [加分功能：通用資料集多元線性迴歸 Studio (Bonus)](#7-加分功能通用資料集多元線性迴歸-studio-bonus)
+7. [自訂資料集分析 (Custom Dataset)](#7-自訂資料集分析-custom-dataset)
 8. [可重現性驗證、單元測試與 Parity 測試](#8-可重現性驗證單元測試與-parity-測試)
 9. [學術誠信、NotebookLM 與 AI 輔助開發聲明](#9-學術誠信notebooklm-與-ai-輔助開發聲明)
 10. [研究限制與未來展望](#10-研究限制與未來展望)
@@ -25,7 +27,7 @@
 
 ## 1. 專案架構與兩大獨立研究問題
 
-本儲存庫遵循嚴格之工程與學術隔離規範，將兩大研究問題與加分模組獨立劃分，確保原始實驗數據、模型權重、圖表與前端展示互不干擾、零程式碼耦合：
+本儲存庫遵循嚴格之工程與學術隔離規範，將兩大研究問題與自訂資料分析模組獨立劃分，確保原始實驗數據、模型權重、圖表與前端展示互不干擾、零程式碼耦合：
 
 ```text
 AIoT_HW2/
@@ -59,7 +61,7 @@ AIoT_HW2/
     ├── app/
     │   ├── page.tsx, dataset/, models/, ...   # Problem 1 原有頁面 (完整保留無覆蓋)
     │   ├── problem2/page.tsx                  # Problem 2 完整儀表板與互動推論
-    │   ├── custom-dataset/page.tsx            # Stage 6 加分功能：通用資料集 MLR Studio
+    │   ├── custom-dataset/page.tsx            # 自訂資料集 CSV 分析頁面
     │   └── api/fetch-csv/route.ts             # SSRF 防護之通用 CSV 安全擷取 API
     ├── components/Navbar.tsx                  # 原生 HTML <select> 下拉式切換器
     ├── lib/
@@ -74,9 +76,21 @@ AIoT_HW2/
 
 ---
 
+### 網站研究入口（目前版本）
+
+| 入口 | 資料集與預測任務 | 原始預測特徵 | 網站頁面 |
+|:---|:---|---:|:---|
+| **Problem 1** | Bike Sharing Dataset；預測每小時租借量 `cnt` | **12** | [研究總覽](https://a-io-t-hw-2.vercel.app/) |
+| **Problem 2** | Appliances Energy Prediction；估計每 10 分鐘電器耗能 `Appliances` | **25** | [能源研究儀表板](https://a-io-t-hw-2.vercel.app/problem2) |
+| **Custom Dataset** | 使用者自行貼上公開 CSV URL 或上傳 CSV，選擇數值型 Target | **依上傳資料而定** | [自訂資料分析](https://a-io-t-hw-2.vercel.app/custom-dataset) |
+
+> **特徵數說明：** Problem 1 的 12 個是原始預測欄位（其 One-Hot 編碼後有 53 維候選特徵）。Problem 2 的 25 個是原始感測與氣象預測欄位；加上由日期衍生的 `hour` 後是 26 個基本模型輸入，連同 `sin_hour`、`cos_hour`、`is_weekend` 為 29 個擴充候選特徵。新版作業要求「>13 個原始特徵」，因此 Problem 2 符合此門檻。
+
+---
+
 ## 2. 資料集來源與規格對照
 
-本專案兩大問題皆採用權威學術公開資料集，並經過嚴格的 SHA-256 數位簽章與程式化審計驗證：
+本專案兩大問題皆採用公開研究資料集，並經過嚴格的 SHA-256 數位簽章與程式化審計驗證：
 
 | 評比項目 | Problem 1: Hourly Bike Sharing Demand | Problem 2: Appliances Energy Prediction |
 |:---|:---|:---|
@@ -204,9 +218,9 @@ flowchart LR
 
 ### 1. 全域導航與 Problem Selector 下拉選單
 - 位於網站右上角導覽列 (`Navbar.tsx`)，實作為原生 HTML `<select>` 互動下拉選單：
-  1. `Problem 1 — Bike Sharing Demand`: 進入自行車租借需求預測完整研究頁面（涵蓋 `/`, `/dataset`, `/models`, `/evaluation`, `/predict`, `/methodology`）。
-  2. `Problem 2 — Appliances Energy Prediction`: 切換至家電能耗預測儀表板 (`/problem2`)。
-  3. `Custom Dataset — Universal MLR`: 切換至加分功能通用資料集多元線性迴歸 Studio (`/custom-dataset`)。
+  1. `Problem 1 · Bike Sharing Dataset (12 原始特徵)`: 進入自行車租借需求預測完整研究頁面（涵蓋 `/`, `/dataset`, `/models`, `/evaluation`, `/predict`, `/methodology`）。
+  2. `Problem 2 · Appliances Energy Prediction (25 原始特徵)`: 切換至家電能耗預測儀表板 (`/problem2`)。
+  3. `Custom Dataset — 自訂資料集`: 切換至通用 CSV 多元線性迴歸分析頁面 (`/custom-dataset`)。
 
 ### 2. Problem 2 專屬儀表板特色 (`/problem2`)
 - **CRISP-DM 6 階段流程導覽:** 清楚陳列商業目標、資料審計、時序日曆切分、模型比較、盲測成果與部署架構。
@@ -222,7 +236,7 @@ flowchart LR
 
 ---
 
-## 7. 加分功能：通用資料集多元線性迴歸 Studio (Bonus)
+## 7. 自訂資料集分析 (Custom Dataset)
 
 獨立建置於 `/custom-dataset` 頁面，提供端到端通用多元線性迴歸與特徵工程計算能力：
 
@@ -343,7 +357,7 @@ npm run build
 | **Stage 3: Feature Selection** | RFE 特徵數搜尋；Ridge/Lasso 對比；rv1/rv2 隨機對照欄位健全性檢驗；產出特徵清單與圖表。 | **PASS** | RFE 篩選出 $k=6$ 最優稀疏子集；Ridge 達成最優 CV RMSE (95.85 Wh)；rv1/rv2 成功於末位淘汰；產出 8 張學術圖表。 |
 | **Stage 4: Evaluation & Conformal** | 獨立測試集盲測 (MAE/RMSE/R²)；獨立校準集名義 95% Split Conformal 區間；非負截斷；時序可交換性討論。 | **PASS** | Test MAE 49.30 Wh, RMSE 83.92 Wh, $R^2$ 0.1494；Conformal $q=143.83$ Wh；實證覆蓋率達 **95.25%**。 |
 | **Stage 5: Website Integration** | 既有 Bike 頁面完整保留；新增 Problem Selector 下拉選單；Problem 2 完整儀表板；26 特徵分組預測；Parity 測試。 | **PASS** | `Navbar.tsx` 原生 `<select>` 實作；`/problem2` 上線；Python–TS 數值推論 Parity 誤差 $< 10^{-12}$。 |
-| **Stage 6: Custom Dataset Bonus** | `/custom-dataset` 頁面；支援公開 URL 與本地 CSV；動態 MLR 與 Conformal；SSRF 安全防護；50 Startups 實測。 | **PASS** | SSRF 防護 API 通過；動態求解器通過單元測試；50 Startups 實測 Test $R^2 = 0.9439$。 |
+| **Stage 6: Custom Dataset Studio** | `/custom-dataset` 頁面；支援公開 URL 與本地 CSV；動態 MLR 與 Conformal；SSRF 安全防護；50 Startups 實測。 | **PASS** | SSRF 防護 API 通過；動態求解器通過單元測試；50 Startups 實測 Test $R^2 = 0.9439$。 |
 | **Stage 7: README & Delivery** | 全域 README 整合；列出特徵數與數據；操作指引；保留 NotebookLM 與聲明；CI 測試通過；Git Commit & Push。 | **PASS** | 完整編寫根目錄說明；Lint 0 警告；Build 12/12 成功；測試全數 PASS。 |
 
 ---
