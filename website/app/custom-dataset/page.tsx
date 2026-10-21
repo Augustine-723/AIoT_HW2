@@ -176,33 +176,33 @@ export default function CustomDatasetPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] pb-24">
+    <main className="min-h-screen bg-white pb-16">
       {/* Header Banner */}
-      <section className="bg-gradient-to-b from-slate-900 via-emerald-950 to-[#17243A] text-white pt-12 pb-14 px-4 sm:px-6 lg:px-8 border-b border-emerald-900">
-        <div className="max-w-7xl mx-auto space-y-4">
+      <section className="rounded-3xl border border-[#DFE5ED] bg-[#F7F9FC] text-[#17243A] py-10 sm:py-12 px-5 sm:px-8 lg:px-10 shadow-xs">
+        <div className="max-w-7xl mx-auto space-y-5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-50 text-teal-700 border border-teal-200 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>AIoT HW2 · 自訂資料分析</span>
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-mono text-slate-300 bg-white/10">
+            <span className="px-3 py-1 rounded-full text-xs font-mono text-slate-600 bg-white border border-slate-200">
               獨立於 Problem 1 & Problem 2
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#17243A]">
             自訂資料集分析 · Multiple Linear Regression
           </h1>
-          <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+          <p className="text-[#334155] text-sm sm:text-base max-w-3xl leading-relaxed">
             上傳資料、建立迴歸模型並探索預測結果：支援公開 CSV 網址（含 SSRF 安全防護）與本機 CSV 上傳，動態矩陣求逆計算，即時展示 MAE、RMSE、R²、殘差診斷與 95% 共形預測區間。
           </p>
         </div>
       </section>
 
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-12">
+      <div className="max-w-7xl mx-auto mt-12 space-y-12">
         
         {/* 1. Data Ingestion Card */}
-        <section id="upload" className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6">
+        <section id="upload" className="bg-white rounded-2xl border border-[#DFE5ED] p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex items-center gap-2 border-b border-slate-100 pb-4">
             <span className="p-1.5 rounded-lg bg-emerald-100 text-emerald-700">
               <Database className="w-5 h-5" />
@@ -298,7 +298,7 @@ export default function CustomDatasetPage() {
 
         {/* 2. Dataset Preview & Configuration */}
         {dataset && (
-          <section id="model" className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6">
+          <section id="model" className="bg-white rounded-2xl border border-[#DFE5ED] p-6 sm:p-8 shadow-sm space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-blue-100 text-blue-700">
@@ -451,7 +451,7 @@ export default function CustomDatasetPage() {
 
         {/* 3. Real Training Results & Evaluation */}
         {evaluation && (
-          <section id="eval" className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-8">
+          <section id="eval" className="bg-white rounded-2xl border border-[#DFE5ED] p-6 sm:p-8 shadow-sm space-y-8">
             <div className="flex items-center gap-2 border-b border-slate-100 pb-4">
               <span className="p-1.5 rounded-lg bg-emerald-100 text-emerald-700">
                 <LineChart className="w-5 h-5" />
