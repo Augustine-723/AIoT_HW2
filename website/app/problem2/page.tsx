@@ -66,27 +66,27 @@ export default function Problem2Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] pb-24">
+    <main className="min-h-screen bg-white pb-16">
       {/* 1. Header Banner */}
-      <section className="bg-gradient-to-b from-blue-900 via-indigo-900 to-[#17243A] text-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-blue-950">
+      <section className="rounded-3xl border border-[#DFE5ED] bg-[#F7F9FC] text-[#17243A] py-10 sm:py-12 px-5 sm:px-8 lg:px-10 shadow-xs">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">
                   AIoT HW2 · Problem 2
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-50 text-teal-700 border border-teal-200">
                   CRISP-DM End-to-End
                 </span>
-                <span className="px-2.5 py-1 rounded-full text-xs font-mono text-slate-300 bg-white/10">
+                <span className="px-2.5 py-1 rounded-full text-xs font-mono text-slate-600 bg-white border border-slate-200">
                   ID: 7115093001
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#17243A]">
                 Appliances Energy Prediction
               </h1>
-              <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+              <p className="text-[#334155] text-sm sm:text-base max-w-3xl leading-relaxed">
                 比利時低耗能住宅 10 分鐘家用電器耗能預測：多元線性迴歸 (MLR)、遞迴特徵淘汰 (RFE)、Ridge/Lasso 正則化比較與 95% 分裂共形預測區間。
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function Problem2Page() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#predict"
-                className="px-4 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs shadow-lg shadow-blue-500/25 transition-all flex items-center gap-2"
+                className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-sm transition-all flex items-center gap-2"
               >
                 <Zap className="w-4 h-4" />
                 <span>立即互動預測 (26特徵)</span>
@@ -104,7 +104,7 @@ export default function Problem2Page() {
                 href="https://archive.ics.uci.edu/dataset/374/appliances+energy+prediction"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-medium text-xs border border-white/20 transition-all flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-[#17243A] font-semibold text-sm border border-[#DFE5ED] transition-all flex items-center gap-1.5"
               >
                 <span>UCI Repository</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -114,46 +114,46 @@ export default function Problem2Page() {
 
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">Test MAE (Ridge)</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white">49.30</span>
-              <span className="text-[10px] text-slate-300 block">Wh (Dummy: 53.25)</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">Test MAE (Ridge)</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#17243A]">49.30</span>
+              <span className="text-[10px] text-[#64748B] block">Wh (Dummy: 53.25)</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">Test RMSE</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white">83.92</span>
-              <span className="text-[10px] text-slate-300 block">Wh (Dummy: 91.02)</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">Test RMSE</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#17243A]">83.92</span>
+              <span className="text-[10px] text-[#64748B] block">Wh (Dummy: 91.02)</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">Test R² (Ridge)</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-emerald-400">0.1494</span>
-              <span className="text-[10px] text-slate-300 block">Dummy: -0.0008</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">Test R² (Ridge)</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-teal-700">0.1494</span>
+              <span className="text-[10px] text-[#64748B] block">Dummy: -0.0008</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">95% Conformal q</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white">143.83</span>
-              <span className="text-[10px] text-slate-300 block">Wh (n=3,024)</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">95% Conformal q</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#17243A]">143.83</span>
+              <span className="text-[10px] text-[#64748B] block">Wh (n=3,024)</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">實證覆蓋率 (Test)</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-emerald-400">95.25%</span>
-              <span className="text-[10px] text-slate-300 block">名義目標: 95.0%</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">實證覆蓋率 (Test)</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-teal-700">95.25%</span>
+              <span className="text-[10px] text-[#64748B] block">名義目標: 95.0%</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/15">
-              <span className="text-[11px] font-medium text-blue-200 block">RFE 精簡特徵</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-cyan-300">k = 6</span>
-              <span className="text-[10px] text-slate-300 block">CV: 96.20 Wh</span>
+            <div className="bg-white rounded-xl p-3.5 border border-[#DFE5ED] shadow-xs">
+              <span className="text-[11px] font-medium text-[#475569] block">RFE 精簡特徵</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-blue-700">k = 6</span>
+              <span className="text-[10px] text-[#64748B] block">CV: 96.20 Wh</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-16">
+      <div className="max-w-7xl mx-auto mt-12 space-y-16">
 
         {/* 2. Interactive Prediction Section (Prominent Anchor) */}
         <section id="predict" className="scroll-mt-20">
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 sm:p-8 space-y-8">
+          <div className="bg-white rounded-2xl border border-[#DFE5ED] shadow-sm p-6 sm:p-8 space-y-8">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-5">
               <div>
                 <div className="flex items-center gap-2">
@@ -195,20 +195,20 @@ export default function Problem2Page() {
             </div>
 
             {/* Prediction Output Display Card */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-950 text-white p-6 rounded-2xl shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#F7F9FC] text-[#17243A] border border-[#DFE5ED] p-6 rounded-2xl shadow-xs">
               <div className="space-y-2">
-                <span className="text-xs font-bold text-blue-300 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-xs font-bold text-blue-700 uppercase tracking-wider flex items-center gap-1.5">
                   <Gauge className="w-4 h-4" />
                   <span>電器耗能點預測 (Point Prediction)</span>
                 </span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                  <span className="text-4xl sm:text-5xl font-black text-[#17243A] tracking-tight">
                     {prediction.clippedPointPrediction.toFixed(1)}
                   </span>
-                  <span className="text-lg font-bold text-blue-300">Wh</span>
+                  <span className="text-lg font-bold text-blue-700">Wh</span>
                 </div>
-                <div className="text-[11px] text-slate-400">
-                  原生線性方程計算值: <span className="font-mono text-slate-300">{prediction.rawPointPrediction.toFixed(2)} Wh</span>
+                <div className="text-[11px] text-[#64748B]">
+                  原生線性方程計算值: <span className="font-mono text-[#475569]">{prediction.rawPointPrediction.toFixed(2)} Wh</span>
                   {prediction.rawPointPrediction < 0 && (
                     <span className="text-amber-400 ml-1">(依非負物理邊界鉗制為 0)</span>
                   )}
@@ -216,32 +216,32 @@ export default function Problem2Page() {
               </div>
 
               <div className="space-y-2">
-                <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-xs font-bold text-teal-700 uppercase tracking-wider flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4" />
                   <span>95% 名義共形預測區間</span>
                 </span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl sm:text-3xl font-black text-emerald-300 font-mono">
+                  <span className="text-2xl sm:text-3xl font-black text-teal-700 font-mono">
                     [{prediction.piLowerClipped.toFixed(1)}, {prediction.piUpperClipped.toFixed(1)}]
                   </span>
-                  <span className="text-sm font-bold text-slate-300">Wh</span>
+                  <span className="text-sm font-bold text-[#475569]">Wh</span>
                 </div>
-                <div className="text-[11px] text-slate-400">
-                  共形半徑 q = <span className="font-mono text-slate-300">{prediction.conformalQuantile.toFixed(2)} Wh</span> · 測試集實證覆蓋率: <span className="text-emerald-400 font-semibold">{prediction.empiricalTestCoveragePct}%</span>
+                <div className="text-[11px] text-[#64748B]">
+                  共形半徑 q = <span className="font-mono text-[#475569]">{prediction.conformalQuantile.toFixed(2)} Wh</span> · 測試集實證覆蓋率: <span className="text-emerald-400 font-semibold">{prediction.empiricalTestCoveragePct}%</span>
                 </div>
               </div>
 
               <div className="space-y-2 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-bold text-amber-300 uppercase tracking-wider block">當前使用模型</span>
-                  <span className="text-base font-extrabold text-white block mt-0.5">{prediction.modelName}</span>
-                  <span className="text-[11px] text-slate-300 block">
+                  <span className="text-xs font-bold text-amber-700 uppercase tracking-wider block">當前使用模型</span>
+                  <span className="text-base font-extrabold text-[#17243A] block mt-0.5">{prediction.modelName}</span>
+                  <span className="text-[11px] text-[#475569] block">
                     {selectedModel === "M3_RIDGE" ? "全 29 項候選特徵正規化加權" : "RFE 最佳 6 大核心特徵組合"}
                   </span>
                 </div>
                 <button
                   onClick={resetDefaults}
-                  className="self-start text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 bg-white/10 hover:bg-white/15 px-3 py-1.5 rounded-lg border border-white/10 transition-colors"
+                  className="self-start text-xs font-semibold text-[#475569] hover:text-[#17243A] flex items-center gap-1.5 bg-white hover:bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 transition-colors"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>重設為歷史中位數</span>
