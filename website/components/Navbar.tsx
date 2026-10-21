@@ -54,12 +54,12 @@ export default function Navbar() {
   const isCustom = pathname.startsWith("/custom-dataset");
   const currentProblem = isProblem2 ? "p2" : isCustom ? "custom" : "p1";
 
-  const expId = isProblem2 ? "AIoT_HW2_P2_EXP01" : isCustom ? "AIoT_HW2_BONUS_EXP" : "AIoT_HW2_PHASE3_EXP01";
+  const expId = isProblem2 ? "AIoT_HW2_P2_EXP01" : isCustom ? "AIoT_HW2_CUSTOM_EXP" : "AIoT_HW2_PHASE3_EXP01";
   const modelTag = isProblem2 ? "M3 · Ridge (p=29)" : isCustom ? "Universal · MLR" : "M2 · RFE (k=30)";
   const problemSubtitle = isProblem2 
     ? "Appliances Energy Prediction (10-min Wh)" 
     : isCustom 
-    ? "Universal MLR Playground (+2 Bonus)" 
+    ? "Custom Dataset Studio" 
     : "Bike Sharing Demand Prediction (Hourly)";
 
   const copyExpId = () => {
@@ -79,10 +79,10 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#DFE5ED] bg-white/95 backdrop-blur-md shadow-xs print-hide">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 min-h-16 py-3">
           {/* Brand Logo & Title */}
-          <div className="flex items-center gap-3">
-            <Link href={isProblem2 ? "/problem2" : isCustom ? "/custom-dataset" : "/"} className="flex items-center gap-2.5 group">
+          <div className="flex items-center gap-3 min-w-0 shrink-0">
+            <Link href={isProblem2 ? "/problem2" : isCustom ? "/custom-dataset" : "/"} className="flex items-center gap-2.5 group min-w-0">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-teal-500 p-[1px] shadow-sm">
                 <div className="w-full h-full bg-white rounded-[11px] flex items-center justify-center group-hover:bg-blue-50/50 transition-colors">
                   <Cpu className="w-5 h-5 text-blue-600 group-hover:rotate-12 transition-transform duration-300" />
@@ -93,11 +93,11 @@ export default function Navbar() {
                   <span className="font-extrabold text-[#17243A] tracking-tight text-base sm:text-lg">
                     AIoT HW2
                   </span>
-                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                  <span className="hidden sm:inline-flex text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
                     {modelTag}
                   </span>
                 </div>
-                <span className="text-xs text-[#475569] hidden sm:block truncate max-w-xs font-medium">
+                <span className="text-xs text-[#475569] hidden sm:block truncate max-w-[210px] font-medium">
                   {problemSubtitle}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export default function Navbar() {
           </div>
 
           {/* Genuine Problem Selector Dropdown */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 order-3 w-full md:w-auto md:order-none min-w-0">
             <label htmlFor="problem-selector" className="text-xs font-bold text-slate-700 hidden md:flex items-center gap-1">
               <Layers className="w-3.5 h-3.5 text-blue-600" />
               <span>切換題目:</span>
@@ -115,72 +115,16 @@ export default function Navbar() {
               value={currentProblem}
               onChange={(e) => handleProblemChange(e.target.value)}
               aria-label="選擇研究問題"
-              className="bg-blue-50/80 hover:bg-blue-100/80 border-2 border-blue-600 text-blue-950 text-xs font-bold rounded-lg px-2.5 py-1.5 shadow-xs focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer transition-all"
+              className="w-full md:w-[295px] lg:w-[335px] max-w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-sm font-semibold rounded-xl px-3 py-2.5 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none cursor-pointer transition-all"
             >
               <option value="p1">Problem 1 — Bike Sharing Demand</option>
               <option value="p2">Problem 2 — Appliances Energy Prediction</option>
-              <option value="custom">Bonus — Custom Dataset MLR (+2分)</option>
+              <option value="custom">Custom Dataset — 自訂資料集</option>
             </select>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
-            {activeNavLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                    isActive
-                      ? "bg-blue-50 text-blue-700 font-semibold border border-blue-200 shadow-xs"
-                      : "text-[#475569] hover:text-[#17243A] hover:bg-slate-100/70"
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-blue-600" : "text-[#64748B]"}`} />
-                  <span>{link.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right Badges & Controls */}
-          <div className="hidden sm:flex items-center gap-2">
-            {/* Quick Bonus Nav Button */}
-            {!isCustom && (
-              <Link
-                href="/custom-dataset"
-                className="hidden lg:flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition-colors"
-                title="前往自訂資料集通用迴歸加分功能"
-              >
-                <FolderPlus className="w-3.5 h-3.5 text-emerald-600" />
-                <span>+2分 加分題</span>
-              </Link>
-            )}
-
-            {/* Experiment ID Tag with Copy */}
-            <button
-              onClick={copyExpId}
-              title="點擊複製實驗識別碼"
-              className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-mono bg-[#F7F9FC] hover:bg-slate-200/70 text-[#334155] border border-[#DFE5ED] transition-colors cursor-pointer"
-            >
-              <span className="text-[#64748B] text-[10px]">EXP:</span>
-              <span className="text-blue-700 font-semibold text-[11px] truncate max-w-[110px]">
-                {isProblem2 ? "P2_EXP01" : isCustom ? "BONUS_EXP" : "PHASE3_EXP01"}
-              </span>
-              {copied ? (
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              ) : (
-                <span className="text-[10px] text-[#64748B]">📋</span>
-              )}
-            </button>
-
-            {/* Student ID */}
-            <div className="px-2 py-1 rounded-md text-xs font-mono font-semibold bg-blue-50 text-blue-800 border border-blue-200">
-              7115093001
-            </div>
-          </div>
+          {/* Student identity stays visible without crowding the selector */}
+          <div className="hidden lg:flex items-center text-xs font-mono font-semibold text-slate-600 rounded-lg px-3 py-2 bg-slate-50 border border-slate-200 shrink-0">7115093001</div>
 
           {/* Mobile Menu Button */}
           <div className="flex xl:hidden items-center gap-2">
@@ -193,6 +137,25 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Dedicated second-row desktop navigation: clear hierarchy and better spacing */}
+      <div className="hidden xl:block border-t border-slate-100 bg-slate-50/70">
+        <nav aria-label="研究功能導覽" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-1.5 py-2 overflow-x-auto">
+          {activeNavLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
+            return (
+              <Link key={link.href} href={link.href}
+                className={`inline-flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors ${isActive ? "bg-white text-blue-700 shadow-sm ring-1 ring-blue-200" : "text-slate-600 hover:bg-white hover:text-slate-900"}`}>
+                <Icon className="w-4 h-4 shrink-0" />{link.label}
+              </Link>
+            );
+          })}
+          <Link href="/custom-dataset" className="ml-auto inline-flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm text-teal-700 font-semibold hover:bg-teal-50">
+            <FolderPlus className="h-4 w-4" /> 自訂資料集
+          </Link>
+        </nav>
       </div>
 
       {/* Mobile Navigation Dropdown */}
@@ -231,7 +194,7 @@ export default function Navbar() {
                   currentProblem === "custom" ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-800 border border-emerald-200"
                 }`}
               >
-                <span>Bonus — Custom Dataset (+2分)</span>
+                <span>Custom Dataset — 自訂資料集</span>
                 {currentProblem === "custom" && <CheckCircle2 className="w-4 h-4 text-white" />}
               </button>
             </div>
